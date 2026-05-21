@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequentry · 序引效能</title>
+<meta name="description" content="有序 · 入世 — Systematic Entry, Engineered. 序引效能是一家 AI 驱动的研究型机构，帮助中国品牌系统化进入全球市场。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --ink: #0F172A;
+    --deep: #1F2937;
+    --medium: #6B7280;
+    --light: #9CA3AF;
+    --border: #E5E7EB;
+    --soft: #F9FAFB;
+    --warm: #FAFAF7;
+    --white: #FFFFFF;
+    --blue: #1E40AF;
+    --red: #B91C1C;
+  }
+  
+  body {
+    font-family: 'Inter', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Nav */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  
+  .logo-en {
+    font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+  
+  .logo-cn {
+    font-family: 'Source Han Serif SC', 'Songti SC', serif;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: var(--deep);
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  
+  .nav-links a:hover { color: var(--blue); }
+  
+  /* Sections */
+  section { padding: 80px 40px; }
+  
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  
+  /* Hero */
+  .hero {
+    padding: 100px 40px 120px;
+    background: var(--warm);
+  }
+  
+  .hero .container {
+    max-width: 800px;
+  }
+  
+  .hero-tagline {
+    font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Songti SC', 'SimSun', serif;
+    font-size: 18px;
+    color: var(--medium);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+  
+  .hero h1 {
+    font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    font-weight: 600;
+    font-size: 54px;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    color: var(--ink);
+  }
+  
+  .hero-subtitle {
+    font-size: 21px;
+    line-height: 1.65;
+    color: var(--deep);
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+  
+  .hero-subtitle span {
+    color: var(--red);
+  }
+  
+  .cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--ink);
+    color: var(--warm);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  
+  .btn-primary:hover { background: #1e293b; }
+  
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--white);
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: border-color 0.2s;
+  }
+  
+  .btn-secondary:hover { border-color: var(--medium); }
+  
+  /* Section headings */
+  .section-label {
+    font-family: 'Source Han Serif SC', serif;
+    font-size: 15px;
+    color: var(--medium);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  .section-title {
+    font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin-bottom: 48px;
+    color: var(--ink);
+  }
+  
+  /* What We Do */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  
+  .service-card {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+  
+  .service-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  
+  .service-card h3 {
+    font-family: 'Source Han Serif SC', serif;
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  
+  .service-card p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--deep);
+  }
+  
+  /* Identity */
+  .identity {
+    background: var(--ink);
+    color: var(--warm);
+  }
+  
+  .identity .section-label { color: var(--light); }
+  .identity .section-title { color: var(--warm); }
+  
+  .identity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  
+  .identity-grid h3 {
+    font-family: 'Source Han Serif SC', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  
+  .identity-grid p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--light);
+  }
+  
+  .phrase {
+    font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Songti SC', serif;
+    font-size: 28px;
+    line-height: 1.5;
+    letter-spacing: 3px;
+    color: var(--warm);
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(250,250,247,0.12);
+  }
+  
+  /* Footer */
+  footer {
+    padding: 60px 40px;
+    border-top: 1px solid var(--border);
+  }
+  
+  footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .footer-brand .logo-en {
+    font-size: 20px;
+  }
+  
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--medium);
+    margin-top: 4px;
+  }
+  
+  .footer-info {
+    text-align: right;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--medium);
+  }
+  
+  .footer-info a {
+    color: var(--blue);
+    text-decoration: none;
+  }
+  
+  .footer-info a:hover { text-decoration: underline; }
+  
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .hero { padding: 80px 20px; }
+    .hero h1 { font-size: 36px; }
+    .hero-subtitle { font-size: 18px; }
+    .services-grid { grid-template-columns: 1fr; gap: 24px; }
+    .identity-grid { grid-template-columns: 1fr; gap: 40px; }
+    .section-title { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <span class="logo-en">Sequentry</span>
+    <span class="logo-cn">序引效能</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what">服务</a></li>
+    <li><a href="#identity">理念</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <p class="hero-tagline">有序 · 入世 — Systematic Entry, Engineered.</p>
+    <h1>AI 驱动的<br>品牌出海研究机构</h1>
+    <p class="hero-subtitle">
+      我们帮助中国品牌<span>系统化进入全球市场</span>——不做中介，不卖课。
+      用 AI 效能 + 深度研究 + 一线操盘经验，构建可复用的出海方法论。
+    </p>
+    <div class="cta-group">
+      <a href="#contact" class="btn-primary">联系我们</a>
+      <a href="#what" class="btn-secondary">了解更多</a>
+    </div>
+  </div>
+</section>
+
+<section id="what">
+  <div class="container">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">系统化出海的三层引擎</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>市场研究 & 信号追踪</h3>
+        <p>全球跨境电商政策、平台规则、AI 技术动态的周度监测与深度研判。不只告诉你发生了什么，更给出这意味着什么。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>AI 效能系统</h3>
+        <p>用 AI Agent 和自动化工作流重构品牌出海链路——从选品调研到内容生产到广告投放优化，将人力从重复劳动中释放。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>操盘咨询</h3>
+        <p>基于前 Amazon 一线经验，为品牌提供从 0 到 1 的出海落地策略。不写 200 页 PPT，交付可执行的作战地图。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="identity" id="identity">
+  <div class="container">
+    <p class="section-label">Who We Are</p>
+    <h2 class="section-title">一家有方法论的研究型机构</h2>
+    <div class="identity-grid">
+      <div>
+        <h3>不是咨询公司</h3>
+        <p>我们不做泛泛的战略建议。每个结论有数据支撑，每个策略有执行路径。</p>
+      </div>
+      <div>
+        <h3>不是 SaaS 工具</h3>
+        <p>我们不卖软件。AI 是我们的手段，不是产品。我们交付的是系统化的出海能力，不是账号和订阅。</p>
+      </div>
+      <div>
+        <h3>不是培训机构</h3>
+        <p>我们分享研究和方法，但真正的交付是和品牌并肩作战，不是卖课和社群。</p>
+      </div>
+      <div>
+        <h3>我们是谁</h3>
+        <p>杭州序引效能科技有限公司。创始人延航，前 Amazon 从业者，2026 年创立。团队融合 AI 工程、跨境电商运营和深度研究能力。</p>
+      </div>
+    </div>
+    <p class="phrase">秉序而作，引之以深远。</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-brand">
+      <span class="logo-en">Sequentry</span>
+      <span class="logo-cn" style="font-size:13px;letter-spacing:3px;">序引效能</span>
+      <span class="footer-tagline">有序 · 入世 — Systematic Entry, Engineered.</span>
+    </div>
+    <div class="footer-info">
+      杭州序引效能科技有限公司<br>
+      <a href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a><br>
+      关注公众号：序引效能<br>
+      <span style="color:var(--light);">© 2026 Sequentry</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
