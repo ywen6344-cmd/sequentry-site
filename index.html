@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sequentry · 序引效能</title>
-<meta name="description" content="有序 · 入世 — Systematic Entry, Engineered. 序引效能是一家 AI 驱动的研究型机构，帮助中国品牌系统化进入全球市场。">
+<meta name="description" content="AI 驱动的品牌出海研究机构。有序 · 入世 — Systematic Entry, Engineered.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  
+
   :root {
     --ink: #0F172A;
     --deep: #1F2937;
@@ -23,7 +23,7 @@
     --blue: #1E40AF;
     --red: #B91C1C;
   }
-  
+
   body {
     font-family: 'Inter', 'Source Han Sans SC', 'Noto Sans CJK SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
     color: var(--ink);
@@ -32,17 +32,15 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
   }
-  
-  /* Nav */
+
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 22px 40px;
     max-width: 1200px;
     margin: 0 auto;
   }
-  
   .logo {
     display: flex;
     align-items: baseline;
@@ -50,27 +48,23 @@
     text-decoration: none;
     color: var(--ink);
   }
-  
   .logo-en {
     font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
     font-weight: 500;
     font-size: 22px;
     letter-spacing: -0.3px;
   }
-  
   .logo-cn {
     font-family: 'Source Han Serif SC', 'Songti SC', serif;
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 3px;
   }
-  
   .nav-links {
     display: flex;
     gap: 32px;
     list-style: none;
   }
-  
   .nav-links a {
     text-decoration: none;
     color: var(--deep);
@@ -78,240 +72,247 @@
     font-weight: 400;
     transition: color 0.2s;
   }
-  
   .nav-links a:hover { color: var(--blue); }
-  
-  /* Sections */
+
   section { padding: 80px 40px; }
-  
-  .container {
-    max-width: 1040px;
-    margin: 0 auto;
-  }
-  
+  .container { max-width: 960px; margin: 0 auto; }
+
   /* Hero */
   .hero {
-    padding: 100px 40px 120px;
+    padding: 100px 40px 100px;
     background: var(--warm);
   }
-  
-  .hero .container {
-    max-width: 800px;
-  }
-  
-  .hero-tagline {
+  .hero .container { max-width: 800px; }
+
+  .hero-label {
     font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Songti SC', 'SimSun', serif;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--medium);
     letter-spacing: 2px;
     margin-bottom: 24px;
   }
-  
+
   .hero h1 {
     font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
     font-weight: 600;
-    font-size: 54px;
-    line-height: 1.15;
+    font-size: 48px;
+    line-height: 1.2;
     letter-spacing: -0.5px;
-    margin-bottom: 20px;
-    color: var(--ink);
-  }
-  
-  .hero-subtitle {
-    font-size: 21px;
-    line-height: 1.65;
-    color: var(--deep);
-    max-width: 600px;
-    margin-bottom: 40px;
-  }
-  
-  .hero-subtitle span {
-    color: var(--red);
-  }
-  
-  .cta-group {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  
-  .btn-primary {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--ink);
-    color: var(--warm);
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    transition: background 0.2s;
-  }
-  
-  .btn-primary:hover { background: #1e293b; }
-  
-  .btn-secondary {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--white);
-    color: var(--ink);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.3px;
-    transition: border-color 0.2s;
-  }
-  
-  .btn-secondary:hover { border-color: var(--medium); }
-  
-  /* Section headings */
-  .section-label {
-    font-family: 'Source Han Serif SC', serif;
-    font-size: 15px;
-    color: var(--medium);
-    letter-spacing: 3px;
-    text-transform: uppercase;
     margin-bottom: 16px;
   }
-  
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .hero-subtitle {
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--deep);
+    margin-bottom: 32px;
+  }
+
+  .hero-note {
+    font-size: 15px;
+    color: var(--medium);
+  }
+
+  /* Section shared */
+  .section-label {
+    font-family: 'Source Han Serif SC', serif;
+    font-size: 14px;
+    color: var(--medium);
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+  }
   .section-title {
     font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
     font-weight: 600;
-    font-size: 36px;
-    line-height: 1.25;
+    font-size: 34px;
+    line-height: 1.3;
     letter-spacing: -0.3px;
-    margin-bottom: 48px;
-    color: var(--ink);
+    margin-bottom: 12px;
   }
-  
-  /* What We Do */
-  .services-grid {
+  .section-sub {
+    font-size: 17px;
+    color: var(--deep);
+    margin-bottom: 48px;
+    max-width: 620px;
+  }
+
+  /* Three pillars */
+  .pillars {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
   }
-  
-  .service-card {
-    padding: 32px 0;
-    border-top: 1px solid var(--border);
+  .pillar {
+    padding: 28px 0;
+    border-top: 2px solid var(--ink);
   }
-  
-  .service-num {
+  .pillar .num {
     font-family: 'Fraunces', Georgia, serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     color: var(--blue);
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
-  
-  .service-card h3 {
+  .pillar h3 {
     font-family: 'Source Han Serif SC', serif;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 600;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+  }
+  .pillar p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--deep);
+  }
+
+  /* Framework */
+  .framework { background: var(--soft); }
+  .framework-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .fw-item {
+    padding: 24px 16px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-align: center;
+  }
+  .fw-item .layer {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .fw-item .name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .fw-item .q {
+    font-size: 12px;
+    color: var(--medium);
+    line-height: 1.5;
+  }
+
+  /* Diff table */
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .diff-table td {
+    padding: 18px 0;
+    border-top: 1px solid var(--border);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .diff-table td:first-child {
+    color: var(--medium);
+    width: 220px;
+    padding-right: 28px;
+  }
+  .diff-table td:last-child {
+    font-weight: 500;
     color: var(--ink);
   }
-  
-  .service-card p {
+
+  /* Output */
+  .output-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .output-item {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+  }
+  .output-item h3 {
+    font-family: 'Source Han Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .output-item p {
     font-size: 15px;
     line-height: 1.7;
     color: var(--deep);
   }
-  
-  /* Identity */
-  .identity {
+
+  /* Not */
+  .not-section {
     background: var(--ink);
     color: var(--warm);
+    padding: 80px 40px;
+    text-align: center;
   }
-  
-  .identity .section-label { color: var(--light); }
-  .identity .section-title { color: var(--warm); }
-  
-  .identity-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-  }
-  
-  .identity-grid h3 {
-    font-family: 'Source Han Serif SC', serif;
-    font-size: 20px;
+  .not-section h2 {
+    font-family: 'Fraunces', 'Source Serif Pro', Georgia, serif;
     font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.3px;
     margin-bottom: 16px;
   }
-  
-  .identity-grid p {
-    font-size: 16px;
-    line-height: 1.75;
+  .not-section p {
+    font-size: 17px;
     color: var(--light);
   }
-  
-  .phrase {
-    font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Songti SC', serif;
-    font-size: 28px;
-    line-height: 1.5;
-    letter-spacing: 3px;
-    color: var(--warm);
-    margin-top: 48px;
-    padding-top: 48px;
-    border-top: 1px solid rgba(250,250,247,0.12);
+  .not-section a {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 14px 32px;
+    background: var(--warm);
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
   }
-  
+  .not-section a:hover { opacity: 0.9; }
+
   /* Footer */
   footer {
-    padding: 60px 40px;
+    padding: 48px 40px;
     border-top: 1px solid var(--border);
   }
-  
   footer .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: 32px;
   }
-  
-  .footer-brand {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-  
-  .footer-brand .logo-en {
-    font-size: 20px;
-  }
-  
-  .footer-tagline {
-    font-size: 13px;
-    color: var(--medium);
-    margin-top: 4px;
-  }
-  
+  .footer-brand { display: flex; flex-direction: column; gap: 4px; }
+  .footer-brand .logo-en { font-size: 20px; }
+  .footer-tagline { font-size: 13px; color: var(--medium); margin-top: 4px; }
   .footer-info {
     text-align: right;
     font-size: 13px;
     line-height: 1.8;
     color: var(--medium);
   }
-  
-  .footer-info a {
-    color: var(--blue);
-    text-decoration: none;
-  }
-  
+  .footer-info a { color: var(--blue); text-decoration: none; }
   .footer-info a:hover { text-decoration: underline; }
-  
+
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
     .nav-links { display: none; }
     section { padding: 60px 20px; }
     .hero { padding: 80px 20px; }
-    .hero h1 { font-size: 36px; }
-    .hero-subtitle { font-size: 18px; }
-    .services-grid { grid-template-columns: 1fr; gap: 24px; }
-    .identity-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: 34px; }
+    .hero-subtitle { font-size: 17px; }
+    .pillars, .output-grid { grid-template-columns: 1fr; gap: 24px; }
+    .framework-grid { grid-template-columns: repeat(2, 1fr); }
+    .diff-table td:first-child { width: 120px; }
     .section-title { font-size: 28px; }
   }
 </style>
@@ -324,74 +325,140 @@
     <span class="logo-cn">序引效能</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#what">服务</a></li>
-    <li><a href="#identity">理念</a></li>
+    <li><a href="#work">研究</a></li>
+    <li><a href="#diff">差异</a></li>
     <li><a href="#contact">联系</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="container">
-    <p class="hero-tagline">有序 · 入世 — Systematic Entry, Engineered.</p>
-    <h1>AI 驱动的<br>品牌出海研究机构</h1>
-    <p class="hero-subtitle">
-      我们帮助中国品牌<span>系统化进入全球市场</span>——不做中介，不卖课。
-      用 AI 效能 + 深度研究 + 一线操盘经验，构建可复用的出海方法论。
-    </p>
-    <div class="cta-group">
-      <a href="#contact" class="btn-primary">联系我们</a>
-      <a href="#what" class="btn-secondary">了解更多</a>
-    </div>
+    <p class="hero-label">有序 · 入世 — Systematic Entry, Engineered.</p>
+    <h1>AI 驱动的<br>品牌出海<em>研究机构</em></h1>
+    <p class="hero-subtitle">用 AI 和深度研究，帮助中国品牌理解全球市场。</p>
+    <p class="hero-note">我们研究世界顶级品牌怎么做品牌——然后把它翻译成中国出海者能用的认知和框架。</p>
   </div>
 </section>
 
-<section id="what">
+<section id="work">
   <div class="container">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-title">系统化出海的三层引擎</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3>市场研究 & 信号追踪</h3>
-        <p>全球跨境电商政策、平台规则、AI 技术动态的周度监测与深度研判。不只告诉你发生了什么，更给出这意味着什么。</p>
+    <p class="section-label">How We Work</p>
+    <h2 class="section-title">三层能力，一个闭环</h2>
+    <p class="section-sub">市面上大部分出海服务只做交付。我们从研究起步，用 AI 加速，把最好的方法论变成可执行的工作流。</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">01</div>
+        <h3>深度研究</h3>
+        <p>用 AI 驱动一手信息追踪和内容生产。持续关注全球跨境电商与 AI 技术前沿，发布独立判断和框架。</p>
       </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3>AI 效能系统</h3>
-        <p>用 AI Agent 和自动化工作流重构品牌出海链路——从选品调研到内容生产到广告投放优化，将人力从重复劳动中释放。</p>
+      <div class="pillar">
+        <div class="num">02</div>
+        <h3>反向工程</h3>
+        <p>拆解世界顶级品牌的方法论——从供应链到产品到叙事到文化，5 层框架逐层还原。不是翻译，是重建。</p>
       </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3>操盘咨询</h3>
-        <p>基于前 Amazon 一线经验，为品牌提供从 0 到 1 的出海落地策略。不写 200 页 PPT，交付可执行的作战地图。</p>
+      <div class="pillar">
+        <div class="num">03</div>
+        <h3>AI 效能</h3>
+        <p>将研究结果转化为 AI 驱动的工作流和工具链。不卖软件——我们用 AI 加速自己的研究，也帮客户做到同样的事。</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="identity" id="identity">
+<section class="framework">
   <div class="container">
-    <p class="section-label">Who We Are</p>
-    <h2 class="section-title">一家有方法论的研究型机构</h2>
-    <div class="identity-grid">
-      <div>
-        <h3>不是咨询公司</h3>
-        <p>我们不做泛泛的战略建议。每个结论有数据支撑，每个策略有执行路径。</p>
+    <p class="section-label">Research Framework</p>
+    <h2 class="section-title">五层品牌反向工程框架</h2>
+    <p class="section-sub">我们分析每一个品牌，都用这五层透视图。从最底层的供应链，到最顶层的文化叙事。</p>
+
+    <div class="framework-grid">
+      <div class="fw-item">
+        <div class="layer">1</div>
+        <div class="name">供应链</div>
+        <div class="q">原料从哪来？成本结构如何？</div>
       </div>
-      <div>
-        <h3>不是 SaaS 工具</h3>
-        <p>我们不卖软件。AI 是我们的手段，不是产品。我们交付的是系统化的出海能力，不是账号和订阅。</p>
+      <div class="fw-item">
+        <div class="layer">2</div>
+        <div class="name">产品</div>
+        <div class="q">差异化在哪？SKU 与价格带？</div>
       </div>
-      <div>
-        <h3>不是培训机构</h3>
-        <p>我们分享研究和方法，但真正的交付是和品牌并肩作战，不是卖课和社群。</p>
+      <div class="fw-item">
+        <div class="layer">3</div>
+        <div class="name">关系</div>
+        <div class="q">如何建立用户关系与复购？</div>
       </div>
-      <div>
-        <h3>我们是谁</h3>
-        <p>杭州序引效能科技有限公司。创始人延航，前 Amazon 从业者，2026 年创立。团队融合 AI 工程、跨境电商运营和深度研究能力。</p>
+      <div class="fw-item">
+        <div class="layer">4</div>
+        <div class="name">叙事</div>
+        <div class="q">用什么故事让人记住？</div>
+      </div>
+      <div class="fw-item">
+        <div class="layer">5</div>
+        <div class="name">文化</div>
+        <div class="q">代表什么生活方式与价值观？</div>
       </div>
     </div>
-    <p class="phrase">秉序而作，引之以深远。</p>
+  </div>
+</section>
+
+<section id="diff">
+  <div class="container">
+    <p class="section-label">What Makes Us Different</p>
+    <h2 class="section-title">不是所有出海内容都一样</h2>
+
+    <table class="diff-table">
+      <tr>
+        <td>别人讲中国品牌怎么出海</td>
+        <td>我们讲世界顶级品牌怎么做品牌</td>
+      </tr>
+      <tr>
+        <td>别人复盘中国出海成功案例</td>
+        <td>我们拆解全球品牌方法论</td>
+      </tr>
+      <tr>
+        <td>别人给中国卖家方法论</td>
+        <td>我们给中国出海者认知升级</td>
+      </tr>
+      <tr>
+        <td>别人翻译海外文章</td>
+        <td>我们反向工程 + 中国视角</td>
+      </tr>
+      <tr>
+        <td>别人流量驱动内容</td>
+        <td>我们认知密度驱动内容</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <p class="section-label">Content</p>
+    <h2 class="section-title">持续输出的研究内容</h2>
+
+    <div class="output-grid">
+      <div class="output-item">
+        <h3>一手信息追踪</h3>
+        <p>全球跨境电商政策、平台规则、AI 技术动态的持续追踪与深度解读。给你被筛选过、被想清楚了的判断。</p>
+      </div>
+      <div class="output-item">
+        <h3>深度研究报告</h3>
+        <p>针对特定市场、品类或趋势的系统性研究。5 层框架 + 自有数据 + 独立判断。对标 Stratechery 的研究深度。</p>
+      </div>
+      <div class="output-item">
+        <h3>案例拆解</h3>
+        <p>还原世界顶级品牌的方法论——成功的、失败的、正在进行中的。不是新闻报道，是可复用的框架和洞察。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="not-section">
+  <div class="container">
+    <h2>我们不是 SaaS。不是咨询公司。不是 KOL。</h2>
+    <p>我们是一个用 AI 做深度研究、然后用研究结果交付价值的小团队。</p>
+    <a href="mailto:yanhang@sequentry.com">联系延航</a>
   </div>
 </section>
 
@@ -405,7 +472,7 @@
     <div class="footer-info">
       杭州序引效能科技有限公司<br>
       <a href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a><br>
-      关注公众号：序引效能<br>
+      微信公众号：序引效能<br>
       <span style="color:var(--light);">© 2026 Sequentry</span>
     </div>
   </div>
