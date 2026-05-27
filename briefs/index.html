@@ -46,23 +46,29 @@
   .dropdown-menu-inner a:hover { background: var(--xuan); color: var(--ink); }
   .dropdown-menu-inner a.act { color: var(--zhu); }
 
-  .hero { padding: 88px 0 60px; max-width: 900px; }
-  .eyebrow { font-family: var(--mono); color: var(--zhu); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; }
-  .hero h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(36px,5.5vw,72px); line-height: 1.08; }
-  .hero p { max-width: 620px; margin: 22px 0 0; color: var(--deep); font-size: 17px; line-height: 1.8; }
+  /* ── 轻量 Hero ── */
+  .hero { padding: 40px 0 32px; max-width: 780px; }
+  .hero .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--zhu); margin-bottom: 12px; }
+  .hero h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(24px,4vw,44px); line-height: 1.18; }
+  .hero p { max-width: 560px; margin: 12px 0 0; color: var(--deep); font-size: 15px; line-height: 1.7; }
 
-  .section { padding: 64px 0; border-top: 1px solid var(--line-warm); }
-  .section h2 { margin: 0 0 8px; font-family: var(--serif); font-weight: 600; font-size: clamp(22px,3vw,36px); }
-
-  .brief-list { display: grid; gap: 1px; background: var(--line-warm); border: 1px solid var(--line-warm); margin-top: 32px; }
-  .brief-card { background: var(--paper); padding: 36px 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; transition: background .15s; }
-  .brief-card:hover { background: var(--xuan); }
-  .brief-card .date-tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--zhu); margin-bottom: 14px; }
-  .brief-card h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; font-size: 24px; }
+  /* ── 轻量列表 ── */
+  .brief-list { margin-top: 8px; }
+  .brief-card {
+    display: grid; grid-template-columns: 90px 1fr auto;
+    gap: 20px; align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-warm);
+    transition: background .12s;
+  }
+  .brief-card:first-child { border-top: 1px solid var(--line-warm); }
+  .brief-card:hover { background: rgba(0,0,0,.012); margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
+  .brief-card .date { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--light); padding-top: 2px; }
+  .brief-card h3 { margin: 0 0 4px; font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.35; }
   .brief-card h3 em { font-style: normal; color: var(--zhu); }
-  .brief-card .desc { margin: 0; color: var(--gray); font-size: 14.5px; line-height: 1.7; max-width: 600px; }
-  .brief-card .meta { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: var(--light); text-transform: uppercase; }
-  .brief-card .arrow { font-family: var(--serif); font-size: 28px; color: var(--zhu); }
+  .brief-card .desc { margin: 0; color: var(--gray); font-size: 14px; line-height: 1.6; max-width: 560px; }
+  .brief-card .arrow { font-family: var(--serif); font-size: 20px; color: var(--light); align-self: center; transition: color .12s; }
+  .brief-card:hover .arrow { color: var(--zhu); }
 
   footer.foot { padding: 80px 0 56px; border-top: 1px solid var(--line-warm); }
   .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--line-warm); }
@@ -79,11 +85,13 @@
   @media (max-width: 1050px) {
     .foot-main { grid-template-columns: 1fr; gap: 28px; }
     .foot-contact { text-align: left; }
-    .brief-card { grid-template-columns: 1fr; gap: 16px; padding: 28px 24px; }
   }
   @media (max-width: 680px) {
     .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
-    .hero { padding: 44px 0 40px; }
+    .hero { padding: 32px 0 24px; }
+    .brief-card { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+    .brief-card .date { font-size: 11px; }
+    .brief-card .arrow { display: none; }
   }
 </style>
 </head>
@@ -107,20 +115,18 @@
 
   <main>
     <section class="shell hero">
-      <div class="eyebrow">Brand Briefs</div>
+      <div class="tag">Brand Briefs</div>
       <h1>品牌资讯</h1>
-      <p>每周跨境电商品牌信号扫描。AI购物、DTC出海、独立站投放、平台政策——用五分钟看清本周最重要的五件事。</p>
+      <p>每周跨境电商品牌信号扫描。五分钟看清本周最重要的五件事。</p>
     </section>
 
-    <section class="shell section">
-      <h2>最新资讯</h2>
+    <section class="shell">
       <div class="brief-list">
         <a class="brief-card" href="/briefs/2026-05-27/">
+          <div class="date">05.27</div>
           <div>
-            <div class="date-tag">2026.05.27 · 第 1 期</div>
             <h3>Google和Amazon同时让AI替<em>你</em>购物了</h3>
-            <p class="desc">AI购物入口同时落地，品牌出海游戏规则正在被改写。福布斯DTC数据切片 + 独立站营销报告 + 面向品牌方的行动清单。</p>
-            <div class="meta">7 张图表 · 阅读约 8 分钟</div>
+            <p class="desc">AI购物入口同时落地，品牌出海游戏规则正在被改写。福布斯DTC数据切片 + 独立站营销报告 + 行动清单。</p>
           </div>
           <div class="arrow">→</div>
         </a>
