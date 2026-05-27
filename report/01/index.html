@@ -111,7 +111,7 @@
 
   .divider { text-align: center; color: var(--light); font-size: 15px; margin: 56px 0 28px; }
 
-  footer.foot { padding: 64px 0 48px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
+  footer.foot { width:100%; padding: 64px 0 48px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
   .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
   .foot-contact { text-align: right; }
   .foot-contact .ct-label { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--zhu); margin-bottom: 18px; }
@@ -327,7 +327,7 @@
     </article>
   </main>
 
-  <footer class="shell foot">
+  <footer class="foot"><div class="shell">
     <div class="foot-main">
       <div class="foot-brand">
         <strong>Sequentry</strong>
@@ -342,7 +342,7 @@
       </div>
     </div>
     <div class="foot-copy">© 2026 Sequentry</div>
-  </footer>
+  </div></footer>
 
 </body>
 </html>
