@@ -189,7 +189,11 @@
     .fw-board { min-height: 420px; }
   }
   @media (max-width: 680px) {
-    .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
+    .top { padding: 14px 0; position: static; }
+    header.top > .shell { flex-wrap: wrap; gap: 10px; }
+    .brand strong { font-size: 20px; }
+    .nav { gap: 14px; font-size: 11px; }
+    .nav .cta { display: none; }
     .hero { min-height: auto; padding: 44px 0 52px; }
     .fw-legend .row { grid-template-columns: 1fr; gap: 6px; }
     .diff-key { display: none; }
@@ -217,6 +221,7 @@
           <a href="/briefs/">品牌资讯</a>
         </div></div>
       </span>
+      <a href="/about/">关于 / About</a>
       <a href="#contact">联系 / Contact</a>
       <a class="cta" href="mailto:yanhang@sequentry.com">联系延航</a>
     </nav>

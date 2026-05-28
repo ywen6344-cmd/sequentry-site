@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="序引效能 — AI 驱动的品牌出海研究机构。反向拆解海外品牌，追踪中国品牌出海的盲区与机会。">
+<title>关于序引效能 — Sequentry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script>
+<style>
+/* :root + 导航 + 页脚 来自主站 index.html，正文为 680px 窄宽阅读 */
+:root {
+  --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
+  --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA; --silk:#EDE4D3;
+  --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
+  --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  --serif:Fraunces,"Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
+  --mono:"SF Mono",Consolas,Monaco,monospace;
+}
+* { box-sizing:border-box; }
+html { background:var(--warm); scroll-behavior:smooth; }
+body {
+  margin:0; color:var(--ink); font-family:var(--sans);
+  background-color:var(--warm);
+  background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+a { color:inherit; text-decoration:none; }
+
+/* 导航（与 index.html 一致） */
+.top {
+  min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  border-bottom:1px solid var(--line-warm); position:sticky; top:0; z-index:9;
+  background:rgba(250,250,247,.86); backdrop-filter:blur(6px);
+}
+header.top > .shell {
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  width:min(1240px,calc(100% - 48px)); margin:0 auto; padding:0 24px;
+}
+.brand { display:grid; gap:2px; }
+.brand strong { font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-.01em; }
+.brand span { font-family:var(--mono); color:var(--gray); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.nav { display:flex; flex-wrap:wrap; gap:22px; align-items:center; font-family:var(--mono); color:var(--gray); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+.nav a:hover { color:var(--ink); }
+.nav .cta { color:var(--zhu); border:1px solid var(--zhu); padding:7px 14px; }
+.nav .cta:hover { background:var(--zhu); color:var(--warm); }
+.dropdown { position:relative; display:inline-flex; align-items:center; }
+.dropdown > a { display:flex; align-items:center; gap:4px; }
+.dropdown > a::after { content:"\25be"; font-size:9px; margin-left:2px; }
+.dropdown-menu { display:none; position:absolute; top:100%; left:-14px; padding-top:10px; min-width:160px; z-index:10; }
+.dropdown:hover .dropdown-menu { display:block; }
+.dropdown-menu-inner { background:var(--paper); border:1px solid var(--line-warm); padding:8px 0; }
+.dropdown-menu-inner a { display:block; padding:8px 18px; font-size:12px; letter-spacing:.06em; white-space:nowrap; color:var(--gray); }
+.dropdown-menu-inner a:hover { background:var(--xuan); color:var(--ink); }
+
+/* 正文 */
+.article-shell { width:min(680px,calc(100% - 48px)); margin:0 auto; }
+article { padding:64px 0 48px; }
+article h1 {
+  font-family:var(--serif); font-weight:600;
+  font-size:32px; line-height:1.3; margin-bottom:24px;
+}
+article p { margin-bottom:20px; color:var(--deep); font-size:17px; line-height:1.85; }
+article strong { color:var(--ink); }
+article hr { border:none; border-top:1px solid var(--line); margin:40px 0; }
+article h2 {
+  font-family:var(--serif); font-weight:600;
+  font-size:22px; line-height:1.4; margin:40px 0 16px;
+}
+article ol { margin:0 0 20px 20px; }
+article li { margin-bottom:8px; color:var(--deep); font-size:17px; line-height:1.85; }
+
+/* 页脚（与 index.html 一致） */
+footer.foot {
+  width:100%; padding:64px 0 32px;
+  border-top:1px solid rgba(250,250,247,.14);
+  background:var(--ink); color:#8A8278; font-size:13px;
+}
+footer.foot > .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
+.foot-main { display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; padding-bottom:32px; border-bottom:1px solid rgba(250,250,247,.12); }
+.foot-contact { text-align:right; }
+.foot-contact .ct-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A8A098; margin-bottom:18px; }
+.foot-contact p { margin:0 0 7px; color:#A8A098; font-size:13.5px; line-height:1.65; }
+.foot-contact a.mail { color:#C8C0B5; border-bottom:1px solid #C8C0B5; }
+.foot-contact .btn { display:inline-block; margin-top:18px; font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:12px 20px; border:1px solid #C8C0B5; color:#C8C0B5; }
+.foot-contact .btn:hover { background:#C8C0B5; color:var(--ink); }
+.foot-brand { display:grid; gap:6px; align-content:start; justify-items:start; }
+.foot-brand strong { font-family:var(--serif); font-size:26px; font-weight:600; color:#FAFAF7; letter-spacing:-.01em; }
+.foot-brand span { font-family:var(--sans); font-size:15px; color:#A8A098; }
+.foot-brand em { font-family:var(--mono); font-style:normal; font-size:11px; color:#8A8278; letter-spacing:.06em; }
+.foot-copy { margin-top:24px; color:#6B6560; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+@media (max-width:1050px) { .foot-main { grid-template-columns:1fr; gap:28px; } .foot-contact { text-align:left; } }
+@media (max-width:680px) {
+  .top { padding:14px 0; position:static; }
+  header.top > .shell { flex-wrap:wrap; gap:10px; }
+  .brand strong { font-size:20px; }
+  .nav { gap:14px; font-size:11px; }
+  .nav .cta { display:none; }
+  article h1 { font-size:26px; }
+  article h2 { font-size:19px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="shell">
+  <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
+  <nav class="nav">
+    <a href="/#work">研究 / Research</a>
+    <a href="/#diff">差异 / Difference</a>
+    <span class="dropdown">
+      <a href="/report/">报告 / Report</a>
+      <div class="dropdown-menu"><div class="dropdown-menu-inner">
+        <a href="/report/">深度报告</a>
+        <a href="/briefs/">品牌资讯</a>
+      </div></div>
+    </span>
+    <a href="/about/">关于 / About</a>
+    <a href="/#contact">联系 / Contact</a>
+    <a class="cta" href="mailto:yanhang@sequentry.com">联系延航</a>
+  </nav>
+</div></header>
+
+<article>
+  <div class="article-shell">
+
+    <h1>关于序引效能</h1>
+
+    <p><strong>序引效能（Sequentry）是一家 AI 驱动的品牌出海研究机构，做两件事：一是反向拆解海外原生品牌，找中国品牌出海的盲区和机会；二是自己下场，把研究里的判断变成真实的品牌项目。</strong>研究 + 实操，双轮驱动。</p>
+
+    <p>公司由闫航于 2026 年创立。在此之前，他在跨境电商赛道做了 8 年——从大卖运营到服务商孵化讲师，再到 Amazon 客户经理——这三个身份让他看清了一件事：<strong>中国卖家在亚马逊上做了 10 年生意，但绝大多数人从来没真正做过「品牌」。他们做的是「选品 + 流量 + 物流」，这三件事加起来不等于品牌。</strong></p>
+
+    <hr>
+
+    <h2>序引效能在做什么</h2>
+
+    <p>序引效能的起点，来自四个结构性判断：</p>
+
+    <p>中国跨境卖家不缺产品，缺品牌思维。传统「把跨境当销售渠道」的打法正在失效，需要另一种生意结构。平台和卖家之间永远有结构性信息差。AI 正在重写品牌研究和运营的底层逻辑。</p>
+
+    <p><strong>这四件事的交集，就是序引效能的位置。</strong></p>
+
+    <p>具体来说，现阶段做的事情是：</p>
+
+    <ol>
+      <li><strong>深度拆解海外原生品牌</strong>——不是 Anker、SHEIN 这种已经被讲烂的，而是真正的海外本土品牌：他们怎么起家、怎么做内容、怎么经营用户、怎么和中国出海品牌竞争</li>
+      <li><strong>反向追踪中国品牌出海的盲区</strong>——哪些事中国品牌「以为自己做对了」，但海外品牌的实际打法完全不同</li>
+      <li><strong>用 AI 重构研究方法</strong>——传统行业研究 3 个月出一份报告，Sequentry 可以做到每周持续追踪、动态更新</li>
+      <li><strong>未来：自己下场做品牌项目</strong>——用研究里得出的判断，验证在真实项目上</li>
+    </ol>
+
+    <p><strong>这不是一家「研究公司」，是一家「研究 + 实操」的双轮公司。</strong></p>
+
+    <hr>
+
+    <h2>研究方法</h2>
+
+    <p>序引效能的核心方法论是<strong>「品牌反向工程」</strong>——从供应链、产品、关系、叙事到文化五个层级，逐层拆解海外品牌的真实打法。大部分出海分析停在产品和流量层面，但真正让一个品牌建立起壁垒的，往往是叙事和文化这两个更深、更难复制的层。</p>
+
+    <p>五层框架：</p>
+
+    <p><strong>L1 供应链</strong> — 成本结构、产能与交付节奏，品牌能力的物理底座。<br>
+    <strong>L2 产品</strong> — 选品逻辑、迭代速度与价格带卡位，决定它在货架上的位置。<br>
+    <strong>L3 关系</strong> — 与渠道、达人、用户的连接方式，以及复购与留存的结构。<br>
+    <strong>L4 叙事</strong> — 品牌如何讲述自己，如何把一件产品变成一种意义。<br>
+    <strong>L5 文化</strong> — 进入哪一种文化语境，成为谁生活的一部分——最深、最难复制的一层。</p>
+
+    <hr>
+
+    <h2>关于名字</h2>
+
+    <p>「<strong>秉序而作，引之以深远</strong>」——做正确的事情，让价值自然发生。<strong>「效能」是因为我们做的是 AI 驱动的研究和品牌实践</strong>，效率本身就是核心能力之一。</p>
+
+    <p>序引效能不是一时兴起的研究项目，<strong>是一件准备认真做很多年的事</strong>。研究、品牌项目、AI 实践——这三件事会持续推进，以真实的成绩和真实的内容说话。</p>
+
+    <hr>
+
+    <h2>联系方式</h2>
+
+    <p>公众号「<strong>序引效能</strong>」：深度报告、行业判断、品牌案例拆解。<br>
+    <strong>Sequentry.com</strong>：完整的研究报告库和动态资讯。<br>
+    邮箱：yanhang@sequentry.com</p>
+
+    <p>如果你是卖家、服务商、平台方、投资人或同行研究者，欢迎联系。有具体的判断、问题、案例或反馈，我们会认真读、认真回。</p>
+
+  </div>
+</article>
+
+<footer class="foot" id="contact"><div class="shell">
+  <div class="foot-main">
+    <div class="foot-brand">
+      <strong>Sequentry</strong>
+      <span>序引效能</span>
+      <em>有序 · 入世 — Systematic Entry, Engineered.</em>
+    </div>
+    <div class="foot-contact">
+      <div class="ct-label">Contact / 联系</div>
+      <p>杭州序引效能科技有限公司</p>
+      <p>邮箱 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+      <p>微信公众号 · 序引效能　|　合作请联系 · 延航</p>
+      <a class="btn" href="mailto:yanhang@sequentry.com">联系延航</a>
+    </div>
+  </div>
+  <div class="foot-copy">&copy; 2026 Sequentry</div>
+</div></footer>
+
+</body>
+</html>
