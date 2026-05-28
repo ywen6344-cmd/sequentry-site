@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script>
 <style>
-/* :root + 导航 + 页脚 来自主站 index.html，正文为 680px 窄宽阅读 */
 :root {
   --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
   --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA; --silk:#EDE4D3;
@@ -30,7 +29,7 @@ body {
 }
 a { color:inherit; text-decoration:none; }
 
-/* 导航（与 index.html 一致） */
+/* 导航 */
 .top {
   min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px;
   border-bottom:1px solid var(--line-warm); position:sticky; top:0; z-index:9;
@@ -72,8 +71,14 @@ article h2 {
 }
 article ol { margin:0 0 20px 20px; }
 article li { margin-bottom:8px; color:var(--deep); font-size:17px; line-height:1.85; }
+article .pull {
+  margin:28px 0; padding-left:16px;
+  border-left:2px solid var(--zhu);
+  color:var(--zhu);
+  font-family:var(--serif); font-size:18px; line-height:1.6;
+}
 
-/* 页脚（与 index.html 一致） */
+/* 页脚 */
 footer.foot {
   width:100%; padding:64px 0 32px;
   border-top:1px solid rgba(250,250,247,.14);
@@ -132,17 +137,17 @@ footer.foot > .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
 
     <p><strong>序引效能（Sequentry）是一家 AI 驱动的品牌出海研究机构，做两件事：一是反向拆解海外原生品牌，找中国品牌出海的盲区和机会；二是自己下场，把研究里的判断变成真实的品牌项目。</strong>研究 + 实操，双轮驱动。</p>
 
-    <p>公司由闫航于 2026 年创立。在此之前，他在跨境电商赛道做了 8 年——从大卖运营到服务商孵化讲师，再到 Amazon 客户经理——这三个身份让他看清了一件事：<strong>中国卖家在亚马逊上做了 10 年生意，但绝大多数人从来没真正做过「品牌」。他们做的是「选品 + 流量 + 物流」，这三件事加起来不等于品牌。</strong></p>
+    <p>公司由闫航于 2026 年创立。此前他在跨境电商赛道积累了 8 年——从大卖公司运营主管，到服务商孵化讲师，再到 Amazon 大客户经理——这三个位置让他看到了同一件事的不同切面：<strong>中国跨境卖家做了 10 年生意，但绝大多数人从来没真正触碰到「品牌」。平台把品牌成长当作运营中的一个维度，而非真正的资产构建；传统「把跨境当销售渠道」的打法正在失效；真正让品牌方困住的，从来不是方法，而是组织和动机。</strong></p>
 
     <hr>
 
-    <h2>序引效能在做什么</h2>
+    <h2>我们在研究什么</h2>
 
     <p>序引效能的起点，来自四个结构性判断：</p>
 
-    <p>中国跨境卖家不缺产品，缺品牌思维。传统「把跨境当销售渠道」的打法正在失效，需要另一种生意结构。平台和卖家之间永远有结构性信息差。AI 正在重写品牌研究和运营的底层逻辑。</p>
+    <p>中国跨境卖家不缺产品，缺品牌思维。传统「把跨境当销售渠道」的打法正在失效，需要另一种生意结构。平台和卖家之间永远存在结构性的信息和利益差——平台看重的是优质供应链的接入和销售量增长，而非帮品牌方构建长效资产。AI 正在重写品牌研究和运营的底层逻辑。</p>
 
-    <p><strong>这四件事的交集，就是序引效能的位置。</strong></p>
+    <p>这四个判断的交集，是序引效能的位置。</p>
 
     <p>具体来说，现阶段做的事情是：</p>
 
@@ -153,7 +158,7 @@ footer.foot > .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
       <li><strong>未来：自己下场做品牌项目</strong>——用研究里得出的判断，验证在真实项目上</li>
     </ol>
 
-    <p><strong>这不是一家「研究公司」，是一家「研究 + 实操」的双轮公司。</strong></p>
+    <div class="pull">这不是一家束之高阁的「研究公司」，而是一家追寻本质、讲究结果的「研究 + 实操」双轮公司。</div>
 
     <hr>
 
@@ -168,6 +173,8 @@ footer.foot > .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
     <strong>L3 关系</strong> — 与渠道、达人、用户的连接方式，以及复购与留存的结构。<br>
     <strong>L4 叙事</strong> — 品牌如何讲述自己，如何把一件产品变成一种意义。<br>
     <strong>L5 文化</strong> — 进入哪一种文化语境，成为谁生活的一部分——最深、最难复制的一层。</p>
+
+    <div class="pull">真正的差距不在「拿到历史数据」，而在「看懂未来」。洞察未知、看懂趋势，才是品牌方真正需要执着的地方。</div>
 
     <hr>
 
