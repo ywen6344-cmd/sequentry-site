@@ -1,197 +1,196 @@
-     1|<!DOCTYPE html>
-     2|<html lang="zh-CN">
-     3|<head>
-     4|<meta charset="UTF-8">
-     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|<meta name="description" content="序引效能 — 独立品牌出海研究所。反向拆解海外品牌，追踪中国品牌出海的盲区与机会。">
-     7|<title>关于序引效能 — Sequentry</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="序引效能 — 独立品牌出海研究所。反向拆解海外品牌，追踪中国品牌出海的盲区与机会。">
+<title>关于序引效能 — Sequentry</title>
 <!-- Favicon · 「序」字标，墨黑底反白 -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
-     8|<link rel="preconnect" href="https://fonts.googleapis.com">
-     9|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    10|<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    11|<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script>
-    12|<style>
-    13|:root {
-    14|  --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
-    15|  --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA;
-    16|  --blue:#1E40AF; --zhu:#8B1A1A;
-    17|  --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
-    18|  --serif:Fraunces,"Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
-    19|  --mono:"SF Mono",Consolas,Monaco,monospace;
-    20|}
-    21|* { box-sizing:border-box; }
-    22|html { background:var(--warm); scroll-behavior:smooth; }
-    23|body {
-    24|  margin:0; color:var(--ink); font-family:var(--sans);
-    25|  background-color:var(--warm);
-    26|  background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
-    27|  background-attachment:fixed;
-    28|  -webkit-font-smoothing:antialiased;
-    29|}
-    30|a { color:inherit; text-decoration:none; }
-    31|
-    32|.top {
-    33|  min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px;
-    34|  border-bottom:1px solid var(--line-warm); position:sticky; top:0; z-index:9;
-    35|  background:rgba(250,250,247,.86); backdrop-filter:blur(6px);
-    36|}
-    37|header.top > .shell {
-    38|  display:flex; align-items:center; justify-content:space-between; gap:24px;
-    39|  width:min(1240px,calc(100% - 48px)); margin:0 auto; padding:0 24px;
-    40|}
-    41|.brand { display:grid; gap:2px; }
-    42|.brand strong { font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-.01em; }
-    43|.brand span { font-family:var(--mono); color:var(--gray); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
-    44|.nav { display:flex; flex-wrap:wrap; gap:22px; align-items:center; font-family:var(--mono); color:var(--gray); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
-    45|.nav a:hover { color:var(--ink); }
-    46|.nav .cta { color:var(--zhu); border:1px solid var(--zhu); padding:7px 14px; }
-    47|.nav .cta:hover { background:var(--zhu); color:var(--warm); }
-    48|.dropdown { position:relative; display:inline-flex; align-items:center; }
-    49|.dropdown > a { display:flex; align-items:center; gap:4px; }
-    50|.dropdown > a::after { content:"\25be"; font-size:9px; margin-left:2px; }
-    51|.dropdown-menu { display:none; position:absolute; top:100%; left:-14px; padding-top:10px; min-width:160px; z-index:10; }
-    52|.dropdown:hover .dropdown-menu { display:block; }
-    53|.dropdown-menu-inner { background:var(--paper); border:1px solid var(--line-warm); padding:8px 0; }
-    54|.dropdown-menu-inner a { display:block; padding:8px 18px; font-size:12px; letter-spacing:.06em; white-space:nowrap; color:var(--gray); }
-    55|.dropdown-menu-inner a:hover { background:var(--xuan); color:var(--ink); }
-    56|
-    57|.article-shell { width:min(680px,calc(100% - 48px)); margin:0 auto; }
-    58|article { padding:64px 0 48px; }
-    59|article h1 {
-    60|  font-family:var(--serif); font-weight:600;
-    61|  font-size:32px; line-height:1.3; margin-bottom:24px;
-    62|}
-    63|article h2 {
-    64|  font-family:var(--serif); font-weight:600;
-    65|  font-size:22px; line-height:1.4; margin:40px 0 16px;
-    66|}
-    67|article p { margin-bottom:20px; color:var(--deep); font-size:17px; line-height:1.85; }
-    68|article strong { color:var(--ink); }
-    69|article hr { border:none; border-top:1px solid var(--line); margin:40px 0; }
-    70|article ol { margin:0 0 20px 20px; }
-    71|article li { margin-bottom:8px; color:var(--deep); font-size:17px; line-height:1.85; }
-    72|
-    73|footer.foot {
-    74|  width:100%; padding:64px 0 32px;
-    75|  border-top:1px solid rgba(250,250,247,.14);
-    76|  background:var(--ink); color:#8A8278; font-size:13px;
-    77|}
-    78|footer.foot > .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
-    79|.foot-main { display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; padding-bottom:32px; border-bottom:1px solid rgba(250,250,247,.12); }
-    80|.foot-contact { text-align:right; }
-    81|.foot-contact .ct-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A8A098; margin-bottom:18px; }
-    82|.foot-contact p { margin:0 0 7px; color:#A8A098; font-size:13.5px; line-height:1.65; }
-    83|.foot-contact a.mail { color:#C8C0B5; border-bottom:1px solid #C8C0B5; }
-    84|.foot-contact .btn { display:inline-block; margin-top:18px; font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:12px 20px; border:1px solid #C8C0B5; color:#C8C0B5; }
-    85|.foot-contact .btn:hover { background:#C8C0B5; color:var(--ink); }
-    86|.foot-brand { display:grid; gap:6px; align-content:start; justify-items:start; }
-    87|.foot-brand strong { font-family:var(--serif); font-size:26px; font-weight:600; color:#FAFAF7; letter-spacing:-.01em; }
-    88|.foot-brand span { font-family:var(--sans); font-size:15px; color:#A8A098; }
-    89|.foot-brand em { font-family:var(--mono); font-style:normal; font-size:11px; color:#8A8278; letter-spacing:.06em; }
-    90|.foot-copy { margin-top:24px; color:#6B6560; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
-    91|
-    92|@media (max-width:1050px) { .foot-main { grid-template-columns:1fr; gap:28px; } .foot-contact { text-align:left; } }
-    93|@media (max-width:680px) {
-    94|  .top { padding:14px 0; position:static; }
-    95|  header.top > .shell { flex-wrap:wrap; gap:10px; }
-    96|  .brand strong { font-size:20px; }
-    97|  .nav { gap:14px; font-size:11px; }
-    98|  .nav .cta { display:none; }
-    99|  article h1 { font-size:26px; }
-   100|  article h2 { font-size:19px; }
-   101|}
-   102|</style>
-   103|</head>
-   104|<body>
-   105|
-   106|<header class="top"><div class="shell">
-   107|  <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
-   108|  <nav class="nav">
-   109|    <a href="/#work">研究 / Research</a>
-   110|    <a href="/#diff">差异 / Difference</a>
-   111|    <span class="dropdown">
-   112|      <a href="/report/">报告 / Report</a>
-   113|      <div class="dropdown-menu"><div class="dropdown-menu-inner">
-   114|        <a href="/report/">深度报告</a>
-   115|        <a href="/briefs/">品牌资讯</a>
-   116|      </div></div>
-   117|    </span>
-   118|    <a href="/about/">关于 / About</a>
-   119|    <a href="/#contact">联系 / Contact</a>
-   120|    <a class="cta" href="mailto:yanhang@sequentry.com">联系延航</a>
-   121|  </nav>
-   122|</div></header>
-   123|
-   124|<article>
-   125|  <div class="article-shell">
-   126|
-   127|    <h1>关于序引效能</h1>
-   128|
-   129|    <h2>我们做什么</h2>
-   130|
-   131|    <p><strong>序引效能从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。</strong>研究的终点不是文档，是经得起验证的判断。未来在合适的时机、遇到合适的项目，我们也会选择性地下场，用研究里的判断在真实项目中检验。但现阶段，我们专注把研究做厚、做透。</p>
-   132|
-   133|    <h2>谁在做</h2>
-   134|
-   135|    <p>序引效能由<strong>闫航</strong>于 2026 年创立。此前八年，他在跨境电商赛道走过三个位置——大卖公司运营主管、省级服务商孵化讲师、Amazon 大客户经理。从卖家、服务商、平台三个视角看过同一件事之后，他选择自己来做。</p>
-   136|
-   137|    <h2>为什么这件事重要</h2>
-   138|
-   139|    <p><strong>中国跨境卖家不缺产品，缺品牌思维。</strong>过去十年，绝大多数人做的是选品、流量和物流——这三件事加起来不等于品牌。</p>
-   140|
-   141|    <p><strong>平台不会帮你建品牌。</strong>平台看重的是供应链接入和销量增长。品牌成长在平台的优先级里排在很后面——它鼓励你把品牌「锁定在平台内」，而非帮你构建独立的品牌资产。</p>
-   142|
-   143|    <p><strong>AI 在改写规则。</strong>传统行业研究三个月出一份报告的时代正在过去。AI 让持续追踪、动态更新成为可能——这种研究能力的差异，正在变成认知上的差距。</p>
-   144|
-   145|    <h2>怎么做</h2>
-   146|
-   147|    <p>现阶段，序引效能聚焦四件事：</p>
-   148|
-   149|    <ol>
-   150|      <li><strong>深度拆解海外原生品牌</strong>——不是 Anker、SHEIN，而是真正的海外本土品牌：他们怎么起家、怎么经营用户、怎么和中国出海品牌竞争</li>
-   151|      <li><strong>反向追踪中国品牌出海的盲区</strong>——哪些事中国品牌「以为自己做对了」，但海外品牌的实际打法完全不同</li>
-   152|      <li><strong>用 AI 重构研究方法</strong>——持续追踪、动态更新，认知不被报告周期锁死</li>
-   153|      <li><strong>（未来）选择性下场做品牌项目</strong>——研究的终点是经得起验证的判断；时机成熟时，在真实项目里检验它</li>
-   154|    </ol>
-   155|
-   156|    <p>核心方法是<strong>品牌反向工程</strong>——从供应链、产品、关系、叙事到文化五个层级，逐层拆解。大部分出海分析停在产品层，但真正构成壁垒的，是叙事和文化这两个更深、更难复制的层。</p>
-   157|
-   158|    <hr>
-   159|
-   160|    <h2>联系</h2>
-   161|
-   162|    <p>公众号「<strong>序引效能</strong>」：深度报告、行业判断、品牌案例拆解<br>
-   163|    sequentry.com：完整研究报告库<br>
-   164|    邮箱：yanhang@sequentry.com</p>
-   165|
-   166|  </div>
-   167|</article>
-   168|
-   169|<footer class="foot" id="contact"><div class="shell">
-   170|  <div class="foot-main">
-   171|    <div class="foot-brand">
-   172|      <strong>Sequentry</strong>
-   173|      <span>序引效能</span>
-   174|      <em>有序 · 入世 — Systematic Entry, Engineered.</em>
-   175|    </div>
-   176|    <div class="foot-contact">
-   177|      <div class="ct-label">Contact / 联系</div>
-   178|      <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
-   179|        <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
-   180|        <div style="text-align:left;">
-   181|          <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
-   182|          <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
-   183|        </div>
-   184|      </div>
-   185|      <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
-   186|      <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
-   187|    </div>
-   188|  </div>
-   189|  <div class="foot-copy">&copy; 2026 Sequentry</div>
-   190|</div></footer>
-   191|
-   192|</body>
-   193|</html>
-   194|
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script>
+<style>
+:root {
+  --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
+  --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA;
+  --blue:#1E40AF; --zhu:#8B1A1A;
+  --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  --serif:Fraunces,"Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
+  --mono:"SF Mono",Consolas,Monaco,monospace;
+}
+* { box-sizing:border-box; }
+html { background:var(--warm); scroll-behavior:smooth; }
+body {
+  margin:0; color:var(--ink); font-family:var(--sans);
+  background-color:var(--warm);
+  background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+a { color:inherit; text-decoration:none; }
+
+.top {
+  min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  border-bottom:1px solid var(--line-warm); position:sticky; top:0; z-index:9;
+  background:rgba(250,250,247,.86); backdrop-filter:blur(6px);
+}
+header.top > .shell {
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  width:min(1240px,calc(100% - 48px)); margin:0 auto; padding:0 24px;
+}
+.brand { display:grid; gap:2px; }
+.brand strong { font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-.01em; }
+.brand span { font-family:var(--mono); color:var(--gray); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+.nav { display:flex; flex-wrap:wrap; gap:22px; align-items:center; font-family:var(--mono); color:var(--gray); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+.nav a:hover { color:var(--ink); }
+.nav .cta { color:var(--zhu); border:1px solid var(--zhu); padding:7px 14px; }
+.nav .cta:hover { background:var(--zhu); color:var(--warm); }
+.dropdown { position:relative; display:inline-flex; align-items:center; }
+.dropdown > a { display:flex; align-items:center; gap:4px; }
+.dropdown > a::after { content:"\25be"; font-size:9px; margin-left:2px; }
+.dropdown-menu { display:none; position:absolute; top:100%; left:-14px; padding-top:10px; min-width:160px; z-index:10; }
+.dropdown:hover .dropdown-menu { display:block; }
+.dropdown-menu-inner { background:var(--paper); border:1px solid var(--line-warm); padding:8px 0; }
+.dropdown-menu-inner a { display:block; padding:8px 18px; font-size:12px; letter-spacing:.06em; white-space:nowrap; color:var(--gray); }
+.dropdown-menu-inner a:hover { background:var(--xuan); color:var(--ink); }
+
+.article-shell { width:min(680px,calc(100% - 48px)); margin:0 auto; }
+article { padding:64px 0 48px; }
+article h1 {
+  font-family:var(--serif); font-weight:600;
+  font-size:32px; line-height:1.3; margin-bottom:24px;
+}
+article h2 {
+  font-family:var(--serif); font-weight:600;
+  font-size:22px; line-height:1.4; margin:40px 0 16px;
+}
+article p { margin-bottom:20px; color:var(--deep); font-size:17px; line-height:1.85; }
+article strong { color:var(--ink); }
+article hr { border:none; border-top:1px solid var(--line); margin:40px 0; }
+article ol { margin:0 0 20px 20px; }
+article li { margin-bottom:8px; color:var(--deep); font-size:17px; line-height:1.85; }
+
+footer.foot {
+  width:100%; padding:64px 0 32px;
+  border-top:1px solid rgba(250,250,247,.14);
+  background:var(--ink); color:#8A8278; font-size:13px;
+}
+footer.foot > .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
+.foot-main { display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; padding-bottom:32px; border-bottom:1px solid rgba(250,250,247,.12); }
+.foot-contact { text-align:right; }
+.foot-contact .ct-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A8A098; margin-bottom:18px; }
+.foot-contact p { margin:0 0 7px; color:#A8A098; font-size:13.5px; line-height:1.65; }
+.foot-contact a.mail { color:#C8C0B5; border-bottom:1px solid #C8C0B5; }
+.foot-contact .btn { display:inline-block; margin-top:18px; font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:12px 20px; border:1px solid #C8C0B5; color:#C8C0B5; }
+.foot-contact .btn:hover { background:#C8C0B5; color:var(--ink); }
+.foot-brand { display:grid; gap:6px; align-content:start; justify-items:start; }
+.foot-brand strong { font-family:var(--serif); font-size:26px; font-weight:600; color:#FAFAF7; letter-spacing:-.01em; }
+.foot-brand span { font-family:var(--sans); font-size:15px; color:#A8A098; }
+.foot-brand em { font-family:var(--mono); font-style:normal; font-size:11px; color:#8A8278; letter-spacing:.06em; }
+.foot-copy { margin-top:24px; color:#6B6560; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+@media (max-width:1050px) { .foot-main { grid-template-columns:1fr; gap:28px; } .foot-contact { text-align:left; } }
+@media (max-width:680px) {
+  .top { padding:14px 0; position:static; }
+  header.top > .shell { flex-wrap:wrap; gap:10px; }
+  .brand strong { font-size:20px; }
+  .nav { gap:14px; font-size:11px; }
+  .nav .cta { display:none; }
+  article h1 { font-size:26px; }
+  article h2 { font-size:19px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="shell">
+  <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
+  <nav class="nav">
+    <a href="/#work">研究 / Research</a>
+    <a href="/#diff">差异 / Difference</a>
+    <span class="dropdown">
+      <a href="/report/">报告 / Report</a>
+      <div class="dropdown-menu"><div class="dropdown-menu-inner">
+        <a href="/report/">深度报告</a>
+        <a href="/briefs/">品牌资讯</a>
+      </div></div>
+    </span>
+    <a href="/about/">关于 / About</a>
+    <a href="/#contact">联系 / Contact</a>
+    <a class="cta" href="mailto:yanhang@sequentry.com">联系延航</a>
+  </nav>
+</div></header>
+
+<article>
+  <div class="article-shell">
+
+    <h1>关于序引效能</h1>
+
+    <h2>我们做什么</h2>
+
+    <p><strong>序引效能从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。</strong>研究的终点不是文档，是经得起验证的判断。未来在合适的时机、遇到合适的项目，我们也会选择性地下场，用研究里的判断在真实项目中检验。但现阶段，我们专注把研究做厚、做透。</p>
+
+    <h2>谁在做</h2>
+
+    <p>序引效能由<strong>闫航</strong>于 2026 年创立。此前八年，他在跨境电商赛道走过三个位置——大卖公司运营主管、省级服务商孵化讲师、Amazon 大客户经理。从卖家、服务商、平台三个视角看过同一件事之后，他选择自己来做。</p>
+
+    <h2>为什么这件事重要</h2>
+
+    <p><strong>中国跨境卖家不缺产品，缺品牌思维。</strong>过去十年，绝大多数人做的是选品、流量和物流——这三件事加起来不等于品牌。</p>
+
+    <p><strong>平台不会帮你建品牌。</strong>平台看重的是供应链接入和销量增长。品牌成长在平台的优先级里排在很后面——它鼓励你把品牌「锁定在平台内」，而非帮你构建独立的品牌资产。</p>
+
+    <p><strong>AI 在改写规则。</strong>传统行业研究三个月出一份报告的时代正在过去。AI 让持续追踪、动态更新成为可能——这种研究能力的差异，正在变成认知上的差距。</p>
+
+    <h2>怎么做</h2>
+
+    <p>现阶段，序引效能聚焦四件事：</p>
+
+    <ol>
+      <li><strong>深度拆解海外原生品牌</strong>——不是 Anker、SHEIN，而是真正的海外本土品牌：他们怎么起家、怎么经营用户、怎么和中国出海品牌竞争</li>
+      <li><strong>反向追踪中国品牌出海的盲区</strong>——哪些事中国品牌「以为自己做对了」，但海外品牌的实际打法完全不同</li>
+      <li><strong>用 AI 重构研究方法</strong>——持续追踪、动态更新，认知不被报告周期锁死</li>
+      <li><strong>（未来）选择性下场做品牌项目</strong>——研究的终点是经得起验证的判断；时机成熟时，在真实项目里检验它</li>
+    </ol>
+
+    <p>核心方法是<strong>品牌反向工程</strong>——从供应链、产品、关系、叙事到文化五个层级，逐层拆解。大部分出海分析停在产品层，但真正构成壁垒的，是叙事和文化这两个更深、更难复制的层。</p>
+
+    <hr>
+
+    <h2>联系</h2>
+
+    <p>公众号「<strong>序引效能</strong>」：深度报告、行业判断、品牌案例拆解<br>
+    sequentry.com：完整研究报告库<br>
+    邮箱：yanhang@sequentry.com</p>
+
+  </div>
+</article>
+
+<footer class="foot" id="contact"><div class="shell">
+  <div class="foot-main">
+    <div class="foot-brand">
+      <strong>Sequentry</strong>
+      <span>序引效能</span>
+      <em>有序 · 入世 — Systematic Entry, Engineered.</em>
+    </div>
+    <div class="foot-contact">
+      <div class="ct-label">Contact / 联系</div>
+      <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
+        <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
+        <div style="text-align:left;">
+          <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
+          <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+        </div>
+      </div>
+      <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+      <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+    </div>
+  </div>
+  <div class="foot-copy">&copy; 2026 Sequentry</div>
+</div></footer>
+
+</body>
+</html>

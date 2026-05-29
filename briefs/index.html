@@ -1,169 +1,169 @@
-     1|<!DOCTYPE html>
-     2|<html lang="zh-CN">
-     3|<head>
-     4|<meta charset="UTF-8">
-     5|<meta name="viewport" content="width=device-width, initial-scale=1.0">
-     6|<meta name="description" content="序引效能 · 品牌资讯 — 每周跨境电商品牌信号扫描。AI购物、DTC出海、独立站投放、平台政策。">
-     7|<link rel="preconnect" href="https://fonts.googleapis.com">
-     8|<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     9|<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    10|<title>品牌资讯 — 序引效能</title>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="序引效能 · 品牌资讯 — 每周跨境电商品牌信号扫描。AI购物、DTC出海、独立站投放、平台政策。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<title>品牌资讯 — 序引效能</title>
 <!-- Favicon · 「序」字标，墨黑底反白 -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
-    11|<style>
-    12|  :root {
-    13|    --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
-    14|    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA;
-    15|    --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
-    16|    --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
-    17|    --serif:Fraunces,"Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
-    18|    --mono:"SF Mono",Consolas,Monaco,monospace;
-    19|  }
-    20|  * { box-sizing: border-box; }
-    21|  html { background: var(--warm); scroll-behavior: smooth; }
-    22|  body {
-    23|    margin: 0; color: var(--ink); font-family: var(--sans);
-    24|    background-color: var(--warm);
-    25|    display: flex; flex-direction: column; min-height: 100vh;
-    26|    background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
-    27|    background-attachment: fixed;
-    28|  }
-    29|  a { color: inherit; text-decoration: none; }
-    30|  .shell { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
-    31|
-    32|  .top { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line-warm); position: sticky; top: 0; background: rgba(250,250,247,.86); backdrop-filter: blur(6px); z-index: 9; }
-    33|  header.top > .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 24px; }
-    34|  .brand { display: grid; gap: 2px; }
-    35|  .brand strong { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
-    36|  .brand span { font-family: var(--mono); color: var(--gray); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
-    37|  .nav { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; font-family: var(--mono); color: var(--gray); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-    38|  .nav a:hover { color: var(--ink); }
-    39|  .nav a.active { color: var(--zhu); }
-    40|
-    41|  .dropdown { position: relative; display: inline-flex; align-items: center; }
-    42|  .dropdown > a { display: flex; align-items: center; gap: 4px; }
-    43|  .dropdown > a::after { content: "▾"; font-size: 9px; margin-left: 2px; }
-    44|  .dropdown-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 10px; min-width: 160px; z-index: 10; }
-    45|  .dropdown:hover .dropdown-menu { display: block; }
-    46|  .dropdown-menu-inner { background: var(--paper); border: 1px solid var(--line-warm); padding: 8px 0; }
-    47|  .dropdown-menu-inner a { display: block; padding: 8px 18px; font-size: 12px; letter-spacing: .06em; white-space: nowrap; color: var(--gray); }
-    48|  .dropdown-menu-inner a:hover { background: var(--xuan); color: var(--ink); }
-    49|  .dropdown-menu-inner a.act { color: var(--zhu); }
-    50|
-    51|  /* ── 轻量 Hero ── */
-    52|  main { flex: 1; }
-    53|
-    54|  /* ── 轻量 Hero ── */
-    55|  .hero { padding: 40px 0 32px; max-width: 780px; }
-    56|  .hero .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--zhu); margin-bottom: 12px; }
-    57|  .hero h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(24px,4vw,44px); line-height: 1.18; }
-    58|  .hero p { max-width: 560px; margin: 12px 0 0; color: var(--deep); font-size: 15px; line-height: 1.7; }
-    59|
-    60|  /* ── 轻量列表 ── */
-    61|  .brief-list { margin-top: 8px; }
-    62|  .brief-card {
-    63|    display: grid; grid-template-columns: 90px 1fr auto;
-    64|    gap: 20px; align-items: baseline;
-    65|    padding: 22px 0;
-    66|    border-bottom: 1px solid var(--line-warm);
-    67|    transition: background .12s;
-    68|  }
-    69|  .brief-card:first-child { border-top: 1px solid var(--line-warm); }
-    70|  .brief-card:hover { background: rgba(0,0,0,.012); margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
-    71|  .brief-card .date { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--light); padding-top: 2px; }
-    72|  .brief-card h3 { margin: 0 0 4px; font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.35; }
-    73|  .brief-card h3 em { font-style: normal; color: var(--zhu); }
-    74|  .brief-card .desc { margin: 0; color: var(--gray); font-size: 14px; line-height: 1.6; max-width: 560px; }
-    75|  .brief-card .arrow { font-family: var(--serif); font-size: 20px; color: var(--light); align-self: center; transition: color .12s; }
-    76|  .brief-card:hover .arrow { color: var(--zhu); }
-    77|
-    78|  footer.foot { width:100%; padding: 64px 0 32px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
-    79|  .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
-    80|  .foot-contact { text-align: right; }
-    81|  .foot-contact .ct-label { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #A8A098; margin-bottom: 18px; }
-    82|  .foot-contact p { margin: 0 0 7px; color: #A8A098; font-size: 13.5px; line-height: 1.65; }
-    83|  .foot-contact a.mail { color: #C8C0B5; border-bottom: 1px solid #C8C0B5; }
-    84|  .foot-brand { display: grid; gap: 6px; align-content: start; justify-items: start; }
-    85|  .foot-brand strong { font-family: var(--serif); font-size: 26px; font-weight: 600; color: #FAFAF7; letter-spacing: -.01em; }
-    86|  .foot-brand span { font-family: var(--sans); font-size: 15px; color: #A8A098; }
-    87|  .foot-brand em { font-family: var(--mono); font-style: normal; font-size: 11px; color: #8A8278; letter-spacing: .06em; }
-    88|  .foot-copy { margin-top: 24px; color: #6B6560; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-    89|
-    90|  @media (max-width: 1050px) {
-    91|    .foot-main { grid-template-columns: 1fr; gap: 28px; }
-    92|    .foot-contact { text-align: left; }
-    93|  }
-    94|  @media (max-width: 680px) {
-    95|    .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
-    96|    .hero { padding: 32px 0 24px; }
-    97|    .brief-card { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
-    98|    .brief-card .date { font-size: 11px; }
-    99|    .brief-card .arrow { display: none; }
-   100|  }
-   101|</style>
-   102|</head>
-   103|<body>
-   104|
-   105|  <header class="top"><div class="shell">
-   106|    <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
-   107|    <nav class="nav">
-   108|      <a href="/#work">研究 / Research</a>
-   109|      <a href="/#diff">差异 / Difference</a>
-   110|      <span class="dropdown">
-   111|        <a href="/report/" class="active">报告 / Report</a>
-   112|        <div class="dropdown-menu"><div class="dropdown-menu-inner">
-   113|          <a href="/report/">深度报告</a>
-   114|          <a href="/briefs/" class="act">品牌资讯</a>
-   115|        </div></div>
-   116|      </span>
-   117|      <a href="/#contact">联系 / Contact</a>
-   118|    </nav>
-   119|  </div></header>
-   120|
-   121|  <main>
-   122|    <section class="shell hero">
-   123|      <div class="tag">Brand Briefs</div>
-   124|      <h1>品牌资讯</h1>
-   125|      <p>每周跨境电商品牌信号扫描。五分钟看清本周最重要的五件事。</p>
-   126|    </section>
-   127|
-   128|    <section class="shell">
-   129|      <div class="brief-list">
-   130|        <a class="brief-card" href="/briefs/2026-05-27/">
-   131|          <div class="date">05.27</div>
-   132|          <div>
-   133|            <h3>Google和Amazon同时让AI替<em>你</em>购物了</h3>
-   134|            <p class="desc">AI购物入口同时落地，品牌出海游戏规则正在被改写。福布斯DTC数据切片 + 独立站营销报告 + 行动清单。</p>
-   135|          </div>
-   136|          <div class="arrow">→</div>
-   137|        </a>
-   138|      </div>
-   139|    </section>
-   140|  </main>
-   141|
-   142|  <footer class="foot"><div class="shell">
-   143|    <div class="foot-main">
-   144|      <div class="foot-brand">
-   145|        <strong>Sequentry</strong>
-   146|        <span>序引效能</span>
-   147|        <em>有序 · 入世 — Systematic Entry, Engineered.</em>
-   148|      </div>
-   149|      <div class="foot-contact">
-   150|        <div class="ct-label">Contact / 联系</div>
-   151|        <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
-   152|          <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
-   153|          <div style="text-align:left;">
-   154|            <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
-   155|            <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
-   156|          </div>
-   157|        </div>
-   158|        <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
-   159|        <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
-   160|      </div>
-   161|    </div>
-   162|    <div class="foot-copy">© 2026 Sequentry</div>
-   163|  </div></footer>
-   164|
-   165|</body>
-   166|</html>
+<style>
+  :root {
+    --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
+    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA;
+    --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
+    --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+    --serif:Fraunces,"Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
+    --mono:"SF Mono",Consolas,Monaco,monospace;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--warm); scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--ink); font-family: var(--sans);
+    background-color: var(--warm);
+    display: flex; flex-direction: column; min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+  a { color: inherit; text-decoration: none; }
+  .shell { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
+
+  .top { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line-warm); position: sticky; top: 0; background: rgba(250,250,247,.86); backdrop-filter: blur(6px); z-index: 9; }
+  header.top > .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 24px; }
+  .brand { display: grid; gap: 2px; }
+  .brand strong { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
+  .brand span { font-family: var(--mono); color: var(--gray); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+  .nav { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; font-family: var(--mono); color: var(--gray); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+  .nav a:hover { color: var(--ink); }
+  .nav a.active { color: var(--zhu); }
+
+  .dropdown { position: relative; display: inline-flex; align-items: center; }
+  .dropdown > a { display: flex; align-items: center; gap: 4px; }
+  .dropdown > a::after { content: "▾"; font-size: 9px; margin-left: 2px; }
+  .dropdown-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 10px; min-width: 160px; z-index: 10; }
+  .dropdown:hover .dropdown-menu { display: block; }
+  .dropdown-menu-inner { background: var(--paper); border: 1px solid var(--line-warm); padding: 8px 0; }
+  .dropdown-menu-inner a { display: block; padding: 8px 18px; font-size: 12px; letter-spacing: .06em; white-space: nowrap; color: var(--gray); }
+  .dropdown-menu-inner a:hover { background: var(--xuan); color: var(--ink); }
+  .dropdown-menu-inner a.act { color: var(--zhu); }
+
+  /* ── 轻量 Hero ── */
+  main { flex: 1; }
+
+  /* ── 轻量 Hero ── */
+  .hero { padding: 40px 0 32px; max-width: 780px; }
+  .hero .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--zhu); margin-bottom: 12px; }
+  .hero h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(24px,4vw,44px); line-height: 1.18; }
+  .hero p { max-width: 560px; margin: 12px 0 0; color: var(--deep); font-size: 15px; line-height: 1.7; }
+
+  /* ── 轻量列表 ── */
+  .brief-list { margin-top: 8px; }
+  .brief-card {
+    display: grid; grid-template-columns: 90px 1fr auto;
+    gap: 20px; align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-warm);
+    transition: background .12s;
+  }
+  .brief-card:first-child { border-top: 1px solid var(--line-warm); }
+  .brief-card:hover { background: rgba(0,0,0,.012); margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
+  .brief-card .date { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--light); padding-top: 2px; }
+  .brief-card h3 { margin: 0 0 4px; font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.35; }
+  .brief-card h3 em { font-style: normal; color: var(--zhu); }
+  .brief-card .desc { margin: 0; color: var(--gray); font-size: 14px; line-height: 1.6; max-width: 560px; }
+  .brief-card .arrow { font-family: var(--serif); font-size: 20px; color: var(--light); align-self: center; transition: color .12s; }
+  .brief-card:hover .arrow { color: var(--zhu); }
+
+  footer.foot { width:100%; padding: 64px 0 32px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
+  .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
+  .foot-contact { text-align: right; }
+  .foot-contact .ct-label { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #A8A098; margin-bottom: 18px; }
+  .foot-contact p { margin: 0 0 7px; color: #A8A098; font-size: 13.5px; line-height: 1.65; }
+  .foot-contact a.mail { color: #C8C0B5; border-bottom: 1px solid #C8C0B5; }
+  .foot-brand { display: grid; gap: 6px; align-content: start; justify-items: start; }
+  .foot-brand strong { font-family: var(--serif); font-size: 26px; font-weight: 600; color: #FAFAF7; letter-spacing: -.01em; }
+  .foot-brand span { font-family: var(--sans); font-size: 15px; color: #A8A098; }
+  .foot-brand em { font-family: var(--mono); font-style: normal; font-size: 11px; color: #8A8278; letter-spacing: .06em; }
+  .foot-copy { margin-top: 24px; color: #6B6560; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+
+  @media (max-width: 1050px) {
+    .foot-main { grid-template-columns: 1fr; gap: 28px; }
+    .foot-contact { text-align: left; }
+  }
+  @media (max-width: 680px) {
+    .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
+    .hero { padding: 32px 0 24px; }
+    .brief-card { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+    .brief-card .date { font-size: 11px; }
+    .brief-card .arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="top"><div class="shell">
+    <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
+    <nav class="nav">
+      <a href="/#work">研究 / Research</a>
+      <a href="/#diff">差异 / Difference</a>
+      <span class="dropdown">
+        <a href="/report/" class="active">报告 / Report</a>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner">
+          <a href="/report/">深度报告</a>
+          <a href="/briefs/" class="act">品牌资讯</a>
+        </div></div>
+      </span>
+      <a href="/#contact">联系 / Contact</a>
+    </nav>
+  </div></header>
+
+  <main>
+    <section class="shell hero">
+      <div class="tag">Brand Briefs</div>
+      <h1>品牌资讯</h1>
+      <p>每周跨境电商品牌信号扫描。五分钟看清本周最重要的五件事。</p>
+    </section>
+
+    <section class="shell">
+      <div class="brief-list">
+        <a class="brief-card" href="/briefs/2026-05-27/">
+          <div class="date">05.27</div>
+          <div>
+            <h3>Google和Amazon同时让AI替<em>你</em>购物了</h3>
+            <p class="desc">AI购物入口同时落地，品牌出海游戏规则正在被改写。福布斯DTC数据切片 + 独立站营销报告 + 行动清单。</p>
+          </div>
+          <div class="arrow">→</div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="shell">
+    <div class="foot-main">
+      <div class="foot-brand">
+        <strong>Sequentry</strong>
+        <span>序引效能</span>
+        <em>有序 · 入世 — Systematic Entry, Engineered.</em>
+      </div>
+      <div class="foot-contact">
+        <div class="ct-label">Contact / 联系</div>
+        <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
+          <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
+          <div style="text-align:left;">
+            <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
+            <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+          </div>
+        </div>
+        <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+        <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+      </div>
+    </div>
+    <div class="foot-copy">© 2026 Sequentry</div>
+  </div></footer>
+
+</body>
+</html>
