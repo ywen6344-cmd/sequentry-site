@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <title>序引效能 · Sequentry — 独立品牌出海研究所</title>
+<!-- Favicon · 内联 SVG，采用品牌印章「入」红框 -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='5' y='5' width='54' height='54' fill='%23FAFAF7' stroke='%238B1A1A' stroke-width='3.5'/%3E%3Ctext x='32' y='48' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='40' font-weight='600' fill='%238B1A1A'%3E入%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='5' y='5' width='54' height='54' fill='%23FAFAF7' stroke='%238B1A1A' stroke-width='3.5'/%3E%3Ctext x='32' y='48' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='40' font-weight='600' fill='%238B1A1A'%3E入%3C/text%3E%3C/svg%3E">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script><!-- End Cloudflare Web Analytics -->
 <style>
   /* ===========================================================
@@ -188,6 +191,15 @@
   .mc-intel .row span { font-size: 15px; line-height: 1.5; }
   .mc-intel .row i { color: #BFB7AD; font-family: var(--mono); font-size: 11px; font-style: normal; text-align: right; letter-spacing: .06em; }
 
+  /* 03/Difference 引入段：桌面端缩进对齐 mc-head 网格 */
+  .diff-intro { max-width: 720px; margin: 0 0 14px 192px; color: var(--deep); font-size: 17px; line-height: 1.85; }
+  .diff-intro--last { margin-bottom: 28px; }
+  .diff-intro b { color: var(--ink); font-weight: 500; }
+
+  /* 公众号二维码组：桌面端右贴 */
+  .foot-wechat { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 18px; justify-content: flex-end; }
+  .foot-wechat-text { text-align: left; }
+
   /* ---- 底部：联系 + Footer（合并）---- */
   footer.foot { width:100%; padding: 64px 0 32px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
   .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
@@ -208,6 +220,8 @@
     .foot-contact { text-align: left; }
     .caps, .content { grid-template-columns: 1fr; }
     .fw-board { min-height: 420px; }
+    .diff-intro { margin-left: 0; }
+    .foot-wechat { justify-content: flex-start; }
   }
   @media (max-width: 680px) {
     .top { padding: 14px 0; position: static; }
@@ -224,6 +238,13 @@
     .drow .to::before { content: "序引 · "; color: var(--zhu); }
     .mc-intel .row { grid-template-columns: 1fr; gap: 8px; }
     .mc-intel .row i { text-align: left; }
+    .mc-intel { padding: 40px 24px; }
+    .mc-intel h3 { font-size: 24px; }
+    .mc-intel .list { margin-top: 24px; }
+    .mc-intel .row { padding: 14px 16px; }
+    /* 移动端隐藏锚点导航，只保留外链 */
+    .nav a[href^="#"]:not(.cta) { display: none; }
+    .nav { gap: 16px; }
   }
 </style>
 </head>
@@ -348,8 +369,8 @@
           <p>市面上不缺出海资讯。序引的差别不在勤奋，而在视角与驱动逻辑——我们用认知密度驱动内容，而不是流量。</p>
         </div>
       </div>
-      <p style="max-width:720px; margin:0 0 14px 192px; color:var(--deep); font-size:17px; line-height:1.85;">市面上讲出海的人很多。但<b style="color:var(--ink); font-weight:500;">同时在卖家、服务商、和 Amazon 平台内部三个位置都长期待过的人，几乎没有</b>。</p>
-      <p style="max-width:720px; margin:0 0 28px 192px; color:var(--deep); font-size:17px; line-height:1.85;">序引的研究，习惯从独立站、Amazon、以及多平台社媒交叉验证——纯 DTC / 社媒视角看不懂 Amazon 数据背后的真实用户行为，纯 Amazon 视角看不懂一个品牌在用户心智里的真实位置。<b style="color:var(--ink); font-weight:500;">把这些视角放在一起，才能看到一个品牌的完整真相。</b></p>
+      <p class="diff-intro">市面上讲出海的人很多。但<b>同时在卖家、服务商、和 Amazon 平台内部三个位置都长期待过的人，几乎没有</b>。</p>
+      <p class="diff-intro diff-intro--last">序引的研究，习惯从独立站、Amazon、以及多平台社媒交叉验证——纯 DTC / 社媒视角看不懂 Amazon 数据背后的真实用户行为，纯 Amazon 视角看不懂一个品牌在用户心智里的真实位置。<b>把这些视角放在一起，才能看到一个品牌的完整真相。</b></p>
       <div class="diff">
         <div class="diff-key"><span class="k-dim">维度</span><span class="k-from">行业惯常</span><span></span><span class="k-to">序引</span></div>
         <div class="drow"><span class="dim">内容视角</span><span class="from">平台 / 流量视角</span><span class="arrow">→</span><span class="to">反向工程视角</span></div>
@@ -433,9 +454,9 @@
       </div>
       <div class="foot-contact">
         <div class="ct-label">Contact / 联系</div>
-        <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
+        <div class="foot-wechat">
           <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
-          <div style="text-align:left;">
+          <div class="foot-wechat-text">
             <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
             <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
           </div>
