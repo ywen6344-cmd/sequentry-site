@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Google和Amazon同时让AI替你购物了 — 序引效能</title>
+<!-- Lenis smooth scroll --><link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
 <!-- Favicon · 「序」字标，墨黑底反白 -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
@@ -301,6 +302,34 @@
     </div>
     <div class="foot-copy">© 2026 Sequentry</div>
   </div></footer>
+
+
+<!-- GSAP + ScrollTrigger + Lenis -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+var lenis=new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(function(time){lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+ScrollTrigger.defaults({scroller:document.documentElement});
+
+// Fade in article content on subpages
+var article=document.querySelector('article');
+if(article) gsap.fromTo(article,{opacity:0,y:28},{opacity:1,y:0,duration:0.8,ease:'power2.out'});
+
+// Card stagger for listing pages
+var cards=document.querySelectorAll('.ccard,.report-card');
+if(cards.length) gsap.from(cards,{opacity:0,y:22,duration:0.5,stagger:0.08,ease:'power2.out',scrollTrigger:{trigger:cards[0].parentElement,start:'top 82%'}});
+
+// Footer fade
+var foot=document.querySelector('footer.foot');
+if(foot) gsap.fromTo(foot,{opacity:0,y:18},{opacity:1,y:0,duration:0.6,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 92%'}});
+
+window.addEventListener('resize',function(){ScrollTrigger.refresh()});
+</script>
 
 </body>
 </html>

@@ -12,6 +12,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Lenis smooth scroll --><link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
 <style>
   /* ===========================================================
      序引效能官网 · Meridian v1.5
@@ -459,6 +460,53 @@
     </div>
     <div class="foot-copy">© 2026 Sequentry</div>
   </div></footer>
+
+
+<!-- GSAP + ScrollTrigger + Lenis animations -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+var lenis = new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(function(time){lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+ScrollTrigger.defaults({scroller:document.documentElement});
+
+// ── Section headers fade in ──
+document.querySelectorAll('section.block').forEach(function(sec){
+  var head=sec.querySelector('.mc-head');
+  if(head) gsap.fromTo(head,{opacity:0,y:30},{opacity:1,y:0,duration:0.8,ease:'power2.out',scrollTrigger:{trigger:head,start:'top 84%'}});
+});
+
+// ── Capability cards stagger ──
+var caps=document.querySelector('.caps');
+if(caps) gsap.from(caps.children,{opacity:0,y:24,duration:0.55,stagger:0.1,ease:'power2.out',scrollTrigger:{trigger:caps,start:'top 78%'}});
+
+// ── Framework board parallax ──
+var board=document.querySelector('.fw-board');
+if(board) gsap.to(board,{y:'3%',ease:'none',scrollTrigger:{trigger:board.closest('.fw'),start:'top bottom',end:'bottom top',scrub:0.6}});
+
+// ── Diff rows stagger ──
+document.querySelectorAll('.drow').forEach(function(row,i){
+  gsap.fromTo(row,{opacity:0,x:-16},{opacity:1,x:0,duration:0.45,delay:i*0.07,ease:'power2.out',scrollTrigger:{trigger:row.parentElement,start:'top 76%'}});
+});
+
+// ── Content cards stagger ──
+var cc=document.querySelector('.content');
+if(cc) gsap.from(cc.children,{opacity:0,y:22,duration:0.55,stagger:0.1,ease:'power2.out',scrollTrigger:{trigger:cc,start:'top 78%'}});
+
+// ── Identity block fade in ──
+var intel=document.querySelector('.mc-intel');
+if(intel) gsap.fromTo(intel,{opacity:0,y:36},{opacity:1,y:0,duration:0.85,ease:'power2.out',scrollTrigger:{trigger:intel,start:'top 84%'}});
+
+// ── Footer fade ──
+var foot=document.querySelector('footer.foot');
+if(foot) gsap.fromTo(foot,{opacity:0,y:20},{opacity:1,y:0,duration:0.7,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 90%'}});
+
+window.addEventListener('resize',function(){ScrollTrigger.refresh()});
+</script>
 
 </body>
 </html>
