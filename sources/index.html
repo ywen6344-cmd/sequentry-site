@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="序引效能 · 信源看板 — 监控信号管道信源健康度、丰富度与覆盖盲区。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<title>信源看板 — 序引效能</title>
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script><!-- End Cloudflare Web Analytics -->
+<style>
+  :root {
+    --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
+    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA; --silk:#EDE4D3;
+    --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
+    --gold:#9C7A26; --gold-soft:#BF9A3A;
+    --cat-platform:#2F4B6E; --cat-brand:#2F6E5B; --cat-market:#8A5A25;
+    --cat-compliance:#B0341F; --cat-ops:#5D6A2C; --cat-capital:#5A3F6E;
+    --sans:Inter,"Noto Sans SC","Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+    --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
+    --mono:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;
+    --tier-s:#B91C1C; --tier-a:#D97706; --tier-b:#2563EB; --tier-c:#6B7280;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background:var(--warm); scroll-behavior:smooth; }
+  body {
+    margin:0; color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    background-color:var(--warm);
+    display:flex; flex-direction:column; min-height:100vh;
+    background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment:fixed;
+  }
+  a { color:inherit; text-decoration:none; }
+  .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
+
+  /* ── Nav ── */
+  .top { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--line-warm); position:sticky; top:0; background:rgba(250,250,247,.86); backdrop-filter:blur(6px); z-index:9; }
+  header.top > .shell { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 24px; }
+  .brand { display:grid; gap:2px; }
+  .brand strong { font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-.01em; }
+  .brand span { font-family:var(--mono); color:var(--gray); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+  .nav { display:flex; flex-wrap:wrap; gap:22px; align-items:center; font-family:var(--mono); color:var(--gray); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .nav a:hover { color:var(--ink); }
+  .nav a.active { color:var(--zhu); }
+
+  .dropdown { position:relative; display:inline-flex; align-items:center; }
+  .dropdown > a { display:flex; align-items:center; gap:4px; }
+  .dropdown > a::after { content:"▾"; font-size:9px; margin-left:2px; }
+  .dropdown-menu { display:none; position:absolute; top:100%; left:-14px; padding-top:10px; min-width:190px; z-index:10; }
+  .dropdown:hover .dropdown-menu { display:block; }
+  .dropdown-menu-inner { background:var(--paper); border:1px solid var(--line-warm); padding:8px 0; }
+  .dropdown-menu-inner a { display:block; padding:8px 18px; font-size:12px; letter-spacing:.06em; white-space:nowrap; color:var(--gray); }
+  .dropdown-menu-inner a:hover { background:var(--xuan); color:var(--ink); }
+  .dropdown-menu-inner a.act { color:var(--zhu); }
+
+  main { flex:1; padding-bottom:60px; }
+
+  /* ── Page header ── */
+  .page-head { margin-top:44px; margin-bottom:32px; }
+  .page-kicker { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gray); margin-bottom:8px; }
+  .page-h1 { font-family:var(--serif); font-weight:600; font-size:36px; margin-bottom:8px; }
+  .page-sub { font-size:14px; color:var(--gray); max-width:640px; line-height:1.65; }
+
+  /* ── Summary cards row ── */
+  .summary-row { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line-warm); border:1px solid var(--line-warm); margin-bottom:36px; }
+  .scard { background:var(--paper); padding:20px 22px; }
+  .scard .slab { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--light); margin-bottom:6px; }
+  .scard .sval { font-family:var(--serif); font-weight:600; font-size:32px; color:var(--ink); }
+  .scard .sval.warn { color:var(--gold); }
+  .scard .sval.good { color:var(--cat-brand); }
+  .scard .snote { margin-top:4px; font-size:12px; color:var(--gray); }
+
+  /* ── Coverage map ── */
+  .cov-wrap { border:1px solid var(--ink); background:var(--paper); padding:24px 26px 20px; margin-bottom:36px; }
+  .cov-head { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--gray); margin-bottom:16px; }
+  .cov-grid { display:grid; grid-template-columns:100px repeat(6,1fr); gap:1px; background:var(--line-warm); border:1px solid var(--line-warm); }
+  .cov-cell { background:var(--warm); padding:9px 10px; font-family:var(--mono); font-size:10px; letter-spacing:.04em; display:grid; place-items:center; }
+  .cov-cell.hd { background:var(--xuan); font-weight:500; color:var(--ink); font-size:10.5px; }
+  .cov-cell.row-label { justify-content:start; padding-left:12px; color:var(--gray); font-size:10px; }
+  .cov-cell.yes { background:var(--paper); color:var(--cat-brand); font-weight:500; }
+  .cov-cell.gap { background:var(--paper); color:var(--light); }
+  .cov-cell.gap::before { content:"—"; }
+
+  /* ── Source table ── */
+  .src-wrap { border:1px solid var(--ink); background:var(--paper); }
+  .src-head { display:flex; justify-content:space-between; align-items:center; padding:24px 26px 16px; border-bottom:1px solid var(--line-warm); flex-wrap:wrap; gap:12px; }
+  .src-head-label { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--gray); }
+  .src-head-meta { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.04em; display:flex; align-items:center; gap:8px; }
+  .src-head-meta .live { display:inline-flex; align-items:center; gap:5px; color:var(--cat-brand); }
+  .src-head-meta .live::before { content:""; width:5px; height:5px; border-radius:50%; background:var(--cat-brand); }
+
+  .src-table { width:100%; }
+  .src-th { display:grid; grid-template-columns:1.6fr 0.6fr 0.5fr 0.7fr 1.1fr 1.1fr 0.7fr; gap:12px; padding:12px 26px; border-bottom:1px solid var(--line-warm); }
+  .src-th span { font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--light); }
+  .src-th span:last-child { text-align:right; }
+
+  .src-row { display:grid; grid-template-columns:1.6fr 0.6fr 0.5fr 0.7fr 1.1fr 1.1fr 0.7fr; gap:12px; padding:16px 26px; border-bottom:1px solid var(--line-warm); align-items:center; }
+  .src-row:last-child { border-bottom:none; }
+  .src-row:hover { background:var(--warm); }
+
+  .src-name { font-family:var(--serif); font-weight:600; font-size:15px; color:var(--ink); }
+  .src-url { font-family:var(--mono); font-size:9px; color:var(--light); letter-spacing:.02em; display:block; margin-top:2px; word-break:break-all; }
+
+  .tier-badge { display:inline-flex; align-items:center; gap:4px; font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.04em; padding:2px 7px; border:1px solid; }
+  .tier-badge.s { color:var(--tier-s); border-color:var(--tier-s); }
+  .tier-badge.a { color:var(--tier-a); border-color:var(--tier-a); }
+  .tier-badge.b { color:var(--tier-b); border-color:var(--tier-b); }
+  .tier-badge.c { color:var(--tier-c); border-color:var(--tier-c); }
+
+  .cat-tags { display:flex; flex-wrap:wrap; gap:3px; }
+  .ctag { font-family:var(--mono); font-size:8.5px; letter-spacing:.04em; padding:1px 6px; color:var(--paper); white-space:nowrap; }
+
+  .health { display:inline-flex; align-items:center; gap:5px; font-family:var(--mono); font-size:10px; letter-spacing:.04em; }
+  .health .dot { width:6px; height:6px; border-radius:50%; flex:none; }
+  .health.live .dot { background:var(--cat-brand); }
+  .health.live { color:var(--cat-brand); }
+  .health.degraded .dot { background:var(--gold); }
+  .health.degraded { color:var(--gold); }
+  .health.offline .dot { background:var(--tier-s); }
+  .health.offline { color:var(--tier-s); }
+
+  .ts { font-family:var(--mono); font-size:10px; color:var(--gray); letter-spacing:.02em; }
+  .ts.stale { color:var(--light); }
+
+  .sig-count { font-family:var(--mono); font-size:14px; font-weight:500; color:var(--ink); text-align:right; }
+  .sig-count.zero { color:var(--light); }
+
+  /* ── Blind spot panel ── */
+  .blind-wrap { margin-top:36px; border:1px solid var(--line-warm); background:var(--paper); padding:28px 26px 24px; }
+  .blind-head { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .blind-h2 { font-family:var(--serif); font-weight:600; font-size:22px; margin-bottom:14px; }
+  .blind-list { display:grid; gap:1px; background:var(--line-warm); border:1px solid var(--line-warm); }
+  .blind-row { display:grid; grid-template-columns:100px 1fr 160px; gap:16px; padding:14px 20px; background:var(--warm); align-items:center; }
+  .blind-row .bl-tier { font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.08em; }
+  .blind-row .bl-desc { font-size:13px; color:var(--gray); line-height:1.5; }
+  .blind-row .bl-suggest { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.04em; text-align:right; }
+
+  /* ── Note ── */
+  .note { font-size:12px; color:var(--gray); line-height:1.6; margin-top:30px; border-top:1px dashed var(--line-warm); padding-top:10px; }
+  .note b { color:var(--ink); }
+
+  /* ── Footer ── */
+  footer.foot { width:100%; padding:64px 0 32px; border-top:1px solid rgba(250,250,247,.14); background:var(--ink); color:#8A8278; font-size:13px; }
+  .foot-main { display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; padding-bottom:32px; border-bottom:1px solid rgba(250,250,247,.12); }
+  .foot-contact { text-align:right; }
+  .foot-contact .ct-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A8A098; margin-bottom:18px; }
+  .foot-contact p { margin:0 0 7px; color:#A8A098; font-size:13.5px; line-height:1.65; }
+  .foot-contact a.mail { color:#C8C0B5; border-bottom:1px solid #C8C0B5; }
+  .foot-brand { display:grid; gap:6px; align-content:start; justify-items:start; }
+  .foot-brand strong { font-family:var(--serif); font-size:26px; font-weight:600; color:#FAFAF7; letter-spacing:-.01em; }
+  .foot-brand span { font-family:var(--sans); font-size:15px; color:#A8A098; }
+  .foot-brand em { font-family:var(--mono); font-style:normal; font-size:11px; color:#8A8278; letter-spacing:.06em; }
+  .foot-copy { margin-top:24px; color:#6B6560; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+  @media (max-width:1050px) {
+    .summary-row { grid-template-columns:repeat(2,1fr); }
+    .cov-grid { grid-template-columns:80px repeat(3,1fr); }
+    .cov-cell.grp2, .cov-cell.grp3 { display:none; }
+    .src-th, .src-row { grid-template-columns:1fr; gap:4px; }
+    .src-th span:nth-child(n+2), .src-row > *:nth-child(n+2) { font-size:9px; }
+    .sig-count { text-align:left; }
+    .blind-row { grid-template-columns:1fr; gap:4px; }
+    .blind-row .bl-suggest { text-align:left; }
+    .foot-main { grid-template-columns:1fr; gap:28px; }
+    .foot-contact { text-align:left; }
+  }
+  @media (max-width:680px) {
+    .top { flex-direction:column; align-items:flex-start; padding:16px 0; position:static; }
+    header.top > .shell { flex-direction:column; align-items:flex-start; }
+    .page-h1 { font-size:26px; }
+    .summary-row { grid-template-columns:1fr 1fr; }
+    .scard .sval { font-size:24px; }
+    .foot-main { grid-template-columns:1fr; gap:28px; }
+    .foot-contact { text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="top"><div class="shell">
+    <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
+    <nav class="nav">
+      <a href="/#work">研究 / Research</a>
+      <a href="/#diff">差异 / Difference</a>
+      <span class="dropdown">
+        <a href="/report/" class="active">报告 / Report</a>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner">
+          <a href="/report/">深度报告</a>
+          <a href="/briefs/">品牌资讯</a>
+          <a href="/sources/" class="act">信源看板</a>
+        </div></div>
+      </span>
+      <a href="/about/">关于 / About</a>
+      <a href="/#contact">联系 / Contact</a>
+    </nav>
+  </div></header>
+
+  <main>
+    <div class="shell">
+
+      <!-- Page header -->
+      <div class="page-head">
+        <div class="page-kicker">Source Dashboard / 信源看板</div>
+        <h1 class="page-h1">信号管道信源监控</h1>
+        <p class="page-sub">追踪每一个 RSS / API 信源的健康状态、产出节奏与覆盖维度。发现盲区，补齐缺口。</p>
+      </div>
+
+      <!-- Summary cards -->
+      <div class="summary-row">
+        <div class="scard">
+          <div class="slab">信源总数</div>
+          <div class="sval">8</div>
+          <div class="snote">RSS × 6 · 官网 × 1 · 指数 × 1</div>
+        </div>
+        <div class="scard">
+          <div class="slab">健康度</div>
+          <div class="sval good">6 / 8</div>
+          <div class="snote">2 个降级（近 48h 无产出）</div>
+        </div>
+        <div class="scard">
+          <div class="slab">S/A 级信源</div>
+          <div class="sval warn">0</div>
+          <div class="snote">全部为 B/C 级行业媒体</div>
+        </div>
+        <div class="scard">
+          <div class="slab">近 7 天信号</div>
+          <div class="sval">15</div>
+          <div class="snote">日均 2.1 条 · 合规类占比最高</div>
+        </div>
+      </div>
+
+      <!-- Coverage map -->
+      <div class="cov-wrap">
+        <div class="cov-head">覆盖矩阵 · Coverage Map</div>
+        <div class="cov-grid">
+          <div class="cov-cell hd"></div>
+          <div class="cov-cell hd">合规</div>
+          <div class="cov-cell hd">平台</div>
+          <div class="cov-cell hd">市场</div>
+          <div class="cov-cell hd grp2">资本</div>
+          <div class="cov-cell hd grp2">品牌</div>
+          <div class="cov-cell hd grp3">运营</div>
+
+          <div class="cov-cell row-label">S 级</div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap grp2"></div>
+          <div class="cov-cell gap grp2"></div>
+          <div class="cov-cell gap grp3"></div>
+
+          <div class="cov-cell row-label">A 级</div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap grp2"></div>
+          <div class="cov-cell gap grp2"></div>
+          <div class="cov-cell gap grp3"></div>
+
+          <div class="cov-cell row-label">B 级</div>
+          <div class="cov-cell yes">2</div>
+          <div class="cov-cell yes">2</div>
+          <div class="cov-cell yes">1</div>
+          <div class="cov-cell yes grp2">1</div>
+          <div class="cov-cell yes grp2">1</div>
+          <div class="cov-cell yes grp3">1</div>
+
+          <div class="cov-cell row-label">C 级</div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap"></div>
+          <div class="cov-cell gap grp2"></div>
+          <div class="cov-cell gap grp2"></div>
+          <div class="cov-cell gap grp3"></div>
+        </div>
+      </div>
+
+      <!-- Source table -->
+      <div class="src-wrap">
+        <div class="src-head">
+          <div class="src-head-label">信源清单 · Source Registry</div>
+          <div class="src-head-meta">
+            <span class="live">PIPELINE LIVE</span>
+            <span>抓取频率: 每小时</span>
+            <span>更新于 12min 前</span>
+          </div>
+        </div>
+
+        <div class="src-th">
+          <span>信源 / Feed</span><span>分级</span><span>分类</span><span>状态</span><span>最近抓取</span><span>最近信号</span><span>7天产出</span>
+        </div>
+
+        <!-- 1. CBP + 雨果跨境 -->
+        <div class="src-row">
+          <div><div class="src-name">CBP 公告 / 雨果跨境</div><div class="src-url">cbp.gov/newsroom + cigarb2b.com/feed</div></div>
+          <div><span class="tier-badge b">B</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-compliance)">合规</span></div></div>
+          <div><span class="health live">LIVE</span></div>
+          <div class="ts">06-01 15:48</div>
+          <div class="ts">06-01 08:00</div>
+          <div class="sig-count">3</div>
+        </div>
+
+        <!-- 2. Marketplace Pulse -->
+        <div class="src-row">
+          <div><div class="src-name">Marketplace Pulse</div><div class="src-url">marketplacepulse.com/feed</div></div>
+          <div><span class="tier-badge b">B</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-platform)">平台</span></div></div>
+          <div><span class="health live">LIVE</span></div>
+          <div class="ts">06-01 15:51</div>
+          <div class="ts">06-01 08:00</div>
+          <div class="sig-count">2</div>
+        </div>
+
+        <!-- 3. 36氪出海 -->
+        <div class="src-row">
+          <div><div class="src-name">36氪出海</div><div class="src-url">36kr.com/feed/chuhai</div></div>
+          <div><span class="tier-badge b">B</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-capital)">资本</span><span class="ctag" style="background:var(--cat-platform); margin-left:3px">平台</span></div></div>
+          <div><span class="health live">LIVE</span></div>
+          <div class="ts">06-01 15:49</div>
+          <div class="ts">06-01 08:00</div>
+          <div class="sig-count">2</div>
+        </div>
+
+        <!-- 4. 亿邦动力 -->
+        <div class="src-row">
+          <div><div class="src-name">亿邦动力 / 官方公报</div><div class="src-url">ebrun.com/feed + eur-lex.europa.eu</div></div>
+          <div><span class="tier-badge b">B</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-market)">市场</span><span class="ctag" style="background:var(--cat-compliance); margin-left:3px">合规</span></div></div>
+          <div><span class="health live">LIVE</span></div>
+          <div class="ts">06-01 15:47</div>
+          <div class="ts">05-31 08:00</div>
+          <div class="sig-count">2</div>
+        </div>
+
+        <!-- 5. 白鲸出海 -->
+        <div class="src-row">
+          <div><div class="src-name">白鲸出海</div><div class="src-url">baijingapp.com/feed</div></div>
+          <div><span class="tier-badge b">B</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-platform)">平台</span><span class="ctag" style="background:var(--cat-market); margin-left:3px">市场</span></div></div>
+          <div><span class="health degraded">DEGRADED</span></div>
+          <div class="ts">06-01 15:50</div>
+          <div class="ts stale">05-31 08:00</div>
+          <div class="sig-count">1</div>
+        </div>
+
+        <!-- 6. 品牌官号 / 行业访谈 -->
+        <div class="src-row">
+          <div><div class="src-name">品牌官号 / 行业访谈</div><div class="src-url">手动策展 · 无固定 RSS</div></div>
+          <div><span class="tier-badge c">C</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-brand)">品牌</span></div></div>
+          <div><span class="health degraded">DEGRADED</span></div>
+          <div class="ts stale">05-30 —</div>
+          <div class="ts stale">05-30 08:00</div>
+          <div class="sig-count">1</div>
+        </div>
+
+        <!-- 7. 运价指数 -->
+        <div class="src-row">
+          <div><div class="src-name">运价指数</div><div class="src-url">freightos.com/freight-index + drewry.co.uk</div></div>
+          <div><span class="tier-badge c">C</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-ops)">运营</span></div></div>
+          <div><span class="health live">LIVE</span></div>
+          <div class="ts">06-01 15:45</div>
+          <div class="ts stale">05-30 08:00</div>
+          <div class="sig-count">1</div>
+        </div>
+
+        <!-- 8. 跨境通官网公告 -->
+        <div class="src-row">
+          <div><div class="src-name">跨境通官网公告</div><div class="src-url">kjt.weixin.qq.com/announcement</div></div>
+          <div><span class="tier-badge b">B</span></div>
+          <div><div class="cat-tags"><span class="ctag" style="background:var(--cat-platform)">平台</span></div></div>
+          <div><span class="health live">LIVE</span></div>
+          <div class="ts">06-01 15:46</div>
+          <div class="ts stale">—</div>
+          <div class="sig-count zero">0</div>
+        </div>
+
+      </div>
+
+      <!-- Blind spot panel -->
+      <div class="blind-wrap">
+        <div class="blind-head">Coverage Gaps / 覆盖盲区</div>
+        <h2 class="blind-h2">当前信源体系未覆盖的关键层级</h2>
+        <div class="blind-list">
+          <div class="blind-row">
+            <div class="bl-tier" style="color:var(--tier-s)">S 级缺失</div>
+            <div class="bl-desc">平台官方 API changelog 与规则更新页面。Amazon SP-API、TikTok Shop Developer、Shopee Open Platform — 这些是第一手信号源，目前完全空白。</div>
+            <div class="bl-suggest">建议: developer.amazon.com · developers.tiktok.com</div>
+          </div>
+          <div class="blind-row">
+            <div class="bl-tier" style="color:var(--tier-s)">S 级缺失</div>
+            <div class="bl-desc">监管原文与政策数据库。CBP 公告是摘要而非原文；欧盟 EUR-Lex 仅通过亿邦二手引用。缺 Federal Register、WTO TBT 通报等一手监管源。</div>
+            <div class="bl-suggest">建议: federalregister.gov · eur-lex.europa.eu/rss</div>
+          </div>
+          <div class="blind-row">
+            <div class="bl-tier" style="color:var(--tier-a)">A 级缺失</div>
+            <div class="bl-desc">数据层 — 第三方销量估算、流量排名、品类趋势。Similarweb、Jungle Scout、Helium 10 的公开数据可做结构性补充。</div>
+            <div class="bl-suggest">建议: similarweb.com/blog/feed · junglescout.com/blog</div>
+          </div>
+          <div class="blind-row">
+            <div class="bl-tier" style="color:var(--tier-a)">A 级缺失</div>
+            <div class="bl-desc">品牌层 — DTC 品牌动作追踪。目前仅靠"品牌官号/行业访谈"手工策展，无系统化源。需要 Modern Retail、Glossy、Business of Fashion 等品牌垂直媒体。</div>
+            <div class="bl-suggest">建议: modernretail.co · glossy.co · businessoffashion.com</div>
+          </div>
+          <div class="blind-row">
+            <div class="bl-tier" style="color:var(--tier-a)">A 级缺失</div>
+            <div class="bl-desc">资本层 — 出海投融资数据库。目前仅 36氪出海 一个源，且覆盖率不完整。Crunchbase、PitchBook、IT 桔子出海板块可补充。</div>
+            <div class="bl-suggest">建议: crunchbase.com · itjuzi.com/chuhai</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="note"><b>看板说明:</b> 信源分级沿用 ai-commerce-radar 的 S/A/B/C 体系 — S=一手官方源（不可替代）、A=高质量垂直媒体、B=行业综合媒体、C=辅助参考源。覆盖矩阵以 <span style="font-family:var(--mono);font-size:10px">yes</span> 标记已有覆盖的分类×层级组合，<span style="font-family:var(--mono);font-size:10px;color:var(--light)">—</span> 为盲区。数据每 12 分钟自动刷新。</p>
+
+    </div>
+  </main>
+
+  <footer class="foot"><div class="shell">
+    <div class="foot-main">
+      <div class="foot-brand">
+        <strong>Sequentry</strong>
+        <span>序引效能</span>
+        <em>有序 · 入世 — Systematic Entry, Engineered.</em>
+      </div>
+      <div class="foot-contact">
+        <div class="ct-label">Contact / 联系</div>
+        <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
+          <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
+          <div style="text-align:left;">
+            <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
+            <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+          </div>
+        </div>
+        <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+        <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+      </div>
+    </div>
+    <div class="foot-copy">© 2026 Sequentry</div>
+  </div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+var lenis=new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(function(time){lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+ScrollTrigger.defaults({scroller:document.documentElement});
+
+var wrap=document.querySelector('.src-wrap');
+if(wrap) gsap.fromTo(wrap,{opacity:0,y:24},{opacity:1,y:0,duration:0.7,ease:'power2.out'});
+
+var blind=document.querySelector('.blind-wrap');
+if(blind) gsap.fromTo(blind,{opacity:0,y:18},{opacity:1,y:0,duration:0.6,ease:'power2.out',scrollTrigger:{trigger:blind,start:'top 88%'}});
+
+var foot=document.querySelector('footer.foot');
+if(foot) gsap.fromTo(foot,{opacity:0,y:18},{opacity:1,y:0,duration:0.6,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 92%'}});
+
+window.addEventListener('resize',function(){ScrollTrigger.refresh()});
+</script>
+
+</body>
+</html>
