@@ -3,104 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="序引效能 · 品牌资讯 — 每周跨境电商品牌信号扫描。AI购物、DTC出海、独立站投放、平台政策。">
+<meta name="description" content="序引效能 · 品牌资讯 — 每周跨境电商品牌信号扫描。AI购物、DTC出海、独立站投放、平台政策。重要的不漏，并告诉你这意味着什么。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
 <title>品牌资讯 — 序引效能</title>
-<!-- Lenis smooth scroll --><link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
-<!-- Favicon · 「序」字标，墨黑底反白 -->
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <style>
   :root {
     --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
-    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA;
+    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA; --silk:#EDE4D3;
     --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
-    --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+    --gold:#9C7A26; --gold-soft:#BF9A3A;
+    --cat-platform:#2F4B6E; --cat-brand:#2F6E5B; --cat-market:#8A5A25;
+    --cat-compliance:#B0341F; --cat-ops:#5D6A2C; --cat-capital:#5A3F6E;
+    --sans:Inter,"Noto Sans SC","Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
     --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
-    --mono:"SF Mono",Consolas,Monaco,monospace;
+    --mono:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;
   }
-  * { box-sizing: border-box; }
-  html { background: var(--warm); scroll-behavior: smooth; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background:var(--warm); scroll-behavior:smooth; }
   body {
-    margin: 0; color: var(--ink); font-family: var(--sans);
-    background-color: var(--warm);
-    display: flex; flex-direction: column; min-height: 100vh;
-    background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
-    background-attachment: fixed;
+    margin:0; color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    background-color:var(--warm);
+    display:flex; flex-direction:column; min-height:100vh;
+    background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment:fixed;
   }
-  a { color: inherit; text-decoration: none; }
-  .shell { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
+  a { color:inherit; text-decoration:none; }
+  .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
 
-  .top { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line-warm); position: sticky; top: 0; background: rgba(250,250,247,.86); backdrop-filter: blur(6px); z-index: 9; }
-  header.top > .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 24px; }
-  .brand { display: grid; gap: 2px; }
-  .brand strong { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
-  .brand span { font-family: var(--mono); color: var(--gray); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
-  .nav { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; font-family: var(--mono); color: var(--gray); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-  .nav a:hover { color: var(--ink); }
-  .nav a.active { color: var(--zhu); }
+  .top { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--line-warm); position:sticky; top:0; background:rgba(250,250,247,.86); backdrop-filter:blur(6px); z-index:9; }
+  header.top > .shell { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 24px; }
+  .brand { display:grid; gap:2px; }
+  .brand strong { font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-.01em; }
+  .brand span { font-family:var(--mono); color:var(--gray); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+  .nav { display:flex; flex-wrap:wrap; gap:22px; align-items:center; font-family:var(--mono); color:var(--gray); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .nav a:hover { color:var(--ink); }
+  .nav a.active { color:var(--zhu); }
 
-  .dropdown { position: relative; display: inline-flex; align-items: center; }
-  .dropdown > a { display: flex; align-items: center; gap: 4px; }
-  .dropdown > a::after { content: "▾"; font-size: 9px; margin-left: 2px; }
-  .dropdown-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 10px; min-width: 160px; z-index: 10; }
-  .dropdown:hover .dropdown-menu { display: block; }
-  .dropdown-menu-inner { background: var(--paper); border: 1px solid var(--line-warm); padding: 8px 0; }
-  .dropdown-menu-inner a { display: block; padding: 8px 18px; font-size: 12px; letter-spacing: .06em; white-space: nowrap; color: var(--gray); }
-  .dropdown-menu-inner a:hover { background: var(--xuan); color: var(--ink); }
-  .dropdown-menu-inner a.act { color: var(--zhu); }
+  .dropdown { position:relative; display:inline-flex; align-items:center; }
+  .dropdown > a { display:flex; align-items:center; gap:4px; }
+  .dropdown > a::after { content:"▾"; font-size:9px; margin-left:2px; }
+  .dropdown-menu { display:none; position:absolute; top:100%; left:-14px; padding-top:10px; min-width:160px; z-index:10; }
+  .dropdown:hover .dropdown-menu { display:block; }
+  .dropdown-menu-inner { background:var(--paper); border:1px solid var(--line-warm); padding:8px 0; }
+  .dropdown-menu-inner a { display:block; padding:8px 18px; font-size:12px; letter-spacing:.06em; white-space:nowrap; color:var(--gray); }
+  .dropdown-menu-inner a:hover { background:var(--xuan); color:var(--ink); }
+  .dropdown-menu-inner a.act { color:var(--zhu); }
 
-  /* ── 轻量 Hero ── */
-  main { flex: 1; }
+  main { flex:1; padding-bottom:60px; }
 
-  /* ── 轻量 Hero ── */
-  .hero { padding: 40px 0 32px; max-width: 780px; }
-  .hero .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--zhu); margin-bottom: 12px; }
-  .hero h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(24px,4vw,44px); line-height: 1.18; }
-  .hero p { max-width: 560px; margin: 12px 0 0; color: var(--deep); font-size: 15px; line-height: 1.7; }
+  /* ── Signal Feed Wrap ── */
+  .feed-wrap { border:1px solid var(--ink); background:var(--paper); padding:28px 30px 24px; margin-top:40px; }
+  .feed-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:4px; flex-wrap:wrap; gap:12px; }
+  .feed-kicker { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gray); }
+  .sys { font-family:var(--mono); font-size:10px; letter-spacing:.08em; color:var(--gray); display:flex; align-items:center; gap:6px; white-space:nowrap; }
+  .sys .live { display:inline-flex; align-items:center; gap:5px; color:var(--zhu); }
+  .sys .live::before { content:""; width:6px; height:6px; border-radius:50%; background:var(--zhu); }
+  .feed-h1 { font-family:var(--serif); font-weight:600; font-size:30px; margin:6px 0 4px; }
+  .feed-sub { font-size:13.5px; color:var(--gray); margin-bottom:18px; max-width:560px; line-height:1.6; }
 
-  /* ── 轻量列表 ── */
-  .brief-list { margin-top: 8px; }
-  .brief-card {
-    display: grid; grid-template-columns: 90px 1fr auto;
-    gap: 20px; align-items: baseline;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line-warm);
-    transition: background .12s;
-  }
-  .brief-card:first-child { border-top: 1px solid var(--line-warm); }
-  .brief-card:hover { background: rgba(0,0,0,.012); margin: 0 -12px; padding-left: 12px; padding-right: 12px; }
-  .brief-card .date { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--light); padding-top: 2px; }
-  .brief-card h3 { margin: 0 0 4px; font-family: var(--serif); font-weight: 600; font-size: 19px; line-height: 1.35; }
-  .brief-card h3 em { font-style: normal; color: var(--zhu); }
-  .brief-card .desc { margin: 0; color: var(--gray); font-size: 14px; line-height: 1.6; max-width: 560px; }
-  .brief-card .arrow { font-family: var(--serif); font-size: 20px; color: var(--light); align-self: center; transition: color .12s; }
-  .brief-card:hover .arrow { color: var(--zhu); }
+  /* filter chips */
+  .chips { display:flex; flex-wrap:wrap; gap:6px; align-items:center; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:11px 0; margin-bottom:22px; }
+  .chips .cl { font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--light); margin-right:2px; }
+  .chip { font-family:var(--mono); font-size:11px; padding:3px 9px; border:1px solid var(--line-warm); background:transparent; color:var(--gray); cursor:pointer; }
+  .chip.on { background:var(--ink); color:var(--paper); border-color:var(--ink); }
 
-  footer.foot { width:100%; padding: 64px 0 32px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
-  .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
-  .foot-contact { text-align: right; }
-  .foot-contact .ct-label { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #A8A098; margin-bottom: 18px; }
-  .foot-contact p { margin: 0 0 7px; color: #A8A098; font-size: 13.5px; line-height: 1.65; }
-  .foot-contact a.mail { color: #C8C0B5; border-bottom: 1px solid #C8C0B5; }
-  .foot-brand { display: grid; gap: 6px; align-content: start; justify-items: start; }
-  .foot-brand strong { font-family: var(--serif); font-size: 26px; font-weight: 600; color: #FAFAF7; letter-spacing: -.01em; }
-  .foot-brand span { font-family: var(--sans); font-size: 15px; color: #A8A098; }
-  .foot-brand em { font-family: var(--mono); font-style: normal; font-size: 11px; color: #8A8278; letter-spacing: .06em; }
-  .foot-copy { margin-top: 24px; color: #6B6560; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  /* signal card */
+  .sig { border-top:1px solid var(--line-warm); padding:18px 0; }
+  .sig:first-of-type { border-top:none; }
+  .sig-meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; }
+  .tag { font-family:var(--mono); font-size:10.5px; letter-spacing:.04em; padding:2px 8px; border:1px solid var(--line); color:var(--gray); display:inline-flex; align-items:center; gap:5px; }
+  .tag .dot { width:7px; height:7px; border-radius:50%; }
+  .tag.region { border-style:dashed; }
+  .sigid { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.06em; }
+  .strength { display:inline-flex; align-items:center; gap:3px; margin-left:auto; }
+  .strength .lab { font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--light); margin-right:4px; }
+  .strength i { width:7px; height:13px; background:var(--line); display:inline-block; transform:skewX(-12deg); }
+  .strength i.on { background:var(--zhu); }
+  .sig h3 { font-family:var(--serif); font-weight:600; font-size:20px; line-height:1.3; margin-bottom:11px; }
+  .sig h3 em { font-style:italic; color:var(--zhu); }
+  .sig h3 a { transition:color .15s; }
+  .sig h3 a:hover { color:var(--zhu); }
 
-  @media (max-width: 1050px) {
-    .foot-main { grid-template-columns: 1fr; gap: 28px; }
-    .foot-contact { text-align: left; }
-  }
-  @media (max-width: 680px) {
-    .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
-    .hero { padding: 32px 0 24px; }
-    .brief-card { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
-    .brief-card .date { font-size: 11px; }
-    .brief-card .arrow { display: none; }
+  .judge { /* free layer: 事实+趋势 */ }
+  .jl { display:flex; gap:10px; margin-bottom:8px; }
+  .jk { font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:.06em; color:var(--ink); flex:0 0 40px; text-align:right; padding-top:3px; position:relative; }
+  .jk::after { content:""; position:absolute; right:-5px; top:7px; width:3px; height:3px; background:var(--zhu); border-radius:50%; }
+  .jv { font-size:13.5px; color:var(--gray); line-height:1.6; flex:1; }
+
+  /* paid wall */
+  .paid { position:relative; margin-top:10px; border-top:1.5px solid var(--gold-soft); padding-top:11px; }
+  .paid-head { font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--gold); font-weight:500; margin-bottom:9px; display:flex; align-items:center; gap:5px; }
+  .paid-content { transition:filter .25s; }
+  body:not(.subscribed) .paid-content { filter:blur(5px); pointer-events:none; user-select:none; }
+  .paywall { position:absolute; inset:30px 0 0 0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; background:linear-gradient(180deg,transparent,var(--silk) 62%); }
+  body.subscribed .paywall { display:none; }
+  .pw-txt { font-family:var(--mono); font-size:10.5px; color:var(--gold); letter-spacing:.03em; text-align:center; }
+  .pw-cta { font-family:var(--mono); font-size:11px; font-weight:500; background:var(--ink); color:var(--paper); border:none; padding:6px 13px; cursor:pointer; display:inline-block; }
+  .pw-cta:hover { background:var(--gold); }
+
+  /* low-signal annotation */
+  .lo-note { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.06em; }
+
+  .toggle-row { margin:20px 0 4px; display:flex; justify-content:center; }
+  .toggle-row button { font-family:var(--mono); font-size:11px; letter-spacing:.06em; background:transparent; border:1px solid var(--ink); color:var(--ink); padding:7px 16px; cursor:pointer; }
+  .toggle-row button:hover { background:var(--ink); color:var(--paper); }
+
+  .note { font-size:12px; color:var(--gray); line-height:1.6; margin-top:30px; border-top:1px dashed var(--line-warm); padding-top:10px; }
+  .note b { color:var(--ink); }
+
+  footer.foot { width:100%; padding:64px 0 32px; border-top:1px solid rgba(250,250,247,.14); background:var(--ink); color:#8A8278; font-size:13px; }
+  .foot-main { display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; padding-bottom:32px; border-bottom:1px solid rgba(250,250,247,.12); }
+  .foot-contact { text-align:right; }
+  .foot-contact .ct-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A8A098; margin-bottom:18px; }
+  .foot-contact p { margin:0 0 7px; color:#A8A098; font-size:13.5px; line-height:1.65; }
+  .foot-contact a.mail { color:#C8C0B5; border-bottom:1px solid #C8C0B5; }
+  .foot-brand { display:grid; gap:6px; align-content:start; justify-items:start; }
+  .foot-brand strong { font-family:var(--serif); font-size:26px; font-weight:600; color:#FAFAF7; letter-spacing:-.01em; }
+  .foot-brand span { font-family:var(--sans); font-size:15px; color:#A8A098; }
+  .foot-brand em { font-family:var(--mono); font-style:normal; font-size:11px; color:#8A8278; letter-spacing:.06em; }
+  .foot-copy { margin-top:24px; color:#6B6560; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+  @media (max-width:1050px) { .foot-main { grid-template-columns:1fr; gap:28px; } .foot-contact { text-align:left; } }
+  @media (max-width:680px) {
+    .top { flex-direction:column; align-items:flex-start; padding:16px 0; position:static; }
+    header.top > .shell { flex-direction:column; align-items:flex-start; }
+    .feed-wrap { padding:20px 18px 18px; margin-top:24px; }
+    .feed-h1 { font-size:24px; }
+    .jl { flex-direction:column; gap:2px; }
+    .jk { text-align:left; flex:none; }
+    .jk::after { display:none; }
+    .foot-main { grid-template-columns:1fr; gap:28px; }
+    .foot-contact { text-align:left; }
   }
 </style>
 </head>
@@ -123,24 +162,173 @@
   </div></header>
 
   <main>
-    <section class="shell hero">
-      <div class="tag">Brand Briefs</div>
-      <h1>品牌资讯</h1>
-      <p>每周跨境电商品牌信号扫描。五分钟看清本周最重要的五件事。</p>
-    </section>
+    <div class="shell">
 
-    <section class="shell">
-      <div class="brief-list">
-        <a class="brief-card" href="/briefs/2026-05-27/">
-          <div class="date">05.27</div>
-          <div>
-            <h3>Google和Amazon同时让AI替<em>你</em>购物了</h3>
-            <p class="desc">AI购物入口同时落地，品牌出海游戏规则正在被改写。福布斯DTC数据切片 + 独立站营销报告 + 行动清单。</p>
+      <div class="feed-wrap">
+        <div class="feed-head">
+          <div class="feed-kicker">Brand Briefs / 信号扫描</div>
+          <div class="sys"><span class="live">LIVE</span> · 本周 5 条 · 更新于 1h 前</div>
+        </div>
+        <h1 class="feed-h1">品牌资讯</h1>
+        <p class="feed-sub">每周跨境电商品牌信号扫描。重要的不漏，并告诉你这意味着什么。</p>
+
+        <div class="chips">
+          <span class="cl">分类</span>
+          <button class="chip on">全部</button>
+          <button class="chip">平台</button>
+          <button class="chip">市场</button>
+          <button class="chip">合规</button>
+          <button class="chip">运营</button>
+          <span class="cl" style="margin-left:8px">地区</span>
+          <button class="chip on">全部</button>
+          <button class="chip">欧盟</button>
+          <button class="chip">美国</button>
+          <button class="chip">全球</button>
+        </div>
+
+        <!-- SIG·2026-0601·01 ── ICS2 合规 -->
+        <div class="sig">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot" style="background:var(--cat-compliance)"></span>合规</span>
+            <span class="tag region">◍ 欧盟</span>
+            <span class="sigid">SIG·2026-0601·01</span>
+            <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
           </div>
-          <div class="arrow">→</div>
-        </a>
+          <h3><a href="/briefs/2026-06-01/">欧盟海关预申报新规<em>落地</em>，小包直邮成本面临重估</a></h3>
+          <div class="judge">
+            <div class="jl"><div class="jk">事实</div><div class="jv">ICS2第三阶段从空运扩展至所有运输方式。每一票货物需在装载前提交至少6项数据，由欧盟中央系统进行风险分析。</div></div>
+            <div class="jl"><div class="jk">趋势</div><div class="jv">全球海关从「抽查制」转向「全员预检制」——美国、英国、日本同步推进类似制度，这不是欧盟的孤立动作。</div></div>
+          </div>
+          <div class="paid">
+            <div class="paid-head">付费层 · 完整信号判断</div>
+            <div class="paid-content judge">
+              <div class="jl"><div class="jk">影响</div><div class="jv">走全托管/小包直邮的卖家合规成本预计上升15-25%；低申报价玩法面临系统性风险。已布局欧盟海外仓的品牌反而获得清场红利。</div></div>
+              <div class="jl"><div class="jk">动作</div><div class="jv">本周确认物流商是否接入ICS2申报系统；本月重算到岸成本，评估德国、荷兰等主要清关口岸周边海外仓方案。</div></div>
+              <div class="jl"><div class="jk">依据</div><div class="jv">18个月内欧盟连续落地GPSR、DAC7、ICS2三项新规，方向一致、节奏加快。每次新规后3-6个月是合规者收割窗口。</div></div>
+            </div>
+            <div class="paywall">
+              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
+              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIG·2026-0527·01 ── AI购物 -->
+        <div class="sig">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot" style="background:var(--cat-platform)"></span>平台</span>
+            <span class="tag region">◍ 全球</span>
+            <span class="sigid">SIG·2026-0527·01</span>
+            <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+          </div>
+          <h3>Google 和 Amazon 同时让 AI 替<em>你</em>购物了</h3>
+          <div class="judge">
+            <div class="jl"><div class="jk">事实</div><div class="jv">两大入口几乎同期推出 AI 代购物功能——Google Universal Cart + Gemini Spark，Amazon Alexa for Shopping + Buy for Me。搜索与货架的中间层被 AI 接管。</div></div>
+            <div class="jl"><div class="jk">趋势</div><div class="jv">这是「流量入口从人找货转向 AI 替人选货」的早期信号，不是孤立产品更新。品牌竞争从关键词排名变成 AI 可读性 × 品牌叙事质量。</div></div>
+          </div>
+          <div class="paid">
+            <div class="paid-head">付费层 · 完整信号判断</div>
+            <div class="paid-content judge">
+              <div class="jl"><div class="jk">影响</div><div class="jv">依赖关键词投放与货架排名的卖家首当其冲；品牌心智与结构化数据将决定 AI 是否推荐你。62.5% 的头部 DTC 品牌已跨过独立站临界点，但仅 37.5% 实现跨渠道用户统一识别。</div></div>
+              <div class="jl"><div class="jk">动作</div><div class="jv">现在就补齐结构化产品数据与评价资产；重估纯投放打法的中期 ROI。检查 Google Merchant Center Feed 质量、Schema.org 标注完整度。</div></div>
+              <div class="jl"><div class="jk">依据</div><div class="jv">福布斯中国 2026 DTC 跨境影响力品牌评选（40家数据切片）+ GoodsFox《2026全球独立站营销洞察报告》交叉验证，方向一致。</div></div>
+            </div>
+            <div class="paywall">
+              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
+              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIG·2026-0527·02 ── 小额包裹免税 -->
+        <div class="sig">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot" style="background:var(--cat-compliance)"></span>合规</span>
+            <span class="tag region">◍ 美国</span>
+            <span class="sigid">SIG·2026-0527·02</span>
+            <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+          </div>
+          <h3>小额包裹免税规则再收紧</h3>
+          <div class="judge">
+            <div class="jl"><div class="jk">事实</div><div class="jv">美国 de minimis 免税适用范围进一步缩小，申报颗粒度要求提高。多国同步推进类似收紧措施。</div></div>
+            <div class="jl"><div class="jk">趋势</div><div class="jv">小包直邮红利持续退潮的又一节点。依赖免税窗口的小卖家毛利空间被系统性压缩。</div></div>
+          </div>
+          <div class="paid">
+            <div class="paid-head">付费层 · 完整信号判断</div>
+            <div class="paid-content judge">
+              <div class="jl"><div class="jk">影响</div><div class="jv">依赖 de minimis 的小卖家毛利率被直接压缩；海外仓从「可选项」变成结构性优势，仓储网络密度将决定未来18个月的利润空间。</div></div>
+              <div class="jl"><div class="jk">动作</div><div class="jv">重算到岸成本模型，将合规申报费纳入定价；评估美国海外仓方案，优先覆盖东西海岸主要口岸。</div></div>
+              <div class="jl"><div class="jk">依据</div><div class="jv">美国、欧盟、英国三线同步推进，政策方向无逆转可能。过去12个月类似收紧后的3-6个月，合规卖家市场份额均有可测量提升。</div></div>
+            </div>
+            <div class="paywall">
+              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
+              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIG·2026-0527·03 ── Etsy 重新开放 -->
+        <div class="sig">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot" style="background:var(--cat-platform)"></span>平台</span>
+            <span class="tag region">◍ 全球</span>
+            <span class="sigid">SIG·2026-0527·03</span>
+            <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i></i><i></i></span>
+          </div>
+          <h3>Etsy 重新向中国原创品牌开放入驻</h3>
+          <div class="judge">
+            <div class="jl"><div class="jk">事实</div><div class="jv">Etsy 从「拒绝中国卖家」转向「筛选中国好卖家」，凭护照即可合规注册。$0.2 刊登费 + 6.5% 交易费。6月4日起严查非正规渠道并批量清退。</div></div>
+            <div class="jl"><div class="jk">趋势</div><div class="jv">平台筛选逻辑从「国籍」转向「品质」——合规窗口期有限，但方向是结构性的。</div></div>
+          </div>
+          <div class="paid">
+            <div class="paid-head">付费层 · 完整信号判断</div>
+            <div class="paid-content judge">
+              <div class="jl"><div class="jk">影响</div><div class="jv">适合有设计力和品牌叙事能力的原创团队，Etsy 消费者买的是故事和制作过程；不适合铺货型卖家。</div></div>
+              <div class="jl"><div class="jk">动作</div><div class="jv">6月4日前走合规通道；准备品牌故事 + 制作过程素材（产品实拍、工作台细节、设计师背景）。</div></div>
+              <div class="jl"><div class="jk">依据</div><div class="jv">Etsy 品牌页面三核心要素：产品实拍（自然光·多角度·使用场景）、制作过程（手作细节·材料展示）、品牌故事（创作理念）。平台买家画像为故事驱动型消费者。</div></div>
+            </div>
+            <div class="paywall">
+              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
+              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIG·2026-0527·04 ── TikTok 巴西 -->
+        <div class="sig">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot" style="background:var(--cat-market)"></span>市场</span>
+            <span class="tag region">◍ 巴西</span>
+            <span class="sigid">SIG·2026-0527·04</span>
+            <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+          </div>
+          <h3>TikTok Shop 巴西站数据爆发</h3>
+          <div class="judge">
+            <div class="jl"><div class="jk">事实</div><div class="jv">用户日均刷视频超80分钟，62%每日观看直播，80%观看后购买。直播日均交易额短期暴涨96倍。</div></div>
+            <div class="jl"><div class="jk">趋势</div><div class="jv">巴西正在成为验证「内容电商 × 品牌建设」模式的新试验田。</div></div>
+          </div>
+          <div class="paid">
+            <div class="paid-head">付费层 · 完整信号判断</div>
+            <div class="paid-content judge">
+              <div class="jl"><div class="jk">影响</div><div class="jv">对已在拉美布局的品牌是增量机会；对新进入者是高风险高回报——基础设施不完善但用户时长极高。</div></div>
+              <div class="jl"><div class="jk">动作</div><div class="jv">3-6个月内小额试水，优先建本地化内容团队而非广告投放。</div></div>
+              <div class="jl"><div class="jk">依据</div><div class="jv">80%+ 观看后购买率意味着内容驱动转化效率极高，适合有内容产能的品牌测试。</div></div>
+            </div>
+            <div class="paywall">
+              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
+              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="toggle-row">
+          <button onclick="document.body.classList.toggle('subscribed')">切换订阅状态(预览付费层)</button>
+        </div>
       </div>
-    </section>
+
+      <p class="note"><b>技术感落点(全部克制、不加蓝光/不变深色):</b> 等宽信号编号 <span style="font-family:var(--mono);font-size:11px">SIG·2026-0601·01</span> 像凭证流水号 · 顶部 <span style="font-family:var(--mono);font-size:11px">LIVE · 本周5条 · 更新1h前</span> 暗示系统在运转 · 强度条把"重要"量化 · 靠排版与等宽字承载,不靠颜色。</p>
+
+    </div>
   </main>
 
   <footer class="foot"><div class="shell">
@@ -167,7 +355,6 @@
   </div></footer>
 
 
-<!-- GSAP + ScrollTrigger + Lenis -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
@@ -179,15 +366,9 @@ gsap.ticker.add(function(time){lenis.raf(time*1000)});
 gsap.ticker.lagSmoothing(0);
 ScrollTrigger.defaults({scroller:document.documentElement});
 
-// Fade in article content on subpages
-var article=document.querySelector('article');
-if(article) gsap.fromTo(article,{opacity:0,y:28},{opacity:1,y:0,duration:0.8,ease:'power2.out'});
+var feed=document.querySelector('.feed-wrap');
+if(feed) gsap.fromTo(feed,{opacity:0,y:28},{opacity:1,y:0,duration:0.8,ease:'power2.out'});
 
-// Card stagger for listing pages
-var cards=document.querySelectorAll('.ccard,.report-card');
-if(cards.length) gsap.from(cards,{opacity:0,y:22,duration:0.5,stagger:0.08,ease:'power2.out',scrollTrigger:{trigger:cards[0].parentElement,start:'top 82%'}});
-
-// Footer fade
 var foot=document.querySelector('footer.foot');
 if(foot) gsap.fromTo(foot,{opacity:0,y:18},{opacity:1,y:0,duration:0.6,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 92%'}});
 
