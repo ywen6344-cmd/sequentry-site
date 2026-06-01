@@ -96,23 +96,12 @@
   .jk::after { content:""; position:absolute; right:-5px; top:7px; width:3px; height:3px; background:var(--zhu); border-radius:50%; }
   .jv { font-size:13.5px; color:var(--gray); line-height:1.6; flex:1; }
 
-  /* paid wall */
-  .paid { position:relative; margin-top:10px; border-top:1.5px solid var(--gold-soft); padding-top:11px; }
-  .paid-head { font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--gold); font-weight:500; margin-bottom:9px; display:flex; align-items:center; gap:5px; }
-  .paid-content { transition:filter .25s; }
-  body:not(.subscribed) .paid-content { filter:blur(5px); pointer-events:none; user-select:none; }
-  .paywall { position:absolute; inset:30px 0 0 0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; background:linear-gradient(180deg,transparent,var(--silk) 62%); }
-  body.subscribed .paywall { display:none; }
-  .pw-txt { font-family:var(--mono); font-size:10.5px; color:var(--gold); letter-spacing:.03em; text-align:center; }
-  .pw-cta { font-family:var(--mono); font-size:11px; font-weight:500; background:var(--ink); color:var(--paper); border:none; padding:6px 13px; cursor:pointer; display:inline-block; }
-  .pw-cta:hover { background:var(--gold); }
+  .section-head { font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--gold); font-weight:500; margin:14px 0 9px; display:flex; align-items:center; gap:5px; border-top:1.5px solid var(--gold-soft); padding-top:11px; }
 
   /* low-signal annotation */
   .lo-note { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.06em; }
 
-  .toggle-row { margin:20px 0 4px; display:flex; justify-content:center; }
-  .toggle-row button { font-family:var(--mono); font-size:11px; letter-spacing:.06em; background:transparent; border:1px solid var(--ink); color:var(--ink); padding:7px 16px; cursor:pointer; }
-  .toggle-row button:hover { background:var(--ink); color:var(--paper); }
+
 
   .note { font-size:12px; color:var(--gray); line-height:1.6; margin-top:30px; border-top:1px dashed var(--line-warm); padding-top:10px; }
   .note b { color:var(--ink); }
@@ -199,17 +188,11 @@
             <div class="jl"><div class="jk">事实</div><div class="jv">ICS2第三阶段从空运扩展至所有运输方式。每一票货物需在装载前提交至少6项数据，由欧盟中央系统进行风险分析。</div></div>
             <div class="jl"><div class="jk">趋势</div><div class="jv">全球海关从「抽查制」转向「全员预检制」——美国、英国、日本同步推进类似制度，这不是欧盟的孤立动作。</div></div>
           </div>
-          <div class="paid">
-            <div class="paid-head">付费层 · 完整信号判断</div>
-            <div class="paid-content judge">
-              <div class="jl"><div class="jk">影响</div><div class="jv">走全托管/小包直邮的卖家合规成本预计上升15-25%；低申报价玩法面临系统性风险。已布局欧盟海外仓的品牌反而获得清场红利。</div></div>
-              <div class="jl"><div class="jk">动作</div><div class="jv">本周确认物流商是否接入ICS2申报系统；本月重算到岸成本，评估德国、荷兰等主要清关口岸周边海外仓方案。</div></div>
-              <div class="jl"><div class="jk">依据</div><div class="jv">18个月内欧盟连续落地GPSR、DAC7、ICS2三项新规，方向一致、节奏加快。每次新规后3-6个月是合规者收割窗口。</div></div>
-            </div>
-            <div class="paywall">
-              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
-              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
-            </div>
+          <div class="section-head">完整信号判断</div>
+          <div class="judge">
+            <div class="jl"><div class="jk">影响</div><div class="jv">走全托管/小包直邮的卖家合规成本预计上升15-25%；低申报价玩法面临系统性风险。已布局欧盟海外仓的品牌反而获得清场红利。</div></div>
+            <div class="jl"><div class="jk">动作</div><div class="jv">本周确认物流商是否接入ICS2申报系统；本月重算到岸成本，评估德国、荷兰等主要清关口岸周边海外仓方案。</div></div>
+            <div class="jl"><div class="jk">依据</div><div class="jv">18个月内欧盟连续落地GPSR、DAC7、ICS2三项新规，方向一致、节奏加快。每次新规后3-6个月是合规者收割窗口。</div></div>
           </div>
         </div>
 
@@ -221,22 +204,16 @@
             <span class="sigid">SIG·2026-0527·01</span>
             <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
           </div>
-          <h3>Google 和 Amazon 同时让 AI 替<em>你</em>购物了</h3>
+          <h3><a href="/briefs/2026-05-27/">Google 和 Amazon 同时让 AI 替<em>你</em>购物了</a></h3>
           <div class="judge">
             <div class="jl"><div class="jk">事实</div><div class="jv">两大入口几乎同期推出 AI 代购物功能——Google Universal Cart + Gemini Spark，Amazon Alexa for Shopping + Buy for Me。搜索与货架的中间层被 AI 接管。</div></div>
             <div class="jl"><div class="jk">趋势</div><div class="jv">这是「流量入口从人找货转向 AI 替人选货」的早期信号，不是孤立产品更新。品牌竞争从关键词排名变成 AI 可读性 × 品牌叙事质量。</div></div>
           </div>
-          <div class="paid">
-            <div class="paid-head">付费层 · 完整信号判断</div>
-            <div class="paid-content judge">
-              <div class="jl"><div class="jk">影响</div><div class="jv">依赖关键词投放与货架排名的卖家首当其冲；品牌心智与结构化数据将决定 AI 是否推荐你。62.5% 的头部 DTC 品牌已跨过独立站临界点，但仅 37.5% 实现跨渠道用户统一识别。</div></div>
-              <div class="jl"><div class="jk">动作</div><div class="jv">现在就补齐结构化产品数据与评价资产；重估纯投放打法的中期 ROI。检查 Google Merchant Center Feed 质量、Schema.org 标注完整度。</div></div>
-              <div class="jl"><div class="jk">依据</div><div class="jv">福布斯中国 2026 DTC 跨境影响力品牌评选（40家数据切片）+ GoodsFox《2026全球独立站营销洞察报告》交叉验证，方向一致。</div></div>
-            </div>
-            <div class="paywall">
-              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
-              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
-            </div>
+          <div class="section-head">完整信号判断</div>
+          <div class="judge">
+            <div class="jl"><div class="jk">影响</div><div class="jv">依赖关键词投放与货架排名的卖家首当其冲；品牌心智与结构化数据将决定 AI 是否推荐你。62.5% 的头部 DTC 品牌已跨过独立站临界点，但仅 37.5% 实现跨渠道用户统一识别。</div></div>
+            <div class="jl"><div class="jk">动作</div><div class="jv">现在就补齐结构化产品数据与评价资产；重估纯投放打法的中期 ROI。检查 Google Merchant Center Feed 质量、Schema.org 标注完整度。</div></div>
+            <div class="jl"><div class="jk">依据</div><div class="jv">福布斯中国 2026 DTC 跨境影响力品牌评选（40家数据切片）+ GoodsFox《2026全球独立站营销洞察报告》交叉验证，方向一致。</div></div>
           </div>
         </div>
 
@@ -248,22 +225,16 @@
             <span class="sigid">SIG·2026-0527·02</span>
             <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
           </div>
-          <h3>小额包裹免税规则再收紧</h3>
+          <h3><a href="/briefs/2026-05-27/">小额包裹免税规则再收紧</a></h3>
           <div class="judge">
             <div class="jl"><div class="jk">事实</div><div class="jv">美国 de minimis 免税适用范围进一步缩小，申报颗粒度要求提高。多国同步推进类似收紧措施。</div></div>
             <div class="jl"><div class="jk">趋势</div><div class="jv">小包直邮红利持续退潮的又一节点。依赖免税窗口的小卖家毛利空间被系统性压缩。</div></div>
           </div>
-          <div class="paid">
-            <div class="paid-head">付费层 · 完整信号判断</div>
-            <div class="paid-content judge">
-              <div class="jl"><div class="jk">影响</div><div class="jv">依赖 de minimis 的小卖家毛利率被直接压缩；海外仓从「可选项」变成结构性优势，仓储网络密度将决定未来18个月的利润空间。</div></div>
-              <div class="jl"><div class="jk">动作</div><div class="jv">重算到岸成本模型，将合规申报费纳入定价；评估美国海外仓方案，优先覆盖东西海岸主要口岸。</div></div>
-              <div class="jl"><div class="jk">依据</div><div class="jv">美国、欧盟、英国三线同步推进，政策方向无逆转可能。过去12个月类似收紧后的3-6个月，合规卖家市场份额均有可测量提升。</div></div>
-            </div>
-            <div class="paywall">
-              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
-              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
-            </div>
+          <div class="section-head">完整信号判断</div>
+          <div class="judge">
+            <div class="jl"><div class="jk">影响</div><div class="jv">依赖 de minimis 的小卖家毛利率被直接压缩；海外仓从「可选项」变成结构性优势，仓储网络密度将决定未来18个月的利润空间。</div></div>
+            <div class="jl"><div class="jk">动作</div><div class="jv">重算到岸成本模型，将合规申报费纳入定价；评估美国海外仓方案，优先覆盖东西海岸主要口岸。</div></div>
+            <div class="jl"><div class="jk">依据</div><div class="jv">美国、欧盟、英国三线同步推进，政策方向无逆转可能。过去12个月类似收紧后的3-6个月，合规卖家市场份额均有可测量提升。</div></div>
           </div>
         </div>
 
@@ -275,22 +246,16 @@
             <span class="sigid">SIG·2026-0527·03</span>
             <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i></i><i></i></span>
           </div>
-          <h3>Etsy 重新向中国原创品牌开放入驻</h3>
+          <h3><a href="/briefs/2026-05-27/">Etsy 重新向中国原创品牌开放入驻</a></h3>
           <div class="judge">
             <div class="jl"><div class="jk">事实</div><div class="jv">Etsy 从「拒绝中国卖家」转向「筛选中国好卖家」，凭护照即可合规注册。$0.2 刊登费 + 6.5% 交易费。6月4日起严查非正规渠道并批量清退。</div></div>
             <div class="jl"><div class="jk">趋势</div><div class="jv">平台筛选逻辑从「国籍」转向「品质」——合规窗口期有限，但方向是结构性的。</div></div>
           </div>
-          <div class="paid">
-            <div class="paid-head">付费层 · 完整信号判断</div>
-            <div class="paid-content judge">
-              <div class="jl"><div class="jk">影响</div><div class="jv">适合有设计力和品牌叙事能力的原创团队，Etsy 消费者买的是故事和制作过程；不适合铺货型卖家。</div></div>
-              <div class="jl"><div class="jk">动作</div><div class="jv">6月4日前走合规通道；准备品牌故事 + 制作过程素材（产品实拍、工作台细节、设计师背景）。</div></div>
-              <div class="jl"><div class="jk">依据</div><div class="jv">Etsy 品牌页面三核心要素：产品实拍（自然光·多角度·使用场景）、制作过程（手作细节·材料展示）、品牌故事（创作理念）。平台买家画像为故事驱动型消费者。</div></div>
-            </div>
-            <div class="paywall">
-              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
-              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
-            </div>
+          <div class="section-head">完整信号判断</div>
+          <div class="judge">
+            <div class="jl"><div class="jk">影响</div><div class="jv">适合有设计力和品牌叙事能力的原创团队，Etsy 消费者买的是故事和制作过程；不适合铺货型卖家。</div></div>
+            <div class="jl"><div class="jk">动作</div><div class="jv">6月4日前走合规通道；准备品牌故事 + 制作过程素材（产品实拍、工作台细节、设计师背景）。</div></div>
+            <div class="jl"><div class="jk">依据</div><div class="jv">Etsy 品牌页面三核心要素：产品实拍（自然光·多角度·使用场景）、制作过程（手作细节·材料展示）、品牌故事（创作理念）。平台买家画像为故事驱动型消费者。</div></div>
           </div>
         </div>
 
@@ -302,28 +267,20 @@
             <span class="sigid">SIG·2026-0527·04</span>
             <span class="strength"><span class="lab">信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
           </div>
-          <h3>TikTok Shop 巴西站数据爆发</h3>
+          <h3><a href="/briefs/2026-05-27/">TikTok Shop 巴西站数据爆发</a></h3>
           <div class="judge">
             <div class="jl"><div class="jk">事实</div><div class="jv">用户日均刷视频超80分钟，62%每日观看直播，80%观看后购买。直播日均交易额短期暴涨96倍。</div></div>
             <div class="jl"><div class="jk">趋势</div><div class="jv">巴西正在成为验证「内容电商 × 品牌建设」模式的新试验田。</div></div>
           </div>
-          <div class="paid">
-            <div class="paid-head">付费层 · 完整信号判断</div>
-            <div class="paid-content judge">
-              <div class="jl"><div class="jk">影响</div><div class="jv">对已在拉美布局的品牌是增量机会；对新进入者是高风险高回报——基础设施不完善但用户时长极高。</div></div>
-              <div class="jl"><div class="jk">动作</div><div class="jv">3-6个月内小额试水，优先建本地化内容团队而非广告投放。</div></div>
-              <div class="jl"><div class="jk">依据</div><div class="jv">80%+ 观看后购买率意味着内容驱动转化效率极高，适合有内容产能的品牌测试。</div></div>
-            </div>
-            <div class="paywall">
-              <div class="pw-txt">解锁「影响 · 动作 · 依据」</div>
-              <a class="pw-cta" href="mailto:yanhang@sequentry.com?subject=信号周报订阅咨询">订阅周报解锁</a>
-            </div>
+          <div class="section-head">完整信号判断</div>
+          <div class="judge">
+            <div class="jl"><div class="jk">影响</div><div class="jv">对已在拉美布局的品牌是增量机会；对新进入者是高风险高回报——基础设施不完善但用户时长极高。</div></div>
+            <div class="jl"><div class="jk">动作</div><div class="jv">3-6个月内小额试水，优先建本地化内容团队而非广告投放。</div></div>
+            <div class="jl"><div class="jk">依据</div><div class="jv">80%+ 观看后购买率意味着内容驱动转化效率极高，适合有内容产能的品牌测试。</div></div>
           </div>
         </div>
 
-        <div class="toggle-row">
-          <button onclick="document.body.classList.toggle('subscribed')">切换订阅状态(预览付费层)</button>
-        </div>
+
       </div>
 
       <p class="note"><b>技术感落点(全部克制、不加蓝光/不变深色):</b> 等宽信号编号 <span style="font-family:var(--mono);font-size:11px">SIG·2026-0601·01</span> 像凭证流水号 · 顶部 <span style="font-family:var(--mono);font-size:11px">LIVE · 本周5条 · 更新1h前</span> 暗示系统在运转 · 强度条把"重要"量化 · 靠排版与等宽字承载,不靠颜色。</p>
