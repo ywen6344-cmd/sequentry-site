@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>品牌出海的竞争壁垒正在从"先发优势"转向"系统能力" — 序引效能</title>
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
+<meta name="description" content="小红书Redshop上线、泡泡玛特欧美双总部、Global-e收购Passport——三条信号指向同一个结论：品牌出海的竞争壁垒正在从先发优势转向系统能力。">
+<meta property="og:title" content="品牌出海的竞争壁垒正在从先发优势转向系统能力">
+<meta property="og:description" content="三条信号指向同一个结论：AI正在把品牌出海的渠道、组织、基础设施门槛同时拉低。">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="序引效能 · Sequentry">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
+    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA;
+    --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
+    --gold:#9C7A26; --gold-soft:#BF9A3A;
+    --cat-platform:#2F4B6E; --cat-brand:#2F6E5B; --cat-market:#8A5A25;
+    --cat-compliance:#B0341F; --cat-ops:#5D6A2C; --cat-capital:#5A3F6E;
+    --bg:#F9FAFB;
+    --sans:Inter,"Noto Sans SC","Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+    --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
+    --mono:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background:var(--warm); scroll-behavior:smooth; }
+  body {
+    margin:0; color:var(--ink); font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    background-color:var(--warm);
+    background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment:fixed;
+  }
+  a { color:inherit; text-decoration:none; }
+  .shell { width:min(1240px,calc(100% - 48px)); margin:0 auto; }
+
+  .top { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; border-bottom:1px solid var(--line-warm); position:sticky; top:0; background:rgba(250,250,247,.86); backdrop-filter:blur(6px); z-index:9; }
+  header.top > .shell { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 24px; }
+  .brand { display:grid; gap:2px; }
+  .brand strong { font-family:var(--serif); font-size:24px; font-weight:600; letter-spacing:-.01em; }
+  .brand span { font-family:var(--mono); color:var(--gray); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
+  .nav { display:flex; flex-wrap:wrap; gap:22px; align-items:center; font-family:var(--mono); color:var(--gray); font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .nav a:hover { color:var(--ink); }
+
+  .dropdown { position:relative; display:inline-flex; align-items:center; }
+  .dropdown > a { display:flex; align-items:center; gap:4px; }
+  .dropdown > a::after { content:"▾"; font-size:9px; margin-left:2px; }
+  .dropdown-menu { display:none; position:absolute; top:100%; left:-14px; padding-top:10px; min-width:160px; z-index:10; }
+  .dropdown:hover .dropdown-menu { display:block; }
+  .dropdown-menu-inner { background:var(--paper); border:1px solid var(--line-warm); padding:8px 0; }
+  .dropdown-menu-inner a { display:block; padding:8px 18px; font-size:12px; letter-spacing:.06em; white-space:nowrap; color:var(--gray); }
+  .dropdown-menu-inner a:hover { background:var(--xuan); color:var(--ink); }
+  .dropdown-menu-inner a.act { color:var(--zhu); }
+
+  article { max-width:720px; margin:0 auto; padding:64px 24px 48px; }
+  h1 { font-family:var(--serif); font-size:28px; font-weight:600; color:var(--ink); line-height:1.25; margin:0 0 14px; }
+  p { font-size:16.5px; line-height:1.75; color:var(--ink); margin:0 0 16px; }
+  p.meta { font-size:13px; color:var(--gray); letter-spacing:.05em; margin-bottom:28px; }
+  p.lead { font-size:18px; color:var(--deep); margin-bottom:24px; }
+
+  .core-judgment {
+    margin:4px 0 28px; padding:22px 24px;
+    background:var(--bg); border-left:3px solid var(--red);
+  }
+  .core-judgment .cj-label { font-size:13px; color:var(--gray); font-weight:500; letter-spacing:.1em; margin-bottom:8px; font-family:var(--mono); }
+  .core-judgment .cj-thesis { font-size:17px; line-height:1.7; color:var(--red); font-weight:500; margin-bottom:12px; }
+  .core-judgment .cj-support { font-size:15px; line-height:1.7; color:var(--deep); }
+
+  .signal-card {
+    margin:0 0 40px; border:1px solid var(--line-warm);
+    background:var(--paper); padding:28px 30px 24px;
+  }
+  .sig-meta { display:flex; flex-wrap:wrap; align-items:center; gap:8px 14px; margin-bottom:16px; }
+  .sig-tag {
+    font-family:var(--mono); font-size:11px; letter-spacing:.5px; padding:2px 8px;
+    border:1px solid var(--line-warm); color:var(--gray); display:inline-flex; align-items:center; gap:5px;
+  }
+  .sig-tag .dot { width:7px; height:7px; border-radius:50%; }
+  .sig-tag.region { border-style:dashed; }
+  .sigid { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.06em; }
+  .sig-strength { display:flex; align-items:center; gap:3px; margin-left:auto; }
+  .sig-strength .lab { font-family:var(--mono); font-size:10px; color:var(--light); letter-spacing:.5px; margin-right:3px; }
+  .sig-strength i { width:8px; height:14px; background:var(--line-warm); display:inline-block; transform:skewX(-12deg); }
+  .sig-strength i.on { background:var(--zhu); }
+  .sig-title { font-family:var(--serif); font-weight:600; font-size:20px; line-height:1.45; color:var(--ink); margin-bottom:10px; }
+  .sig-source { font-family:var(--mono); font-size:11.5px; color:var(--light); margin-bottom:18px; }
+
+  .judge { border-top:1px dashed var(--line-warm); padding-top:16px; }
+  .jline { display:flex; gap:11px; margin-bottom:10px; }
+  .jline:last-child { margin-bottom:0; }
+  .jkey {
+    font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:1px; color:var(--ink);
+    flex:0 0 48px; text-align:right; padding-top:2px; position:relative;
+  }
+  .jkey::after { content:""; position:absolute; right:-6px; top:5px; width:3px; height:3px; background:var(--zhu); border-radius:50%; }
+  .jval { font-size:15px; color:var(--deep); line-height:1.65; flex:1; }
+
+  /* Section headings in article flow */
+  .sec-h2 { font-family:var(--serif); font-size:22px; font-weight:600; color:var(--ink); line-height:1.35; margin:48px 0 18px; }
+
+  blockquote {
+    margin:28px 0; padding:2px 0 2px 18px; border-left:3px solid var(--ink);
+    color:var(--ink); font-family:var(--serif); font-size:20px; line-height:1.6;
+  }
+
+  .insight {
+    margin:28px 0; padding:18px 20px;
+    background:var(--bg); border-left:3px solid var(--red);
+  }
+  .insight .in-thesis { font-size:15px; line-height:1.65; color:var(--red); margin-bottom:6px; }
+  .insight .in-support { font-size:14px; line-height:1.6; color:var(--deep); }
+
+  .num-story { margin:28px 0; }
+  .num-row { padding:14px 18px; background:var(--bg); margin-bottom:10px; }
+  .num-row:last-child { margin-bottom:0; }
+  .num-row .num { font-family:var(--serif); font-size:28px; font-weight:600; color:var(--ink); line-height:1.2; margin-bottom:4px; }
+  .num-row .desc { font-size:13px; color:var(--gray); }
+
+  .cmp { margin:28px 0; }
+  .cmp-row { padding:16px 18px; background:var(--bg); margin-bottom:10px; }
+  .cmp-row:last-child { margin-bottom:0; }
+  .cmp-row.active { border-left:3px solid var(--blue); }
+  .cmp-row .cmp-label { font-size:14px; font-weight:500; margin-bottom:8px; }
+  .cmp-row .cmp-text { font-size:15px; color:var(--deep); line-height:1.6; }
+  .cmp-row:first-child .cmp-label { color:var(--gray); }
+  .cmp-row.active .cmp-label { color:var(--blue); }
+
+  .takeaway { margin:40px 0 16px; padding:20px 24px; background:var(--bg); }
+  .takeaway .tw-label { font-size:16px; font-weight:500; color:var(--ink); margin-bottom:12px; }
+  .takeaway p { font-size:15px; color:var(--deep); margin:0 0 8px; }
+
+  .back-link { margin-top:60px; padding-top:28px; border-top:1px solid var(--line-warm); font-family:var(--mono); font-size:12px; letter-spacing:.08em; color:var(--gray); }
+  .back-link a:hover { color:var(--ink); }
+
+  .quiet-divider { text-align:center; color:var(--light); font-size:12px; margin:24px 0; }
+
+  .data-card { margin:28px 0; padding:20px 24px; background:var(--bg); }
+  .data-card .dc-num { font-family:var(--serif); font-size:36px; font-weight:600; color:var(--ink); line-height:1.2; margin-bottom:6px; }
+  .data-card .dc-desc { font-size:15px; color:var(--deep); }
+  .data-card .dc-src { font-size:12px; color:var(--light); margin-top:8px; }
+
+  footer.foot { width:100%; padding:64px 0 32px; border-top:1px solid rgba(250,250,247,.14); background:var(--ink); color:#8A8278; font-size:13px; }
+  .foot-main { display:grid; grid-template-columns:0.9fr 1.1fr; gap:48px; padding-bottom:32px; border-bottom:1px solid rgba(250,250,247,.12); }
+  .foot-contact { text-align:right; }
+  .foot-contact .ct-label { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#A8A098; margin-bottom:18px; }
+  .foot-contact p { margin:0 0 7px; color:#A8A098; font-size:13.5px; line-height:1.65; }
+  .foot-contact a.mail { color:#C8C0B5; border-bottom:1px solid #C8C0B5; }
+  .foot-brand { display:grid; gap:6px; align-content:start; justify-items:start; }
+  .foot-brand strong { font-family:var(--serif); font-size:26px; font-weight:600; color:#FAFAF7; letter-spacing:-.01em; }
+  .foot-brand span { font-family:var(--sans); font-size:15px; color:#A8A098; }
+  .foot-brand em { font-family:var(--mono); font-style:normal; font-size:11px; color:#8A8278; letter-spacing:.06em; }
+  .foot-copy { margin-top:24px; color:#6B6560; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+  @media (max-width:680px) {
+    .top { flex-direction:column; align-items:flex-start; padding:16px 24px; position:static; }
+    article { padding:40px 24px 60px; }
+    .signal-card { padding:20px 20px 18px; }
+    .foot-main { grid-template-columns:1fr; gap:28px; }
+    .foot-contact { text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="top"><div class="shell">
+    <a class="brand" href="/"><strong>序引效能</strong><span>Sequentry</span></a>
+    <nav class="nav">
+      <a href="/#work">研究 / Research</a>
+      <a href="/#diff">差异 / Difference</a>
+      <span class="dropdown">
+        <a href="/report/">报告 / Report</a>
+        <div class="dropdown-menu"><div class="dropdown-menu-inner">
+          <a href="/report/">深度报告</a>
+          <a href="/briefs/" class="act">品牌资讯</a>
+        </div></div>
+      </span>
+      <a href="/#contact">联系 / Contact</a>
+    </nav>
+  </div></header>
+
+  <main>
+    <article>
+
+      <h1>品牌出海的竞争壁垒正在从"先发优势"转向"系统能力"</h1>
+
+      <p class="meta">文 | 序引研究　编辑 | 延航　发自 | 杭州　2026.06.03　阅读约 5 分钟</p>
+
+      <div class="core-judgment">
+        <div class="cj-label">核心判断</div>
+        <div class="cj-thesis">中国品牌出海的竞争壁垒正在从"谁先出去"变成"谁的AI系统更聪明"。</div>
+        <div class="cj-support">小红书 Redshop、泡泡玛特欧美双总部、Global-e 收购 Passport——三条看似不相关的消息，指向同一个结论：品牌出海的工具、渠道和组织能力正在被 AI 快速标准化。</div>
+      </div>
+
+      <p class="lead">6 月第一周，两条品牌出海信号值得注意：小红书跨境电商平台 Redshop 本月正式上线，首批覆盖 9 个市场；泡泡玛特两个月内落地欧美双总部。这不是巧合——从"卖货到海外"到"在海外扎根"，中国品牌出海正在换挡。</p>
+
+      <!-- ====== Signal 1: Redshop ====== -->
+      <div class="signal-card">
+        <div class="sig-meta">
+          <span class="sig-tag"><span class="dot" style="background:var(--cat-platform)"></span>平台</span>
+          <span class="sig-tag region">全球</span>
+          <span class="sigid">SIG·2026-0603·01</span>
+          <div class="sig-strength">
+            <span class="lab">信号</span>
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          </div>
+        </div>
+        <h2 class="sig-title">小红书 Redshop 本月上线：品牌出海多了一条"种草+交易"的渠道</h2>
+        <div class="sig-source">来源：科创板日报、东方财富 · 2026年6月</div>
+
+        <p>在多次海外试水之后，小红书终于推出自己的跨境电商平台 Redshop，本月正式上线。首批覆盖香港、澳门、美国、英国、澳大利亚、加拿大、新加坡、马来西亚 9 个市场。首期定向邀请 50 个种子商家，重点覆盖非遗手工、特色手工艺等品类，后续逐步拓展。</p>
+
+        <div class="data-card">
+          <div class="dc-num">50 个</div>
+          <div class="dc-desc">Redshop 首期仅定向邀请 50 个种子商家。这不是一个"开门迎客"的货架电商，而是精心筛选的"内容+交易"闭环实验。</div>
+          <div class="dc-src">数据来源：科创板日报</div>
+        </div>
+
+        <p>这跟亚马逊和 Temu 的逻辑不同。Redshop 不是货架电商——它的核心是"内容种草 + 交易闭环"。用户在小红书社区被内容种草后，直接在 APP 内完成跨境购买。对品牌来说，有故事、有文化叙事能力的品牌在这里有天然优势，而不是单纯比价格和排名。</p>
+
+        <blockquote>小红书此前海外尝试失败的原因，恰恰是"从零搭建垂直社区"——而 Redshop 这次选择了一个更聪明的路径：依托国内已有的内容生态和用户基础，把种草能力直接输出到海外。</blockquote>
+
+        <div class="judge">
+          <div class="jline"><div class="jkey">影响</div><div class="jval">品牌出海新增内容驱动渠道。适合有设计力、品牌叙事能力的团队，不适合纯铺货型卖家。首批仅 50 个名额意味着先发红利集中。</div></div>
+          <div class="jline"><div class="jkey">动作</div><div class="jval">有文化叙事能力的品牌应关注入驻通道；准备品牌故事 + 内容素材（产品实拍、制作过程、设计师背景）。</div></div>
+          <div class="jline"><div class="jkey">依据</div><div class="jval">小红书已在 2025 年通过"电商出海领航计划"跑通跨境履约链路，Redshop 是有基础设施支撑的体系化升级，而非从零开始的实验。</div></div>
+        </div>
+      </div>
+
+      <!-- ====== Signal 2: Pop Mart + Global-e ====== -->
+      <div class="signal-card">
+        <div class="sig-meta">
+          <span class="sig-tag"><span class="dot" style="background:var(--cat-brand)"></span>品牌</span>
+          <span class="sig-tag region">全球</span>
+          <span class="sigid">SIG·2026-0603·02</span>
+          <div class="sig-strength">
+            <span class="lab">信号</span>
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          </div>
+        </div>
+        <h2 class="sig-title">泡泡玛特欧美双总部 + Global-e 收购 Passport：品牌出海基础设施加速成熟</h2>
+        <div class="sig-source">来源：36氪、GlobeNewsWire、ChannelX · 2026年5-6月</div>
+
+        <p>泡泡玛特 2026 年在洛杉矶卡尔弗城设立 22,000 平方英尺美洲总部，选址 HBO、亚马逊、TikTok 等公司聚集的创意办公区。此前伦敦已被定为欧洲总部。两个月内，欧美双总部落地。设立美国总部的核心使命之一是 IP 本地化——如何与好莱坞 IP 联名、让 Molly 和 Labubu 成为当地文化的一部分。</p>
+
+        <p>在业务层面，泡泡玛特借助 Lazada AI 进行国别差异化选品——泰国主推 SKULLPANDA，马来西亚主推 DIMOO——入驻 LazMall 后销售额增长超 5 倍。同时将全球门店系统搬上阿里云，用通义大模型支撑快速扩张。</p>
+
+        <div class="num-story">
+          <div class="num-row">
+            <div class="num">22,000 平方英尺</div>
+            <div class="desc">洛杉矶美洲总部面积，选址创意产业核心区</div>
+          </div>
+          <div class="num-row">
+            <div class="num">5 倍</div>
+            <div class="desc">入驻 LazMall 后借助 AI 国别选品的销售额增长</div>
+          </div>
+          <div class="num-row">
+            <div class="num">三层架构</div>
+            <div class="desc">AI 工具支撑 + 区域总部自治 + 全球标准统一</div>
+          </div>
+        </div>
+
+        <p>与此同时，跨境品牌的基础设施也在加速整合。Global-e（纳斯达克：GLBE）5 月底宣布以 3.5 亿美元收购美国跨境物流公司 Passport，这是继 2022 年 1 亿美元收购 Borderfree 后的第二笔重磅交易。Passport 拥有轻资产多承运商网络，覆盖跨境、本土和末端配送，2026 年预计营收约 1 亿美元。</p>
+
+        <blockquote>泡泡玛特的"调整年"不是停下来，而是升级组织能力。当品牌全球化的基础设施从"人"变成"系统"，扩张速度就不再受制于管理半径。</blockquote>
+
+        <div class="judge">
+          <div class="jline"><div class="jkey">影响</div><div class="jval">品牌出海的"基础设施层"正在成熟：IP 本地化有了可参考的路径，跨境物流有了一站式方案，组织架构有了三层模型。对中小品牌来说，自建跨境物流的复杂度门槛正在被第三方服务商消化。</div></div>
+          <div class="jline"><div class="jkey">动作</div><div class="jval">关注 Global-e/Shopify Markets 等一站式跨境方案；借鉴泡泡玛特"AI 支撑 + 区域自治 + 全球标准"的组织模型。</div></div>
+          <div class="jline"><div class="jkey">依据</div><div class="jval">Global-e + Passport 整合意味着 DTC 品牌物流从"拼凑式"走向"一站式"——这是行业整合的明确信号。泡泡玛特的欧美双总部策略已被验证有效（LazMall 5 倍增长）。</div></div>
+        </div>
+      </div>
+
+      <!-- ====== Signal 3: AI ====== -->
+      <div class="signal-card">
+        <div class="sig-meta">
+          <span class="sig-tag"><span class="dot" style="background:var(--cat-ops)"></span>运营</span>
+          <span class="sig-tag region">全球</span>
+          <span class="sigid">SIG·2026-0603·03</span>
+          <div class="sig-strength">
+            <span class="lab">信号</span>
+            <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          </div>
+        </div>
+        <h2 class="sig-title">AI 重写品牌出海规则：从"一人跨国公司"到"Agent to Agent"</h2>
+        <div class="sig-source">来源：36氪、蓝鲨消费 · 2026年6月</div>
+
+        <p>Temu 的 AI 对供应链效率贡献率超过 30%，智能选品 + 动态定价正在重塑竞争格局。SHEIN 的中央 AI 平台每秒处理百万级数据点，将服装交付周期从行业平均 45 天压缩至以"天"为单位。阿里 1688 的"遨虾"AI 智能体已覆盖从选品到合规的全运营周期，3 月底全球月活达到 1,000 万。</p>
+
+        <p>更值得关注的现象是：杭州一个 1997 年出生的小伙，用 8 个 AI Agent 分别负责市场调研、选品、文案、客服，2 个月跑通了跨境全链路。阿里国际站浙江大区总经理对此的判断是——"过去外贸是 B2B，未来是 A2A——Agent to Agent"。</p>
+
+        <div class="cmp">
+          <div class="cmp-row">
+            <div class="cmp-label">品牌出海的"旧规则"</div>
+            <div class="cmp-text">需要本地团队、多语言客服、海外仓网络、跨境法务——每一项都是门槛，往往需要数千万启动资金和数年积累。</div>
+          </div>
+          <div class="cmp-row active">
+            <div class="cmp-label">AI 重写后的"新规则"</div>
+            <div class="cmp-text">AI 翻译消解语言障碍、AI Agent 替代基础运营、AI 合规审查降低法务门槛、AI 选品压缩试错周期。一个"一人跨国公司"正在从段子变成现实。</div>
+          </div>
+        </div>
+
+        <div class="insight">
+          <div class="in-thesis">品牌出海的竞争壁垒，正在从"谁先出去"变成"谁的 AI 系统更聪明"。</div>
+          <div class="in-support">AI 把原本需要十年积累的跨国经营能力压缩成可快速复制的系统能力。已出海品牌靠 AI 降本提效，未出海品牌靠 AI 跳过传统跨境的门槛——两边的速度差正在消失。目前 60%-70% 的中国出海商户已接入 AI 技术。</div>
+        </div>
+
+        <div class="judge">
+          <div class="jline"><div class="jkey">影响</div><div class="jval">品牌出海的竞争不再是规模之争，而是"谁的系统更聪明"。先发优势在衰减，系统优势在增长。AI 让"一人跨国公司"成为可能。</div></div>
+          <div class="jline"><div class="jkey">动作</div><div class="jval">评估当前运营链路中可被 AI 替代的环节；优先在选品、客服、合规审查三个 ROI 最高的场景引入 AI 工具。</div></div>
+          <div class="jline"><div class="jkey">依据</div><div class="jval">60-70% 出海商户已接入 AI，头部平台（Temu 供应链效率 +30%，SHEIN 交付周期压缩至天级）已证明 AI 驱动的效率提升是可测量的。</div></div>
+        </div>
+      </div>
+
+      <div class="takeaway">
+        <div class="tw-label">三个信号，一个方向</div>
+        <p>1. 小红书 Redshop 给品牌出海增加了一条"内容驱动"的渠道——有故事、有文化叙事能力的品牌，在这里比在货架电商更有优势。</p>
+        <p>2. 泡泡玛特欧美双总部 + Global-e 收购 Passport——品牌出海的"基础设施层"正在成熟：IP 本地化有人做了，跨境物流有一站式方案了，组织架构有可参考的三层模型了。</p>
+        <p>3. AI 让"一人跨国公司"成为可能——出海的竞争不再是规模之争，而是"谁的系统更聪明"。先发优势在衰减，系统优势在增长。</p>
+      </div>
+
+      <div class="back-link">
+        <a href="/briefs/">← 返回品牌资讯</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="foot"><div class="shell">
+    <div class="foot-main">
+      <div class="foot-brand">
+        <strong>Sequentry</strong>
+        <span>序引效能</span>
+        <em>有序 · 入世 — Systematic Entry, Engineered.</em>
+      </div>
+      <div class="foot-contact">
+        <div class="ct-label">Contact / 联系</div>
+        <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
+          <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
+          <div style="text-align:left;">
+            <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
+            <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+          </div>
+        </div>
+        <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+        <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+      </div>
+    </div>
+    <div class="foot-copy">© 2026 Sequentry</div>
+  </div></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+var lenis=new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(function(time){lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+ScrollTrigger.defaults({scroller:document.documentElement});
+var article=document.querySelector('article');
+if(article) gsap.fromTo(article,{opacity:0,y:28},{opacity:1,y:0,duration:0.8,ease:'power2.out'});
+var foot=document.querySelector('footer.foot');
+if(foot) gsap.fromTo(foot,{opacity:0,y:18},{opacity:1,y:0,duration:0.6,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 92%'}});
+window.addEventListener('resize',function(){ScrollTrigger.refresh()});
+</script>
+
+</body>
+</html>
