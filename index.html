@@ -3,455 +3,763 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="独立品牌出海研究公司。有序 · 入世 — Systematic Entry, Engineered.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
-<title>序引效能 · Sequentry — 独立品牌出海研究公司</title>
-<!-- Favicon · 「序」字标，墨黑底反白 -->
+<meta name="description" content="序引效能（Sequentry）是一家独立的品牌出海研究机构，从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。">
+<title>序引效能 · Sequentry — 独立品牌出海研究</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "50773348502349569a11c73225d9c735"}'></script><!-- End Cloudflare Web Analytics -->
-<!-- Lenis smooth scroll --><link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+<!-- Cloudflare Web Analytics -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"50773348502349569a11c73225d9c735"}'></script>
+<!-- End Cloudflare Web Analytics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ===========================================================
-     序引效能官网 · Meridian v1.9
-     :root + 组件来自 skill：references/19-design-tokens.md
-       + templates/meridian-components.md
-     遵循 references/10-web-page.md「Meridian Brand Page Pattern」。
-     v3 调整：Hero 入口符改弱虚线十字；小节头编号列收窄；
-       差异区去表格化改对比行；底部"联系+footer"合并去重。
-     =========================================================== */
-
-  :root {
-    --ink:#0F172A; --deep:#1F2937; --gray:#6B7280; --light:#9CA3AF; --line:#E5E7EB;
-    --line-warm:#D8D2C7; --paper:#FFFFFF; --warm:#FAFAF7; --xuan:#F3F1EA; --silk:#EDE4D3;
-    --blue:#1E40AF; --red:#B91C1C; --zhu:#8B1A1A;
-    --gold:#9C7A26; --gold-soft:#BF9A3A;
-    --cat-platform:#2F4B6E; --cat-brand:#2F6E5B; --cat-market:#8A5A25;
-    --cat-compliance:#B0341F; --cat-ops:#5D6A2C; --cat-capital:#5A3F6E;
-    --sans:Inter,"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
-    --serif:Fraunces,"Source Han Serif SC","Noto Serif SC","Noto Serif CJK SC","Songti SC",Georgia,serif;
-    --mono:"SF Mono",Consolas,Monaco,monospace;
-  }
-  * { box-sizing: border-box; }
-  html { background: var(--warm); scroll-behavior: smooth; }
-  body {
-    margin: 0; color: var(--ink); font-family: var(--sans);
-    -webkit-font-smoothing: antialiased;
-    background-color: var(--warm);
-    background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
-    background-attachment: fixed;
-  }
-  a { color: inherit; text-decoration: none; }
-  .shell { width: min(1240px, calc(100% - 48px)); margin: 0 auto; }
-
-  /* ---- 顶部导航 ---- */
-  .top { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line-warm); position: sticky; top: 0; background: rgba(250,250,247,.86); backdrop-filter: blur(6px); z-index: 9; }
-  header.top > .shell { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 0 24px; }
-  .brand { display: grid; gap: 2px; }
-  .brand strong { font-family: var(--serif); font-size: 24px; font-weight: 600; letter-spacing: -.01em; }
-  .brand span { font-family: var(--mono); color: var(--gray); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
-  .nav { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; font-family: var(--mono); color: var(--gray); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
-  .nav a:hover { color: var(--ink); }
-  .nav .cta { color: var(--zhu); border: 1px solid var(--zhu); padding: 7px 14px; }
-  .nav .cta:hover { background: var(--zhu); color: var(--warm); }
-
-  .dropdown { position: relative; display: inline-flex; align-items: center; }
-  .dropdown > a { display: flex; align-items: center; gap: 4px; }
-  .dropdown > a::after { content: "\25be"; font-size: 9px; margin-left: 2px; }
-  .dropdown-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 10px; min-width: 160px; z-index: 10; }
-  .dropdown:hover .dropdown-menu { display: block; }
-  .dropdown-menu-inner { background: var(--paper); border: 1px solid var(--line-warm); padding: 8px 0; }
-  .dropdown-menu-inner a { display: block; padding: 8px 18px; font-size: 12px; letter-spacing: .06em; white-space: nowrap; color: var(--gray); }
-  .dropdown-menu-inner a:hover { background: var(--xuan); color: var(--ink); }
-  .dropdown-menu-inner a.act { color: var(--zhu); }
-
-  /* ---- Hero（文字主导）---- */
-  .hero { min-height: calc(82vh - 76px); display: grid; align-content: center; padding: 64px 0 76px; max-width: 1000px; }
-  .hero-anchor { display: flex; align-items: center; gap: 18px; margin-bottom: 10px; }
-  .entry-sm { position: relative; width: 60px; height: 60px; flex: none; display: grid; place-items: center; border: 2px solid var(--zhu); color: var(--zhu); font-family: var(--serif); font-size: 30px; background: rgba(243,241,234,.6); }
-  /* 弱虚线十字（替代原来过重的实线）*/
-  .entry-sm::before, .entry-sm::after { content: ""; position: absolute; }
-  .entry-sm::before { top: -13px; bottom: -13px; left: 50%; width: 0; border-left: 1px dashed rgba(139,26,26,.26); }
-  .entry-sm::after { left: -13px; right: -13px; top: 50%; height: 0; border-top: 1px dashed rgba(139,26,26,.26); }
-  .eyebrow { font-family: var(--mono); color: var(--zhu); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
-  .hero h1 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(46px,7vw,92px); line-height: 1.02; }
-  .hero h1 em { font-style: normal; color: var(--zhu); }
-  .lead { max-width: 800px; margin: 32px 0 0; color: var(--deep); font-size: 19px; line-height: 1.85; }
-  .lead b { color: var(--ink); font-weight: 500; }
-  .hero-actions { margin-top: 42px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-  .btn { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 13px 22px; border: 1px solid var(--ink); }
-  .btn.primary { background: var(--ink); color: var(--warm); }
-  .btn.primary:hover { background: var(--zhu); border-color: var(--zhu); }
-  .btn.ghost { color: var(--ink); }
-  .btn.ghost:hover { background: var(--ink); color: var(--warm); }
-  .motto { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-  .motto b { font-family: var(--serif); font-size: 22px; font-weight: 600; letter-spacing: .06em; }
-  .motto i { width: 56px; height: 1px; background: var(--zhu); }
-  .motto span { color: var(--gray); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
-
-  /* 顶部 eyebrow 独立成行后的下方留白 */
-  .hero .eyebrow-top { margin-bottom: 28px; }
-
-  /* 入字印章：motto 区开印，不带虚线十字 */
-  .motto-seal {
-    width: 44px; height: 44px;
-    flex: none;
-    display: grid; place-items: center;
-    border: 2px solid var(--zhu);
-    color: var(--zhu);
-    font-family: var(--serif);
-    font-size: 22px;
-    background: rgba(243,241,234,.6);
-  }
-
-  /* 最新动态（单行链接条） */
-  .hero-latest { margin-top: 28px; font-size: 13.5px; color: var(--light); line-height: 1.6; }
-  .hero-latest a { color: var(--gray); border-bottom: 1px solid var(--line); }
-  .hero-latest a:hover { color: var(--ink); border-bottom-color: var(--ink); }
-  .hero-latest .sep { color: var(--line-warm); margin: 0 10px; }
-  .hl-cat { display:inline-block; font-family:var(--mono); font-size:9px; letter-spacing:.08em; color:var(--paper); padding:1px 7px; margin-right:6px; vertical-align:1px; }
-
-  /* ---- 区块 + 编号小节头（编号列收窄）---- */
-  section.block { padding: 84px 0; border-top: 1px solid var(--line-warm); }
-  .mc-head { display: grid; grid-template-columns: 160px 1fr; gap: 32px; margin-bottom: 44px; }
-  .mc-head .index { color: var(--zhu); font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; padding-top: 6px; }
-  .mc-head h2 { margin: 0; font-family: var(--serif); font-weight: 600; font-size: clamp(30px,4.4vw,52px); line-height: 1.14; color: var(--ink); }
-  .mc-head p { max-width: 720px; margin: 18px 0 0; color: var(--deep); font-size: 17px; line-height: 1.85; }
-
-  /* ---- 三层能力（tiles）---- */
-  .caps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px; border: 1px solid var(--line-warm); background: var(--line-warm); }
-  .cap { background: var(--paper); padding: 30px 28px; min-height: 260px; position: relative; display: grid; align-content: start; }
-  .cap::before { content: ""; position: absolute; left: 28px; right: 28px; top: 20px; height: 2px; }
-  .cap:nth-child(1)::before { background: var(--ink); }
-  .cap:nth-child(2)::before { background: var(--zhu); }
-  .cap:nth-child(3)::before { background: var(--blue); }
-  .cap .num { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--zhu); margin: 40px 0 18px; }
-  .cap h3 { margin: 0 0 12px; font-family: var(--serif); font-weight: 600; font-size: 24px; }
-  .cap p { margin: 0; color: var(--gray); font-size: 14.5px; line-height: 1.75; }
-
-  /* ---- 五层框架（信息化坐标盘 + 图例）---- */
-  .fw { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 32px; align-items: stretch; }
-  .fw-board { position: relative; overflow: hidden; min-height: 480px; padding: 38px 40px; border: 1px solid var(--line-warm); background-color: var(--xuan);
-    background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23B9B1A5' fill-opacity='.16'%3E%3Ccircle cx='13' cy='24' r='.7'/%3E%3Ccircle cx='74' cy='38' r='.6'/%3E%3Ccircle cx='102' cy='92' r='.65'/%3E%3C/g%3E%3C/svg%3E");
-    display: grid; grid-template-rows: auto 1fr; gap: 26px; }
-  .fw-board .grid { position: absolute; inset: 30px; display: grid; grid-template-columns: repeat(6,1fr); grid-template-rows: repeat(8,1fr); border-left: 1px solid rgba(15,23,42,.18); border-top: 1px solid rgba(15,23,42,.14); }
-  .fw-board .grid i { border-right: 1px solid rgba(15,23,42,.08); border-bottom: 1px solid rgba(15,23,42,.07); }
-  .fw-entry-row { position: relative; z-index: 2; display: flex; align-items: center; gap: 16px; }
-  .fw-entry { width: 58px; height: 58px; flex: none; display: grid; place-items: center; border: 2px solid var(--zhu); color: var(--zhu); font-family: var(--serif); font-size: 32px; background: rgba(250,250,247,.82); }
-  .fw-entry-row .cap2 { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--zhu); }
-  .fw-track { position: relative; z-index: 2; margin-left: 28px; border-left: 1px solid rgba(15,23,42,.55); display: flex; flex-direction: column; justify-content: space-between; padding: 4px 0; }
-  .fw-node { position: relative; padding-left: 26px; }
-  .fw-node::before { content: ""; position: absolute; left: -6px; top: 4px; width: 11px; height: 11px; border-radius: 50%; background: var(--ink); border: 2px solid var(--xuan); }
-  .fw-node:last-child::before { background: var(--zhu); width: 14px; height: 14px; left: -7px; }
-  .fw-node b { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--gray); margin-right: 10px; }
-  .fw-node .nm { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); }
-  .fw-node:last-child .nm { color: var(--zhu); }
-  .fw-legend { border: 1px solid var(--line-warm); background: var(--paper); display: flex; flex-direction: column; }
-  .fw-legend .row { display: grid; grid-template-columns: 124px 1fr; gap: 18px; align-items: baseline; padding: 20px 26px; border-bottom: 1px solid var(--line-warm); }
-  .fw-legend .row:last-child { border-bottom: none; }
-  .fw-legend .lx { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); }
-  .fw-legend .nm { font-family: var(--serif); font-weight: 600; font-size: 19px; color: var(--ink); display: block; margin-bottom: 5px; }
-  .fw-legend .ld { color: var(--gray); font-size: 14px; line-height: 1.65; }
-  .fw-legend .row:last-child .lx, .fw-legend .row:last-child .nm { color: var(--zhu); }
-
-  /* ---- 差异六维（对比行 · 去表格化）---- */
-  .diff { display: grid; gap: 1px; background: var(--line-warm); border: 1px solid var(--line-warm); }
-  .diff > div { background: var(--warm); }
-  .diff-key { display: grid; grid-template-columns: 160px 1fr 30px 1fr; gap: 22px; padding: 13px 28px; }
-  .diff-key span { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--light); }
-  .diff-key .k-to { color: var(--zhu); }
-  .drow { display: grid; grid-template-columns: 160px 1fr 30px 1fr; gap: 22px; align-items: center; padding: 20px 28px; }
-  .drow .dim { font-family: var(--serif); font-weight: 600; font-size: 18px; color: var(--ink); }
-  .drow .from { color: var(--gray); font-size: 15px; line-height: 1.5; }
-  .drow .arrow { color: var(--zhu); font-family: var(--mono); font-size: 15px; text-align: center; }
-  .drow .to { color: var(--ink); font-size: 15px; font-weight: 500; line-height: 1.5; }
-  .drow.flag { background: var(--paper); }
-  .drow.flag .to { color: var(--zhu); }
-
-  /* ---- 三类内容（信号卡）---- */
-  .content { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
-  .ccard { border: 1px solid var(--line-warm); background: var(--paper); padding: 28px; min-height: 240px; display: grid; align-content: space-between; }
-  .ccard .top-row { display: flex; align-items: center; justify-content: space-between; }
-  .ccard .meta { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); }
-  .ccard h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; font-size: 22px; }
-  .ccard p { margin: 0; color: var(--gray); font-size: 14.5px; line-height: 1.72; }
-  .mc-mark { width: 40px; height: 40px; border: 1px solid var(--ink); position: relative; flex: none; }
-  .mc-mark::before, .mc-mark::after { content: ""; position: absolute; background: var(--zhu); }
-  .m-entry::before { width: 21px; height: 6px; left: 7px; top: 14px; transform: rotate(53deg); transform-origin: left center; }
-  .m-entry::after  { width: 19px; height: 6px; left: 16px; top: 23px; transform: rotate(47deg); transform-origin: left center; }
-  .m-signal::before { width: 22px; height: 1px; left: 8px; top: 19px; }
-  .m-signal::after  { width: 1px; height: 22px; left: 19px; top: 8px; }
-  .m-verify::before { width: 14px; height: 14px; left: 12px; top: 12px; background: var(--paper); border: 2px solid var(--zhu); }
-
-  /* ---- 组件 6 · 深色定位 ---- */
-  .mc-intel { padding: 56px 48px; background: var(--ink); color: var(--warm); }
-  .mc-intel .ix { font-family: var(--mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--zhu); margin-bottom: 22px; }
-  .mc-intel h3 { margin: 0 0 18px; font-family: var(--serif); font-weight: 600; font-size: clamp(28px,3.6vw,44px); line-height: 1.2; }
-  .mc-intel > p { max-width: 700px; margin: 0; color: #C8C0B5; line-height: 1.85; font-size: 16px; }
-  .mc-intel .list { margin-top: 34px; border: 1px solid rgba(250,250,247,.20); }
-  .mc-intel .row { min-height: 66px; display: grid; grid-template-columns: 140px 1fr 130px; gap: 18px; align-items: center; padding: 16px 20px; border-bottom: 1px solid rgba(250,250,247,.14); }
-  .mc-intel .row:last-child { border-bottom: none; }
-  .mc-intel .row b { color: var(--zhu); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; }
-  .mc-intel .row span { font-size: 15px; line-height: 1.5; }
-  .mc-intel .row i { color: #BFB7AD; font-family: var(--mono); font-size: 11px; font-style: normal; text-align: right; letter-spacing: .06em; }
-
-
-  /* 公众号二维码组：桌面端右贴 */
-  .foot-wechat { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 18px; justify-content: flex-end; }
-  .foot-wechat-text { text-align: left; }
-
-  /* ---- 底部：联系 + Footer（合并）---- */
-  footer.foot { width:100%; padding: 64px 0 32px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
-  .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
-  .foot-contact { text-align: right; }
-  .foot-contact .ct-label { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #A8A098; margin-bottom: 18px; }
-  .foot-contact p { margin: 0 0 7px; color: #A8A098; font-size: 13.5px; line-height: 1.65; }
-  .foot-contact a.mail { color: #C8C0B5; border-bottom: 1px solid #C8C0B5; }
-  .foot-contact .btn { display: inline-block; margin-top: 18px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 12px 20px; border: 1px solid #C8C0B5; color: #C8C0B5; }
-  .foot-contact .btn:hover { background: #C8C0B5; color: var(--ink); }
-  .foot-brand { display: grid; gap: 6px; align-content: start; justify-items: start; }
-  .foot-brand strong { font-family: var(--serif); font-size: 26px; font-weight: 600; color: #FAFAF7; letter-spacing: -.01em; }
-  .foot-brand span { font-family: var(--sans); font-size: 15px; color: #A8A098; }
-  .foot-brand em { font-family: var(--mono); font-style: normal; font-size: 11px; color: #8A8278; letter-spacing: .06em; }
-  .foot-copy { margin-top: 24px; color: #6B6560; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-
-  @media (max-width: 1050px) {
-    .mc-head, .foot-main, .fw { grid-template-columns: 1fr; gap: 28px; }
-    .foot-contact { text-align: left; }
-    .caps, .content { grid-template-columns: 1fr; }
-    .fw-board { min-height: 420px; }
-    .foot-wechat { justify-content: flex-start; }
-  }
-  @media (max-width: 680px) {
-    .top { padding: 14px 0; position: static; }
-    header.top > .shell { flex-wrap: wrap; gap: 10px; }
-    .brand strong { font-size: 20px; }
-    .nav { gap: 14px; font-size: 11px; }
-    .nav .cta { display: none; }
-    .hero { min-height: auto; padding: 44px 0 52px; }
-    .fw-legend .row { grid-template-columns: 1fr; gap: 6px; }
-    .diff-key { display: none; }
-    .drow { grid-template-columns: 1fr; gap: 6px; padding: 18px 22px; }
-    .drow .arrow { display: none; }
-    .drow .from::before { content: "行业惯常 · "; color: var(--light); }
-    .drow .to::before { content: "序引 · "; color: var(--zhu); }
-    .mc-intel .row { grid-template-columns: 1fr; gap: 8px; }
-    .mc-intel .row i { text-align: left; }
-    .mc-intel { padding: 40px 24px; }
-    .mc-intel h3 { font-size: 24px; }
-    .mc-intel .list { margin-top: 24px; }
-    .mc-intel .row { padding: 14px 16px; }
-    /* 移动端隐藏锚点导航，只保留外链 */
-    .nav a[href^="#"]:not(.cta) { display: none; }
-    .nav { gap: 16px; }
-  }
+:root{
+  --bg:#FAFAF7;
+  --surface:#FFFFFF;
+  --ink:#0F172A;
+  --deep:#1F2937;
+  --text:#4D4D4D;
+  --muted:#737373;
+  --light:#9CA3AF;
+  --line:rgba(15,23,42,.10);
+  --line-soft:rgba(15,23,42,.065);
+  --line-warm:#D8D2C7;
+  --warm:#FAFAF7;
+  --xuan:#F3F1EA;
+  --blue:#1E40AF;
+  --zhu:#8B1A1A;
+  --gold:#9C7A26;
+  --gold-soft:#BF9A3A;
+  --cat-platform:#2F4B6E;
+  --cat-market:#8A5A25;
+  --cat-compliance:#B0341F;
+  --cat-ops:#5D6A2C;
+  --sans:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;
+  --mono:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  background-color:var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.shell{width:min(1320px,calc(100% - 44px));margin:0 auto}
+.mono{font-family:var(--mono)}
+.top{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(250,250,247,.9);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line-warm);
+}
+.top-inner{
+  min-height:64px;
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr) 320px;
+  gap:22px;
+  align-items:center;
+}
+.brand{display:grid;gap:1px;min-width:max-content}
+.brand strong{font-family:var(--serif);font-size:22px;font-weight:600}
+.brand span{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+.nav{display:flex;gap:18px;align-items:center;color:var(--muted);font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.search{
+  display:grid;
+  grid-template-columns:18px 1fr auto;
+  gap:8px;
+  align-items:center;
+  min-height:36px;
+  border:1px solid var(--line);
+  border-radius:6px;
+  background:var(--surface);
+  padding:0 10px;
+  color:var(--muted);
+  font-family:var(--mono);
+  font-size:11px;
+}
+.search input{border:0;outline:0;background:transparent;min-width:0;color:var(--ink);font-size:12px}
+.search kbd{border:1px solid var(--line);border-radius:4px;padding:2px 5px;color:var(--light);font-size:10px;background:var(--bg)}
+.status-bar{
+  border-bottom:1px solid var(--line-soft);
+  background:rgba(250,250,247,.72);
+}
+.status-inner{
+  min-height:40px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:18px;
+  align-items:center;
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--zhu)}
+.live:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--zhu)}
+.status-metrics{display:flex;flex-wrap:wrap;gap:18px}
+.status-metrics b{color:var(--ink);font-weight:500}
+.hero{
+  padding:38px 0 28px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 372px;
+  gap:28px;
+  align-items:stretch;
+}
+.hero-main{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.90);
+  padding:30px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 250px;
+  gap:30px;
+  min-height:360px;
+}
+.kicker,.label,.panel-title,.section-index{
+  font-family:var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  font-size:11px;
+  color:var(--zhu);
+}
+h1,h2,h3,p{margin-top:0}
+h1{
+  margin:18px 0 18px;
+  max-width:620px;
+  font-family:var(--serif);
+  font-size:clamp(42px,4.2vw,60px);
+  line-height:1.05;
+  font-weight:600;
+}
+.lead{max-width:760px;color:var(--deep);font-size:16px;line-height:1.78;margin-bottom:24px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--ink);
+  border-radius:6px;
+  padding:10px 14px;
+  font-family:var(--mono);
+  font-size:11.5px;
+  letter-spacing:.04em;
+}
+.btn.primary{background:var(--ink);color:var(--surface)}
+.btn.primary:hover{background:var(--zhu);border-color:var(--zhu)}
+.btn.secondary{background:var(--surface)}
+.btn.secondary:hover{color:var(--zhu);border-color:var(--zhu)}
+.snapshot{
+  border-left:1px solid var(--line-soft);
+  padding-left:26px;
+  display:grid;
+  align-content:start;
+  gap:14px;
+}
+.snap-row{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:12px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line-soft);
+}
+.snap-row:last-child{border-bottom:0}
+.snap-row b{font-family:var(--serif);font-size:25px;font-weight:600}
+.snap-row span{color:var(--muted);font-size:12px;line-height:1.5}
+.entry-panel{
+  border:1px solid var(--line);
+  background:var(--surface);
+  padding:24px;
+  display:grid;
+  align-content:space-between;
+}
+.entry-mark{
+  width:64px;height:64px;
+  display:grid;place-items:center;
+  position:relative;
+  border:2px solid var(--zhu);
+  color:var(--zhu);
+  background:var(--warm);
+  font-family:var(--serif);
+  font-size:34px;
+  font-weight:600;
+}
+.entry-mark:before,.entry-mark:after{content:"";position:absolute;background:rgba(139,26,26,.22)}
+.entry-mark:before{width:1px;height:108px;top:-27px;left:50%}
+.entry-mark:after{height:1px;width:108px;left:-27px;top:50%}
+.entry-panel strong{font-family:var(--serif);font-size:23px}
+.entry-panel p{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
+.workbench{
+  padding:0 0 34px;
+  display:grid;
+  grid-template-columns:270px minmax(0,1fr) 330px;
+  gap:18px;
+  align-items:start;
+}
+.panel{
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+.panel-head{
+  min-height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border-bottom:1px solid var(--line-soft);
+}
+.panel-title{color:var(--muted)}
+.panel-title b{color:var(--ink);font-weight:500}
+.filter-stack{padding:12px;display:grid;gap:12px}
+.filter-group{border-bottom:1px solid var(--line-soft);padding-bottom:12px}
+.filter-group:last-child{border-bottom:0;padding-bottom:0}
+.filter-group h3{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px;text-transform:uppercase}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:var(--surface);
+  color:var(--muted);
+  padding:6px 9px;
+  font-family:var(--mono);
+  font-size:10.5px;
+  cursor:pointer;
+}
+.chip.on{border-color:var(--ink);color:var(--ink);background:var(--warm)}
+.method-mini{
+  padding:12px;
+  display:grid;
+  gap:8px;
+}
+.method-row{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:10px;
+  align-items:baseline;
+  padding:9px 0;
+  border-bottom:1px solid var(--line-soft);
+}
+.method-row:last-child{border-bottom:0}
+.method-row b{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.method-row span{font-family:var(--serif);font-size:17px;font-weight:600}
+.method-row.final span,.method-row.final b{color:var(--zhu)}
+.signal-list{display:grid}
+.signal{
+  padding:16px 18px 17px;
+  border-bottom:1px solid var(--line-soft);
+}
+.signal:last-child{border-bottom:0}
+.sig-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+  margin-bottom:10px;
+}
+.tag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  border:1px solid var(--line);
+  padding:2px 7px;
+  color:var(--muted);
+  font-family:var(--mono);
+  font-size:10px;
+}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cat-platform)}
+.dot.market{background:var(--cat-market)}
+.dot.compliance{background:var(--cat-compliance)}
+.dot.ops{background:var(--cat-ops)}
+.sig-id{font-family:var(--mono);font-size:10px;color:var(--light);letter-spacing:.05em}
+.strength{margin-left:auto;display:flex;align-items:center;gap:3px}
+.strength span{font-family:var(--mono);font-size:10px;color:var(--light);margin-right:4px}
+.strength i{width:7px;height:13px;display:block;transform:skewX(-12deg);background:var(--line)}
+.strength i.on{background:var(--zhu)}
+.signal h2{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:600;
+  line-height:1.32;
+  margin:0 0 10px;
+}
+.judge{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.judge .item{
+  border-left:2px solid var(--line);
+  padding-left:10px;
+  color:var(--text);
+  font-size:13px;
+  line-height:1.65;
+}
+.judge .item b{
+  display:block;
+  margin-bottom:3px;
+  color:var(--zhu);
+  font-family:var(--mono);
+  font-size:10.5px;
+  letter-spacing:.08em;
+}
+.unlock-row{
+  margin-top:12px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.unlock-row span{
+  border:1px solid rgba(156,122,38,.32);
+  background:#FBF5E3;
+  color:#705411;
+  padding:7px 8px;
+  font-family:var(--mono);
+  font-size:10px;
+}
+.side-stack{display:grid;gap:18px}
+.weekly{
+  padding:18px;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+.weekly h2{
+  margin:8px 0 10px;
+  font-family:var(--serif);
+  font-size:24px;
+  line-height:1.25;
+}
+.weekly p{color:var(--muted);font-size:13px;line-height:1.7}
+.weekly-list{margin:14px 0 0;border-top:1px solid var(--line-soft)}
+.weekly-list div{
+  display:grid;
+  grid-template-columns:76px 1fr;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid var(--line-soft);
+  font-size:12.5px;
+  line-height:1.55;
+}
+.weekly-list b{font-family:var(--mono);font-size:10.5px;color:var(--zhu);letter-spacing:.06em}
+.tracker{padding:18px}
+.tracker-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  margin-top:12px;
+  background:var(--line-soft);
+  border:1px solid var(--line-soft);
+}
+.track-cell{
+  min-height:46px;
+  background:var(--surface);
+  padding:8px;
+  display:grid;
+  align-content:space-between;
+}
+.track-cell b{font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:500}
+.track-cell span{font-size:13px;color:var(--ink)}
+.track-cell.hot span{color:var(--zhu);font-weight:600}
+.below{
+  padding:18px 0 72px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:18px;
+}
+.report{
+  padding:22px;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+.report h2{
+  margin:10px 0 12px;
+  font-family:var(--serif);
+  font-size:28px;
+  line-height:1.25;
+}
+.report p{color:var(--text);font-size:14px;line-height:1.72}
+.report-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  margin:18px 0;
+  background:var(--line-soft);
+  border:1px solid var(--line-soft);
+}
+.metric{background:var(--surface);padding:14px}
+.metric b{font-family:var(--serif);font-size:25px}
+.metric span{display:block;color:var(--muted);font-family:var(--mono);font-size:10px;letter-spacing:.06em;margin-top:3px}
+.chapter-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px 14px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.55;
+}
+.ops{
+  padding:22px;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+.ops h2{
+  margin:10px 0 14px;
+  font-family:var(--serif);
+  font-size:28px;
+}
+.ops-table{display:grid;border:1px solid var(--line-soft)}
+.ops-row{
+  display:grid;
+  grid-template-columns:94px 1fr 100px;
+  gap:12px;
+  padding:12px 14px;
+  border-bottom:1px solid var(--line-soft);
+  align-items:start;
+  font-size:13px;
+  line-height:1.55;
+}
+.ops-row:last-child{border-bottom:0}
+.ops-row b{font-family:var(--mono);font-size:10.5px;color:var(--zhu);letter-spacing:.06em}
+.ops-row i{font-style:normal;color:var(--muted);font-family:var(--mono);font-size:10.5px;text-align:right}
+.note{
+  margin-top:14px;
+  padding:12px 14px;
+  border-left:2px solid var(--zhu);
+  background:var(--warm);
+  color:var(--text);
+  font-size:13px;
+  line-height:1.65;
+}
+footer{
+  padding:62px 0 30px;
+  background:var(--ink);
+  color:#A8A098;
+}
+.foot-main{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:44px;
+  padding-bottom:30px;
+  border-bottom:1px solid rgba(250,250,247,.12);
+}
+.foot-brand strong{
+  display:block;
+  color:var(--surface);
+  font-family:var(--serif);
+  font-size:27px;
+  font-weight:600;
+}
+.foot-brand span{
+  display:block;
+  margin-top:6px;
+  font-size:15px;
+}
+.foot-brand em{
+  display:block;
+  margin-top:7px;
+  color:#80776E;
+  font-family:var(--mono);
+  font-size:11px;
+  font-style:normal;
+  letter-spacing:.05em;
+}
+.foot-contact{
+  display:grid;
+  justify-items:end;
+  gap:12px;
+  text-align:right;
+}
+.foot-contact p{
+  margin:0;
+  font-size:13.5px;
+  line-height:1.7;
+}
+.foot-contact a{
+  color:#D8D2C7;
+  border-bottom:1px solid rgba(216,210,199,.5);
+}
+.wechat{
+  display:flex;
+  align-items:flex-start;
+  justify-content:flex-end;
+  gap:18px;
+}
+.wechat img{
+  width:96px;
+  height:96px;
+  border:1px solid rgba(250,250,247,.14);
+}
+.copyright{
+  margin-top:22px;
+  color:#6B6560;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+@media(max-width:1180px){
+  .top-inner,.hero,.hero-main,.workbench,.below,.foot-main{grid-template-columns:1fr}
+  .search{max-width:520px}
+  .snapshot{border-left:0;border-top:1px solid var(--line-soft);padding:20px 0 0}
+  .foot-contact{justify-items:start;text-align:left}
+  .wechat{justify-content:flex-start}
+}
+@media(max-width:760px){
+  .shell{width:min(100% - 28px,1320px)}
+  .top{position:static}
+  .top-inner{gap:12px;padding:12px 0}
+  .nav{overflow:auto;padding-bottom:2px}
+  .hero{padding-top:24px}
+  .hero-main,.entry-panel,.weekly,.report,.ops{padding:18px}
+  h1{font-size:42px}
+  .judge,.unlock-row,.report-metrics,.chapter-list,.ops-row{grid-template-columns:1fr}
+  .strength{margin-left:0}
+  .wechat{flex-direction:column}
+}
 </style>
 </head>
 <body>
-
-  <!-- ===== 顶部导航 ===== -->
-  <header class="top"><div class="shell">
-    <a class="brand" href="#top"><strong>序引效能</strong><span>Sequentry</span></a>
+<header class="top">
+  <div class="shell top-inner">
+    <a class="brand" href="#">
+      <strong>序引效能</strong>
+      <span>Sequentry</span>
+    </a>
     <nav class="nav">
-      <a href="#work">研究 / Research</a>
-      <a href="#diff">差异 / Difference</a>
-      <span class="dropdown">
-        <a href="/report/">报告 / Report</a>
-        <div class="dropdown-menu"><div class="dropdown-menu-inner">
-          <a href="/report/">深度报告</a>
-          <a href="/briefs/">跨境品牌资讯</a>
-        </div></div>
-      </span>
-      <a href="/about/">关于 / About</a>
-      <a href="#contact">联系 / Contact</a>
-      <a class="cta" href="mailto:yanhang@sequentry.com">联系我们</a>
+      <a href="#signals">信号</a>
+      <a href="#report">报告</a>
+      <a href="#method">方法</a>
+      <a href="#ops">行动建议</a>
+      <a href="/about/">关于</a>
+      <a href="#contact">订阅</a>
     </nav>
-  </div></header>
+    <label class="search">
+      <span>⌕</span>
+      <input id="searchInput" placeholder="搜索：AI Commerce / 欧盟 / Amazon">
+      <kbd>/</kbd>
+    </label>
+  </div>
+</header>
 
-  <main id="top">
+<div class="status-bar">
+  <div class="shell status-inner">
+    <div><span class="live">LIVE</span> · 2026.06 · 研究系统运行中 · 最近更新 1h 前</div>
+    <div class="status-metrics">
+      <span><b>5</b> 本周信号</span>
+      <span><b>3</b> 高强度判断</span>
+      <span><b>1</b> 旗舰报告</span>
+      <span><b>12</b> 周行动窗口</span>
+    </div>
+  </div>
+</div>
 
-    <!-- ===== Hero（文字主导）===== -->
-    <section class="shell hero">
-      <div class="eyebrow eyebrow-top">独立 · INDEPENDENT / 出海研究</div>
-      <h1>独立品牌出海<em>研究</em></h1>
-      <p class="lead">我们反向拆解海外品牌——从供应链、产品、关系、叙事到文化逐层还原；从独立站、Amazon、以及多平台社媒交叉验证，研究中国品牌出海的盲区与机会。输出是深度研究报告和每周跨境品牌资讯。</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="mailto:yanhang@sequentry.com">联系我们</a>
-        <a class="btn ghost" href="#flagship">查看研究 ↓</a>
-      </div>
-      <div class="hero-latest">最新 · 2026.06 · <a href="/briefs/2026-06-01/"><span class="hl-cat" style="background:var(--cat-compliance)">合规</span>欧盟海关预申报新规落地，小包直邮成本面临重估</a><span class="sep">|</span><a href="/report/01/"><span class="hl-cat" style="background:var(--cat-market)">市场</span>中国跨境电商的下一场战役，不在下一个爆款里</a></div>
-      <div class="motto">
-        <div class="motto-seal" aria-label="入 · Entry Seal">入</div>
-        <b>有序，入世</b>
-        <i></i>
-        <span>Systematic Entry, Engineered</span>
-      </div>
-    </section>
-
-    <!-- ===== 01 三层能力 ===== -->
-    <section class="shell block" id="work">
-      <div class="mc-head">
-        <div class="index">01 / Capability</div>
-        <div>
-          <h2>研究、拆解、<br>再变成可用的效能。</h2>
-          <p>序引不是发资讯，而是做一套从认知到工具的闭环：用 AI 追踪一手信息，反向工程顶级品牌，再把结论沉淀成可复用的工作流。</p>
+<main>
+  <section class="shell hero">
+    <div class="hero-main">
+      <div>
+        <div class="kicker">独立 · Independent / Brand Overseas Research</div>
+        <h1>品牌出海研究系统</h1>
+        <p class="lead">序引从海外品牌的反向拆解出发，把平台政策、市场迁移、AI Commerce、合规变化和品牌案例持续整理成可读、可筛选、可转化为行动的研究资产。</p>
+        <div class="actions">
+          <a class="btn primary" href="#signals">进入信号台</a>
+          <a class="btn secondary" href="#report">读旗舰报告</a>
+          <a class="btn secondary" href="#ops">看 12 周动作</a>
         </div>
       </div>
-      <div class="caps">
-        <article class="cap">
-          <div class="num">01 / RESEARCH</div>
-          <h3>深度研究</h3>
-          <p>用 AI 驱动一手信息追踪和内容生产。不做二手编译，追到信息发生的源头。</p>
-        </article>
-        <article class="cap">
-          <div class="num">02 / REVERSE-ENG</div>
-          <h3>反向工程</h3>
-          <p>拆解世界顶级品牌的方法论——从供应链到产品到叙事到文化，逐层还原它们为什么赢。</p>
-        </article>
-        <article class="cap">
-          <div class="num">03 / AI EFFICIENCY</div>
-          <h3>AI 效能</h3>
-          <p>将研究结果转化为 AI 驱动的工作流和工具链，让认知不止停在报告里，而是能被反复执行。</p>
-        </article>
+      <aside class="snapshot">
+        <div class="snap-row"><b>01</b><span>五层反向工程：供应链、产品、关系、叙事、文化。</span></div>
+        <div class="snap-row"><b>05</b><span>本周跨境品牌信号，按强度和地区拆分。</span></div>
+        <div class="snap-row"><b>53</b><span>旗舰报告页数，含六章索引与可视化图谱。</span></div>
+        <div class="snap-row"><b>12</b><span>GEO/AEO、合规、第一方数据的行动周期。</span></div>
+      </aside>
+    </div>
+    <aside class="entry-panel">
+      <div class="entry-mark">入</div>
+      <div>
+        <strong>有序，入世</strong>
+        <p>每周信号、深度报告、行动建议 — 品牌出海需要的系统性研究，这里都有。</p>
       </div>
-    </section>
+    </aside>
+  </section>
 
-    <!-- ===== 02 五层框架（信息化坐标盘）===== -->
-    <section class="shell block">
-      <div class="mc-head">
-        <div class="index">02 / Framework</div>
-        <div>
-          <h2>品牌反向工程，<br>五层逐级深入。</h2>
-          <p>从一个市场坐标出发，向下穿过五个层级。越往下越接近本质，也越难被模仿——这是我们拆解每一个出海标杆的坐标系。</p>
-        </div>
+  <section class="shell workbench" id="signals">
+    <aside class="panel">
+      <div class="panel-head">
+        <div class="panel-title"><b>Filter</b> / 筛选</div>
       </div>
-      <div class="fw">
-        <div class="fw-board" aria-label="五层反向工程坐标">
-          <div class="grid" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-            <i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <div class="fw-entry-row">
-            <div class="fw-entry">入</div>
-            <span class="cap2">Entry Point / 入场坐标</span>
-          </div>
-          <div class="fw-track">
-            <div class="fw-node"><b>L1</b><span class="nm">供应链</span></div>
-            <div class="fw-node"><b>L2</b><span class="nm">产品</span></div>
-            <div class="fw-node"><b>L3</b><span class="nm">关系</span></div>
-            <div class="fw-node"><b>L4</b><span class="nm">叙事</span></div>
-            <div class="fw-node"><b>L5</b><span class="nm">文化</span></div>
+      <div class="filter-stack">
+        <div class="filter-group">
+          <h3>分类</h3>
+          <div class="chips">
+            <button class="chip on" data-filter="all">全部</button>
+            <button class="chip" data-filter="platform">平台</button>
+            <button class="chip" data-filter="market">市场</button>
+            <button class="chip" data-filter="compliance">合规</button>
+            <button class="chip" data-filter="ops">运营</button>
           </div>
         </div>
-        <div class="fw-legend">
-          <div class="row"><div class="lx">L1 / SUPPLY</div><div><span class="nm">供应链</span><span class="ld">成本结构、产能与交付节奏——品牌能力的物理底座。</span></div></div>
-          <div class="row"><div class="lx">L2 / PRODUCT</div><div><span class="nm">产品</span><span class="ld">选品逻辑、迭代速度与价格带卡位，决定它在货架上的位置。</span></div></div>
-          <div class="row"><div class="lx">L3 / RELATION</div><div><span class="nm">关系</span><span class="ld">与渠道、达人、用户的连接方式，以及复购与留存的结构。</span></div></div>
-          <div class="row"><div class="lx">L4 / NARRATIVE</div><div><span class="nm">叙事</span><span class="ld">品牌如何讲述自己，如何把一件产品变成一种意义。</span></div></div>
-          <div class="row"><div class="lx">L5 / CULTURE</div><div><span class="nm">文化</span><span class="ld">进入哪一种文化语境，成为谁生活的一部分——最深、最难复制的一层。</span></div></div>
+        <div class="filter-group">
+          <h3>地区</h3>
+          <div class="chips">
+            <button class="chip on">全球</button>
+            <button class="chip">欧盟</button>
+            <button class="chip">美国</button>
+            <button class="chip">巴西</button>
+          </div>
+        </div>
+        <div class="filter-group" id="method">
+          <h3>五层方法</h3>
+          <div class="method-mini">
+            <div class="method-row"><b>L1</b><span>供应链</span></div>
+            <div class="method-row"><b>L2</b><span>产品</span></div>
+            <div class="method-row"><b>L3</b><span>关系</span></div>
+            <div class="method-row"><b>L4</b><span>叙事</span></div>
+            <div class="method-row final"><b>L5</b><span>文化</span></div>
+          </div>
         </div>
       </div>
-    </section>
+    </aside>
 
-    <!-- ===== 03 差异六维（对比行）===== -->
-    <section class="shell block" id="diff">
-      <div class="mc-head">
-        <div class="index">03 / Difference</div>
-        <div>
-          <h2>同样讲出海，<br>我们站在不同的视角。</h2>
-<p>序引的研究，习惯从独立站、Amazon、以及多平台社媒交叉验证——纯 DTC / 社媒视角看不懂 Amazon 数据背后的真实用户行为，纯 Amazon 视角看不懂一个品牌在用户心智里的真实位置。<b>把这些视角放在一起，才能看到一个品牌的完整真相。</b></p>
-        </div>
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title"><b>Signal Feed</b> / 本周信号</div>
+        <div class="mono" style="font-size:11px;color:var(--muted)">UPDATED 1h AGO</div>
       </div>
-      <div class="diff">
-        <div class="diff-key"><span class="k-dim">维度</span><span class="k-from">行业惯常</span><span></span><span class="k-to">序引</span></div>
-        <div class="drow"><span class="dim">内容视角</span><span class="from">平台 / 流量视角</span><span class="arrow">→</span><span class="to">反向工程视角</span></div>
-        <div class="drow"><span class="dim">案例分析</span><span class="from">复述结果与榜单</span><span class="arrow">→</span><span class="to">拆解可迁移的方法论</span></div>
-        <div class="drow"><span class="dim">输出形式</span><span class="from">资讯流、热点速递</span><span class="arrow">→</span><span class="to">深度研究报告 + 每周跨境品牌资讯</span></div>
-        <div class="drow"><span class="dim">内容源头</span><span class="from">二手编译、转述</span><span class="arrow">→</span><span class="to">AI 驱动的一手追踪</span></div>
-        <div class="drow flag"><span class="dim">驱动逻辑</span><span class="from">流量驱动</span><span class="arrow">→</span><span class="to">认知密度驱动</span></div>
-        <div class="drow"><span class="dim">最终交付</span><span class="from">一次性的观点</span><span class="arrow">→</span><span class="to">可复用的研究资产</span></div>
-      </div>
-    </section>
+      <div class="signal-list" id="signalList">
+        <article class="signal" data-category="platform" data-text="redshop 系统能力 ai agent 全球">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot"></span>平台</span>
+            <span class="tag">全球</span>
+            <span class="sig-id">SIG·2026-0603·01</span>
+            <span class="strength"><span>信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+          </div>
+          <h2>品牌出海的竞争壁垒正在从“先发优势”转向“系统能力”</h2>
+          <div class="judge">
+            <div class="item"><b>事实</b>Redshop 覆盖 9 个市场；泡泡玛特两月内落成欧美双总部；AI Agent 正在跑通跨境全链路。</div>
+            <div class="item"><b>趋势</b>工具、渠道和组织能力被 AI 快速标准化。壁垒不再是先出海，而是谁的系统更聪明。</div>
+          </div>
+          <div class="unlock-row"><span>影响 · 周报层</span><span>动作 · 周报层</span><span>依据 · 周报层</span></div>
+        </article>
 
-    <!-- ===== 04 三类内容 ===== -->
-    <section class="shell block">
-      <div class="mc-head">
-        <div class="index">04 / Content</div>
-        <div>
-          <h2>三类内容，<br>一条认知主线。</h2>
-          <p>从追踪、研究到拆解，密度逐级递增。它们不是三个栏目，而是同一套研究能力在不同深度上的呈现。</p>
-        </div>
-      </div>
-      <div class="content">
-        <article class="ccard" onclick="location.href='/briefs/2026-05-27/'" style="cursor:pointer">
-          <div class="top-row"><span class="meta" style="color:var(--cat-platform)">PLATFORM · SIGNAL</span><div class="mc-mark m-signal"></div></div>
-          <div>
-            <h3>Google和Amazon同时让AI替你购物了</h3>
-            <p>两大平台相继完成AI购物从概念到产品的跨越。竞争维度正从「关键词排名」变为「AI可读性×品牌叙事质量」。</p>
-            <div style="margin-top:14px; font-family:var(--mono); font-size:11px; color:var(--zhu);">阅读简报 →</div>
+        <article class="signal" data-category="compliance" data-text="欧盟 ics2 海关 合规 小包">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot compliance"></span>合规</span>
+            <span class="tag">欧盟</span>
+            <span class="sig-id">SIG·2026-0601·01</span>
+            <span class="strength"><span>信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+          </div>
+          <h2>欧盟海关预申报新规落地，小包直邮成本面临重估</h2>
+          <div class="judge">
+            <div class="item"><b>事实</b>ICS2 第三阶段扩展至所有运输方式，每票货物需在装载前提交数据并接受风险分析。</div>
+            <div class="item"><b>趋势</b>全球海关从抽查制转向全员预检制，低申报价和粗放小包玩法面临系统性风险。</div>
+          </div>
+          <div class="unlock-row"><span>影响 · 成本上升</span><span>动作 · 重算到岸</span><span>依据 · 三规同向</span></div>
+        </article>
+
+        <article class="signal" data-category="platform" data-text="google amazon ai shopping agent commerce">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot"></span>平台</span>
+            <span class="tag">全球</span>
+            <span class="sig-id">SIG·2026-0527·01</span>
+            <span class="strength"><span>信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>
+          </div>
+          <h2>Google 和 Amazon 同时让 AI 替你购物了</h2>
+          <div class="judge">
+            <div class="item"><b>事实</b>Google Universal Cart 与 Amazon Alexa for Shopping 几乎同期把 AI 代购推到购物入口。</div>
+            <div class="item"><b>趋势</b>品牌竞争从关键词排名变成 AI 可读性 × 品牌叙事质量，结构化数据成为生存线。</div>
+          </div>
+          <div class="unlock-row"><span>影响 · 推荐入口</span><span>动作 · Feed/Scheme</span><span>依据 · 双平台同向</span></div>
+        </article>
+
+        <article class="signal" data-category="market" data-text="tiktok shop 巴西 拉美 内容电商">
+          <div class="sig-meta">
+            <span class="tag"><span class="dot market"></span>市场</span>
+            <span class="tag">巴西</span>
+            <span class="sig-id">SIG·2026-0527·04</span>
+            <span class="strength"><span>信号</span><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>
+          </div>
+          <h2>TikTok Shop 巴西站数据爆发</h2>
+          <div class="judge">
+            <div class="item"><b>事实</b>用户日均刷视频超 80 分钟，62% 每日观看直播，80% 观看后购买。</div>
+            <div class="item"><b>趋势</b>巴西正在成为验证“内容电商 × 品牌建设”模式的新试验田。</div>
           </div>
         </article>
-        <article class="ccard" onclick="location.href='/report/01/'" style="cursor:pointer">
-          <div class="top-row"><span class="meta" style="color:var(--cat-market)">MARKET · RESEARCH</span><div class="mc-mark m-verify"></div></div>
-          <div>
-            <h3>下一场战役不在下一个爆款里</h3>
-            <p>AI 重构、市场迁移与新老卖家的破局路径。从 16.9% 到 6.6% 的增速换挡，跨境电商经历产业范式迁移。</p>
-            <div style="margin-top:14px; font-family:var(--mono); font-size:11px; color:var(--zhu);">53 页 · 阅读完整报告 →</div>
-          </div>
-        </article>
-        <article class="ccard">
-          <div class="top-row"><div class="mc-mark m-entry"></div><span class="meta">CASE</span></div>
-          <div><h3>案例拆解</h3><p>把顶级出海品牌按五层框架拆开，还原它们的关键动作与入场窗口。精选案例即将上线。</p></div>
-        </article>
       </div>
     </section>
 
-    <!-- ===== 旗舰研究 / 代表作 ===== -->
-    <section class="shell block" id="flagship">
-      <div class="mc-head">
-        <div class="index">Flagship</div>
-        <div>
-          <h2>序引研究</h2>
+    <aside class="side-stack">
+      <section class="weekly" id="contact">
+        <div class="kicker">Weekly Brief</div>
+        <h2>把免费信号变成订阅价值。</h2>
+        <p>免费层获得事实与趋势，订阅层解锁影响、动作与依据。</p>
+        <div class="weekly-list">
+          <div><b>FREE</b><span>事实、趋势、信号强度、基础来源</span></div>
+          <div><b>PAID</b><span>影响范围、行动建议、证据链、风险窗口</span></div>
+          <div><b>CONTACT</b><span>公众号「序引效能」/ yanhang@sequentry.com</span></div>
         </div>
+      </section>
+      <section class="panel tracker">
+        <div class="panel-title"><b>Market Tracker</b> / 热点矩阵</div>
+        <div class="tracker-grid">
+          <div class="track-cell hot"><b>AI</b><span>高</span></div>
+          <div class="track-cell hot"><b>合规</b><span>高</span></div>
+          <div class="track-cell"><b>拉美</b><span>中</span></div>
+          <div class="track-cell"><b>中东</b><span>中</span></div>
+          <div class="track-cell"><b>Amazon</b><span>高</span></div>
+          <div class="track-cell"><b>DTC</b><span>中</span></div>
+          <div class="track-cell"><b>税务</b><span>中</span></div>
+          <div class="track-cell"><b>内容</b><span>中</span></div>
+        </div>
+      </section>
+    </aside>
+  </section>
+
+  <section class="shell below">
+    <article class="report" id="report">
+      <div class="kicker">序引研究 #01</div>
+      <h2>中国跨境电商的下一场战役，不在下一个爆款里</h2>
+      <p>AI 重构、市场迁移与新老卖家的破局路径。从 16.9% 到 6.6% 的增速换挡，跨境电商正在经历一次产业范式迁移。</p>
+      <div class="report-metrics">
+        <div class="metric"><b>53 页</b><span>PDF</span></div>
+        <div class="metric"><b>50 分钟</b><span>READ</span></div>
+        <div class="metric"><b>6 章</b><span>INDEX</span></div>
       </div>
-      <a href="/report/01/" style="display:block; border:1px solid var(--line-warm); background:var(--paper); padding:32px 36px; color:inherit;">
-        <div style="font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--zhu); margin-bottom:12px;">REPORT #01 · 2026.05</div>
-        <h3 style="margin:0 0 14px; font-family:var(--serif); font-weight:600; font-size:26px; line-height:1.35; color:var(--ink);">中国跨境电商的下一场战役，<br>不在下一个爆款里</h3>
-        <p style="margin:0 0 16px; color:var(--gray); font-size:15px; line-height:1.75;">AI 重构、市场迁移与新老卖家的破局路径。从 16.9% 到 6.6% 的增速换挡，跨境电商正在经历一次产业范式迁移。</p>
-        <div style="display:flex; align-items:center; gap:16px; font-family:var(--mono); font-size:11px; letter-spacing:.08em; color:var(--light);">
-          <span>53 页 · 阅读约 50 分钟</span>
-          <span style="color:var(--zhu);">阅读完整报告 →</span>
-        </div>
-      </a>
-    </section>
-
-    <!-- ===== 05 定位（深色）===== -->
-    <section class="shell block" style="border-top:none;">
-      <div class="mc-intel">
-        <div class="ix">05 / Identity</div>
-        <h3>序引效能是一家独立的品牌出海研究公司。</h3>
-        <p>我们从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会，把对全球市场的判断，沉淀成可以被反复使用的研究资产。</p>
-        <div class="list">
-          <div class="row"><b>WE ARE</b><span>一家独立的品牌出海研究公司</span><i>RESEARCH</i></div>
-          <div class="row"><b>METHOD</b><span>五层反向工程，从供应链到文化</span><i>REVERSE-ENG</i></div>
-          <div class="row"><b>OUTPUT</b><span>深度研究报告 + 每周跨境品牌资讯</span><i>ASSETS</i></div>
-          <div class="row"><b>DRIVE</b><span>认知密度，不是流量</span><i>COGNITION</i></div>
-        </div>
+      <div class="chapter-list">
+        <span>Ⅰ 行业大盘：增速换挡</span>
+        <span>Ⅱ 地理战场：拉美与中东</span>
+        <span>Ⅲ AI 重构：Agentic Commerce</span>
+        <span>Ⅳ GEO/AEO：12 周路径</span>
+        <span>Ⅴ 新老卖家：负债与杠杆</span>
+        <span>Ⅵ 6 / 18 / 36 个月路线图</span>
       </div>
-    </section>
+      <div class="actions" style="margin-top:20px">
+        <a class="btn primary" href="#">阅读完整报告</a>
+        <a class="btn secondary" href="#">下载 PDF</a>
+        <a class="btn secondary" href="#">查看图谱</a>
+      </div>
+    </article>
 
-  </main>
+    <article class="ops" id="ops">
+      <div class="kicker">Action Layer</div>
+      <h2>把判断变成下一步。</h2>
+      <div class="ops-table">
+        <div class="ops-row"><b>0-2 周</b><span>检查 Google Merchant Center Feed、Schema.org 标注、Amazon A+ 内容语义完整度。</span><i>AI 可读性</i></div>
+        <div class="ops-row"><b>3-6 周</b><span>重算欧盟小包直邮到岸成本，确认物流商是否接入 ICS2 申报系统。</span><i>合规成本</i></div>
+        <div class="ops-row"><b>6-12 周</b><span>搭建品牌故事页、对比内容、买家指南和第三方信任信号。</span><i>GEO/AEO</i></div>
+        <div class="ops-row"><b>12 周+</b><span>建立第一方数据回收机制，把内容、客服、广告、库存预测重新组织成 AI 工作流。</span><i>系统能力</i></div>
+      </div>
+      <div class="note">每次访问都能直接找到下一步：检查什么、下载什么、订阅什么。</div>
+    </article>
+  </section>
+</main>
 
-  <!-- ===== 底部：联系 + 品牌（合并）===== -->
-  <footer class="foot" id="contact"><div class="shell">
+<footer id="contact">
+  <div class="shell">
     <div class="foot-main">
       <div class="foot-brand">
         <strong>Sequentry</strong>
@@ -459,67 +767,52 @@
         <em>有序 · 入世 — Systematic Entry, Engineered.</em>
       </div>
       <div class="foot-contact">
-        <div class="ct-label">Contact / 联系</div>
-        <div class="foot-wechat">
-          <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
-          <div class="foot-wechat-text">
-            <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
-            <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+        <div class="wechat">
+          <img src="wechat-qr-placeholder.png" alt="公众号二维码（待替换）">
+          <div>
+            <p style="color:#D8D2C7;font-weight:500;">公众号「序引效能」</p>
+            <p>深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
           </div>
         </div>
-        <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
-        <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+        <p>邮件 · <a href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+        <p>网站 · <a href="https://www.sequentry.com/">sequentry.com</a></p>
+        <p>杭州序引效能科技有限公司</p>
       </div>
     </div>
-    <div class="foot-copy">© 2026 Sequentry</div>
-  </div></footer>
+    <div class="copyright">© 2026 Sequentry</div>
+  </div>
+</footer>
 
-
-<!-- GSAP + ScrollTrigger + Lenis animations -->
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
-var lenis = new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
-lenis.on('scroll',ScrollTrigger.update);
-gsap.ticker.add(function(time){lenis.raf(time*1000)});
-gsap.ticker.lagSmoothing(0);
-ScrollTrigger.defaults({scroller:document.documentElement});
+const chips = document.querySelectorAll('[data-filter]');
+const signals = document.querySelectorAll('.signal');
+const input = document.getElementById('searchInput');
 
-// ── Section headers fade in ──
-document.querySelectorAll('section.block').forEach(function(sec){
-  var head=sec.querySelector('.mc-head');
-  if(head) gsap.fromTo(head,{opacity:0,y:30},{opacity:1,y:0,duration:0.8,ease:'power2.out',scrollTrigger:{trigger:head,start:'top 84%'}});
+function applyFilter(value){
+  const q = (input.value || '').trim().toLowerCase();
+  signals.forEach(item => {
+    const categoryOk = value === 'all' || item.dataset.category === value;
+    const textOk = !q || item.dataset.text.toLowerCase().includes(q) || item.textContent.toLowerCase().includes(q);
+    item.style.display = categoryOk && textOk ? '' : 'none';
+  });
+}
+
+let activeFilter = 'all';
+chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('on'));
+    chip.classList.add('on');
+    activeFilter = chip.dataset.filter;
+    applyFilter(activeFilter);
+  });
 });
-
-// ── Capability cards stagger ──
-var caps=document.querySelector('.caps');
-if(caps) gsap.from(caps.children,{opacity:0,y:24,duration:0.55,stagger:0.1,ease:'power2.out',scrollTrigger:{trigger:caps,start:'top 78%'}});
-
-// ── Framework board parallax ──
-var board=document.querySelector('.fw-board');
-if(board) gsap.to(board,{y:'3%',ease:'none',scrollTrigger:{trigger:board.closest('.fw'),start:'top bottom',end:'bottom top',scrub:0.6}});
-
-// ── Diff rows stagger ──
-document.querySelectorAll('.drow').forEach(function(row,i){
-  gsap.fromTo(row,{opacity:0,x:-16},{opacity:1,x:0,duration:0.45,delay:i*0.07,ease:'power2.out',scrollTrigger:{trigger:row.parentElement,start:'top 76%'}});
+input.addEventListener('input', () => applyFilter(activeFilter));
+window.addEventListener('keydown', event => {
+  if(event.key === '/' && document.activeElement !== input){
+    event.preventDefault();
+    input.focus();
+  }
 });
-
-// ── Content cards stagger ──
-var cc=document.querySelector('.content');
-if(cc) gsap.from(cc.children,{opacity:0,y:22,duration:0.55,stagger:0.1,ease:'power2.out',scrollTrigger:{trigger:cc,start:'top 78%'}});
-
-// ── Identity block fade in ──
-var intel=document.querySelector('.mc-intel');
-if(intel) gsap.fromTo(intel,{opacity:0,y:36},{opacity:1,y:0,duration:0.85,ease:'power2.out',scrollTrigger:{trigger:intel,start:'top 84%'}});
-
-// ── Footer fade ──
-var foot=document.querySelector('footer.foot');
-if(foot) gsap.fromTo(foot,{opacity:0,y:20},{opacity:1,y:0,duration:0.7,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 90%'}});
-
-window.addEventListener('resize',function(){ScrollTrigger.refresh()});
 </script>
-
 </body>
 </html>

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ai-shopping-2026",
+    "title": "Google和Amazon同时让AI替你购物了",
+    "category": "市场",
+    "date": "2026-06-03",
+    "summary": "当Google的AI Mode和Amazon的Interests同时指向「代理购物」场景，跨境电商的流量入口正在经历一次静默迁移。",
+    "url": "/briefs/ai-shopping-2026/",
+    "cover": "",
+    "pinned": true
+  },
+  {
+    "id": "next-battlefield",
+    "title": "下一场战役不在下一个爆款里",
+    "category": "研究",
+    "date": "2026-05-28",
+    "summary": "从16.9%到6.6%的增速换挡，跨境电商正在经历一次产业范式迁移。AI重构、市场迁移与新老卖家的破局路径。",
+    "url": "/briefs/next-battlefield/",
+    "cover": "",
+    "pinned": false
+  },
+  {
+    "id": "eu-customs-2026",
+    "title": "欧盟海关预申报新规落地，小包直邮成本面临重估",
+    "category": "合规",
+    "date": "2026-05-25",
+    "summary": "ICS2第三阶段正式生效，所有进入欧盟的邮包和快件需提前提交电子申报数据。",
+    "url": "/briefs/eu-customs-2026/",
+    "cover": "",
+    "pinned": false
+  },
+  {
+    "id": "3d-printing-ipo",
+    "title": "创想三维正式登陆港交所，成为消费级3D打印第一股",
+    "category": "公司",
+    "date": "2026-05-22",
+    "summary": "从深圳走出的消费级3D打印品牌，如何从海外众筹起步走到港交所。",
+    "url": "/briefs/3d-printing-ipo/",
+    "cover": "",
+    "pinned": false
+  },
+  {
+    "id": "temu-strategy-shift",
+    "title": "Temu调整美国广告策略：从烧钱换量到精耕细作",
+    "category": "平台",
+    "date": "2026-05-18",
+    "summary": "X平台支出锐减95%，Pinterest与Meta成为主要投放渠道，信号意义明显。",
+    "url": "/briefs/temu-strategy-shift/",
+    "cover": "",
+    "pinned": false
+  }
+]

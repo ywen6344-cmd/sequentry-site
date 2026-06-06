@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>序引效能 · 内容流 Demo</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --ink: #0F172A;
+    --text: #4D4D4D;
+    --muted: #737373;
+    --faint: #9CA3AF;
+    --blue: #1E40AF;
+    --zhu: #8B1A1A;
+    --gold: #C8A45C;
+    --line: rgba(0,0,0,0.06);
+    --line-hover: rgba(0,0,0,0.10);
+    --border: #E5E7EB;
+    --soft: #F9FAFB;
+    --radius: 6px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Source Han Sans SC', 'Noto Sans CJK SC', 'Noto Sans SC', 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  /* Dot grid: Vercel-adjacent, invisible until you look */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.03) 0.6px, transparent 0.6px);
+    background-size: 24px 24px;
+  }
+  .container { max-width: 1160px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+
+  /* Header */
+  .site-header {
+    padding: 40px 0 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: 'Fraunces', 'Source Serif Pro', 'Georgia', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--ink); text-decoration: none; letter-spacing: 0.5px;
+  }
+  .logo span { color: var(--gold); font-weight: 600; }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 1.5px;
+    font-family: 'Inter', 'system-ui', '-apple-system', 'Segoe UI', sans-serif;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); }
+
+  /* ========== 两栏看板 ========== */
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 36px;
+    align-items: start;
+  }
+
+  /* ========== 左栏：文章流 ========== */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .section-label {
+    font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 2px; color: var(--muted);
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  }
+  .section-title {
+    font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 20px; font-weight: 600; color: var(--ink);
+  }
+  .more-link {
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    text-decoration: none; letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+  }
+  .more-link:hover { color: var(--blue); }
+
+  /* 文章列表项 */
+  .articles-list { list-style: none; }
+  .article-item {
+    display: block;
+    padding: 22px 20px;
+    margin-bottom: 6px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: all 0.15s;
+  }
+  .article-item:hover {
+    border-color: var(--line-hover);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .article-toprow {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+  }
+  .article-category {
+    font-size: 10px; font-weight: 500;
+    color: var(--blue);
+    background: rgba(30,64,175,0.06);
+    padding: 2px 8px; border-radius: 3px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    letter-spacing: 0.5px;
+  }
+  .pinned-badge {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    color: var(--zhu); 
+    font-family: 'Inter', sans-serif;
+  }
+  .article-date {
+    font-size: 11px; color: var(--faint); margin-left: auto;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  }
+  .article-title {
+    font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 17px; font-weight: 600; line-height: 1.5;
+    color: var(--ink); text-decoration: none; display: block;
+    margin-bottom: 5px; transition: color 0.15s;
+  }
+  .article-title:hover { color: var(--blue); }
+  .article-summary {
+    font-size: 14px; color: var(--text); line-height: 1.6;
+  }
+
+  /* ========== 右栏：侧边看板 ========== */
+  .side-col {
+    position: sticky; top: 24px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  .side-panel {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .side-panel-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  }
+  .flash-dot {
+    width: 5px; height: 5px;
+    background: var(--gold); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* 快讯列表 */
+  .flash-list { list-style: none; }
+  .flash-item {
+    display: flex; gap: 10px; align-items: baseline;
+    padding: 9px 18px; font-size: 12.5px; color: var(--text);
+    border-bottom: 1px solid var(--line); line-height: 1.6;
+  }
+  .flash-item:last-child { border-bottom: none; }
+  .flash-time {
+    font-size: 10px; color: var(--faint); white-space: nowrap;
+    font-variant-numeric: tabular-nums; min-width: 38px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  }
+  .flash-text { flex: 1; }
+
+  /* 报告卡片 */
+  .report-mini {
+    display: block; text-decoration: none; padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s;
+  }
+  .report-mini:last-child { border-bottom: none; }
+  .report-mini:hover { background: rgba(30,64,175,0.02); }
+  .report-number {
+    font-size: 10px; font-weight: 500; letter-spacing: 1px;
+    color: var(--muted); margin-bottom: 4px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  }
+  .report-title {
+    font-family: 'Source Han Serif SC', 'Noto Serif CJK SC', 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    margin-bottom: 4px; line-height: 1.5;
+  }
+  .report-meta {
+    font-size: 12px; color: var(--muted); line-height: 1.5;
+  }
+
+  /* 数据说明 */
+  .data-note {
+    margin-top: 36px; padding: 16px 20px;
+    background: rgba(30,64,175,0.03);
+    border-left: 2px solid var(--blue);
+    font-size: 12px; color: var(--muted); line-height: 1.8;
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .data-note code {
+    font-size: 11px; background: var(--soft);
+    padding: 1px 6px; border-radius: 3px;
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    color: var(--ink);
+  }
+
+  /* Footer */
+  .site-footer {
+    margin-top: 48px; padding: 28px 0 40px;
+    border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--muted);
+    display: flex; justify-content: space-between;
+  }
+
+  /* 响应式 */
+  @media (max-width: 900px) {
+    .dashboard { grid-template-columns: 1fr; gap: 28px; }
+    .side-col { position: static; }
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .article-item { padding: 16px 14px; }
+    .nav-links { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+    <a href="/" class="logo">序引效能 <span>SEQUENTRY</span></a>
+    <nav class="nav-links">
+      <a href="#" class="active">内容</a>
+      <a href="#">研究</a>
+      <a href="#">关于</a>
+    </nav>
+  </header>
+
+  <div class="dashboard">
+
+    <!-- 左栏：文章 -->
+    <div class="main-col">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Latest</div>
+          <div class="section-title">最新文章</div>
+        </div>
+        <a href="#" class="more-link">全部 →</a>
+      </div>
+      <ul class="articles-list" id="articles-list"></ul>
+
+      <div class="data-note">
+        Demo · 内容来自 <code>/data/articles.json</code> <code>/data/flash.json</code> <code>/data/reports.json</code>。新增文章只需编辑JSON，不改HTML。
+      </div>
+    </div>
+
+    <!-- 右栏：快讯 + 报告 -->
+    <aside class="side-col">
+
+      <div class="side-panel">
+        <div class="side-panel-header">
+          <div class="flash-dot"></div>
+          LIVE · 品牌动态
+        </div>
+        <ul class="flash-list" id="flash-list"></ul>
+      </div>
+
+      <div class="side-panel">
+        <div class="side-panel-header">序引研究</div>
+        <div id="reports-list"></div>
+      </div>
+
+    </aside>
+
+  </div>
+
+  <footer class="site-footer">
+    <span>序引效能 · 独立品牌出海研究公司</span>
+    <span>yanhang@sequentry.com</span>
+  </footer>
+
+</div>
+
+<script>
+const DATA_BASE = 'data/';
+
+async function loadJSON(filename) {
+  try {
+    const resp = await fetch(DATA_BASE + filename);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    return await resp.json();
+  } catch (err) {
+    console.error(`加载 ${filename} 失败:`, err);
+    return [];
+  }
+}
+
+function timeAgo(dateStr) {
+  const now = new Date();
+  const then = new Date(dateStr);
+  const minutes = Math.floor((now - then) / 60000);
+  if (minutes < 1) return '刚刚';
+  if (minutes < 60) return `${minutes}分前`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h`;
+  return `${Math.floor(hours / 24)}d`;
+}
+
+function renderFlash(items) {
+  const list = document.getElementById('flash-list');
+  if (!items.length) { list.innerHTML = '<li class="flash-item" style="color:var(--faint)">暂无快讯</li>'; return; }
+  list.innerHTML = items.slice(0, 7).map(item => `
+    <li class="flash-item">
+      <span class="flash-time">${timeAgo(item.time)}</span>
+      <span class="flash-text">${item.text}</span>
+    </li>
+  `).join('');
+}
+
+function renderArticles(items) {
+  const list = document.getElementById('articles-list');
+  if (!items.length) { list.innerHTML = '<li style="color:var(--faint);padding:20px">暂无文章</li>'; return; }
+  const sorted = [...items].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+  list.innerHTML = sorted.map(item => `
+    <li class="article-item">
+      <div class="article-toprow">
+        <span class="article-category">${item.category}</span>
+        ${item.pinned ? '<span class="pinned-badge">置顶</span>' : ''}
+        <span class="article-date">${item.date}</span>
+      </div>
+      <a href="${item.url}" class="article-title">${item.title}</a>
+      <p class="article-summary">${item.summary}</p>
+    </li>
+  `).join('');
+}
+
+function renderReports(items) {
+  const container = document.getElementById('reports-list');
+  if (!items.length) { container.innerHTML = '<p style="color:var(--faint);padding:18px;font-size:13px">暂无报告</p>'; return; }
+  container.innerHTML = items.map((item, i) => `
+    <a href="${item.url}" class="report-mini">
+      <div class="report-number">REPORT #${String(i + 1).padStart(2, '0')} · ${item.date}</div>
+      <div class="report-title">${item.title}</div>
+      <div class="report-meta">${item.pages}页 · 约${item.readTime}分钟</div>
+    </a>
+  `).join('');
+}
+
+async function init() {
+  const [articles, flash, reports] = await Promise.all([
+    loadJSON('articles.json'),
+    loadJSON('flash.json'),
+    loadJSON('reports.json')
+  ]);
+  renderFlash(flash);
+  renderArticles(articles);
+  renderReports(reports);
+}
+
+init();
+</script>
+
+</body>
+</html>
