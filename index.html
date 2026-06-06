@@ -502,12 +502,21 @@ footer{
   letter-spacing:.08em;
   text-transform:uppercase;
 }
-@media(max-width:1180px){
+@media(max-width:1100px){
+  .shell{width:min(100% - 32px, 1320px)}
+  .top-inner{gap:14px;grid-template-columns:180px minmax(0,1fr) 260px}
+  .workbench{gap:12px;grid-template-columns:220px minmax(0,1fr) 280px}
+  .hero{gap:18px;grid-template-columns:minmax(0,1fr) 320px}
+  .hero-main{padding:22px;gap:18px;grid-template-columns:minmax(0,1fr) 200px}
+  .below{gap:12px}
+}
+@media(max-width:900px){
   .top-inner,.hero,.hero-main,.workbench,.below,.foot-main{grid-template-columns:1fr}
   .search{max-width:520px}
   .snapshot{border-left:0;border-top:1px solid var(--line-soft);padding:20px 0 0}
   .foot-contact{justify-items:start;text-align:left}
   .wechat{justify-content:flex-start}
+  .top-inner{gap:12px;padding:10px 0}
 }
 @media(max-width:760px){
   .shell{width:min(100% - 28px,1320px)}
@@ -526,13 +535,13 @@ footer{
 <body>
 <header class="top">
   <div class="shell top-inner">
-    <a class="brand" href="#">
+    <a class="brand" href="/">
       <strong>序引效能</strong>
       <span>Sequentry</span>
     </a>
     <nav class="nav">
-      <a href="#signals">信号</a>
-      <a href="#report">报告</a>
+      <a href="/briefs/">信号</a>
+      <a href="/report/">报告</a>
       <a href="#method">方法</a>
       <a href="#ops">行动建议</a>
       <a href="/about/">关于</a>
@@ -566,8 +575,8 @@ footer{
         <h1>品牌出海研究系统</h1>
         <p class="lead">序引从海外品牌的反向拆解出发，把平台政策、市场迁移、AI Commerce、合规变化和品牌案例持续整理成可读、可筛选、可转化为行动的研究资产。</p>
         <div class="actions">
-          <a class="btn primary" href="#signals">进入信号台</a>
-          <a class="btn secondary" href="#report">读旗舰报告</a>
+          <a class="btn primary" href="/briefs/">进入信号台</a>
+          <a class="btn secondary" href="/report/">读旗舰报告</a>
           <a class="btn secondary" href="#ops">看 12 周动作</a>
         </div>
       </div>
@@ -738,9 +747,9 @@ footer{
         <span>Ⅵ 6 / 18 / 36 个月路线图</span>
       </div>
       <div class="actions" style="margin-top:20px">
-        <a class="btn primary" href="#">阅读完整报告</a>
-        <a class="btn secondary" href="#">下载 PDF</a>
-        <a class="btn secondary" href="#">查看图谱</a>
+        <a class="btn primary" href="/report/01/">阅读完整报告</a>
+        <a class="btn secondary" href="/report/01/">下载 PDF</a>
+        <a class="btn secondary" href="/report/01/graph.html">查看图谱</a>
       </div>
     </article>
 
