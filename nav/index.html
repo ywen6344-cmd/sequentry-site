@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="序引效能出品——跨境品牌导航。品牌端与视觉端值得长期盯的资讯与灵感渠道，人工策展、按类整理、可搜索。">
+<title>跨境品牌导航 · Sequentry</title>
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='4' fill='%230F172A'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Songti SC, Source Han Serif SC, Noto Serif CJK SC, serif' font-size='38' font-weight='600' fill='%23FFFFFF'%3E序%3C/text%3E%3C/svg%3E">
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"50773348502349569a11c73225d9c735"}'></script>
+<meta property="og:title" content="跨境品牌导航 · Sequentry">
+<meta property="og:description" content="序引效能出品的跨境品牌导航——人工策展、按类整理、可搜索。">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.sequentry.com/nav/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+<style>
+:root{
+  --bg:#FAFAF7;--surface:#FFFFFF;--ink:#0F172A;--deep:#1F2937;
+  --text:#4D4D4D;--muted:#737373;--light:#9CA3AF;
+  --line-warm:#D8D2C7;--line:rgba(15,23,42,.08);--line-soft:rgba(15,23,42,.05);
+  --blue:#1E40AF;--zhu:#8B1A1A;--gold:#9C7A26;
+  --sidebar-w:210px;
+  --sans:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;
+  --mono:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;
+}
+*{box-sizing:border-box}html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+
+/* Top bar */
+.top{position:sticky;top:0;z-index:100;background:rgba(250,250,247,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-warm)}
+.top-inner{height:56px;display:flex;align-items:center;padding:0 24px;max-width:1400px;margin:0 auto;gap:24px}
+.top-brand{display:flex;align-items:baseline;gap:8px;min-width:max-content}
+.top-brand strong{font-family:var(--serif);font-size:20px;font-weight:600}
+.top-brand span{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.top-nav{display:flex;gap:16px;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.04em;flex-wrap:wrap}
+.top-nav a:hover{color:var(--ink)}.top-nav .on{color:var(--zhu)}
+
+/* Layout */
+.layout{display:flex;max-width:1400px;margin:0 auto;min-height:calc(100vh - 56px)}
+
+/* Sidebar */
+.sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  position:sticky;top:56px;height:calc(100vh - 56px);
+  overflow-y:auto;padding:28px 0 24px;
+  border-right:1px solid var(--line-warm);background:rgba(250,250,247,.6);
+}
+.sidebar-title{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--light);text-transform:uppercase;padding:0 24px;margin-bottom:12px}
+.sb-group{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--zhu);text-transform:uppercase;padding:14px 24px 6px;margin-top:6px;border-top:1px solid var(--line-soft)}
+.sb-group:first-child{margin-top:0;border-top:0;padding-top:2px}
+.sb-link{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:6px 24px;font-size:13.5px;color:var(--muted);line-height:1.6;
+  border-left:2px solid transparent;transition:all .12s;
+}
+.sb-link:hover{color:var(--ink);background:rgba(216,210,199,.2)}
+.sb-link.active{color:var(--ink);font-weight:500;border-left-color:var(--zhu);background:rgba(139,26,26,.04)}
+.sb-link b{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--light)}
+
+/* Main */
+.main{flex:1;min-width:0;padding:0 40px 80px;background-color:var(--bg);
+  background-image:url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8D2C7' stroke-opacity='.34'%3E%3Cpath d='M0 40H160M0 120H160M40 0V160M120 0V160'/%3E%3C/g%3E%3Cg fill='%23B9B1A5' fill-opacity='.18'%3E%3Ccircle cx='18' cy='26' r='.8'/%3E%3Ccircle cx='87' cy='54' r='.7'/%3E%3Ccircle cx='132' cy='96' r='.75'/%3E%3Ccircle cx='48' cy='142' r='.65'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment:fixed;
+}
+
+/* Hero */
+.hero{padding:36px 0 20px}
+.hero-eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--zhu);text-transform:uppercase;margin-bottom:10px}
+.hero h1{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:600;line-height:1.18;margin:0 0 8px}
+.hero p{font-size:14.5px;color:var(--text);max-width:620px;line-height:1.65;margin:0}
+.hero-stats{margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--light);letter-spacing:.03em}
+.hero-stats b{color:var(--deep);font-weight:500}
+
+/* Controls (sticky) */
+.controls{position:sticky;top:56px;z-index:20;background:rgba(250,250,247,.94);backdrop-filter:blur(6px);
+  padding:14px 0 12px;margin-bottom:8px;border-bottom:1px solid var(--line-soft);
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.search{display:grid;grid-template-columns:18px 1fr;gap:8px;align-items:center;min-height:38px;
+  border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:0 12px;
+  width:360px;max-width:100%;color:var(--muted)}
+.search input{border:0;outline:0;background:transparent;color:var(--ink);font-size:13px}
+
+/* Category section */
+.cat-section{margin-bottom:42px;scroll-margin-top:118px}
+.cat-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:13px;padding-bottom:9px;border-bottom:1px solid var(--line-warm)}
+.cat-head-l{display:flex;align-items:baseline;gap:10px;min-height:30px}
+.cat-index{font-family:var(--mono);font-size:10.5px;color:var(--light);letter-spacing:.06em}
+.cat-head h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0}
+.cat-head .cnt{font-family:var(--mono);font-size:10px;color:var(--light)}
+.cat-desc{font-size:13px;color:var(--muted);margin-left:auto;text-align:right;align-self:center}
+
+/* 近期动态（标题栏右侧，单条 + 定时切换，无标题条）*/
+.feedbox{margin-left:auto;width:330px;flex:none;display:block;border:1px solid var(--line);border-radius:6px;background:var(--surface);padding:9px 12px;transition:opacity .3s ease,border-color .12s}
+.feedbox:hover{border-color:var(--line-warm)}
+.fb-meta{display:block;font-family:var(--mono);font-size:9.5px;color:var(--light);margin-bottom:3px;letter-spacing:.02em}
+.fb-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--zhu);margin-right:6px;vertical-align:middle}
+.fb-title{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12px;color:var(--ink);line-height:1.35}
+.feedbox:hover .fb-title{color:var(--zhu)}
+
+/* Sub tabs */
+.sub-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.stab{font-family:var(--mono);font-size:10.5px;color:var(--muted);background:var(--surface);
+  border:1px solid var(--line-warm);border-radius:4px;padding:5px 12px;cursor:pointer;transition:all .12s}
+.stab:hover{color:var(--ink);border-color:var(--light)}
+.stab.on{background:var(--deep);border-color:var(--deep);color:#fff}
+
+/* Card grid —— 更密 */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:9px}
+.card{display:grid;grid-template-columns:20px 1fr;grid-template-rows:auto auto auto;gap:2px 9px;
+  background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:11px 13px;
+  transition:border-color .12s,box-shadow .12s}
+.card:hover{border-color:var(--line-warm);box-shadow:0 2px 10px rgba(15,23,42,.06)}
+.ico{grid-column:1;grid-row:1/4;position:relative;width:18px;height:18px;border-radius:4px;overflow:hidden;
+  display:inline-grid;place-items:center;color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;flex:none;margin-top:1px}
+.ico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
+.card-name{grid-column:2;font-size:13px;font-weight:600;color:var(--ink);line-height:1.25}
+.card-desc{grid-column:2;font-size:11.5px;color:var(--muted);line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-domain{grid-column:2;font-family:var(--mono);font-size:9.5px;color:var(--light);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:1px}
+
+/* 更多 / 收起 */
+.more-row{display:flex;justify-content:flex-end;margin-top:10px}
+.more-btn{font-family:var(--mono);font-size:11px;color:var(--muted);background:transparent;
+  border:1px solid var(--line-warm);border-radius:4px;padding:6px 14px;cursor:pointer;transition:all .12s}
+.more-btn:hover{color:var(--zhu);border-color:var(--zhu)}
+
+.empty{padding:80px 0;text-align:center;color:var(--light);font-family:var(--mono);font-size:13px}
+
+footer{margin-top:60px;padding:24px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line-warm);max-width:1400px;margin-left:auto;margin-right:auto}
+footer a{color:var(--blue)}
+
+@media(max-width:900px){
+  .layout{flex-direction:column}
+  .sidebar{position:static;width:100%;height:auto;border-right:none;border-bottom:1px solid var(--line-warm);
+    padding:14px 20px;display:flex;flex-wrap:wrap;gap:6px;overflow-x:auto}
+  .sidebar-title{display:none}
+  .sb-group{flex-basis:100%;border-top:0;margin:4px 0 0;padding:4px 8px 0}
+  .sb-link{padding:5px 10px;font-size:12px;border-left:none;border-radius:4px;border:1px solid var(--line-warm)}
+  .sb-link b{display:none}
+  .sb-link.active{border-left-color:var(--line-warm);background:var(--deep);color:#fff}
+  .main{padding:0 18px 60px}
+  .controls{top:0}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+  .cat-desc{display:none}
+  .cat-head{flex-wrap:wrap}
+  .feedbox{width:100%;margin:8px 0 0}
+}
+/* footer */
+footer.foot{width:100%;padding:64px 0 32px;border-top:1px solid rgba(250,250,247,.14);background:var(--ink);color:#8A8278;font-size:13px}
+.foot-main{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;padding-bottom:32px;border-bottom:1px solid rgba(250,250,247,.12)}
+.foot-contact{text-align:right}
+.foot-contact .ct-label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#A8A098;margin-bottom:18px}
+.foot-contact p{margin:0 0 7px;color:#A8A098;font-size:13.5px;line-height:1.65}
+.foot-contact a.mail{color:#C8C0B5;border-bottom:1px solid #C8C0B5}
+.foot-brand{display:grid;gap:6px;align-content:start;justify-items:start}
+.foot-brand strong{font-family:var(--serif);font-size:26px;font-weight:600;color:#FAFAF7;letter-spacing:-.01em}
+.foot-brand span{font-family:var(--sans);font-size:15px;color:#A8A098}
+.foot-brand em{font-family:var(--mono);font-style:normal;font-size:11px;color:#8A8278;letter-spacing:.06em}
+.foot-copy{margin-top:24px;color:#6B6560;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+footer.foot .shell{width:min(1240px,calc(100% - 48px));margin:0 auto}
+@media(max-width:1050px){.foot-main{grid-template-columns:1fr;gap:28px}.foot-contact{text-align:left}}
+@media(max-width:900px){footer.foot{padding:48px 20px 28px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <a href="/" class="top-brand"><strong>Sequentry</strong><span>序引效能</span></a>
+    <nav class="top-nav">
+      <a href="/">首页</a><a href="/about/">关于</a>
+      <a href="/briefs/">信号</a><a href="/report/">报告</a>
+      <a href="/sources/">信源</a>
+      <a href="/nav/" class="on">导航</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-title">Categories</div>
+    <nav id="sbNav"></nav>
+  </aside>
+
+  <main class="main">
+    <section class="hero">
+      <div class="hero-eyebrow">Research Navigator</div>
+      <h1>跨境品牌导航</h1>
+      <p>做品牌出海研究和视觉，最费时的是“去哪儿看”。这里把品牌端与视觉端值得长期盯的高质量渠道尽量收全，按类整理、可搜索、可展开。</p>
+      <div class="hero-stats" id="heroStats"></div>
+    </section>
+
+    <div class="controls">
+      <label class="search"><span>⌕</span><input id="q" placeholder="搜索渠道名 / 关键词 / 域名…"></label>
+    </div>
+
+    <div id="list"></div>
+  </main>
+</div>
+
+<footer class="foot"><div class="shell">
+    <div class="foot-main">
+      <div class="foot-brand">
+        <strong>Sequentry</strong>
+        <span>序引效能</span>
+        <em>有序 · 入世 — Systematic Entry, Engineered.</em>
+      </div>
+      <div class="foot-contact">
+        <div class="ct-label">Contact / 联系</div>
+        <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:18px; justify-content:flex-end;">
+          <img src="/wechat-qr-placeholder.png" alt="公众号二维码（待替换）" width="100" height="100" style="border:1px solid rgba(250,250,247,.14); flex:none;">
+          <div style="text-align:left;">
+            <p style="margin:0 0 6px; color:#C8C0B5; font-size:14px; font-weight:500;">公众号「序引效能」</p>
+            <p style="margin:0; color:#A8A098; font-size:13px; line-height:1.65;">深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+          </div>
+        </div>
+        <p style="margin:0 0 8px; color:#A8A098; font-size:13.5px;">邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+        <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+      </div>
+    </div>
+    <div class="foot-copy">© 2026 Sequentry</div>
+  </div></footer>
+
+<script src="links.js"></script>
+<script src="feed.js"></script>
+<script>
+(function(){
+  var D = window.NAV_DATA || {categories:[],links:[]};
+  var PREVIEW = 8;                       // 折叠时每类先显示几个（约两行）
+  var RANK = {S:0,A:1,B:2};
+  var state = { q:"", sub:{}, exp:{} };  // sub[cat]=subId|"all"; exp[cat]=true 展开
+
+  var sbNav  = document.getElementById("sbNav");
+  var list   = document.getElementById("list");
+  var qInput = document.getElementById("q");
+
+  function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,function(m){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
+
+  var PAL = ["#1F2937","#1E40AF","#8B1A1A","#9C7A26","#3F5161","#5D6A2C","#6B4A7A","#1F5C56"];
+  function iconColor(s){ var h=0; s=s||"?"; for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return PAL[h%PAL.length]; }
+  // favicon 多源兜底：DuckDuckGo → 站点自身 /favicon.ico → icon.horse → 首字母色块
+  var ICON_SRC = [
+    function(d){ return "https://icons.duckduckgo.com/ip3/"+d+".ico"; },
+    function(d){ return "https://"+d+"/favicon.ico"; },
+    function(d){ return "https://icon.horse/icon/"+d; }
+  ];
+  window.navIcon = function(img){
+    var i = (parseInt(img.dataset.i,10)||0) + 1;
+    if(i < ICON_SRC.length){ img.dataset.i = i; img.src = ICON_SRC[i](img.dataset.d); }
+    else { img.remove(); }
+  };
+  function iconHTML(l){
+    var ch = esc((l.name||"?").trim().charAt(0).toUpperCase());
+    var col = iconColor(l.domain||l.name);
+    var d = esc(l.domain||"");
+    var img = l.domain ? '<img data-d="'+d+'" data-i="0" src="'+ICON_SRC[0](d)+'" alt="" loading="lazy" onerror="navIcon(this)">' : "";
+    return '<span class="ico" style="background:'+col+'">'+ch+img+'</span>';
+  }
+
+  function qOK(l){ if(!state.q) return true; return (l.name+" "+l.desc+" "+l.domain).toLowerCase().indexOf(state.q)>=0; }
+  // 某分类当前搜索下的链接，按 tier 排序（优质在前，折叠时先露脸）
+  function catLinks(catId){
+    return D.links.filter(function(l){ return l.cat===catId && qOK(l); })
+                  .sort(function(a,b){ return RANK[a.tier]-RANK[b.tier]; });
+  }
+
+  function cardHTML(l){
+    return '<a class="card" href="'+esc(l.url)+'" target="_blank" rel="noopener" title="'+esc(l.desc)+'">'+
+           iconHTML(l)+
+           '<span class="card-name">'+esc(l.name)+'</span>'+
+           '<span class="card-desc">'+esc(l.desc)+'</span>'+
+           '<span class="card-domain">'+esc(l.domain)+'</span></a>';
+  }
+
+  // 近期动态：单条显示，轮询式错开切换（每次只切一个模块，不同时跳）
+  var FEED = (window.NAV_FEED && window.NAV_FEED.by_cat) || {};
+  var feedIdx = {};   // 每个模块当前显示第几条
+  var feedPtr = 0;    // 轮询指针：依次轮到哪个模块
+  function feedItem(it){
+    return '<span class="fb-meta"><i class="fb-dot"></i>'+esc(it.d||"")+(it.s?" · "+esc(it.s):"")+'</span>'+
+           '<span class="fb-title">'+esc(it.t)+'</span>';
+  }
+  function feedHTML(catId){
+    var f = FEED[catId];
+    if(!f || !f.length) return "";
+    var it = f[(feedIdx[catId]||0) % f.length];
+    return '<a class="feedbox" data-cat="'+esc(catId)+'" href="'+esc(it.u)+'" target="_blank" rel="noopener" title="'+esc(it.t)+'">'+feedItem(it)+'</a>';
+  }
+  function rotateOne(){
+    var boxes = list.querySelectorAll(".feedbox");
+    if(!boxes.length) return;
+    var el = boxes[feedPtr % boxes.length]; feedPtr++;
+    var cat = el.dataset.cat, f = FEED[cat];
+    if(!f || f.length < 2) return;
+    feedIdx[cat] = ((feedIdx[cat]||0) + 1) % f.length;
+    var it = f[feedIdx[cat]];
+    el.style.opacity = "0";
+    setTimeout(function(){ el.href=it.u; el.title=it.t; el.innerHTML=feedItem(it); el.style.opacity="1"; }, 280);
+  }
+
+  function render(){
+    var visCats = D.categories.filter(function(c){ return catLinks(c.id).length>0; });
+    var totalVis = 0, sbHtml = "", lastG = null;
+    var GNAME = {brand:"品牌端", visual:"视觉端", tool:"工具"};
+    visCats.forEach(function(c){
+      var n = catLinks(c.id).length; totalVis += n;
+      if(c.group !== lastG){ lastG=c.group; sbHtml += '<div class="sb-group">'+esc(GNAME[c.group]||c.group)+'</div>'; }
+      sbHtml += '<a class="sb-link" href="#cat-'+esc(c.id)+'"><span>'+esc(c.name)+'</span><b>'+n+'</b></a>';
+    });
+    sbNav.innerHTML = sbHtml;
+
+    document.getElementById("heroStats").innerHTML = state.q
+      ? '搜到 <b>'+totalVis+'</b> 个渠道'
+      : '共 <b>'+D.links.length+'</b> 个渠道 · <b>'+visCats.length+'</b> 个分类';
+
+    var html="", idx=0;
+    visCats.forEach(function(c){
+      idx++;
+      var base = catLinks(c.id);
+      var hasSub = c.subs && c.subs.length && !state.q;
+      var active = state.sub[c.id] || "all";
+      var subsPresent = hasSub ? c.subs.filter(function(s){ return base.some(function(l){return l.sub===s.id;}); }) : [];
+      var shown = base.filter(function(l){ return (!hasSub || active==="all" || l.sub===active); });
+
+      var collapsible = !state.q && shown.length > PREVIEW;
+      var expanded = !!state.exp[c.id];
+      var visible = (collapsible && !expanded) ? shown.slice(0, PREVIEW) : shown;
+
+      html += '<section class="cat-section" id="cat-'+esc(c.id)+'">';
+      var right = feedHTML(c.id) || ('<span class="cat-desc">'+esc(c.desc||"")+'</span>');
+      html += '<div class="cat-head"><div class="cat-head-l"><span class="cat-index">'+String(idx).padStart(2,"0")+'</span>'+
+              '<h2>'+esc(c.name)+'</h2><span class="cnt">'+base.length+'</span></div>'+ right +'</div>';
+      if(subsPresent.length){
+        html += '<div class="sub-tabs" data-cat="'+esc(c.id)+'">'+
+                '<button class="stab '+(active==="all"?"on":"")+'" data-sub="all">全部</button>'+
+                subsPresent.map(function(s){
+                  return '<button class="stab '+(active===s.id?"on":"")+'" data-sub="'+esc(s.id)+'">'+esc(s.name)+'</button>';
+                }).join("")+'</div>';
+      }
+      html += '<div class="card-grid">'+ visible.map(cardHTML).join("") +'</div>';
+      if(collapsible){
+        html += '<div class="more-row"><button class="more-btn" data-cat="'+esc(c.id)+'">'+
+                (expanded ? '收起 ↑' : '更多 '+(shown.length-PREVIEW)+' 个 ↓')+'</button></div>';
+      }
+      html += '</section>';
+    });
+    list.innerHTML = visCats.length ? html : '<div class="empty">没有匹配的渠道，换个关键词试试。</div>';
+    updateActive();
+  }
+
+  // 事件委托：子标签 + 更多/收起（卡片是 <a>，不命中这两类，正常跳转）
+  list.addEventListener("click", function(e){
+    var stab = e.target.closest(".stab");
+    if(stab){ state.sub[stab.closest(".sub-tabs").dataset.cat] = stab.dataset.sub; render(); return; }
+    var more = e.target.closest(".more-btn");
+    if(more){ var c=more.dataset.cat; state.exp[c]=!state.exp[c]; render(); return; }
+  });
+
+  function updateActive(){
+    var secs = list.querySelectorAll(".cat-section"), cur="";
+    secs.forEach(function(s){ if(s.getBoundingClientRect().top<=130) cur=s.id; });
+    sbNav.querySelectorAll(".sb-link").forEach(function(a){
+      a.classList.toggle("active", a.getAttribute("href")==="#"+cur);
+    });
+  }
+  window.addEventListener("scroll", updateActive, {passive:true});
+
+  qInput.addEventListener("input", function(){ state.q=qInput.value.trim().toLowerCase(); render(); });
+
+  render();
+  setInterval(rotateOne, 3500);   // 每 3.5 秒只切换一个模块，依次错开（每个模块约 14 秒一轮）
+})();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+var lenis=new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});
+lenis.on('scroll',ScrollTrigger.update);
+gsap.ticker.add(function(time){lenis.raf(time*1000)});
+gsap.ticker.lagSmoothing(0);
+ScrollTrigger.defaults({scroller:document.documentElement});
+var foot=document.querySelector('footer.foot');
+if(foot) gsap.fromTo(foot,{opacity:0,y:18},{opacity:1,y:0,duration:0.6,ease:'power2.out',scrollTrigger:{trigger:foot,start:'top 92%'}});
+window.addEventListener('resize',function(){ScrollTrigger.refresh()});
+</script>
+</body>
+</html>
