@@ -11,11 +11,11 @@ N = 3  # 每个模块取几条
 
 # briefing 主题 -> 导航模块 id
 THEME2CAT = {
-    "平台政策": "platform",
-    "AI电商":   "platform",
-    "关税合规": "compliance",
-    "消费趋势": "market",
-    "品牌·DTC": "brand-strategy",
+    "平台政策": "platform-channel",
+    "AI电商":   "platform-channel",
+    "关税合规": "compliance-fulfillment",
+    "消费趋势": "market-product",
+    "品牌·DTC": "brand-retail",
 }
 
 b = json.load(open(SRC, encoding="utf-8"))

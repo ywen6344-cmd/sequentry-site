@@ -1,79 +1,85 @@
 // 近期动态快照 —— build_feed.py 从 feeds 项目 briefing.json 生成；过期重跑该脚本即可。
 window.NAV_FEED = {
- "updated": "2026-06-09",
+ "updated": "2026-06-10",
  "by_cat": {
-  "market": [
+  "platform-channel": [
    {
-    "t": "梅西与Ulta高管：配送可靠性比速度更重要",
-    "s": "Retail Dive",
-    "u": "https://www.retaildive.com/news/retailer-delivery-reliability-trumps-speed-macys-ulta/822175/",
-    "d": "2026-06-08"
-   },
-   {
-    "t": "Petco全渠道投资推动Q1销售增长",
-    "s": "Digital Commerce 360",
-    "u": "https://www.digitalcommerce360.com/2026/06/08/petco-omnichannel-sales-q1-fy26/",
-    "d": "2026-06-08"
-   },
-   {
-    "t": "Saks Global获法院批准破产退出计划",
-    "s": "Retail Dive",
-    "u": "https://www.retaildive.com/news/saks-global-bankruptcy-exit-court-approval/822240/",
-    "d": "2026-06-08"
-   }
-  ],
-  "platform": [
-   {
-    "t": "Backbase与万事达卡Move合作",
+    "t": "PayPal与Hey Savi推出英国首个代理商务平台",
     "s": "Finextra 金融科技",
-    "u": "https://www.finextra.com/pressarticle/110056/backbase-connects-with-mastercard-move?utm_medium=rssfinextra&utm_source=finextrafeed",
-    "d": "2026-06-08"
+    "u": "https://www.finextra.com/newsarticle/47887/hey-savi-and-paypal-launch-agentic-commerce-platform-with-in-app-checkout?utm_medium=rssfinextra&utm_source=finextrafeed",
+    "d": "2026-06-10"
    },
    {
-    "t": "沃尔玛全球扩张：仿亚马逊飞轮模式",
-    "s": "Modern Retail",
-    "u": "https://www.modernretail.co/technology/walmart-goes-global-with-its-amazon-like-flywheel/?utm_campaign=modernretaildis&utm_medium=rss&utm_source=general-rss",
-    "d": "2026-06-08"
+    "t": "Klarna在美国推出储蓄账户",
+    "s": "Finextra 金融科技",
+    "u": "https://www.finextra.com/pressarticle/110085/klarna-launches-savings-account-in-us?utm_medium=rssfinextra&utm_source=finextrafeed",
+    "d": "2026-06-09"
    },
    {
-    "t": "Rufus与ChatGPT引领代理广告融合",
-    "s": "Marketplace Pulse",
-    "u": "https://www.marketplacepulse.com/articles/rufus-chatgpt-and-the-agentic-ad-convergence",
+    "t": "Mirakl与Dogma Alares合作加速土耳其电商增长",
+    "s": "ChannelX",
+    "u": "https://channelx.world/2026/06/mirakl-dogma-alares-to-accelerate-ecommerce-growth-in-turkey/",
     "d": "2026-06-09"
    }
   ],
-  "brand-strategy": [
+  "compliance-fulfillment": [
    {
-    "t": "SpaceX将成Bybit IPO Express首个上市项目",
-    "s": "Finextra 金融科技",
-    "u": "https://www.finextra.com/pressarticle/110053/spacex-to-be-first-public-offering-on-bybits-ipo-express?utm_medium=rssfinextra&utm_source=finextrafeed",
-    "d": "2026-06-08"
+    "t": "DSW母公司Q1财报后股价暴跌近22%",
+    "s": "Footwear News",
+    "u": "https://wwd.com/footwear-news/shoe-industry-news/dsw-parent-designer-brands-stock-price-falls-q1-earnings-1239003688/",
+    "d": "2026-06-09"
    },
    {
-    "t": "Shark Beauty借社区驱动年增长",
-    "s": "Glossy",
-    "u": "https://www.glossy.co/beauty/how-shark-beauty-is-leveraging-community-to-reach-stunning-annual-growth/?utm_campaign=glossydis&utm_medium=rss&utm_source=general-rss",
-    "d": "2026-06-08"
+    "t": "欧盟启动跨地中海可再生能源与清洁技术合作倡议",
+    "s": "EU 委员会新闻",
+    "u": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_1319",
+    "d": "2026-06-09"
    },
    {
-    "t": "Bombas CEO谈开店与Target合作促增长",
-    "s": "Glossy",
-    "u": "https://www.glossy.co/fashion/bombas-ceo-jason-larose-on-opening-stores-and-partnering-with-target-to-fuel-growth/?utm_campaign=glossydis&utm_medium=rss&utm_source=general-rss",
-    "d": "2026-06-08"
+    "t": "欧盟专员发布2026年毒品报告",
+    "s": "EU 委员会新闻",
+    "u": "https://ec.europa.eu/commission/presscorner/detail/en/speech_26_1308",
+    "d": "2026-06-09"
    }
   ],
-  "compliance": [
+  "market-product": [
    {
-    "t": "AI全球支付困境：旧时代工具拖累新速度",
-    "s": "36氪资讯",
-    "u": "https://36kr.com/p/3844199957236227?f=rss",
-    "d": "2026-06-08"
+    "t": "Boots所有者洽谈百亿美元出售",
+    "s": "Business of Fashion",
+    "u": "https://www.businessoffashion.com/news/beauty/report-boots-owner-in-talks-on-possible-10-billion-sale/",
+    "d": "2026-06-09"
    },
    {
-    "t": "TikTok Shop禁止直播使用AI语音",
-    "s": "PYMNTS 支付新闻",
-    "u": "https://www.pymnts.com/news/ecommerce/2026/tiktok-shop-bans-ai-voices-from-livestreams/",
-    "d": "2026-06-08"
+    "t": "康涅狄格州成第二个监管动态定价州",
+    "s": "Retail Dive",
+    "u": "https://www.retaildive.com/news/connecticut-new-york-dynamic-pricing-bills-grocery-retail/822337/",
+    "d": "2026-06-09"
+   },
+   {
+    "t": "StockX今夏推直播购物",
+    "s": "Business of Fashion",
+    "u": "https://www.businessoffashion.com/briefings/sports/the-kicks-you-wear-why-stockx-is-launching-live-shopping/",
+    "d": "2026-06-09"
+   }
+  ],
+  "brand-retail": [
+   {
+    "t": "乐高推出圣家堂套装纪念高迪逝世百年",
+    "s": "Dezeen 设计",
+    "u": "https://www.dezeen.com/2026/06/09/lego-sagrada-familia-largest-set-antoni-gaudi-dezeen-debate/",
+    "d": "2026-06-09"
+   },
+   {
+    "t": "Bed Bath & Beyond继续收购狂潮",
+    "s": "Retail Dive",
+    "u": "https://www.retaildive.com/news/bed-bath-beyond-acquisition-installation-renovation/822351/",
+    "d": "2026-06-09"
+   },
+   {
+    "t": "Creative Spark为脱发品牌Leo打造大胆直白形象",
+    "s": "BP&O 品牌标识案例",
+    "u": "https://bpando.org/2026/06/09/creative-spark-hair-loss-brand-leo/",
+    "d": "2026-06-09"
    }
   ]
  }
