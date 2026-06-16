@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 内部备份副本，避免重复内容（同时已在部署流程中剔除）
+Disallow: /_backups/
+
+Sitemap: https://www.sequentry.com/sitemap.xml
