@@ -3,33 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>序引效能 · Sequentry — 独立品牌出海研究</title>
-<meta name="description" content="序引效能（Sequentry）是一家独立的品牌出海研究公司，从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。">
-<meta name="keywords" content="序引效能,Sequentry,品牌出海,跨境电商,独立站,海外品牌,出海研究">
-<meta name="author" content="杭州序引效能科技有限公司">
-<meta name="robots" content="index, follow">
-<meta name="baidu-site-verification" content="codeva-YeQeJkGXjr">
-<link rel="canonical" href="https://www.sequentry.com/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="序引效能 Sequentry">
-<meta property="og:title" content="序引效能 · Sequentry — 独立品牌出海研究">
-<meta property="og:description" content="序引效能（Sequentry）是一家独立的品牌出海研究公司，从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。">
-<meta property="og:url" content="https://www.sequentry.com/">
-<meta property="og:image" content="https://www.sequentry.com/og-image.png">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="序引效能 · Sequentry — 独立品牌出海研究">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="序引效能 · Sequentry — 独立品牌出海研究">
-<meta name="twitter:description" content="序引效能（Sequentry）是一家独立的品牌出海研究公司，从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。">
-<meta name="twitter:image" content="https://www.sequentry.com/og-image.png">
-<link rel="icon" href="/logo.png" type="image/png">
-<link rel="apple-touch-icon" href="/logo.png">
-<!-- Cloudflare Web Analytics -->
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"50773348502349569a11c73225d9c735"}'></script>
-<!-- End Cloudflare Web Analytics -->
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"序引效能","alternateName":"Sequentry","legalName":"杭州序引效能科技有限公司","url":"https://www.sequentry.com/","logo":"https://www.sequentry.com/logo.png","image":"https://www.sequentry.com/og-image.png","description":"序引效能（Sequentry）是一家独立的品牌出海研究公司，从海外品牌的反向拆解出发，找中国品牌出海的盲区和机会。","email":"yanhang@sequentry.com","foundingDate":"2026","address":{"@type":"PostalAddress","addressLocality":"杭州","addressRegion":"浙江","addressCountry":"CN"}}</script>
+<title>序引 · 首页 v6 · 地球铺满 + 右上角竖排内容（mock）</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
@@ -46,9 +20,9 @@ html{background:var(--bg);scroll-behavior:smooth}
 body{margin:0;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;background:var(--bg)}
 a{color:inherit;text-decoration:none}
 .shell{width:min(1320px,calc(100% - 44px));margin:0 auto}
-.live-banner{background:var(--ink);color:#D8D2C7;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-align:center;padding:8px}
-.live-banner .livedot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#E03A3A;vertical-align:middle;margin-right:5px;animation:lhblink 1.6s infinite}
-.live-banner b{color:#fff}
+.demo-banner{background:var(--ink);color:#D8D2C7;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-align:center;padding:8px}
+.demo-banner .livedot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#E03A3A;vertical-align:middle;margin-right:5px;animation:lhblink 1.6s infinite}
+.demo-banner b{color:#fff}
 
 .hero{position:relative;height:calc(100vh - 35px);min-height:600px;overflow:hidden;background:radial-gradient(120% 95% at 34% 42%,#11203A 0%,#0A1424 56%,#070D18 100%)}
 #globe{position:absolute;inset:0;z-index:1}
@@ -57,12 +31,11 @@ a{color:inherit;text-decoration:none}
 .hero-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to right,transparent 52%,rgba(7,13,20,.6))}
 
 /* 顶栏（浮在地球上）*/
-.top{position:absolute;top:28px;left:0;right:0;z-index:8;padding:0;pointer-events:none}
-.top-inner{position:relative;height:46px}
-.brand{position:absolute;left:clamp(280px,23.8vw,500px);top:0;pointer-events:auto}
+.top{position:absolute;top:26px;left:0;right:0;z-index:8;padding:0 44px}
+.top-inner{display:flex;align-items:center;justify-content:space-between}
 .brand strong{font-family:var(--serif);font-size:22px;font-weight:600;display:block;color:#fff}
 .brand span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:#9DA9BC;text-transform:uppercase}
-.nav{position:absolute;right:clamp(270px,16vw,360px);top:20px;display:flex;gap:18px;color:#9DA9BC;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;pointer-events:auto}
+.nav{display:flex;gap:18px;color:#9DA9BC;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em}
 .nav a:hover{color:#fff}
 @keyframes lhblink{0%,100%{opacity:1}50%{opacity:.35}}
 
@@ -81,7 +54,7 @@ a{color:inherit;text-decoration:none}
 .hero-copy .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#7FA8E0;text-transform:uppercase}
 .hero-copy h1{margin:13px 0 11px;font-family:var(--serif);font-size:clamp(28px,3vw,42px);line-height:1.12;font-weight:600;color:#F4F7FB}
 .hero-copy p{margin:0;color:#A9B6CA;font-size:14px;line-height:1.7}
-.ctrl{position:absolute;top:26px;right:34px;z-index:9;display:flex;gap:6px;align-items:center;background:rgba(13,22,38,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:6px}
+.ctrl{position:absolute;left:48px;bottom:70px;z-index:7;display:flex;gap:6px;align-items:center;background:rgba(13,22,38,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:6px}
 .ctrl b{font-family:var(--mono);font-size:9.5px;color:#8090A8;letter-spacing:.06em;padding:0 4px;text-transform:uppercase}
 .ctrl button{border:1px solid rgba(255,255,255,.16);background:transparent;color:#A9B6CA;font-family:var(--mono);font-size:10.5px;padding:6px 10px;border-radius:6px;cursor:pointer}
 .ctrl button.on{background:#3B6FB5;color:#fff;border-color:#3B6FB5}
@@ -149,8 +122,7 @@ a{color:inherit;text-decoration:none}
 .below{padding:30px 0 0;color:var(--muted);font-size:13px;line-height:1.7}
 footer{margin-top:36px;padding:44px 0;background:var(--ink);color:#A8A098;font-family:var(--mono);font-size:11px;letter-spacing:.06em}
 footer b{color:#fff}
-@media(max-width:900px){.feed{position:static;width:auto;margin:18px 24px 0}.hero{height:auto}.top{top:22px;padding:0 24px;pointer-events:auto}.top-inner{height:auto}.brand{position:static}.ctrl{top:22px;right:24px}.hero-copy{position:static;margin:90px 24px 0;max-width:none}#globe{position:relative;height:50vh}.hero-scrim{display:none}.nav{display:none}}
-@media(max-width:560px){.brand strong{font-size:19px}.brand span{font-size:9px}.ctrl{top:62px;left:24px;right:auto}.ctrl button{padding:6px 8px}}
+@media(max-width:900px){.feed{position:static;width:auto;margin:18px 24px 0}.hero{height:auto}.hero-copy{position:static;margin:90px 24px 0;max-width:none}#globe{position:relative;height:50vh}.hero-scrim{display:none}.nav{display:none}}
 
 /* —— hero 下方：冷白 hub —— */
 .hub{padding:54px 0 0}
@@ -196,7 +168,6 @@ footer b{color:#fff}
 .foot-contact{display:grid;justify-items:end;gap:10px;text-align:right}
 .foot-contact .wechat{display:flex;gap:16px;align-items:flex-start;justify-content:flex-end}
 .foot-contact .qr{width:88px;height:88px;background:repeating-linear-gradient(45deg,#2A2A2A,#2A2A2A 4px,#1F1F1F 4px,#1F1F1F 8px);border:1px solid rgba(250,250,247,.14);display:grid;place-items:center;font-family:var(--mono);font-size:8px;color:#9a9a9a;text-align:center;line-height:1.4}
-.foot-contact img.qr{display:block;object-fit:cover;background:#fff;padding:4px}
 .foot-contact p{margin:0;font-size:13px;line-height:1.7}
 .foot-contact a{color:#D8D2C7;border-bottom:1px solid rgba(216,210,199,.5)}
 .foot-copy{margin-top:20px;color:#6B6560;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
@@ -223,34 +194,28 @@ footer b{color:#fff}
 </head>
 <body>
 
-<div class="live-banner"><span class="livedot"></span> LIVE · 2026.06 · 56,851 独立站已指纹化 · 覆盖 44 个市场 · 最近更新 1h 前</div>
+<div class="demo-banner"><span class="livedot"></span> LIVE · 2026.06 · 56,851 独立站已指纹化 · 覆盖 60+ 市场 · 最近更新 1h 前</div>
 
 <section class="hero">
   <div id="globe"></div>
   <div class="hero-scrim"></div>
 
   <header class="top"><div class="top-inner">
-    <a class="brand" href="/"><strong>序引 · 品牌出海</strong><span>SEQUENTRY</span></a>
-    <nav class="nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">数据库</a><a href="https://atlas.sequentry.com">海图</a><a href="/about/">关于</a></nav>
+    <a class="brand" href="#"><strong>序引 · 品牌出海</strong><span>SEQUENTRY</span></a>
+    <nav class="nav"><a href="#">信号</a><a href="#">案例</a><a href="#">报告库</a><a href="#">数据库</a><a href="#">海图</a><a href="#">关于</a></nav>
   </div></header>
 
   <div class="hero-copy">
     <div class="kicker">独立研究 · 序引 · 品牌出海</div>
     <h1>海外原生品牌<br>反向工程</h1>
     <p>拆开海外土生土长品牌的供应链、产品、关系、叙事与文化，找中国品牌出海的盲区与机会。</p>
-    <a class="atlasblock" href="https://atlas.sequentry.com">
+    <a class="atlasblock" href="#">
       <div class="ab-k">Atlas / 序引海图</div>
       <div class="ab-t">品牌出海的工具海图</div>
       <div class="ab-s">271 精选渠道 · 9 大分类 · 67 平台全球开店 · 14 AI 直达</div>
       <div class="ab-live"><span class="livedot"></span><span class="tx" id="abTicker">—</span></div>
       <div class="ab-cta">进入序引海图 · atlas.sequentry.com →</div>
     </a>
-  </div>
-  <div class="ctrl" aria-label="地图图层控制">
-    <b>Layer</b>
-    <button class="on" data-layer="poly" type="button">地图</button>
-    <button data-layer="rings" type="button">脉冲</button>
-    <button class="on" data-layer="rotate" type="button">旋转</button>
   </div>
   <div class="legend">独立站密度<div class="bar"></div>多</div>
 
@@ -271,7 +236,7 @@ footer b{color:#fff}
       <div class="mk-col"><h4>基础指标</h4><div class="mk-metrics" id="mkMetrics"></div></div>
       <div class="mk-col"><h4>品类构成</h4><div class="cbars" id="mkChart"></div></div>
       <div class="mk-col mk-brands"><h4>Top 品牌</h4><div class="bchips" id="mkBrands"></div></div>
-      <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="https://atlas.sequentry.com">在数据库筛选 →</a></div>
+      <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="#">在数据库筛选 →</a></div>
     </div>
   </div>
 </section>
@@ -282,27 +247,27 @@ footer b{color:#fff}
       <strong>序引 · 品牌出海</strong>
       <span class="fsub">海外原生品牌反向工程</span>
       <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
-      <nav class="foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/briefs/">酷中国</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">数据库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
+      <nav class="foot-nav"><a href="#">信号</a><a href="#">案例</a><a href="#">酷中国</a><a href="#">报告库</a><a href="#">数据库</a><a href="#">序引海图</a><a href="#">关于</a></nav>
     </div>
     <div class="foot-contact">
       <div class="wechat">
-        <img class="qr" src="wechat-qr-placeholder.png" alt="序引效能公众号二维码">
+        <div class="qr">公众号<br>二维码<br>待替换</div>
         <div style="text-align:left">
           <p style="color:#D8D2C7;font-weight:500">公众号「序引效能」</p>
           <p>深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
         </div>
       </div>
       <p>邮件 · <a href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
-      <p>网站 · <a href="https://sequentry.com/">sequentry.com</a></p>
+      <p>网站 · <a href="#">sequentry.com</a></p>
       <p>杭州序引效能科技有限公司</p>
     </div>
   </div>
-  <div class="foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
+  <div class="foot-copy">© 2026 序引效能（Sequentry）· DEMO 版面 · 不影响线上</div>
 </div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-<script src="demo/globe_data.js"></script>
+<script src="globe_data.js"></script>
 <script>
 /* ===== 地球（接 brand-radar 真数据 globe_data.js）===== */
 const CUR_SYM={USD:'$',EUR:'€',GBP:'£',INR:'₹',JPY:'¥',AUD:'A$',CAD:'C$',BRL:'R$',MXN:'MX$',PKR:'₨',AED:'AED ',CNY:'¥',SGD:'S$',ZAR:'R',SEK:'kr ',NOK:'kr ',DKK:'kr ',PLN:'zł',CHF:'CHF ',KRW:'₩',TWD:'NT$',THB:'฿',TRY:'₺',IDR:'Rp',MYR:'RM',NZD:'NZ$',COP:'$',CLP:'$'};
@@ -326,44 +291,43 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   mkName.textContent=name;mkCount.textContent=c?c.toLocaleString():'—';
   mkMetrics.innerHTML=dr?`<div class="m"><span>商品确认</span><b>${dr.conf}</b></div><div class="m"><span>营销分</span><b>${dr.ms||'—'}</b></div><div class="m"><span>均商品数</span><b>${dr.ap}</b></div><div class="m"><span>均价</span><b>${dr.pr}</b></div>`:'<div class="mk-empty">指标整理中</div>';
   mkChart.innerHTML=dr?catBars(dr.cats):'<div class="mk-empty">品类整理中</div>';
-  mkBrands.innerHTML=dr?dr.brands.map(b=>`<span class="bchip">${b}<a href="https://atlas.sequentry.com/?brand=${encodeURIComponent(b)}">→拆解</a></span>`).join(''):`<div class="mk-empty">${c?'已收录 '+c.toLocaleString()+' 家，下钻整理中':'暂无收录'}</div>`;
+  mkBrands.innerHTML=dr?dr.brands.map(b=>`<span class="bchip">${b}<a href="#">→拆解</a></span>`).join(''):`<div class="mk-empty">${c?'已收录 '+c.toLocaleString()+' 家，下钻整理中':'暂无收录'}</div>`;
   mkBtn.innerHTML=`在数据库筛选<br>「${name}」→`;
-  mkBtn.href=`https://atlas.sequentry.com/?market=${encodeURIComponent(name)}`;
   document.getElementById('mkpop').classList.add('open');}
 const mkName=document.getElementById('mkName'),mkCount=document.getElementById('mkCount'),mkMetrics=document.getElementById('mkMetrics'),mkChart=document.getElementById('mkChart'),mkBrands=document.getElementById('mkBrands'),mkBtn=document.getElementById('mkBtn');
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
-async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson){el.setAttribute('data-state','map-dependency-unavailable');return;}world=Globe()(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');world.controls().autoRotate=true;world.controls().autoRotateSpeed=.35;world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');window.__polys=POLY.length;paintPoly();paintRings();const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);window.openPopup=openPopup;window.__ready=true;}
+async function initGlobe(){const el=document.getElementById('globe');world=Globe()(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');world.controls().autoRotate=true;world.controls().autoRotateSpeed=.35;world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');window.__polys=POLY.length;paintPoly();paintRings();const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);window.openPopup=openPopup;window.__ready=true;}
 initGlobe();
-document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const k=b.dataset.layer;layers[k]=!layers[k];b.classList.toggle('on',layers[k]);if(!world)return;if(k==='poly')paintPoly();else if(k==='rings')paintRings();else world.controls().autoRotate=layers.rotate;});
+document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const k=b.dataset.layer;layers[k]=!layers[k];b.classList.toggle('on',layers[k]);if(k==='poly')paintPoly();else if(k==='rings')paintRings();else world.controls().autoRotate=layers.rotate;});
 
 /* ===== 右上角竖排内容 ===== */
 const SHOW={
   case:[
-    {img:'POP MART',g:'linear-gradient(150deg,#3A2D4A,#1C2335)',tag:'案例 · 市场',title:'泡泡玛特：两个月落成欧美双总部',text:'从潮玩出口到本地化组织，把"出海"做成"在地经营"。',meta:'CASE · 2026-06 · 8 min',url:'/briefs/2026-06-03/'},
-    {img:'Anker',g:'linear-gradient(150deg,#22354A,#15202F)',tag:'案例 · 运营',title:'Anker：把"充电"做成高端心智',text:'白牌到品牌溢价，产品线分层与叙事升级。',meta:'CASE · 2026-05 · 7 min',url:'/report/01/'},
-    {img:'Stanley',g:'linear-gradient(150deg,#3A3326,#1F2230)',tag:'案例 · 市场',title:'一个水杯的病毒式品牌化',text:'靠社媒情绪与限量色重定义品类。',meta:'CASE · 2026-05 · 6 min',url:'/briefs/'},
-    {img:'Etsy',g:'linear-gradient(150deg,#2C3A33,#182231)',tag:'案例 · 平台',title:'Etsy：手作平台的品牌化突围',text:'聚合平台开始讲"独立设计师"，在和谁争信任？',meta:'CASE · 2026-04 · 6 min',url:'/briefs/2026-05-27/#sig-03'}
+    {img:'POP MART',g:'linear-gradient(150deg,#3A2D4A,#1C2335)',tag:'案例 · 市场',title:'泡泡玛特：两个月落成欧美双总部',text:'从潮玩出口到本地化组织，把"出海"做成"在地经营"。',meta:'CASE · 2026-06 · 8 min'},
+    {img:'Anker',g:'linear-gradient(150deg,#22354A,#15202F)',tag:'案例 · 运营',title:'Anker：把"充电"做成高端心智',text:'白牌到品牌溢价，产品线分层与叙事升级。',meta:'CASE · 2026-05 · 7 min'},
+    {img:'Stanley',g:'linear-gradient(150deg,#3A3326,#1F2230)',tag:'案例 · 市场',title:'一个水杯的病毒式品牌化',text:'靠社媒情绪与限量色重定义品类。',meta:'CASE · 2026-05 · 6 min'},
+    {img:'Etsy',g:'linear-gradient(150deg,#2C3A33,#182231)',tag:'案例 · 平台',title:'Etsy：手作平台的品牌化突围',text:'聚合平台开始讲"独立设计师"，在和谁争信任？',meta:'CASE · 2026-04 · 6 min'}
   ],
   cool:[
-    {img:'DJI 大疆',g:'linear-gradient(150deg,#1E2E44,#101A2B)',tag:'酷中国 · 硬科技',title:'DJI 大疆：被中国定义的全球品类',text:'当品类名几乎等于品牌——技术领先做成心智。',meta:'COOL CHINA',url:'/briefs/'},
-    {img:'POP MART',g:'linear-gradient(150deg,#3A2D4A,#1C2335)',tag:'酷中国 · 潮玩',title:'泡泡玛特：把盲盒变成收藏文化',text:'IP + 内容 + 线下，卖的不是玩具是参与感。',meta:'COOL CHINA',url:'/briefs/2026-06-03/'},
-    {img:'观夏 To Summer',g:'linear-gradient(150deg,#3A2E2A,#1E2230)',tag:'酷中国 · 香氛',title:'观夏 To Summer：东方香的当代表达',text:'用现代设计语言重写"东方气味"。',meta:'COOL CHINA',url:'/briefs/'},
-    {img:'蕉内 Bananain',g:'linear-gradient(150deg,#243A3A,#15212B)',tag:'酷中国 · 服饰',title:'蕉内 Bananain：把基本款做成设计品牌',text:'体感科技 + 极简视觉，重定义"看不见的衣服"。',meta:'COOL CHINA',url:'/briefs/'}
+    {img:'DJI 大疆',g:'linear-gradient(150deg,#1E2E44,#101A2B)',tag:'酷中国 · 硬科技',title:'DJI 大疆：被中国定义的全球品类',text:'当品类名几乎等于品牌——技术领先做成心智。',meta:'COOL CHINA'},
+    {img:'POP MART',g:'linear-gradient(150deg,#3A2D4A,#1C2335)',tag:'酷中国 · 潮玩',title:'泡泡玛特：把盲盒变成收藏文化',text:'IP + 内容 + 线下，卖的不是玩具是参与感。',meta:'COOL CHINA'},
+    {img:'观夏 To Summer',g:'linear-gradient(150deg,#3A2E2A,#1E2230)',tag:'酷中国 · 香氛',title:'观夏 To Summer：东方香的当代表达',text:'用现代设计语言重写"东方气味"。',meta:'COOL CHINA'},
+    {img:'蕉内 Bananain',g:'linear-gradient(150deg,#243A3A,#15212B)',tag:'酷中国 · 服饰',title:'蕉内 Bananain：把基本款做成设计品牌',text:'体感科技 + 极简视觉，重定义"看不见的衣服"。',meta:'COOL CHINA'}
   ],
   report:[
-    {img:'序引研究 #01',g:'linear-gradient(150deg,#22344E,#101A2B)',tag:'报告 · 自有可下载',title:'下一场战役，不在下一个爆款里',text:'AI 重构、市场迁移与新老卖家的破局路径。',meta:'REPORT · 53 页 · PDF',url:'/report/01/'},
-    {img:'AI Commerce',g:'linear-gradient(150deg,#2A2E48,#141A2E)',tag:'报告 · 信号追踪',title:'Agentic Commerce 年度态势',text:'Google 与 Amazon 把 AI 入口推向交易链路，序引持续追踪。',meta:'SIGNAL · 2026-05-27',url:'/briefs/2026-05-27/'},
-    {img:'欧盟合规白皮书',g:'linear-gradient(150deg,#3A2A2A,#1E1E2C)',tag:'报告 · 合规信号',title:'ICS2 与小包新规影响',text:'欧盟入境安全数据与小包合规口径变化，影响跨境履约路径。',meta:'SIGNAL · 2026-06-01',url:'/briefs/2026-06-01/'}
+    {img:'序引研究 #01',g:'linear-gradient(150deg,#22344E,#101A2B)',tag:'报告 · 自有可下载',title:'下一场战役，不在下一个爆款里',text:'AI 重构、市场迁移与新老卖家的破局路径。',meta:'REPORT · 53 页 · PDF'},
+    {img:'AI Commerce',g:'linear-gradient(150deg,#2A2E48,#141A2E)',tag:'报告 · 策展外部',title:'Agentic Commerce 年度态势',text:'序引点评：AI 代购入口三条主线，第 4 章可引用。',meta:'REPORT · a16z（示例）'},
+    {img:'欧盟合规白皮书',g:'linear-gradient(150deg,#3A2A2A,#1E1E2C)',tag:'报告 · 策展外部',title:'ICS2 与小包新规影响',text:'序引点评：合规口径最完整，配 #01 合规章读。',meta:'REPORT · 官方（示例）'}
   ]
 };
 let gTab='case';
 const flist=document.getElementById('flist');
 function renderFeed(){
   const arr=SHOW[gTab];
-  flist.innerHTML=arr.map((it,i)=>`<article class="fcard" style="animation-delay:${i*70}ms" onclick="location.href='${it.url}'">
-    <div class="fimg" style="background:${it.g}"><div><em>${it.img}</em><small>${gTab==='report'?'REPORT / SIGNAL':'CASE / BRAND SIGNAL'}</small></div></div>
+  flist.innerHTML=arr.map((it,i)=>`<article class="fcard" style="animation-delay:${i*70}ms">
+    <div class="fimg" style="background:${it.g}"><div><em>${it.img}</em><small>${gTab==='report'?'封面 · 待替换':'品牌实拍 / 产品图 · 待替换'}</small></div></div>
     <div class="fbody"><div class="ftag">${it.tag}</div><h3>${it.title}</h3><p>${it.text}</p>
-    <div class="fmeta">${it.meta} · <a href="${it.url}">${gTab==='report'?'阅读 / 下载 →':'读完整 →'}</a></div></div>
+    <div class="fmeta">${it.meta} · <a href="#">${gTab==='report'?'阅读 / 下载 →':'读完整 →'}</a></div></div>
   </article>`).join('');
   flist.scrollTop=0;
 }
