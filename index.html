@@ -73,27 +73,31 @@ a{color:inherit;text-decoration:none}
 .itab,.icard,.ctrl,.ctrl button,.mk-btn,.bchip,.cbar .ct2,.ab-go,.cat-chips span,.legend .bar,.ab-snap{border-radius:0}
 
 /* ===== STAGE：滚动放大舞台 ===== */
-.stage{position:relative;height:240vh;background:radial-gradient(120% 95% at 34% 50%,#11203A 0%,#0A1424 56%,#070D18 100%)}
-.stage-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
+.stage{position:relative;background:radial-gradient(120% 95% at 34% 50%,#11203A 0%,#0A1424 56%,#070D18 100%)}
+.stage.globe-open{z-index:70}
+.stage-sticky{position:relative;overflow:hidden;padding-bottom:34px}
+.stage.globe-open .stage-sticky{overflow:visible}
 
 /* 地球层：始终全尺寸渲染，靠 transform 缩放显示（左下无边框）*/
-.globe-layer{position:absolute;inset:0;z-index:2;transform-origin:0% 100%;will-change:transform;backface-visibility:hidden;contain:paint}
-#globe{position:absolute;inset:0}
+.globe-slot{position:relative;width:min(520px,38vw);height:min(520px,38vw);min-width:360px;min-height:360px;margin-top:18px;margin-bottom:-28px}
+.globe-layer{position:fixed;left:var(--globe-expanded-left,0px);top:var(--globe-expanded-top,var(--chrome-offset,0px));width:var(--globe-expanded-size,100vh);height:var(--globe-expanded-size,100vh);z-index:4;transform-origin:50% 50%;will-change:transform;backface-visibility:hidden;contain:layout paint;cursor:zoom-in;transition:transform .62s cubic-bezier(.22,1,.36,1);opacity:0}
+.globe-layer.ready{opacity:1}
+.globe-layer.is-expanded{z-index:80;cursor:grab}
+#globe{position:absolute;inset:0;z-index:1}
 #globe canvas{display:block}
 /* 缩放期间用静态截图顶替实时地球（合成器缩放图像=零成本，绝对顺）*/
-#globeSnap{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}
-.globe-layer.snap #globe{visibility:hidden}   /* visibility 不改 clientWidth，不触发 globe.gl 的 fit 观察器 */
+#globeSnap{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none;z-index:3}
 .globe-layer.snap #globeSnap{display:block}
 
 /* 小地球点击放大热区：仅首屏小图态启用（.on），放大/滚动后关闭，不挡地球与卡片 */
-.globe-catch{position:fixed;z-index:8;border:0;background:transparent;padding:0;margin:0;cursor:zoom-in;pointer-events:none;display:flex;align-items:flex-end;justify-content:flex-start}
+.globe-catch{position:absolute;inset:0;z-index:4;border:0;background:transparent;padding:0;margin:0;cursor:zoom-in;pointer-events:auto;display:flex;align-items:flex-end;justify-content:flex-start}
 .gc-tip{opacity:0;transition:opacity .25s,transform .25s;transform:translateY(5px);margin:0 0 16px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#C7D4E6;background:rgba(9,16,28,.62);border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:6px 11px;white-space:nowrap;pointer-events:none}
-.globe-catch.on{pointer-events:auto}
-.globe-catch.on .gc-tip{opacity:.6;transform:none}
-.globe-catch.on:hover .gc-tip{opacity:1}
+.globe-catch .gc-tip{opacity:.58;transform:none}
+.globe-catch:hover .gc-tip{opacity:1}
+.globe-layer.is-expanded .globe-catch{display:none}
 
 /* 信息层：首屏主体（左标题 + 右内容铺开）*/
-.info-layer{position:absolute;inset:0;z-index:5;pointer-events:none;padding-top:5vh}
+.info-layer{position:relative;z-index:5;pointer-events:auto;padding-top:5vh}
 .info-grid{display:grid;grid-template-columns:36% 64%;gap:34px;width:min(1740px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto;align-items:start}
 .info-left{padding-top:3vh}
 .info-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#7FA8E0;text-transform:uppercase;margin-bottom:13px}
@@ -128,12 +132,13 @@ a{color:inherit;text-decoration:none}
 .info-foot a{color:#9CC2F2}
 
 /* 下滑提示 */
-.scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:6;font-family:var(--mono);font-size:11px;color:#9DB4D0;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;animation:bob 2s infinite}
+.scroll-hint{display:none}
 @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
 /* 全屏态控制（放大后出现）—— 顶栏已由固定页眉承担，这里只剩图层控制 + 图例 */
-.fs-ui{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:0;transition:opacity .3s}
-.ctrl{position:absolute;top:88px;right:34px;display:flex;gap:6px;align-items:center;background:rgba(13,22,38,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:6px;pointer-events:auto}
+.fs-ui{position:fixed;left:0;right:0;top:var(--chrome-offset,0px);height:calc(100vh - var(--chrome-offset,0px));z-index:90;pointer-events:none;opacity:0;transition:opacity .3s}
+.fs-ui.on{opacity:1}
+.ctrl{position:absolute;top:22px;right:34px;display:flex;gap:6px;align-items:center;background:rgba(13,22,38,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:6px;pointer-events:auto}
 .ctrl b{font-family:var(--mono);font-size:9.5px;color:#8090A8;letter-spacing:.06em;padding:0 4px;text-transform:uppercase}
 .ctrl button{border:1px solid rgba(255,255,255,.16);background:transparent;color:#A9B6CA;font-family:var(--mono);font-size:10.5px;padding:6px 10px;border-radius:6px;cursor:pointer}
 .ctrl button.on{background:#3B6FB5;color:#fff;border-color:#3B6FB5}
@@ -141,7 +146,7 @@ a{color:inherit;text-decoration:none}
 .legend .bar{width:140px;height:7px;border-radius:4px;background:linear-gradient(90deg,#1C2A3F,#2F5C9B,#4F9DF7)}
 
 /* 全屏停留段：上下空白点击导航热区（仅 fsActive 时由 JS 开 pointer-events）*/
-.fs-nav{position:absolute;left:0;right:0;height:17vh;z-index:6;pointer-events:none;cursor:pointer;display:flex;justify-content:center;opacity:0;transition:opacity .35s}
+.fs-nav{display:none}
 .fs-nav-top{top:0;align-items:flex-start;padding-top:90px}
 .fs-nav-bot{bottom:0;align-items:flex-end;padding-bottom:40px}
 .fs-nav.on{opacity:1}
@@ -151,6 +156,7 @@ a{color:inherit;text-decoration:none}
 
 /* 市场下钻弹窗 */
 .mkpop{position:absolute;left:50%;bottom:16px;width:min(960px,calc(100% - 48px));z-index:30;background:rgba(9,16,28,.92);backdrop-filter:blur(16px);border:1px solid;border-image:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.5)) 1;box-shadow:0 16px 50px rgba(0,0,0,.5);color:#D5DEEC;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(16px);transition:opacity .28s,transform .28s cubic-bezier(.4,0,.2,1)}
+.stage.globe-open .mkpop{position:fixed;z-index:95}
 .mkpop.open{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .mkpop-close{position:absolute;top:9px;right:12px;cursor:pointer;color:#7886A0;background:none;border:0;font-family:var(--mono);font-size:13px;z-index:2}
 .mkpop-inner{display:grid;grid-template-columns:1.05fr 1.25fr 1.35fr 1.55fr auto;align-items:stretch}
@@ -242,7 +248,8 @@ a{color:inherit;text-decoration:none}
   .info-grid{width:min(1320px,calc(100% - 44px))}
   .info-left{padding-top:0}
   .igrid{max-height:none;overflow:visible}
-  .globe-layer{position:relative;height:60vh;transform:none!important;order:3}
+  .globe-slot{width:100%;max-width:360px;height:320px;min-width:0;min-height:0;margin:18px 0 0;order:3}
+  .globe-layer{position:relative;left:auto;top:auto;width:100%;height:100%;min-width:0;min-height:0;transform:none!important;transition:none;opacity:1}
   .scroll-hint{display:none}
   .fs-ui{display:none}
   .globe-catch{display:none}
@@ -268,14 +275,18 @@ a{color:inherit;text-decoration:none}
 <!-- STAGE：滚动放大地球 + 功能信息 -->
 <section class="stage">
   <div class="stage-sticky">
-    <div class="globe-layer" id="globeLayer"><div id="globe"></div><canvas id="globeSnap"></canvas></div>
-    <button class="globe-catch" id="globeCatch" type="button" aria-label="点击放大地球进入全屏探索"><span class="gc-tip">点击地球放大 ⤢</span></button>
-
     <div class="info-layer" id="infoLayer"><div class="info-grid">
       <div class="info-left">
         <div class="info-kicker">独立研究 · 品牌出海情报</div>
         <h2 class="info-h2">拆开海外品牌，<br>看懂它为什么能成</h2>
         <p class="info-lead">案例拆解、酷中国观察与自有研究报告——切换浏览。继续下滑，放大地球、按市场探索 56,851 个独立站。</p>
+        <div class="globe-slot" id="globeSlot">
+          <div class="globe-layer" id="globeLayer">
+            <div id="globe"></div>
+            <canvas id="globeSnap"></canvas>
+            <button class="globe-catch" id="globeCatch" type="button" aria-label="点击放大地球进入全屏探索"><span class="gc-tip">点击地球放大 ⤢</span></button>
+          </div>
+        </div>
       </div>
       <div class="info-right">
         <div class="itabs" id="itabs">
@@ -404,7 +415,7 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   document.getElementById('mkpop').classList.add('open');}
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
 async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson){el.setAttribute('data-state','map-dependency-unavailable');return;}
-  world=Globe({rendererConfig:{preserveDrawingBuffer:true}})(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});
+  world=Globe({rendererConfig:{preserveDrawingBuffer:false}})(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});
   world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');
   world.controls().autoRotate=true;world.controls().autoRotateSpeed=.5;world.controls().enableZoom=false;
   world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);
@@ -413,7 +424,7 @@ async function initGlobe(){const el=document.getElementById('globe');if(!window.
   paintPoly();paintRings();
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);
   world.controls().enableRotate=true;   // 放大后可鼠标拖动旋转
-  if(world.renderer){const rd=world.renderer();if(rd&&rd.setPixelRatio)rd.setPixelRatio(1);} // 像素比=1：活画布缩放才够轻（想更清晰可调到 1.5/2，代价是缩放更吃 GPU）
+  if(world.renderer){const rd=world.renderer();if(rd&&rd.setPixelRatio)rd.setPixelRatio(Math.min(1.6,window.devicePixelRatio||1));}
   window.openPopup=openPopup;window.__ready=true;}
 initGlobe();
 document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const k=b.dataset.layer;layers[k]=!layers[k];b.classList.toggle('on',layers[k]);if(!world)return;if(k==='poly')paintPoly();else if(k==='rings')paintRings();else world.controls().autoRotate=layers.rotate;});
@@ -455,94 +466,115 @@ renderFeed();
 /* ===== 顶部 ticker ===== */
 const TICKER=['Amazon 调整 FBA 库存上限','TikTok Shop 美区开放本土店','欧盟 ICS2 第三阶段生效','Temu 半托管放量','Google 把 AI 代购推到购物入口'];
 
-/* ===== 滚动放大 scrub（rAF lerp 惯性平滑 + 自定义缓动 tween 导航）===== */
-const stage=document.querySelector('.stage'),layer=document.getElementById('globeLayer'),infoLayer=document.getElementById('infoLayer'),fsUi=document.getElementById('fsUi'),scrollHint=document.getElementById('scrollHint');
-const globeCatch=document.getElementById('globeCatch'),infoRight=document.querySelector('.info-right');
-const navTop=document.getElementById('navTop'),navBot=document.getElementById('navBot'),mkpop=document.getElementById('mkpop');
-const SMALL=0.42, TX=10, TY=-26;            // 小图态：缩放 + 左下偏移
-const G_END=0.55;                           // 前 55% 行程完成放大，其后为全屏停留段
-const FULL_P=0.66;                          // 全屏停留段的吸附/落位点（>0.6 保证导航热区激活）
+/* ===== 首页地球：第一次下滑自动展开一次，之后点击展开 ===== */
+const stage=document.querySelector('.stage'),globeSlot=document.getElementById('globeSlot'),layer=document.getElementById('globeLayer'),fsUi=document.getElementById('fsUi');
+const globeCatch=document.getElementById('globeCatch'),mkpop=document.getElementById('mkpop');
 const MOBILE=()=>window.innerWidth<=760;
-function ss(t){return t*t*(3-2*t);}
-function easeInOut(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
-/* 把点击热区贴到当前小地球的实际显示框（transform 后的 rect），右缘截到卡片左侧之外 */
-function placeCatch(){
-  const r=layer.getBoundingClientRect();let right=r.right;
-  if(infoRight){const ir=infoRight.getBoundingClientRect();if(ir.width)right=Math.min(right,ir.left-10);}
-  globeCatch.style.left=r.left+'px';globeCatch.style.top=r.top+'px';
-  globeCatch.style.width=Math.max(0,right-r.left)+'px';globeCatch.style.height=Math.max(0,r.bottom-r.top)+'px';
-}
-function applyAt(p){
-  if(MOBILE()){layer.style.transform='';layer.style.pointerEvents='auto';infoLayer.style.opacity='';infoLayer.style.pointerEvents='';if(fsUi)fsUi.style.opacity='0';globeCatch.classList.remove('on');navTop.classList.remove('on');navBot.classList.remove('on');navTop.style.pointerEvents=navBot.style.pointerEvents='none';return;}
-  const gp=Math.min(1,p/G_END),e=ss(gp);
-  layer.style.transform=`translate(${TX*(1-e)}px,${TY*(1-e)}px) scale(${SMALL+(1-SMALL)*e})`;
-  layer.style.pointerEvents=gp>0.92?'auto':'none';
-  infoLayer.style.opacity=Math.max(0,1-p/0.4);
-  infoLayer.style.pointerEvents=p>0.25?'none':'auto';
-  if(scrollHint)scrollHint.style.opacity=Math.max(0,1-p/0.15);
-  fsUi.style.opacity=gp>0.85?1:0;
-  if(p<0.1){placeCatch();globeCatch.classList.add('on');}else globeCatch.classList.remove('on');
-  if(mkpop.classList.contains('open')&&(p<0.5||p>0.96))mkpop.classList.remove('open'); // 离开全屏停留段→自动收起市场弹窗
-  const fsActive=p>0.6 && !mkpop.classList.contains('open');  // 全屏停留段，弹窗打开时让位
-  navTop.classList.toggle('on',fsActive);navBot.classList.toggle('on',fsActive);
-  navTop.style.pointerEvents=navBot.style.pointerEvents=fsActive?'auto':'none';
-}
-/* 舞台几何缓存：几何只在 load/resize/布局变化时测量；滚动每帧只读 scrollY 算 p（零强制重排）*/
-let stageTopAbs=0,stageTravel=1;
-function measure(){const r=stage.getBoundingClientRect();stageTopAbs=r.top+window.scrollY;stageTravel=Math.max(1,stage.offsetHeight-window.innerHeight);}
-function targetFromScroll(){return Math.max(0,Math.min(1,(window.scrollY-stageTopAbs)/stageTravel));}
-let targetP=0,curP=0,raf=null,tween=null;
-/* 缩放时静态截图顶替实时地球：进入时抓当前帧+冻结自转角度，露截图藏地球；停在两端再切回实时地球（角度==截图，无跳变）*/
-const globeSnap=document.getElementById('globeSnap'),snapCtx=globeSnap?globeSnap.getContext('2d'):null;
-let snapOn=false;
-function captureSnap(){const gl=document.querySelector('#globe canvas');if(!gl||!gl.width||!gl.height||!snapCtx)return false;if(globeSnap.width!==gl.width)globeSnap.width=gl.width;if(globeSnap.height!==gl.height)globeSnap.height=gl.height;try{snapCtx.clearRect(0,0,gl.width,gl.height);snapCtx.drawImage(gl,0,0);return true;}catch(e){return false;}}
-function setScaleMode(on){
-  if(on===snapOn)return;
-  if(on){if(!world||!captureSnap())return;snapOn=true;world.controls().autoRotate=false;layer.classList.add('snap');}
-  else{snapOn=false;layer.classList.remove('snap');if(world)world.controls().autoRotate=layers.rotate;}
-}
-function loop(now){
-  if(tween){
-    const t=Math.min(1,(now-tween.t0)/tween.dur);
-    window.scrollTo({top:Math.round(tween.from+(tween.to-tween.from)*easeInOut(t)),behavior:'instant'}); // instant：绕开 html 的 scroll-behavior:smooth，避免二次平滑打架
-    if(t>=1)tween=null;
-    targetP=targetFromScroll();curP=targetP;            // 程序导航：精确跟随缓动曲线
-  }else{
-    targetP=targetFromScroll();
-    curP+=(targetP-curP)*0.14;                          // lerp：把离散滚轮磨成连续滑动
-    if(Math.abs(targetP-curP)<0.0004)curP=targetP;
-  }
-  applyAt(curP);
-  setScaleMode((tween||Math.abs(targetP-curP)>0.0015)&&curP<G_END); // 缩放中→截图顶替；停在两端→切回实时地球
-  if(tween||curP!==targetP)raf=requestAnimationFrame(loop);else raf=null;
-}
-function kick(){if(raf===null)raf=requestAnimationFrame(loop);}
-function navTo(to,dur=820){if(MOBILE())return;tween={from:window.scrollY,to:Math.round(to),t0:performance.now(),dur};kick();}
-/* 方向感知吸附：停在放大过渡中途时，顺着刚才的滚动方向缓动补到位（向下→全屏，向上→首屏）*/
-let lastY=window.scrollY,dir=1,snapTimer=null;
-function maybeSnap(){
-  if(tween||MOBILE())return;
-  const p=targetFromScroll();
-  if(p>0.02 && p<G_END) navTo(dir>0 ? stageTopAbs+stageTravel*FULL_P : 0);
-}
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY;if(y!==lastY){dir=y>lastY?1:-1;lastY=y;}
-  kick();
-  if(snapTimer)clearTimeout(snapTimer);
-  if(!MOBILE())snapTimer=setTimeout(maybeSnap,150);
-},{passive:true});
-window.addEventListener('resize',()=>{measure();targetP=curP=targetFromScroll();applyAt(curP);kick();});
-if(window.ResizeObserver)new ResizeObserver(measure).observe(document.body); // 字体加载/内容高度变化→几何保持准确
-/* 程序滚动中，用户手动滚/触摸即打断 tween，交还控制权 */
-['wheel','touchstart'].forEach(ev=>window.addEventListener(ev,()=>{tween=null;},{passive:true}));
+const AUTO_KEY='sequentry.homeGlobeIntroSeen';
+let globeState='small',lastTouchY=null,transitionTimer=null,poseRaf=null;
 
-/* 点击小地球 → 缓动放大到全屏停留段 */
-globeCatch.addEventListener('click',()=>navTo(stageTopAbs+stageTravel*FULL_P));
-/* 全屏停留段：点上空白回首屏，点下空白进方法段 */
-navTop.addEventListener('click',()=>navTo(0));
-navBot.addEventListener('click',()=>{const hub=document.querySelector('.hub');navTo(hub.getBoundingClientRect().top+window.scrollY);});
-
-measure();targetP=curP=targetFromScroll();applyAt(curP);
+function updateChromeOffset(){
+  const head=document.querySelector('.site-head');
+  const bottom=head?Math.max(0,head.getBoundingClientRect().bottom):0;
+  document.documentElement.style.setProperty('--chrome-offset',`${Math.round(bottom)}px`);
+}
+function setUiOpen(on){
+  fsUi.classList.toggle('on',on);
+  stage.classList.toggle('globe-open',on);
+  if(on&&world){world.resumeAnimation&&world.resumeAnimation();world.controls().autoRotate=layers.rotate;}
+}
+function expandedRect(){
+  const top=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--chrome-offset'))||0;
+  const areaH=Math.max(1,window.innerHeight-top);
+  const size=Math.min(window.innerWidth,areaH);
+  const left=(window.innerWidth-size)/2;
+  const y=top+(areaH-size)/2;
+  document.documentElement.style.setProperty('--globe-expanded-left',`${Math.round(left)}px`);
+  document.documentElement.style.setProperty('--globe-expanded-top',`${Math.round(y)}px`);
+  document.documentElement.style.setProperty('--globe-expanded-size',`${Math.round(size)}px`);
+  return {left,top:y,width:size,height:size};
+}
+function transformFromTo(from,to){
+  const scale=Math.min(from.width/to.width,from.height/to.height);
+  const tx=(from.left+from.width/2)-(to.left+to.width/2);
+  const ty=(from.top+from.height/2)-(to.top+to.height/2);
+  return `translate(${tx}px,${ty}px) scale(${scale})`;
+}
+function fitGlobeNow(){
+  const el=document.getElementById('globe');
+  if(world&&el&&el.clientWidth&&el.clientHeight)world.width(el.clientWidth).height(el.clientHeight);
+}
+function smallRect(){return globeSlot.getBoundingClientRect();}
+function applySmallPose(animate=false){
+  if(MOBILE())return;
+  updateChromeOffset();
+  const bigRect=expandedRect();
+  const sRect=smallRect();
+  if(!animate)layer.style.transition='none';
+  layer.classList.remove('is-expanded');
+  layer.style.transform=transformFromTo(sRect,bigRect);
+  layer.classList.add('ready');
+  fitGlobeNow();
+  if(!animate){layer.offsetWidth;layer.style.transition='';}
+}
+function openGlobe(auto=false){
+  if(MOBILE()||globeState!=='small')return;
+  updateChromeOffset();
+  expandedRect();
+  applySmallPose(false);
+  globeState='opening';
+  setUiOpen(true);
+  if(auto)sessionStorage.setItem(AUTO_KEY,'1');
+  clearTimeout(transitionTimer);
+  const done=e=>{if(e.propertyName==='transform'){layer.removeEventListener('transitionend',done);globeState='expanded';fitGlobeNow();}};
+  layer.addEventListener('transitionend',done);
+  transitionTimer=setTimeout(()=>{layer.removeEventListener('transitionend',done);globeState='expanded';fitGlobeNow();},900);
+  requestAnimationFrame(()=>{
+    layer.classList.add('is-expanded');
+    layer.style.transform='translate(0,0) scale(1)';
+  });
+}
+function closeGlobe(){
+  if(globeState!=='expanded')return;
+  if(mkpop.classList.contains('open'))mkpop.classList.remove('open');
+  updateChromeOffset();
+  const bigRect=expandedRect(),sRect=smallRect();
+  globeState='closing';
+  setUiOpen(false);
+  layer.classList.remove('is-expanded');
+  layer.style.transform=transformFromTo(sRect,bigRect);
+  clearTimeout(transitionTimer);
+  const done=e=>{if(e.propertyName==='transform'){layer.removeEventListener('transitionend',done);globeState='small';fitGlobeNow();}};
+  layer.addEventListener('transitionend',done);
+  transitionTimer=setTimeout(()=>{layer.removeEventListener('transitionend',done);globeState='small';fitGlobeNow();},900);
+}
+function shouldAutoOpen(deltaY){
+  return deltaY>8 && !MOBILE() && globeState==='small' && !sessionStorage.getItem(AUTO_KEY) && window.scrollY<80;
+}
+window.addEventListener('wheel',e=>{
+  if(shouldAutoOpen(e.deltaY)){e.preventDefault();openGlobe(true);return;}
+  if(globeState==='expanded'&&e.deltaY>8){e.preventDefault();closeGlobe();}
+},{passive:false});
+window.addEventListener('touchstart',e=>{lastTouchY=e.touches&&e.touches[0]?e.touches[0].clientY:null;},{passive:true});
+window.addEventListener('touchmove',e=>{
+  if(lastTouchY==null||!e.touches||!e.touches[0])return;
+  const deltaY=lastTouchY-e.touches[0].clientY;
+  if(shouldAutoOpen(deltaY)){e.preventDefault();openGlobe(true);lastTouchY=e.touches[0].clientY;return;}
+  if(globeState==='expanded'&&deltaY>8){e.preventDefault();closeGlobe();lastTouchY=e.touches[0].clientY;}
+},{passive:false});
+window.addEventListener('resize',()=>{updateChromeOffset();expandedRect();if(globeState==='small')applySmallPose(false);else if(globeState==='expanded')fitGlobeNow();});
+window.addEventListener('scroll',()=>{if(globeState!=='small'||poseRaf)return;poseRaf=requestAnimationFrame(()=>{poseRaf=null;applySmallPose(false);});},{passive:true});
+globeCatch.addEventListener('click',()=>openGlobe(false));
+document.addEventListener('pointerdown',e=>{
+  if(globeState!=='expanded')return;
+  if(layer.contains(e.target)||fsUi.contains(e.target)||mkpop.contains(e.target))return;
+  e.preventDefault();
+  e.stopPropagation();
+  closeGlobe();
+},true);
+updateChromeOffset();
+expandedRect();
+applySmallPose(false);
 </script>
 </body>
 </html>
