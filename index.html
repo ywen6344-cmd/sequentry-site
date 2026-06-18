@@ -46,16 +46,17 @@
 html{background:var(--dark);scroll-behavior:smooth}
 body{margin:0;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;background:var(--dark)}
 a{color:inherit;text-decoration:none}
-.shell{width:min(1320px,calc(100% - 44px));margin:0 auto}
+.shell{width:min(1740px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto}
 
 .live-banner{background:#070D18;color:#D8D2C7;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-align:center;padding:8px;position:relative;z-index:30}
 .live-banner .livedot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#E03A3A;vertical-align:middle;margin-right:5px;animation:lhblink 1.6s infinite}
 .live-banner b{color:#fff}
 @keyframes lhblink{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ===== 正式页眉（实体深色，不再浮在地球上）===== */
-.site-head{position:relative;z-index:36;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07)}
-.head-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0}
+/* ===== 正式页眉（实体深色，全程吸顶固定——地球放大缩小时位置不变；不再有单独的全屏顶栏）===== */
+.site-head{position:sticky;top:0;z-index:36;background:var(--dark);border-bottom:1px solid rgba(255,255,255,.07)}
+/* 页眉保持原宽度（位置不变），其它区块随 .shell 拓宽到 1740 */
+.head-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0;width:min(1320px,calc(100% - clamp(44px,8vw,160px)))}
 .hbrand strong{display:block;font-family:var(--serif);font-size:23px;font-weight:600;color:#fff;line-height:1.1}
 .hbrand span{display:block;margin-top:3px;font-family:var(--serif);font-size:12.5px;font-weight:500;color:#8FB9F2;letter-spacing:.02em}
 .hbrand span small{font-family:var(--mono);font-size:9px;color:#5E6E85;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
@@ -65,8 +66,8 @@ a{color:inherit;text-decoration:none}
 .atlas-link{position:relative;display:inline-block}
 .atlas-link>a{color:#9DA9BC}
 .atlas-link>a:hover{color:#fff}
-.atlas-tip{position:absolute;bottom:calc(100% + 12px);right:0;white-space:nowrap;background:rgba(46,50,58,.97);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px;font-family:var(--mono);font-size:10px;color:#E8EAED;letter-spacing:.03em;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.35)}
-.atlas-tip:after{content:"";position:absolute;top:100%;right:16px;border:6px solid transparent;border-top-color:rgba(46,50,58,.97)}
+.atlas-tip{position:absolute;top:calc(100% + 12px);right:0;white-space:nowrap;background:rgba(46,50,58,.97);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px;font-family:var(--mono);font-size:10px;color:#E8EAED;letter-spacing:.03em;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.atlas-tip:after{content:"";position:absolute;bottom:100%;right:16px;border:6px solid transparent;border-bottom-color:rgba(46,50,58,.97)}
 
 /* 全案直角化（不要圆角矩形）*/
 .itab,.icard,.ctrl,.ctrl button,.mk-btn,.bchip,.cbar .ct2,.ab-go,.cat-chips span,.legend .bar,.ab-snap{border-radius:0}
@@ -76,13 +77,24 @@ a{color:inherit;text-decoration:none}
 .stage-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
 
 /* 地球层：始终全尺寸渲染，靠 transform 缩放显示（左下无边框）*/
-.globe-layer{position:absolute;inset:0;z-index:2;transform-origin:0% 100%;will-change:transform}
+.globe-layer{position:absolute;inset:0;z-index:2;transform-origin:0% 100%;will-change:transform;backface-visibility:hidden;contain:paint}
 #globe{position:absolute;inset:0}
 #globe canvas{display:block}
+/* 缩放期间用静态截图顶替实时地球（合成器缩放图像=零成本，绝对顺）*/
+#globeSnap{position:absolute;inset:0;width:100%;height:100%;display:none;pointer-events:none}
+.globe-layer.snap #globe{visibility:hidden}   /* visibility 不改 clientWidth，不触发 globe.gl 的 fit 观察器 */
+.globe-layer.snap #globeSnap{display:block}
+
+/* 小地球点击放大热区：仅首屏小图态启用（.on），放大/滚动后关闭，不挡地球与卡片 */
+.globe-catch{position:fixed;z-index:8;border:0;background:transparent;padding:0;margin:0;cursor:zoom-in;pointer-events:none;display:flex;align-items:flex-end;justify-content:flex-start}
+.gc-tip{opacity:0;transition:opacity .25s,transform .25s;transform:translateY(5px);margin:0 0 16px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#C7D4E6;background:rgba(9,16,28,.62);border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:6px 11px;white-space:nowrap;pointer-events:none}
+.globe-catch.on{pointer-events:auto}
+.globe-catch.on .gc-tip{opacity:.6;transform:none}
+.globe-catch.on:hover .gc-tip{opacity:1}
 
 /* 信息层：首屏主体（左标题 + 右内容铺开）*/
 .info-layer{position:absolute;inset:0;z-index:5;pointer-events:none;padding-top:5vh}
-.info-grid{display:grid;grid-template-columns:36% 64%;gap:34px;width:min(1320px,calc(100% - 44px));margin:0 auto;align-items:start}
+.info-grid{display:grid;grid-template-columns:36% 64%;gap:34px;width:min(1740px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto;align-items:start}
 .info-left{padding-top:3vh}
 .info-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:#7FA8E0;text-transform:uppercase;margin-bottom:13px}
 .info-h2{margin:0 0 14px;font-family:var(--serif);font-size:clamp(26px,2.5vw,36px);font-weight:600;color:#F4F7FB;line-height:1.2}
@@ -95,7 +107,7 @@ a{color:inherit;text-decoration:none}
 .itab-more:hover{color:#9CC2F2}
 .igrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-height:calc(100vh - 208px);overflow-y:auto;scrollbar-width:none;padding-right:2px}
 .igrid::-webkit-scrollbar{display:none}
-.icard{background:rgba(13,23,40,.55);backdrop-filter:blur(8px);border:0;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;animation:fin .5s cubic-bezier(.4,0,.2,1) both}
+.icard{background:rgba(13,23,40,.72);border:0;overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;animation:fin .5s cubic-bezier(.4,0,.2,1) both}
 .icard:hover{box-shadow:0 8px 26px rgba(0,0,0,.4)}
 .icard:hover .ic-img{filter:brightness(1.12)}
 .icard:hover h3{color:#fff}
@@ -119,18 +131,23 @@ a{color:inherit;text-decoration:none}
 .scroll-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:6;font-family:var(--mono);font-size:11px;color:#9DB4D0;letter-spacing:.06em;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none;animation:bob 2s infinite}
 @keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-/* 全屏态控制（放大后出现）*/
+/* 全屏态控制（放大后出现）—— 顶栏已由固定页眉承担，这里只剩图层控制 + 图例 */
 .fs-ui{position:absolute;inset:0;z-index:7;pointer-events:none;opacity:0;transition:opacity .3s}
-.fs-topbar{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;gap:22px;padding:18px clamp(24px,3vw,48px);pointer-events:none;background:linear-gradient(to bottom,rgba(7,13,24,.72),rgba(7,13,24,0))}
-.fs-topbar .fsb strong{font-family:var(--serif);font-size:19px;font-weight:600;color:#fff}
-.fs-topbar .fsb span{font-family:var(--mono);font-size:10px;color:#90A0B8;margin-left:11px;letter-spacing:.02em}
-.fs-topbar .fshint{font-family:var(--mono);font-size:11px;color:#9DB4D0;letter-spacing:.04em}
-.ctrl{position:absolute;top:24px;right:34px;display:flex;gap:6px;align-items:center;background:rgba(13,22,38,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:6px;pointer-events:auto}
+.ctrl{position:absolute;top:88px;right:34px;display:flex;gap:6px;align-items:center;background:rgba(13,22,38,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:6px;pointer-events:auto}
 .ctrl b{font-family:var(--mono);font-size:9.5px;color:#8090A8;letter-spacing:.06em;padding:0 4px;text-transform:uppercase}
 .ctrl button{border:1px solid rgba(255,255,255,.16);background:transparent;color:#A9B6CA;font-family:var(--mono);font-size:10.5px;padding:6px 10px;border-radius:6px;cursor:pointer}
 .ctrl button.on{background:#3B6FB5;color:#fff;border-color:#3B6FB5}
 .legend{position:absolute;left:44px;bottom:30px;font-family:var(--mono);font-size:10px;color:#90A0B8;display:flex;align-items:center;gap:10px}
 .legend .bar{width:140px;height:7px;border-radius:4px;background:linear-gradient(90deg,#1C2A3F,#2F5C9B,#4F9DF7)}
+
+/* 全屏停留段：上下空白点击导航热区（仅 fsActive 时由 JS 开 pointer-events）*/
+.fs-nav{position:absolute;left:0;right:0;height:17vh;z-index:6;pointer-events:none;cursor:pointer;display:flex;justify-content:center;opacity:0;transition:opacity .35s}
+.fs-nav-top{top:0;align-items:flex-start;padding-top:90px}
+.fs-nav-bot{bottom:0;align-items:flex-end;padding-bottom:40px}
+.fs-nav.on{opacity:1}
+.fsn-tip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#AEC2DA;background:rgba(9,16,28,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 13px;opacity:.42;transition:opacity .25s,transform .25s}
+.fs-nav-top:hover .fsn-tip{opacity:1;transform:translateY(3px)}
+.fs-nav-bot:hover .fsn-tip{opacity:1;transform:translateY(-3px)}
 
 /* 市场下钻弹窗 */
 .mkpop{position:absolute;left:50%;bottom:16px;width:min(960px,calc(100% - 48px));z-index:30;background:rgba(9,16,28,.92);backdrop-filter:blur(16px);border:1px solid;border-image:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.5)) 1;box-shadow:0 16px 50px rgba(0,0,0,.5);color:#D5DEEC;opacity:0;pointer-events:none;transform:translateX(-50%) translateY(16px);transition:opacity .28s,transform .28s cubic-bezier(.4,0,.2,1)}
@@ -162,8 +179,8 @@ a{color:inherit;text-decoration:none}
 .mk-empty{color:#7486A0;font-size:12px;line-height:1.5}
 
 /* ===== 地球下方：序引海图横条 ===== */
-.atlasbar{background:#0A1322;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);position:relative;z-index:10}
-.atlasbar-inner{display:flex;align-items:center;gap:48px;padding:56px 0}
+.atlasbar{background:linear-gradient(to bottom,#0A1322 0,#0A1322 calc(100% - 72px),#0F172A 100%);position:relative;z-index:10}
+.atlasbar-inner{display:flex;align-items:center;gap:48px;padding:92px 0}
 .ab-snap{flex:none;width:47%;max-width:580px;display:block;border:1px solid rgba(255,255,255,.14);overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.42);transition:.2s}
 .ab-snap:hover{border-color:rgba(127,168,224,.5);transform:translateY(-3px)}
 .ab-snap img{display:block;width:100%;height:auto}
@@ -178,19 +195,21 @@ a{color:inherit;text-decoration:none}
 .ab-go{margin-top:26px;border:1px solid rgba(255,255,255,.3);padding:13px 20px;font-family:var(--mono);font-size:11px;color:#fff;white-space:nowrap}
 .ab-go:hover{background:rgba(255,255,255,.1)}
 
-/* ===== 冷白方法带 ===== */
-.hub{background:var(--bg);padding:54px 0;position:relative;z-index:10}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid var(--line)}
-.sec-head .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--zhu);text-transform:uppercase;margin-bottom:7px}
-.sec-head h2{margin:0;font-family:var(--serif);font-size:clamp(23px,2.4vw,30px);font-weight:600;color:var(--ink)}
-.sec-head a{font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap}
-.sec-head a:hover{color:var(--zhu)}
-.hub p{color:var(--muted);font-size:13px;line-height:1.7;max-width:700px}
-.hub p b{color:var(--ink)}
+/* ===== 方法带（全页统一深色，去掉浅色块）===== */
+/* 浅色块落在沉浸式暗色里始终突兀——方法段改深底浅字，呼应地球信息卡/海图横条；冷白留给文章/报告页。
+   暗底顶接地球(#070D18)、底接海图(#0A1322)无缝衔接 */
+.hub{background:linear-gradient(to bottom,#070D18,#0A1322);padding:96px 0;position:relative;z-index:10}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1)}
+.sec-head .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#7FA8E0;text-transform:uppercase;margin-bottom:7px}
+.sec-head h2{margin:0;font-family:var(--serif);font-size:clamp(23px,2.4vw,30px);font-weight:600;color:#F4F7FB}
+.sec-head a{font-family:var(--mono);font-size:11px;color:#90A0B8;white-space:nowrap}
+.sec-head a:hover{color:#fff}
+.hub p{color:#9FB0C6;font-size:13px;line-height:1.7;max-width:700px}
+.hub p b{color:#EAF0F8}
 .cat-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
-.cat-chips span{border:1px solid var(--line);border-radius:999px;padding:6px 11px;font-size:12.5px;color:var(--ink)}
-.hub-stat{margin-top:24px;border-top:1px solid var(--line);padding-top:15px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-.hub-stat b{color:var(--ink)}
+.cat-chips span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 11px;font-size:12.5px;color:#C4D0E0}
+.hub-stat{margin-top:24px;border-top:1px solid rgba(255,255,255,.1);padding-top:15px;font-family:var(--mono);font-size:12px;color:#90A0B8}
+.hub-stat b{color:#EAF0F8}
 
 /* ===== 页脚 ===== */
 .foot{padding:50px 0 26px;background:var(--ink);color:#A8A098;position:relative;z-index:10}
@@ -226,6 +245,7 @@ a{color:inherit;text-decoration:none}
   .globe-layer{position:relative;height:60vh;transform:none!important;order:3}
   .scroll-hint{display:none}
   .fs-ui{display:none}
+  .globe-catch{display:none}
   .hnav{display:none}
   .mkpop{position:fixed;left:0;bottom:0;width:100%;transform:none}
   .mkpop.open{transform:none}
@@ -248,7 +268,8 @@ a{color:inherit;text-decoration:none}
 <!-- STAGE：滚动放大地球 + 功能信息 -->
 <section class="stage">
   <div class="stage-sticky">
-    <div class="globe-layer" id="globeLayer"><div id="globe"></div></div>
+    <div class="globe-layer" id="globeLayer"><div id="globe"></div><canvas id="globeSnap"></canvas></div>
+    <button class="globe-catch" id="globeCatch" type="button" aria-label="点击放大地球进入全屏探索"><span class="gc-tip">点击地球放大 ⤢</span></button>
 
     <div class="info-layer" id="infoLayer"><div class="info-grid">
       <div class="info-left">
@@ -268,14 +289,10 @@ a{color:inherit;text-decoration:none}
       </div>
     </div></div>
 
-    <div class="scroll-hint" id="scrollHint"><span>下滑放大地球 · 探索 44 个市场</span><span>↓</span></div>
+    <div class="scroll-hint" id="scrollHint"><span>点击或下滑 · 放大地球探索 44 个市场</span><span>↓</span></div>
 
-    <!-- 全屏态 UI -->
+    <!-- 全屏态 UI（顶栏由固定页眉承担，这里只有图层控制 + 图例）-->
     <div class="fs-ui" id="fsUi">
-      <div class="fs-topbar">
-        <div class="fsb"><strong>序引 · 品牌出海</strong><span>海外原生品牌 · 反向工程</span></div>
-        <div class="fshint">点击国家 → 下钻该市场品牌数据</div>
-      </div>
       <div class="ctrl" aria-label="地图图层控制">
         <b>Layer</b>
         <button class="on" data-layer="poly" type="button">地图</button>
@@ -295,10 +312,25 @@ a{color:inherit;text-decoration:none}
         <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="https://atlas.sequentry.com">在数据库筛选 →</a></div>
       </div>
     </div>
+
+    <!-- 全屏停留段：上下空白点击导航（仅全屏时激活）-->
+    <div class="fs-nav fs-nav-top" id="navTop"><span class="fsn-tip">↑ 返回上方</span></div>
+    <div class="fs-nav fs-nav-bot" id="navBot"><span class="fsn-tip">进入「方法 · 拆解」↓</span></div>
   </div>
 </section>
 
-<!-- 地球下方：序引海图横条 -->
+<!-- 地球下方：方法带（全页统一深色）-->
+<section class="hub"><div class="shell">
+  <div class="sec-head">
+    <div><div class="kicker">方法 · METHOD</div><h2>本土原生 DTC 的构造拆解</h2></div>
+    <a href="https://atlas.sequentry.com">进入序引海图 · 数据库 →</a>
+  </div>
+  <p>从海外土生土长的独立站出发，逐个还原它们的<b>供应链、产品、关系、叙事与文化</b>——把"为什么它在当地能成"拆开，再倒推中国品牌出海的盲区与机会。</p>
+  <div class="cat-chips"><span>供应链</span><span>产品</span><span>关系</span><span>叙事</span><span>文化</span></div>
+  <div class="hub-stat">数据底座 · <b>56,851</b> 独立站已扫描入库（<b>36,103</b> 确认）· 覆盖 <b>44</b> 个市场 · <b>264</b> 精选出海渠道 · 数据更新 2026-06-17</div>
+</div></section>
+
+<!-- 方法带下方：序引海图横条 -->
 <section class="atlasbar"><div class="shell atlasbar-inner">
   <a class="ab-snap" href="https://atlas.sequentry.com"><img src="atlas-snapshot.png" alt="序引海图页面快照"></a>
   <div class="ab-text">
@@ -314,17 +346,6 @@ a{color:inherit;text-decoration:none}
     </div>
     <a class="ab-go" href="https://atlas.sequentry.com">进入序引海图 →</a>
   </div>
-</div></section>
-
-<!-- 冷白方法带 -->
-<section class="hub"><div class="shell">
-  <div class="sec-head">
-    <div><div class="kicker">方法 · METHOD</div><h2>本土原生 DTC 的构造拆解</h2></div>
-    <a href="https://atlas.sequentry.com">进入序引海图 · 数据库 →</a>
-  </div>
-  <p>从海外土生土长的独立站出发，逐个还原它们的<b>供应链、产品、关系、叙事与文化</b>——把"为什么它在当地能成"拆开，再倒推中国品牌出海的盲区与机会。</p>
-  <div class="cat-chips"><span>供应链</span><span>产品</span><span>关系</span><span>叙事</span><span>文化</span></div>
-  <div class="hub-stat">数据底座 · <b>56,851</b> 独立站已扫描入库（<b>36,103</b> 确认）· 覆盖 <b>44</b> 个市场 · <b>264</b> 精选出海渠道 · 数据更新 2026-06-17</div>
 </div></section>
 
 <!-- 页脚 -->
@@ -383,7 +404,7 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   document.getElementById('mkpop').classList.add('open');}
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
 async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson){el.setAttribute('data-state','map-dependency-unavailable');return;}
-  world=Globe()(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});
+  world=Globe({rendererConfig:{preserveDrawingBuffer:true}})(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});
   world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');
   world.controls().autoRotate=true;world.controls().autoRotateSpeed=.5;world.controls().enableZoom=false;
   world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);
@@ -392,6 +413,7 @@ async function initGlobe(){const el=document.getElementById('globe');if(!window.
   paintPoly();paintRings();
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);
   world.controls().enableRotate=true;   // 放大后可鼠标拖动旋转
+  if(world.renderer){const rd=world.renderer();if(rd&&rd.setPixelRatio)rd.setPixelRatio(1);} // 像素比=1：活画布缩放才够轻（想更清晰可调到 1.5/2，代价是缩放更吃 GPU）
   window.openPopup=openPopup;window.__ready=true;}
 initGlobe();
 document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const k=b.dataset.layer;layers[k]=!layers[k];b.classList.toggle('on',layers[k]);if(!world)return;if(k==='poly')paintPoly();else if(k==='rings')paintRings();else world.controls().autoRotate=layers.rotate;});
@@ -433,29 +455,94 @@ renderFeed();
 /* ===== 顶部 ticker ===== */
 const TICKER=['Amazon 调整 FBA 库存上限','TikTok Shop 美区开放本土店','欧盟 ICS2 第三阶段生效','Temu 半托管放量','Google 把 AI 代购推到购物入口'];
 
-/* ===== 滚动放大 scrub ===== */
+/* ===== 滚动放大 scrub（rAF lerp 惯性平滑 + 自定义缓动 tween 导航）===== */
 const stage=document.querySelector('.stage'),layer=document.getElementById('globeLayer'),infoLayer=document.getElementById('infoLayer'),fsUi=document.getElementById('fsUi'),scrollHint=document.getElementById('scrollHint');
-const SMALL=0.42, TX=10, TY=-26;            // 小图态：缩放 + 左下偏移（无边框）
-const G_END=0.55;                           // 前 55% 行程完成放大，其后为全屏停留可交互段
+const globeCatch=document.getElementById('globeCatch'),infoRight=document.querySelector('.info-right');
+const navTop=document.getElementById('navTop'),navBot=document.getElementById('navBot'),mkpop=document.getElementById('mkpop');
+const SMALL=0.42, TX=10, TY=-26;            // 小图态：缩放 + 左下偏移
+const G_END=0.55;                           // 前 55% 行程完成放大，其后为全屏停留段
+const FULL_P=0.66;                          // 全屏停留段的吸附/落位点（>0.6 保证导航热区激活）
+const MOBILE=()=>window.innerWidth<=760;
 function ss(t){return t*t*(3-2*t);}
-function applyScrub(){
-  if(window.innerWidth<=760){layer.style.transform='';layer.style.pointerEvents='auto';infoLayer.style.opacity='';infoLayer.style.pointerEvents='';if(fsUi)fsUi.style.opacity='0';return;}
-  const total=stage.offsetHeight-window.innerHeight;
-  let p=(-stage.getBoundingClientRect().top)/total;p=Math.max(0,Math.min(1,p));
+function easeInOut(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+/* 把点击热区贴到当前小地球的实际显示框（transform 后的 rect），右缘截到卡片左侧之外 */
+function placeCatch(){
+  const r=layer.getBoundingClientRect();let right=r.right;
+  if(infoRight){const ir=infoRight.getBoundingClientRect();if(ir.width)right=Math.min(right,ir.left-10);}
+  globeCatch.style.left=r.left+'px';globeCatch.style.top=r.top+'px';
+  globeCatch.style.width=Math.max(0,right-r.left)+'px';globeCatch.style.height=Math.max(0,r.bottom-r.top)+'px';
+}
+function applyAt(p){
+  if(MOBILE()){layer.style.transform='';layer.style.pointerEvents='auto';infoLayer.style.opacity='';infoLayer.style.pointerEvents='';if(fsUi)fsUi.style.opacity='0';globeCatch.classList.remove('on');navTop.classList.remove('on');navBot.classList.remove('on');navTop.style.pointerEvents=navBot.style.pointerEvents='none';return;}
   const gp=Math.min(1,p/G_END),e=ss(gp);
-  const s=SMALL+(1-SMALL)*e,tx=TX*(1-e),ty=TY*(1-e);
-  layer.style.transform=`translate(${tx}px,${ty}px) scale(${s})`;
-  layer.style.pointerEvents=gp>0.92?'auto':'none';   // 放大到位才接受点击
+  layer.style.transform=`translate(${TX*(1-e)}px,${TY*(1-e)}px) scale(${SMALL+(1-SMALL)*e})`;
+  layer.style.pointerEvents=gp>0.92?'auto':'none';
   infoLayer.style.opacity=Math.max(0,1-p/0.4);
   infoLayer.style.pointerEvents=p>0.25?'none':'auto';
   if(scrollHint)scrollHint.style.opacity=Math.max(0,1-p/0.15);
-  fsUi.style.opacity=gp>0.85?1:0;                     // fs-ui 容器保持 pointer-events:none，仅子元素可点，不挡地球
-  if(world)world.controls().autoRotate=layers.rotate; // 放大后保持自转
+  fsUi.style.opacity=gp>0.85?1:0;
+  if(p<0.1){placeCatch();globeCatch.classList.add('on');}else globeCatch.classList.remove('on');
+  if(mkpop.classList.contains('open')&&(p<0.5||p>0.96))mkpop.classList.remove('open'); // 离开全屏停留段→自动收起市场弹窗
+  const fsActive=p>0.6 && !mkpop.classList.contains('open');  // 全屏停留段，弹窗打开时让位
+  navTop.classList.toggle('on',fsActive);navBot.classList.toggle('on',fsActive);
+  navTop.style.pointerEvents=navBot.style.pointerEvents=fsActive?'auto':'none';
 }
-let ticking=false;
-window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{applyScrub();ticking=false;});ticking=true;}},{passive:true});
-window.addEventListener('resize',applyScrub);
-applyScrub();
+/* 舞台几何缓存：几何只在 load/resize/布局变化时测量；滚动每帧只读 scrollY 算 p（零强制重排）*/
+let stageTopAbs=0,stageTravel=1;
+function measure(){const r=stage.getBoundingClientRect();stageTopAbs=r.top+window.scrollY;stageTravel=Math.max(1,stage.offsetHeight-window.innerHeight);}
+function targetFromScroll(){return Math.max(0,Math.min(1,(window.scrollY-stageTopAbs)/stageTravel));}
+let targetP=0,curP=0,raf=null,tween=null;
+/* 缩放时静态截图顶替实时地球：进入时抓当前帧+冻结自转角度，露截图藏地球；停在两端再切回实时地球（角度==截图，无跳变）*/
+const globeSnap=document.getElementById('globeSnap'),snapCtx=globeSnap?globeSnap.getContext('2d'):null;
+let snapOn=false;
+function captureSnap(){const gl=document.querySelector('#globe canvas');if(!gl||!gl.width||!gl.height||!snapCtx)return false;if(globeSnap.width!==gl.width)globeSnap.width=gl.width;if(globeSnap.height!==gl.height)globeSnap.height=gl.height;try{snapCtx.clearRect(0,0,gl.width,gl.height);snapCtx.drawImage(gl,0,0);return true;}catch(e){return false;}}
+function setScaleMode(on){
+  if(on===snapOn)return;
+  if(on){if(!world||!captureSnap())return;snapOn=true;world.controls().autoRotate=false;layer.classList.add('snap');}
+  else{snapOn=false;layer.classList.remove('snap');if(world)world.controls().autoRotate=layers.rotate;}
+}
+function loop(now){
+  if(tween){
+    const t=Math.min(1,(now-tween.t0)/tween.dur);
+    window.scrollTo({top:Math.round(tween.from+(tween.to-tween.from)*easeInOut(t)),behavior:'instant'}); // instant：绕开 html 的 scroll-behavior:smooth，避免二次平滑打架
+    if(t>=1)tween=null;
+    targetP=targetFromScroll();curP=targetP;            // 程序导航：精确跟随缓动曲线
+  }else{
+    targetP=targetFromScroll();
+    curP+=(targetP-curP)*0.14;                          // lerp：把离散滚轮磨成连续滑动
+    if(Math.abs(targetP-curP)<0.0004)curP=targetP;
+  }
+  applyAt(curP);
+  setScaleMode((tween||Math.abs(targetP-curP)>0.0015)&&curP<G_END); // 缩放中→截图顶替；停在两端→切回实时地球
+  if(tween||curP!==targetP)raf=requestAnimationFrame(loop);else raf=null;
+}
+function kick(){if(raf===null)raf=requestAnimationFrame(loop);}
+function navTo(to,dur=820){if(MOBILE())return;tween={from:window.scrollY,to:Math.round(to),t0:performance.now(),dur};kick();}
+/* 方向感知吸附：停在放大过渡中途时，顺着刚才的滚动方向缓动补到位（向下→全屏，向上→首屏）*/
+let lastY=window.scrollY,dir=1,snapTimer=null;
+function maybeSnap(){
+  if(tween||MOBILE())return;
+  const p=targetFromScroll();
+  if(p>0.02 && p<G_END) navTo(dir>0 ? stageTopAbs+stageTravel*FULL_P : 0);
+}
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;if(y!==lastY){dir=y>lastY?1:-1;lastY=y;}
+  kick();
+  if(snapTimer)clearTimeout(snapTimer);
+  if(!MOBILE())snapTimer=setTimeout(maybeSnap,150);
+},{passive:true});
+window.addEventListener('resize',()=>{measure();targetP=curP=targetFromScroll();applyAt(curP);kick();});
+if(window.ResizeObserver)new ResizeObserver(measure).observe(document.body); // 字体加载/内容高度变化→几何保持准确
+/* 程序滚动中，用户手动滚/触摸即打断 tween，交还控制权 */
+['wheel','touchstart'].forEach(ev=>window.addEventListener(ev,()=>{tween=null;},{passive:true}));
+
+/* 点击小地球 → 缓动放大到全屏停留段 */
+globeCatch.addEventListener('click',()=>navTo(stageTopAbs+stageTravel*FULL_P));
+/* 全屏停留段：点上空白回首屏，点下空白进方法段 */
+navTop.addEventListener('click',()=>navTo(0));
+navBot.addEventListener('click',()=>{const hub=document.querySelector('.hub');navTo(hub.getBoundingClientRect().top+window.scrollY);});
+
+measure();targetP=curP=targetFromScroll();applyAt(curP);
 </script>
 </body>
 </html>
