@@ -91,22 +91,25 @@ footer.foot { width:100%; padding:64px 0 32px; border-top:1px solid rgba(250,250
   .foot-contact { text-align:left; }
 }
 </style>
+  <link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
 
-<header class="top"><div class="shell">
-  <a class="brand" href="/">
-    <strong>序引效能</strong>
-    <span>Sequentry</span>
+<header class="sq-head" data-shared="header"><div class="sq-head-inner">
+  <a class="sq-brand" href="/">
+    <strong>序引 · 品牌出海</strong>
+    <span>海外原生品牌 · 反向工程<small>SEQUENTRY</small></span>
   </a>
-  <nav class="nav">
+  <nav class="sq-nav">
     <a href="/briefs/">信号</a>
-    <a href="/report/">报告</a>
-    <a href="https://atlas.sequentry.com">导航</a>
+    <a href="/briefs/2026-06-03/">案例</a>
+    <a href="/report/">报告库</a>
+    <a href="https://atlas.sequentry.com">序引海图</a>
     <a href="/about/">关于</a>
-    <a href="/#subscribe">订阅</a>
   </nav>
-</div></header>
+</div>
+<script>(function(){var p=location.pathname.replace(/index\.html$/,'');if(p.charAt(p.length-1)!=='/')p+='/';var best=null,n=-1;document.querySelectorAll('.sq-head .sq-nav a').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&h!=='/'&&(p===h||p.indexOf(h)===0)&&h.length>n){best=a;n=h.length;}});if(best)best.classList.add('active');})();</script>
+</header>
 
 <main>
 <div class="shell">
@@ -157,19 +160,28 @@ footer.foot { width:100%; padding:64px 0 32px; border-top:1px solid rgba(250,250
 </div>
 </main>
 
-<footer class="foot"><div class="shell">
-  <div class="foot-main">
-    <div class="foot-brand">
-      <strong>Sequentry</strong>
-      <em>有序 · 入世 -- Systematic Entry, Engineered.</em>
+<footer class="sq-foot" data-shared="footer"><div class="sq-foot-inner">
+  <div class="sq-foot-main">
+    <div class="sq-foot-brand">
+      <strong>序引 · 品牌出海</strong>
+      <span class="sq-foot-sub">海外原生品牌反向工程</span>
+      <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
+      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
     </div>
-    <div class="foot-contact">
-      <div class="ct-label">Contact / 联系</div>
-      <p>邮件 · <a class="mail" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
-      <p style="margin:14px 0 0; color:#6B6560; font-size:12px;">杭州序引效能科技有限公司</p>
+    <div class="sq-foot-contact">
+      <div class="sq-foot-wechat">
+        <img src="../wechat-qr-placeholder.png" alt="序引效能公众号二维码" width="88" height="88">
+        <div>
+          <p class="sq-foot-wxname">公众号「序引效能」</p>
+          <p>深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
+        </div>
+      </div>
+      <p>邮件 · <a href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+      <p>网站 · <a href="https://sequentry.com/">sequentry.com</a></p>
+      <p>杭州序引效能科技有限公司</p>
     </div>
   </div>
-  <div class="foot-copy">© 2026 序引效能（Sequentry）</div>
+  <div class="sq-foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
 </div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>

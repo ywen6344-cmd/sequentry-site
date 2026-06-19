@@ -90,11 +90,11 @@ a{color:inherit;text-decoration:none}
 .globe-layer.snap #globeSnap{display:block}
 
 /* 小地球点击放大热区：仅首屏小图态启用（.on），放大/滚动后关闭，不挡地球与卡片 */
-.globe-catch{position:absolute;inset:0;z-index:4;border:0;background:transparent;padding:0;margin:0;cursor:zoom-in;pointer-events:auto;display:flex;align-items:flex-end;justify-content:flex-start}
+.globe-catch{position:absolute;inset:0;z-index:6;border:0;background:transparent;padding:0;margin:0;cursor:zoom-in;pointer-events:auto;display:flex;align-items:flex-end;justify-content:flex-start}
 .gc-tip{opacity:0;transition:opacity .25s,transform .25s;transform:translateY(5px);margin:0 0 16px 18px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:#C7D4E6;background:rgba(9,16,28,.62);border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:6px 11px;white-space:nowrap;pointer-events:none}
 .globe-catch .gc-tip{opacity:.58;transform:none}
 .globe-catch:hover .gc-tip{opacity:1}
-.globe-layer.is-expanded .globe-catch{display:none}
+.stage.globe-open .globe-catch{display:none}
 
 /* 信息层：首屏主体（左标题 + 右内容铺开）*/
 .info-layer{position:relative;z-index:5;pointer-events:auto;padding-top:5vh}
@@ -184,37 +184,44 @@ a{color:inherit;text-decoration:none}
 .mk-btn{display:inline-flex;align-items:center;text-align:center;border:1px solid #3B6FB5;background:#3B6FB5;color:#fff;border-radius:8px;padding:11px 15px;font-family:var(--mono);font-size:10.5px;line-height:1.45}
 .mk-empty{color:#7486A0;font-size:12px;line-height:1.5}
 
-/* ===== 地球下方：序引海图横条 ===== */
+/* ===== 地球下方：序引海图横条（学术左标签列 / 右快照，竖线对齐方法带 32% 线）===== */
 .atlasbar{background:linear-gradient(to bottom,#0A1322 0,#0A1322 calc(100% - 72px),#0F172A 100%);position:relative;z-index:10}
-.atlasbar-inner{display:flex;align-items:center;gap:48px;padding:92px 0}
-.ab-snap{flex:none;width:47%;max-width:580px;display:block;border:1px solid rgba(255,255,255,.14);overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.42);transition:.2s}
-.ab-snap:hover{border-color:rgba(127,168,224,.5);transform:translateY(-3px)}
-.ab-snap img{display:block;width:100%;height:auto}
-.ab-text{flex:1;display:flex;flex-direction:column;align-items:flex-start}
+.atlasbar-inner{display:grid;grid-template-columns:48% 1fr;align-items:stretch;padding:92px 0}
+.ab-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;border-left:1px solid rgba(255,255,255,.12);padding-left:56px}
 .ab-id{flex:none}
 .ab-id .k{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#7FA8E0;text-transform:uppercase}
 .ab-id .t{margin-top:7px;font-family:var(--serif);font-size:26px;font-weight:600;color:#F4F7FB}
-.ab-desc{margin-top:14px;color:#9FB0C6;font-size:13.5px;line-height:1.7;max-width:460px}
-.ab-nums{display:flex;gap:32px;margin-top:24px}
+.ab-desc{margin-top:14px;color:#9FB0C6;font-size:13.5px;line-height:1.7;max-width:420px}
+.ab-nums{display:flex;margin-top:26px}
+.ab-num{padding:0 24px}
+.ab-num:first-child{padding-left:0}
+.ab-num+.ab-num{border-left:1px solid rgba(255,255,255,.14)}
 .ab-num b{display:block;font-family:var(--serif);font-size:27px;font-weight:600;color:#EAF0F8}
 .ab-num span{display:block;margin-top:2px;font-family:var(--mono);font-size:9.5px;color:#90A0B8;text-transform:uppercase;letter-spacing:.04em}
-.ab-go{margin-top:26px;border:1px solid rgba(255,255,255,.3);padding:13px 20px;font-family:var(--mono);font-size:11px;color:#fff;white-space:nowrap}
+.ab-go{margin-top:28px;border:1px solid rgba(255,255,255,.3);padding:13px 20px;font-family:var(--mono);font-size:11px;color:#fff;white-space:nowrap}
 .ab-go:hover{background:rgba(255,255,255,.1)}
+.ab-snap{align-self:center;justify-self:stretch;width:auto;max-width:none;margin-right:56px;display:block;border:1px solid rgba(255,255,255,.14);overflow:hidden;box-shadow:0 18px 48px rgba(0,0,0,.42);transition:.2s}
+.ab-snap:hover{border-color:rgba(127,168,224,.5);transform:translateY(-3px)}
+.ab-snap img{display:block;width:100%;height:auto}
 
-/* ===== 方法带（全页统一深色，去掉浅色块）===== */
+/* ===== 方法带（学术左标签列 / 右正文，全页统一深色）===== */
 /* 浅色块落在沉浸式暗色里始终突兀——方法段改深底浅字，呼应地球信息卡/海图横条；冷白留给文章/报告页。
-   暗底顶接地球(#070D18)、底接海图(#0A1322)无缝衔接 */
+   暗底顶接地球(#070D18)、底接海图(#0A1322)无缝衔接。左标签列 + 32% 处竖线与下方海图横条对齐成贯通版心 */
 .hub{background:linear-gradient(to bottom,#070D18,#0A1322);padding:96px 0;position:relative;z-index:10}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid rgba(255,255,255,.1)}
-.sec-head .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#7FA8E0;text-transform:uppercase;margin-bottom:7px}
-.sec-head h2{margin:0;font-family:var(--serif);font-size:clamp(23px,2.4vw,30px);font-weight:600;color:#F4F7FB}
-.sec-head a{font-family:var(--mono);font-size:11px;color:#90A0B8;white-space:nowrap}
-.sec-head a:hover{color:#fff}
-.hub p{color:#9FB0C6;font-size:13px;line-height:1.7;max-width:700px}
-.hub p b{color:#EAF0F8}
-.cat-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+/* 方法/海图是阅读型版块：收窄到页眉同宽(1320)并居中，不跟首屏 1740 满铺 */
+.hub .shell,.atlasbar-inner{max-width:1320px}
+.hub-grid{display:grid;grid-template-columns:32% 1fr;align-items:start}
+.hub-label{padding-right:56px}
+.hub-label .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#7FA8E0;text-transform:uppercase;margin-bottom:9px}
+.hub-label h2{margin:0;font-family:var(--serif);font-size:clamp(23px,2.4vw,30px);font-weight:600;color:#F4F7FB;line-height:1.25}
+.hub-link{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:11px;color:#90A0B8}
+.hub-link:hover{color:#fff}
+.hub-body{border-left:1px solid rgba(255,255,255,.12);padding-left:56px}
+.hub-body p{margin:0;color:#9FB0C6;font-size:13.5px;line-height:1.8;max-width:640px}
+.hub-body p b{color:#EAF0F8}
+.cat-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
 .cat-chips span{border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 11px;font-size:12.5px;color:#C4D0E0}
-.hub-stat{margin-top:24px;border-top:1px solid rgba(255,255,255,.1);padding-top:15px;font-family:var(--mono);font-size:12px;color:#90A0B8}
+.hub-stat{margin-top:24px;border-top:1px solid rgba(255,255,255,.1);padding-top:15px;font-family:var(--mono);font-size:12px;color:#90A0B8;line-height:1.7}
 .hub-stat b{color:#EAF0F8}
 
 /* ===== 页脚 ===== */
@@ -236,7 +243,8 @@ a{color:inherit;text-decoration:none}
 @media(max-width:900px){
   .info-grid{grid-template-columns:1fr;gap:20px}
   .igrid{grid-template-columns:1fr}
-  .atlasbar-inner{flex-wrap:wrap;gap:24px}.ab-snap{width:100%;max-width:none}
+  .hub-grid{grid-template-columns:1fr;gap:0}.hub-label{padding-right:0}.hub-body{border-left:0;padding-left:0;margin-top:24px;border-top:1px solid rgba(255,255,255,.1);padding-top:24px}
+  .atlasbar-inner{grid-template-columns:1fr;row-gap:30px}.ab-text{border-left:0;padding-left:0}.ab-snap{margin-right:0;max-width:none;align-self:stretch}
   .foot-main{grid-template-columns:1fr}.foot-contact{justify-items:start;text-align:left}.foot-contact .wechat{justify-content:flex-start}
   .mkpop-inner{grid-template-columns:1fr 1fr}
 }
@@ -259,6 +267,7 @@ a{color:inherit;text-decoration:none}
   .mkpop-inner{grid-template-columns:1fr}
 }
 </style>
+  <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
@@ -284,8 +293,8 @@ a{color:inherit;text-decoration:none}
           <div class="globe-layer" id="globeLayer">
             <div id="globe"></div>
             <canvas id="globeSnap"></canvas>
-            <button class="globe-catch" id="globeCatch" type="button" aria-label="点击放大地球进入全屏探索"><span class="gc-tip">点击地球放大 ⤢</span></button>
           </div>
+          <button class="globe-catch" id="globeCatch" type="button" aria-label="点击放大地球进入全屏探索"><span class="gc-tip">点击地球放大 ⤢</span></button>
         </div>
       </div>
       <div class="info-right">
@@ -332,13 +341,18 @@ a{color:inherit;text-decoration:none}
 
 <!-- 地球下方：方法带（全页统一深色）-->
 <section class="hub"><div class="shell">
-  <div class="sec-head">
-    <div><div class="kicker">方法 · METHOD</div><h2>本土原生 DTC 的构造拆解</h2></div>
-    <a href="https://atlas.sequentry.com">进入序引海图 · 数据库 →</a>
+  <div class="hub-grid">
+    <div class="hub-label">
+      <div class="kicker">方法 · METHOD</div>
+      <h2>本土原生 DTC 的构造拆解</h2>
+      <a class="hub-link" href="https://atlas.sequentry.com">进入序引海图 · 数据库 →</a>
+    </div>
+    <div class="hub-body">
+      <p>从海外土生土长的独立站出发，逐个还原它们的<b>供应链、产品、关系、叙事与文化</b>——把"为什么它在当地能成"拆开，再倒推中国品牌出海的盲区与机会。</p>
+      <div class="cat-chips"><span>供应链</span><span>产品</span><span>关系</span><span>叙事</span><span>文化</span></div>
+      <div class="hub-stat">数据底座 · <b>56,851</b> 独立站已扫描入库（<b>36,103</b> 确认）· 覆盖 <b>44</b> 个市场 · <b>264</b> 精选出海渠道 · 数据更新 2026-06-17</div>
+    </div>
   </div>
-  <p>从海外土生土长的独立站出发，逐个还原它们的<b>供应链、产品、关系、叙事与文化</b>——把"为什么它在当地能成"拆开，再倒推中国品牌出海的盲区与机会。</p>
-  <div class="cat-chips"><span>供应链</span><span>产品</span><span>关系</span><span>叙事</span><span>文化</span></div>
-  <div class="hub-stat">数据底座 · <b>56,851</b> 独立站已扫描入库（<b>36,103</b> 确认）· 覆盖 <b>44</b> 个市场 · <b>264</b> 精选出海渠道 · 数据更新 2026-06-17</div>
 </div></section>
 
 <!-- 方法带下方：序引海图横条 -->
@@ -360,19 +374,19 @@ a{color:inherit;text-decoration:none}
 </div></section>
 
 <!-- 页脚 -->
-<footer class="foot"><div class="shell">
-  <div class="foot-main">
-    <div class="foot-brand">
+<footer class="sq-foot" data-shared="footer"><div class="sq-foot-inner">
+  <div class="sq-foot-main">
+    <div class="sq-foot-brand">
       <strong>序引 · 品牌出海</strong>
-      <span class="fsub">海外原生品牌反向工程</span>
+      <span class="sq-foot-sub">海外原生品牌反向工程</span>
       <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
-      <nav class="foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
+      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
     </div>
-    <div class="foot-contact">
-      <div class="wechat">
-        <img class="qr" src="wechat-qr-placeholder.png" alt="序引效能公众号二维码">
-        <div style="text-align:left">
-          <p style="color:#D8D2C7;font-weight:500;text-align:right">公众号「序引效能」</p>
+    <div class="sq-foot-contact">
+      <div class="sq-foot-wechat">
+        <img src="wechat-qr-placeholder.png" alt="序引效能公众号二维码" width="88" height="88">
+        <div>
+          <p class="sq-foot-wxname">公众号「序引效能」</p>
           <p>深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
         </div>
       </div>
@@ -381,7 +395,7 @@ a{color:inherit;text-decoration:none}
       <p>杭州序引效能科技有限公司</p>
     </div>
   </div>
-  <div class="foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
+  <div class="sq-foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
 </div></footer>
 
 <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
@@ -471,7 +485,7 @@ const stage=document.querySelector('.stage'),globeSlot=document.getElementById('
 const globeCatch=document.getElementById('globeCatch'),mkpop=document.getElementById('mkpop');
 const MOBILE=()=>window.innerWidth<=760;
 const AUTO_KEY='sequentry.homeGlobeIntroSeen';
-let globeState='small',lastTouchY=null,transitionTimer=null,poseRaf=null;
+let globeState='small',lastTouchY=null,transitionTimer=null,poseRaf=null,transitionSeq=0;
 
 function updateChromeOffset(){
   const head=document.querySelector('.site-head');
@@ -486,12 +500,12 @@ function setUiOpen(on){
 function expandedRect(){
   const top=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--chrome-offset'))||0;
   const areaH=Math.max(1,window.innerHeight-top);
-  const size=Math.min(window.innerWidth,areaH);
-  const left=(window.innerWidth-size)/2;
-  const y=top+(areaH-size)/2;
-  document.documentElement.style.setProperty('--globe-expanded-left',`${Math.round(left)}px`);
-  document.documentElement.style.setProperty('--globe-expanded-top',`${Math.round(y)}px`);
-  document.documentElement.style.setProperty('--globe-expanded-size',`${Math.round(size)}px`);
+  const size=Math.round(Math.min(window.innerWidth,areaH));
+  const left=Math.round((window.innerWidth-size)/2);
+  const y=Math.round(top+(areaH-size)/2);
+  document.documentElement.style.setProperty('--globe-expanded-left',`${left}px`);
+  document.documentElement.style.setProperty('--globe-expanded-top',`${y}px`);
+  document.documentElement.style.setProperty('--globe-expanded-size',`${size}px`);
   return {left,top:y,width:size,height:size};
 }
 function transformFromTo(from,to){
@@ -526,16 +540,17 @@ function openGlobe(auto=false){
   setUiOpen(true);
   if(auto)sessionStorage.setItem(AUTO_KEY,'1');
   clearTimeout(transitionTimer);
-  const done=e=>{if(e.propertyName==='transform'){layer.removeEventListener('transitionend',done);globeState='expanded';fitGlobeNow();}};
+  const seq=++transitionSeq;
+  const done=e=>{if(e.propertyName==='transform'){layer.removeEventListener('transitionend',done);if(seq!==transitionSeq)return;globeState='expanded';fitGlobeNow();}};
   layer.addEventListener('transitionend',done);
-  transitionTimer=setTimeout(()=>{layer.removeEventListener('transitionend',done);globeState='expanded';fitGlobeNow();},900);
+  transitionTimer=setTimeout(()=>{layer.removeEventListener('transitionend',done);if(seq!==transitionSeq)return;globeState='expanded';fitGlobeNow();},900);
   requestAnimationFrame(()=>{
     layer.classList.add('is-expanded');
     layer.style.transform='translate(0,0) scale(1)';
   });
 }
 function closeGlobe(){
-  if(globeState!=='expanded')return;
+  if(globeState!=='expanded'&&globeState!=='opening')return;
   if(mkpop.classList.contains('open'))mkpop.classList.remove('open');
   updateChromeOffset();
   const bigRect=expandedRect(),sRect=smallRect();
@@ -544,24 +559,26 @@ function closeGlobe(){
   layer.classList.remove('is-expanded');
   layer.style.transform=transformFromTo(sRect,bigRect);
   clearTimeout(transitionTimer);
-  const done=e=>{if(e.propertyName==='transform'){layer.removeEventListener('transitionend',done);globeState='small';fitGlobeNow();}};
+  const seq=++transitionSeq;
+  const finishClose=()=>{if(seq!==transitionSeq)return;globeState='small';applySmallPose(false);fitGlobeNow();};
+  const done=e=>{if(e.propertyName==='transform'){layer.removeEventListener('transitionend',done);finishClose();}};
   layer.addEventListener('transitionend',done);
-  transitionTimer=setTimeout(()=>{layer.removeEventListener('transitionend',done);globeState='small';fitGlobeNow();},900);
+  transitionTimer=setTimeout(()=>{layer.removeEventListener('transitionend',done);finishClose();},900);
 }
 function shouldAutoOpen(deltaY){
   return deltaY>8 && !MOBILE() && globeState==='small' && !sessionStorage.getItem(AUTO_KEY) && window.scrollY<80;
 }
 window.addEventListener('wheel',e=>{
   if(shouldAutoOpen(e.deltaY)){e.preventDefault();openGlobe(true);return;}
-  if(globeState==='expanded'&&e.deltaY>8){e.preventDefault();closeGlobe();}
-},{passive:false});
+  if((globeState==='expanded'||globeState==='opening')&&e.deltaY>8){e.preventDefault();closeGlobe();}
+},{passive:false,capture:true});
 window.addEventListener('touchstart',e=>{lastTouchY=e.touches&&e.touches[0]?e.touches[0].clientY:null;},{passive:true});
 window.addEventListener('touchmove',e=>{
   if(lastTouchY==null||!e.touches||!e.touches[0])return;
   const deltaY=lastTouchY-e.touches[0].clientY;
   if(shouldAutoOpen(deltaY)){e.preventDefault();openGlobe(true);lastTouchY=e.touches[0].clientY;return;}
-  if(globeState==='expanded'&&deltaY>8){e.preventDefault();closeGlobe();lastTouchY=e.touches[0].clientY;}
-},{passive:false});
+  if((globeState==='expanded'||globeState==='opening')&&deltaY>8){e.preventDefault();closeGlobe();lastTouchY=e.touches[0].clientY;}
+},{passive:false,capture:true});
 window.addEventListener('resize',()=>{updateChromeOffset();expandedRect();if(globeState==='small')applySmallPose(false);else if(globeState==='expanded')fitGlobeNow();});
 window.addEventListener('scroll',()=>{if(globeState!=='small'||poseRaf)return;poseRaf=requestAnimationFrame(()=>{poseRaf=null;applySmallPose(false);});},{passive:true});
 globeCatch.addEventListener('click',()=>openGlobe(false));

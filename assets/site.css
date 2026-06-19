@@ -1,0 +1,59 @@
+/* ===================================================================
+   序引 · 品牌出海 — 全站共用样式（单一真源）
+   目前覆盖：页脚 .sq-foot。改这里 = 全站同步（各页 <link> 引用本文件）。
+   样式刻意用字面值、不依赖各页 :root 变量，确保深/浅主题页面都一致。
+   =================================================================== */
+
+/* ---------- 内容页共用页眉（冷白）---------- */
+.sq-head{position:sticky;top:0;z-index:40;background:rgba(250,250,250,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid #E3E6EA;font-family:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif}
+.sq-head a{color:inherit;text-decoration:none}
+.sq-head-inner{width:min(1240px,calc(100% - 48px));margin:0 auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 24px}
+.sq-brand{display:grid;gap:2px;line-height:1.12}
+.sq-brand strong{font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:22px;font-weight:600;color:#0F172A;letter-spacing:-.01em}
+.sq-brand span{font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:11.5px;color:#6B7280}
+.sq-brand span small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:9px;color:#9CA3AF;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
+.sq-nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase}
+.sq-nav a{position:relative;padding:2px 0}
+.sq-nav a:hover{color:#0F172A}
+.sq-nav a.active{color:#0F172A}
+.sq-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#8B1A1A}
+@media(max-width:680px){
+  .sq-head{position:static}
+  .sq-head-inner{flex-wrap:wrap;gap:10px;min-height:0;padding:14px 24px}
+  .sq-brand strong{font-size:20px}
+  .sq-nav{gap:14px;font-size:11px}
+}
+
+/* ---------- 全站共用页脚 ---------- */
+.sq-foot{
+  padding:50px 0 26px;background:#0F172A;color:#A8A098;position:relative;z-index:10;
+  font-family:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.sq-foot a{color:inherit;text-decoration:none}
+.sq-foot-inner{width:min(1740px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto}
+.sq-foot-main{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;padding-bottom:24px;border-bottom:1px solid rgba(250,250,247,.12)}
+
+.sq-foot-brand strong{display:block;color:#fff;font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:24px;font-weight:600}
+.sq-foot-sub{display:block;margin-top:6px;font-size:14px;color:#C9C2B8}
+.sq-foot-brand em{display:block;margin-top:7px;color:#80776E;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:11px;font-style:normal;letter-spacing:.05em}
+.sq-foot-nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:11px;color:#C9C2B8}
+.sq-foot-nav a:hover{color:#fff}
+
+.sq-foot-contact{display:grid;justify-items:end;gap:10px;text-align:right;font-size:13px;line-height:1.7}
+.sq-foot-contact p{margin:0}
+.sq-foot-contact a{color:#D8D2C7;border-bottom:1px solid rgba(216,210,199,.5)}
+.sq-foot-contact a:hover{color:#fff}
+.sq-foot-wechat{display:flex;gap:16px;align-items:flex-start;justify-content:flex-end}
+.sq-foot-wechat img{width:88px;height:88px;display:block;object-fit:cover;background:#fff;padding:4px;border:1px solid rgba(250,250,247,.14)}
+.sq-foot-wechat>div{text-align:left}
+.sq-foot-wxname{color:#D8D2C7;font-weight:500;text-align:right}
+
+.sq-foot-copy{margin-top:18px;color:#6B6560;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+
+@media(max-width:900px){
+  .sq-foot-main{grid-template-columns:1fr;gap:28px}
+  .sq-foot-contact{justify-items:start;text-align:left}
+  .sq-foot-wechat{justify-content:flex-start}
+  .sq-foot-wxname{text-align:left}
+}
