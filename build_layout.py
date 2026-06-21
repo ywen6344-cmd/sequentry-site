@@ -42,6 +42,30 @@ FOOTER_RE = re.compile(r"<footer\b.*?</footer>", re.S | re.I)
 # 清理早期版本遗留的游离标识注释（曾被注入在 <footer>/<header> 标签外，导致重复累积）
 ORPHAN_MARKER_RE = re.compile(r"<!--[^>]*build_layout\.py[^>]*-->\s*", re.S)
 
+# 分析脚本块（Umami + Microsoft Clarity + 事件层）：注入每页 <head>，幂等可刷新。
+# {{REL}} 按页面深度替换为相对前缀，使 analytics-events.js 在任意目录层级都能解析。
+# 改 website-id / clarity-id 后重跑本脚本即可全站刷新。
+ANALYTICS_RE = re.compile(r"<!-- sq-analytics -->.*?<!-- /sq-analytics -->", re.S)
+ANALYTICS_BLOCK = (
+    '<!-- sq-analytics -->'
+    '<script defer src="https://cloud.umami.is/script.js" data-website-id="848b3b16-5345-41f3-84cf-612de3e75197"></script>'
+    '<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};'
+    't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;'
+    'y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})'
+    '(window,document,"clarity","script","xa9yl3ejba");</script>'
+    '<script defer src="{{REL}}analytics-events.js"></script>'
+    '<!-- /sq-analytics -->'
+)
+
+# 官网已改用 Umami；移除两站共享 token 的 Cloudflare beacon，让该 token 仅由海图使用，
+# 终结官网/海图 PV 混报。匹配 CF beacon <script> 及其可选包裹注释。
+CF_BEACON_RE = re.compile(
+    r"[ \t]*(?:<!--\s*Cloudflare Web Analytics\s*-->\s*)?"
+    r"<script[^>]*cloudflareinsights[^>]*>\s*</script>"
+    r"\s*(?:<!--\s*End Cloudflare Web Analytics\s*-->)?[ \t]*\n?",
+    re.I | re.S,
+)
+
 
 def load_partial(name: str) -> str:
     return (PARTIALS / name).read_text(encoding="utf-8").strip()
@@ -75,6 +99,22 @@ def process(path: Path, spec: dict, parts: dict, check: bool):
         notes.append("注入 site.css")
     else:
         notes.append("⚠ 无 </head>")
+
+    # 1.4) 移除官网 CF beacon（官网改用 Umami；CF token 让海图独占，终结混报）
+    if CF_BEACON_RE.search(out):
+        out = CF_BEACON_RE.sub("", out)
+        notes.append("移除 CF beacon")
+
+    # 1.5) 分析脚本（Umami + Clarity + 事件层）：注入/刷新到 <head>（幂等）
+    analytics_html = ANALYTICS_BLOCK.replace("{{REL}}", rel_prefix)
+    if ANALYTICS_RE.search(out):
+        new_out = ANALYTICS_RE.sub(lambda _m: analytics_html, out, count=1)
+        if new_out != out:
+            out = new_out
+            notes.append("刷新分析脚本")
+    elif "</head>" in out:
+        out = out.replace("</head>", "  " + analytics_html + "\n</head>", 1)
+        notes.append("注入分析脚本")
 
     # 2) 页眉（仅内容页）
     if spec.get("header"):
