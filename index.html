@@ -274,7 +274,7 @@ a{color:inherit;text-decoration:none}
 <!-- 正式页眉 -->
 <header class="site-head"><div class="shell head-inner">
   <a class="hbrand" href="/"><strong>序引 · 品牌出海</strong><span>海外原生品牌 · 反向工程<small>SEQUENTRY</small></span></a>
-  <nav class="hnav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="/about/">关于</a>
+  <nav class="hnav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="/about/">关于</a>
     <span class="atlas-link"><a href="https://atlas.sequentry.com">序引海图</a><span class="atlas-tip">品牌出海工具海图 · 264 渠道 / 9 类 / 全球开店导航</span></span>
   </nav>
 </div></header>
@@ -300,7 +300,7 @@ a{color:inherit;text-decoration:none}
           <div class="itab on" data-tab="case">案例</div>
           <div class="itab" data-tab="cool">酷中国</div>
           <div class="itab" data-tab="report">报告库</div>
-          <a class="itab-more" id="tabMore" href="/briefs/">查看全部 →</a>
+          <a class="itab-more" id="tabMore" href="/cases/">查看全部 →</a>
         </div>
         <div class="igrid" id="igrid"></div>
         <div class="info-foot" id="infoFoot"></div>
@@ -378,7 +378,7 @@ a{color:inherit;text-decoration:none}
       <strong>序引 · 品牌出海</strong>
       <span class="sq-foot-sub">海外原生品牌反向工程</span>
       <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
-      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
+      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
     </div>
     <div class="sq-foot-contact">
       <div class="sq-foot-wechat">
@@ -444,6 +444,7 @@ document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const 
 /* ===== 功能信息卡片（首屏主体）===== */
 const SHOW={
   case:[
+    {img:'Wyze',g:'linear-gradient(150deg,#2E4A3A,#162230)',title:'从 19.99 美元到 32 万台召回',tag:'案例 · 智能硬件',text:'Wyze 的低价增长、订阅飞轮与规模化风险——一份完整的品牌体检。',meta:'CASE · 9,300 字',url:'/cases/wyze/'},
     {soon:1,img:'POP MART',g:'linear-gradient(150deg,#3A2D4A,#1C2335)',title:'泡泡玛特：两个月落成欧美双总部',tag:'案例 · 市场',text:'从潮玩出口到本地化组织，把"出海"做成"在地经营"。',meta:'CASE · 拆解中',url:'/briefs/2026-06-03/'},
     {soon:1,img:'Anker',g:'linear-gradient(150deg,#22354A,#15202F)',title:'Anker：把"充电"做成高端心智',tag:'案例 · 运营',text:'白牌到品牌溢价，产品线分层与叙事升级。',meta:'CASE · 拆解中',url:'/report/01/'},
     {soon:1,img:'Stanley',g:'linear-gradient(150deg,#3A3326,#1F2230)',title:'一个水杯的病毒式品牌化',tag:'案例 · 市场',text:'靠社媒情绪与限量色重定义品类。',meta:'CASE · 拆解中',url:'/briefs/'},
@@ -468,9 +469,9 @@ function renderFeed(){
     <div class="ic-body"><div class="ic-tag">${it.tag}</div><h3>${it.title}</h3><p>${it.text}</p>
     <div class="ic-meta">${it.meta} · ${it.soon?'<span class="soontag">研究中 · 即将上线</span>':`<a href="${it.url}" style="color:#9CC2F2">${gTab==='report'?'阅读 / 下载 →':'读完整 →'}</a>`}</div></div>
   </article>`).join('');
-  const more={case:['查看全部案例 →','/briefs/'],cool:['查看全部酷中国 →','/briefs/'],report:['查看全部报告 →','/report/']}[gTab];
+  const more={case:['查看全部案例 →','/cases/'],cool:['查看全部酷中国 →','/briefs/'],report:['查看全部报告 →','/report/']}[gTab];
   const tm=document.getElementById('tabMore');if(tm){tm.textContent=more[0];tm.href=more[1];}
-  infoFoot.innerHTML=gTab==='report'?'自有研究报告，可在线阅读 / 下载 PDF':'真实拆解案例陆续上线 · 当前为研究主题预告';
+  infoFoot.innerHTML=gTab==='report'?'自有研究报告，可在线阅读 / 下载 PDF':'真实拆解案例陆续上线 · 已有 1 篇深度案例';
 }
 document.querySelectorAll('.itab').forEach(t=>t.onclick=function(){document.querySelectorAll('.itab').forEach(x=>x.classList.remove('on'));t.classList.add('on');gTab=t.dataset.tab;renderFeed();});
 renderFeed();
