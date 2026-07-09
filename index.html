@@ -269,7 +269,7 @@ a{color:inherit;text-decoration:none}
 </head>
 <body>
 
-<div class="live-banner"><span class="livedot"></span> LIVE · 2026.06 · 56,851 独立站已扫描入库 · 覆盖 44 个市场 · 数据更新 2026-06-17</div>
+<div class="live-banner" id="liveBanner"><span class="livedot"></span> LIVE · 独立站扫描库 · 数据加载中</div>
 
 <!-- 正式页眉 -->
 <header class="site-head"><div class="shell head-inner">
@@ -409,6 +409,7 @@ const COUNTS={},DRILL={};
 for(const k in GD.markets){const m=GD.markets[k];COUNTS[k]=m.count;const sym=CUR_SYM[m.currency]||'';
   DRILL[k]={conf:m.confirmed_pct+'%',ms:m.avg_marketing,ap:m.median_products,pr:(m.median_price!=null?sym+m.median_price:'—'),cats:(m.top_categories||[]).map(c=>[CAT_ZH[c[0]]||c[0],c[1]]),brands:m.top_brands||[]};}
 const MAXC=GD.max_market_count||1;
+(function(){const lb=document.getElementById('liveBanner');if(lb&&GD.updated)lb.innerHTML=`<span class="livedot"></span> LIVE · ${GD.updated.slice(0,7).replace('-','.')} · <b>${(GD.total_scanned||0).toLocaleString()}</b> 独立站已扫描入库 · 覆盖 <b>${GD.mapped_markets||0}</b> 个市场 · 数据更新 ${GD.updated}`;})();
 function norm(n){return n==='Taiwan'?'China':n;}
 function colorFor(n){return SQ_GLOBE.colorForCount(COUNTS[norm(n)]||0,MAXC);}
 function altFor(n){return SQ_GLOBE.altForCount(COUNTS[norm(n)]||0,MAXC);}

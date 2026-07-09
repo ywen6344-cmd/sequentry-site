@@ -74,12 +74,47 @@ body[data-view="globe"] .map-panel .empty{color:#9DA9BC}
 body[data-view="globe"] .map-stat{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#9DA9BC}
 body[data-view="globe"] .map-reset{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#C7D4E6}
 body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-shadow:none}
+/* 大洲分类导航（地图左侧悬浮，双主题） */
+.region-nav{position:absolute;left:16px;top:112px;bottom:52px;z-index:5;width:180px;overflow:auto;scrollbar-width:none;display:flex;flex-direction:column;gap:6px}
+.region-nav::-webkit-scrollbar{display:none}
+.rg{border:1px solid var(--color-line);background:rgba(255,255,255,.93);border-radius:var(--radius-sm);flex-shrink:0}
+.rg-head{display:flex;align-items:center;gap:6px;width:100%;border:0;background:transparent;padding:8px 10px;cursor:pointer;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--color-deep);text-align:left}
+.rg-head em{margin-left:auto;font-style:normal;font-size:9.5px;color:var(--color-gray)}
+.rg-head i{font-style:normal;color:var(--color-gray);width:10px;text-align:center}
+.rg-list{display:none;border-top:1px solid var(--color-line);max-height:198px;overflow:auto;scrollbar-width:thin}
+.rg.open .rg-list{display:block}
+.rg-item{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;border:0;background:transparent;padding:6px 10px;font-size:12px;color:var(--color-deep);cursor:pointer;text-align:left}
+.rg-item em{font-style:normal;font-family:var(--font-mono);font-size:10px;color:var(--color-gray)}
+.rg-item:hover{background:var(--color-xuan)}
+.rg-item.on{background:var(--color-blue);color:#fff}
+.rg-item.on em{color:rgba(255,255,255,.75)}
+body[data-view="globe"] .rg{background:rgba(10,19,34,.8);border-color:rgba(255,255,255,.14)}
+body[data-view="globe"] .rg-head{color:#C7D4E6}
+body[data-view="globe"] .rg-head em,body[data-view="globe"] .rg-head i{color:#7E8CA3}
+body[data-view="globe"] .rg-list{border-color:rgba(255,255,255,.12)}
+body[data-view="globe"] .rg-item{color:#C7D4E6}
+body[data-view="globe"] .rg-item em{color:#7E8CA3}
+body[data-view="globe"] .rg-item:hover{background:rgba(255,255,255,.08)}
+body[data-view="globe"] .rg-item.on{background:#4F9DF7;color:#0A1322}
+body[data-view="globe"] .rg-item.on em{color:rgba(10,19,34,.7)}
+@media (max-width:980px){.region-nav{display:none}}
 .map-legend{position:absolute;left:16px;bottom:14px;z-index:4;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.03em;color:var(--color-gray);background:rgba(255,255,255,.9);border:1px solid var(--color-line);border-radius:var(--radius-sm);padding:6px 10px;pointer-events:none}
 .map-legend .ramp{width:104px;height:8px;border-radius:20px;background:linear-gradient(90deg,rgba(30,64,175,.12),rgba(30,64,175,.9))}
 body[data-view="globe"] .map-legend{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#9DA9BC}
 body[data-view="globe"] .map-legend .ramp{background:linear-gradient(90deg,#1C2A3F,#4F9DF7)}
 .map-tip{position:fixed;z-index:60;pointer-events:none;display:none;background:#0C1626;color:#E5ECF6;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:7px 10px;font-family:var(--font-mono);font-size:11px;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .map-tip b{color:#fff}
+/* 选中市场的独立站图标簇（悬浮在国家上方，点击直达站点） */
+.store-chips-wrap{pointer-events:none}
+.store-chips{display:flex;gap:6px;padding:6px 8px;background:rgba(10,19,34,.86);border:1px solid rgba(255,255,255,.2);border-radius:9px;pointer-events:auto;width:max-content;transform:translateY(-34px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.store-chips.flat{transform:none;margin:6px auto 0;background:rgba(255,255,255,.96);border-color:var(--color-line);box-shadow:0 6px 18px rgba(15,23,42,.2)}
+.store-chips a{display:block;width:26px;height:26px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,.3);cursor:pointer;transition:transform .16s var(--ease-out),box-shadow .16s var(--ease-out)}
+.store-chips.flat a{border-color:var(--color-line)}
+.store-chips a:hover{transform:translateY(-3px) scale(1.18);box-shadow:0 4px 14px rgba(79,157,247,.55);border-color:#4F9DF7}
+.store-chips a img{width:100%;height:100%;object-fit:cover;display:block}
+.store-chips a span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--font-mono);font-size:13px;font-weight:600;color:#0A1322;background:#DCE6F5}
+.store-chips a.pop{animation:chipPop .4s var(--ease-out)}
+@keyframes chipPop{0%{transform:scale(1)}45%{transform:scale(1.8);box-shadow:0 0 0 10px rgba(79,157,247,.4)}100%{transform:scale(1.18)}}
 .country.hover-link{opacity:.76;stroke:var(--color-blue);stroke-width:1.3}
 .market-dot.hover-link circle{stroke-width:2.6}
 .flat-svg{cursor:grab}
@@ -200,6 +235,7 @@ body[data-view="globe"] .map-legend .ramp{background:linear-gradient(90deg,#1C2A
   <!-- sq-analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="848b3b16-5345-41f3-84cf-612de3e75197"></script><script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","xa9yl3ejba");</script><script defer src="../analytics-events.js"></script><!-- /sq-analytics -->
 </head>
 <body data-view="globe">
+<div class="live-banner" id="liveBanner"><span class="livedot"></span> LIVE · 独立站扫描库 · 数据加载中</div>
 <header class="site-head" data-shared="header"><div class="shell head-inner">
   <a class="hbrand" href="/"><strong>序引 · 品牌出海</strong><span>海外原生品牌 · 反向工程<small>SEQUENTRY</small></span></a>
   <nav class="hnav" aria-label="主导航">
@@ -268,6 +304,7 @@ body[data-view="globe"] .map-legend .ramp{background:linear-gradient(90deg,#1C2A
           </div>
           <div id="globe"></div>
           <div id="flatMap"></div>
+          <nav class="region-nav" id="regionNav" aria-label="按大洲浏览市场"></nav>
           <div class="map-legend" id="mapLegend"></div>
         </section>
 
@@ -459,6 +496,8 @@ function visibleMarketEntries(limit=0){
   return limit?list.slice(0,limit):list;
 }
 function renderHero(){
+  const lb=document.getElementById('liveBanner');
+  if(lb&&GD.updated)lb.innerHTML=`<span class="livedot"></span> LIVE · ${GD.updated.slice(0,7).replace('-','.')} · <b>${fmt(GD.total_scanned)}</b> 独立站已扫描入库 · 覆盖 <b>${fmt(GD.mapped_markets)}</b> 个市场 · 数据更新 ${GD.updated}`;
   document.getElementById('totalScanned').textContent=fmt(GD.total_scanned);
   document.getElementById('confirmedTotal').textContent=fmt(GD.confirmed_total);
   document.getElementById('marketCount').textContent=fmt(GD.mapped_markets||entries.length);
@@ -484,6 +523,7 @@ function selectMarket(name,moveGlobe=true){
   document.querySelectorAll('.market-row').forEach(r=>r.classList.toggle('active',r.dataset.name===d.name));
   document.querySelectorAll('.country').forEach(c=>c.classList.toggle('selected',c.dataset.name===d.name));
   document.querySelectorAll('.market-dot').forEach(c=>c.classList.toggle('selected',c.dataset.name===d.name));
+  document.querySelectorAll('.rg-item').forEach(b=>b.classList.toggle('on',b.dataset.name===d.name));
   if(world&&moveGlobe){
     const feature=countries.find(f=>marketNameForFeature(f)===d.name);
     if(COORDS[d.name]){
@@ -519,11 +559,14 @@ function loadShard(slug){
 function openStorePanel(d){
   storeShard=null;storeLimit=STORE_PAGE;storeEls.q.value='';
   storeEls.list.innerHTML='';storeEls.more.hidden=true;
-  if(!d.slug){storeEls.meta.textContent='暂无明细';return;}
+  if(!d.slug){storeEls.meta.textContent='暂无明细';chipMarket='';chipStores=[];renderChips();return;}
   storeEls.meta.textContent='加载中…';
   loadShard(d.slug).then(s=>{
     if(activeName!==d.name)return;
     storeShard=s;renderStores();
+    chipMarket=d.name;
+    chipStores=((s&&s.rows)||[]).slice(0,6).map(r=>({domain:r[0],brand:r[1]||r[0]}));
+    renderChips();
   });
 }
 function renderStores(){
@@ -543,6 +586,91 @@ function renderStores(){
 }
 storeEls.q.addEventListener('input',()=>{storeLimit=STORE_PAGE;renderStores();});
 storeEls.more.addEventListener('click',()=>{storeLimit+=50;renderStores();});
+/* ===== 选中市场的独立站图标簇（favicon 上地图） ===== */
+let chipMarket='',chipStores=[];
+function chipEl(s){
+  const a=document.createElement('a');
+  a.title=`${s.brand||s.domain} · 点击访问独立站`;
+  const img=document.createElement('img');
+  img.src=`https://www.google.com/s2/favicons?domain=${encodeURIComponent(s.domain)}&sz=64`;
+  img.alt=s.brand||s.domain;
+  img.onerror=()=>{
+    const sp=document.createElement('span');
+    sp.textContent=(s.brand||s.domain).charAt(0).toUpperCase();
+    if(img.parentNode===a)a.replaceChild(sp,img);
+  };
+  a.appendChild(img);
+  a.addEventListener('click',e=>{
+    e.preventDefault();e.stopPropagation();
+    a.classList.remove('pop');void a.offsetWidth;a.classList.add('pop');
+    setTimeout(()=>window.open(`https://${s.domain}`,'_blank','noopener'),280);
+  });
+  return a;
+}
+function buildChipRow(flat){
+  const row=document.createElement('div');
+  row.className='store-chips'+(flat?' flat':'');
+  chipStores.forEach(s=>row.appendChild(chipEl(s)));
+  if(flat)return row;
+  const wrap=document.createElement('div');
+  wrap.className='store-chips-wrap';
+  wrap.appendChild(row);
+  return wrap;
+}
+function renderChips(){
+  if(world&&world.htmlElementsData){
+    const c=COORDS[chipMarket];
+    world.htmlElementsData(c&&chipStores.length?[{lat:c[1],lng:c[0]}]:[])
+      .htmlLat('lat').htmlLng('lng').htmlAltitude(.06)
+      .htmlElement(()=>buildChipRow(false));
+  }
+  drawFlatChips();
+}
+let flatRoot=null,flatProj=null;
+function drawFlatChips(){
+  if(!flatRoot)return;
+  flatRoot.selectAll('.chips-fo').remove();
+  const c=COORDS[chipMarket];
+  if(!c||!chipStores.length)return;
+  const p=flatProj(c);
+  const fo=flatRoot.append('foreignObject').attr('class','chips-fo')
+    .attr('x',p[0]-110).attr('y',p[1]-62).attr('width',220).attr('height',58);
+  fo.node().appendChild(buildChipRow(true));
+}
+/* ===== 大洲分类导航 ===== */
+const REGION_DEF=[
+  ['亚洲',['China','India','Japan','South Korea','Singapore','Malaysia','Philippines','Vietnam','Thailand','Indonesia','Pakistan','Israel','Turkey','United Arab Emirates','Saudi Arabia']],
+  ['欧洲',['United Kingdom','Germany','France','Italy','Spain','Netherlands','Sweden','Norway','Denmark','Finland','Poland','Switzerland','Austria','Belgium','Ireland','Portugal','Greece','Czechia','Romania','Hungary','Russia']],
+  ['北美',['United States of America','Canada','Mexico']],
+  ['南美',['Brazil','Colombia','Chile']],
+  ['大洋洲',['Australia','New Zealand']],
+  ['非洲',['South Africa']]
+];
+let openRegion='';
+function renderRegionNav(){
+  const nav=document.getElementById('regionNav');
+  nav.innerHTML=REGION_DEF.map(([rg,names])=>{
+    const ms=names.filter(n=>ENTRY_BY_NAME.has(n))
+      .sort((a,b)=>ENTRY_BY_NAME.get(b).count-ENTRY_BY_NAME.get(a).count);
+    if(!ms.length)return '';
+    const total=ms.reduce((s,n)=>s+(ENTRY_BY_NAME.get(n).count||0),0);
+    const open=openRegion===rg;
+    return `<div class="rg${open?' open':''}" data-rg="${rg}">
+      <button type="button" class="rg-head"><span>${rg}</span><em>${ms.length} 市场 · ${fmt(total)}</em><i>${open?'−':'+'}</i></button>
+      <div class="rg-list">${ms.map(n=>`<button type="button" class="rg-item${n===activeName?' on':''}" data-name="${n}">${n}<em>${fmt(ENTRY_BY_NAME.get(n).count)}</em></button>`).join('')}</div>
+    </div>`;
+  }).join('');
+  nav.querySelectorAll('.rg-head').forEach(b=>b.addEventListener('click',()=>{
+    const rg=b.parentElement.dataset.rg;
+    openRegion=openRegion===rg?'':rg;
+    renderRegionNav();
+  }));
+  nav.querySelectorAll('.rg-item').forEach(b=>{
+    b.addEventListener('click',()=>selectMarket(b.dataset.name,true));
+    b.addEventListener('mouseenter',()=>linkHover(b.dataset.name,true));
+    b.addEventListener('mouseleave',()=>linkHover(b.dataset.name,false));
+  });
+}
 /* ===== 图例与列表↔地图联动 ===== */
 function renderLegend(){
   const view=document.body.dataset.view;
@@ -681,6 +809,8 @@ function renderFlatMap(){
     .on('zoom',e=>{flatZoomT=e.transform;root.attr('transform',e.transform);});
   svg.call(zoom).on('dblclick.zoom',null);
   if(flatZoomT&&flatZoomT.k>1)svg.call(zoom.transform,flatZoomT);
+  flatRoot=root;flatProj=projection;
+  drawFlatChips();
 }
 function resetFlatZoom(){flatZoomT=null;}
 function renderFlatFallback(){
@@ -789,6 +919,7 @@ document.getElementById('copyMarket').addEventListener('click',async()=>{
   renderHero();
   renderInsights();
   renderCategorySignals();
+  renderRegionNav();
   renderLegend();
   await loadTopo();
   renderFlatMap();
