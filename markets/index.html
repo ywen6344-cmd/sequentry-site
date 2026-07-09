@@ -74,6 +74,16 @@ body[data-view="globe"] .map-panel .empty{color:#9DA9BC}
 body[data-view="globe"] .map-stat{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#9DA9BC}
 body[data-view="globe"] .map-reset{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#C7D4E6}
 body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-shadow:none}
+.map-legend{position:absolute;left:16px;bottom:14px;z-index:4;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.03em;color:var(--color-gray);background:rgba(255,255,255,.9);border:1px solid var(--color-line);border-radius:var(--radius-sm);padding:6px 10px;pointer-events:none}
+.map-legend .ramp{width:104px;height:8px;border-radius:20px;background:linear-gradient(90deg,rgba(30,64,175,.12),rgba(30,64,175,.9))}
+body[data-view="globe"] .map-legend{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#9DA9BC}
+body[data-view="globe"] .map-legend .ramp{background:linear-gradient(90deg,#1C2A3F,#4F9DF7)}
+.map-tip{position:fixed;z-index:60;pointer-events:none;display:none;background:#0C1626;color:#E5ECF6;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:7px 10px;font-family:var(--font-mono);font-size:11px;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.map-tip b{color:#fff}
+.country.hover-link{opacity:.76;stroke:var(--color-blue);stroke-width:1.3}
+.market-dot.hover-link circle{stroke-width:2.6}
+.flat-svg{cursor:grab}
+.flat-svg:active{cursor:grabbing}
 .flat-svg{width:100%;height:100%;background:var(--color-paper)}
 .graticule{fill:none;stroke:var(--color-line);stroke-width:.55}
 .country{stroke:var(--color-paper);stroke-width:.55;cursor:pointer;transition:opacity var(--dur-fast) var(--ease-out)}
@@ -105,6 +115,24 @@ body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-
 .brand-cloud a{font-size:12px;color:var(--color-deep);border:1px solid var(--color-line);padding:5px 8px;border-radius:var(--radius-sm);background:var(--color-paper)}
 .brand-cloud a:hover{border-color:var(--color-blue);color:var(--color-blue);transform:translateY(-1px);box-shadow:var(--shadow-hover)}
 .detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.store-panel{margin-top:22px;border-top:1px solid var(--color-line);padding-top:16px}
+.store-headrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.store-headrow h3{margin:0}
+.store-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--color-gray)}
+.store-filter{display:flex;margin:10px 0 8px}
+.store-filter input{width:100%;height:34px;border:1px solid var(--color-line);background:var(--color-paper);border-radius:var(--radius-sm);padding:0 10px;outline:0;color:var(--color-ink);font-size:12.5px}
+.store-filter input:focus{border-color:var(--color-blue)}
+.store-list{display:grid;max-height:340px;overflow:auto;scrollbar-width:thin;border:1px solid var(--color-line);border-radius:0 0 var(--radius-sm) var(--radius-sm);border-top:0}
+.store-row-head{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-gray);background:var(--color-xuan);border:1px solid var(--color-line);border-radius:var(--radius-sm) var(--radius-sm) 0 0}
+.store-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) 74px 40px;gap:8px;align-items:center;padding:7px 10px;font-size:12px;border-bottom:1px solid var(--color-line)}
+.store-row:last-child{border-bottom:0}
+.store-row:hover{background:var(--color-xuan)}
+.store-row .s-dom{font-family:var(--font-mono);font-size:11.5px;color:var(--color-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.store-row .s-dom i{font-style:normal;color:var(--color-blue);margin-left:4px}
+.store-row .s-cat{color:var(--color-gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.store-row .s-price,.store-row .s-ms{font-family:var(--font-mono);font-size:11px;color:var(--color-gray);text-align:right}
+.store-more{margin-top:10px;width:100%;border:1px solid var(--color-line);background:var(--color-paper);color:var(--color-gray);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:11px;padding:8px;cursor:pointer}
+.store-more:hover{border-color:var(--color-blue);color:var(--color-blue)}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 14px;border-radius:var(--radius-md);border:1px solid var(--color-ink);background:var(--color-ink);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;cursor:pointer}
 .btn.secondary{background:var(--color-paper);color:var(--color-ink);border-color:var(--color-line)}
 .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-hover)}
@@ -240,6 +268,7 @@ body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-
           </div>
           <div id="globe"></div>
           <div id="flatMap"></div>
+          <div class="map-legend" id="mapLegend"></div>
         </section>
 
         <aside class="detail" aria-label="市场详情">
@@ -259,6 +288,13 @@ body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-
           <div class="detail-actions">
             <a class="btn" id="atlasMarket" href="https://atlas.sequentry.com">在海图筛选</a>
             <button class="btn secondary" id="copyMarket" type="button">复制市场摘要</button>
+          </div>
+          <div class="store-panel">
+            <div class="store-headrow"><h3>站点样本库</h3><span class="store-meta" id="storeMeta"></span></div>
+            <label class="store-filter"><input id="storeQ" type="search" placeholder="在本市场内筛选域名 / 品牌 / 品类"></label>
+            <div class="store-row store-row-head"><span class="s-dom">域名</span><span class="s-cat">品类 / 品牌</span><span class="s-price">起价</span><span class="s-ms">营销</span></div>
+            <div class="store-list" id="storeList"></div>
+            <button class="store-more" id="storeMore" type="button" hidden>加载更多</button>
           </div>
         </aside>
       </div>
@@ -311,7 +347,7 @@ body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="../assets/globe-theme.js"></script>
-<script src="../demo/globe_data.js"></script>
+<script src="../assets/data/globe_data.js"></script>
 <script>
 const GD=window.GLOBE_DATA||{markets:{},max_market_count:1,total_scanned:0,clean_total:0,confirmed_total:0,mapped_markets:0};
 const token=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -435,7 +471,8 @@ function selectMarket(name,moveGlobe=true){
   activeName=name;
   const d=selected();
   document.getElementById('detailName').textContent=d.name;
-  document.getElementById('detailSub').textContent=`货币：${d.currency||'未识别'} · 当前地图指标：${metricLabel(activeMetric)} ${metricText(d,activeMetric)}`;
+  const attr=d.cctld_pct==null?'':` · 强归因(ccTLD) ${d.cctld_pct}%${d.cctld_pct<50?'，其余按币种推断（含全球站）':''}`;
+  document.getElementById('detailSub').textContent=`货币：${d.currency||'未识别'} · 当前地图指标：${metricLabel(activeMetric)} ${metricText(d,activeMetric)}${attr}`;
   document.getElementById('dCount').textContent=fmt(d.count);
   document.getElementById('dConfirm').textContent=pct(d.confirmed_pct);
   document.getElementById('dMarketing').textContent=Math.round(d.avg_marketing||0);
@@ -443,6 +480,7 @@ function selectMarket(name,moveGlobe=true){
   document.getElementById('atlasMarket').href=`https://atlas.sequentry.com/?market=${encodeURIComponent(d.name)}`;
   renderDetailCats(d);
   renderBrands(d);
+  openStorePanel(d);
   document.querySelectorAll('.market-row').forEach(r=>r.classList.toggle('active',r.dataset.name===d.name));
   document.querySelectorAll('.country').forEach(c=>c.classList.toggle('selected',c.dataset.name===d.name));
   document.querySelectorAll('.market-dot').forEach(c=>c.classList.toggle('selected',c.dataset.name===d.name));
@@ -463,6 +501,59 @@ function renderDetailCats(d){
 }
 function renderBrands(d){
   document.getElementById('detailBrands').innerHTML=(d.top_brands||[]).map(b=>`<a href="https://atlas.sequentry.com/?brand=${encodeURIComponent(b)}">${b}</a>`).join('')||'<div class="empty">暂无品牌样本</div>';
+}
+/* ===== L1 站点样本库（每市场明细切片，按需加载） ===== */
+const SHARDS=new Map();
+const STORE_PAGE=20;
+let storeShard=null,storeLimit=STORE_PAGE;
+const storeEls={
+  meta:document.getElementById('storeMeta'),
+  q:document.getElementById('storeQ'),
+  list:document.getElementById('storeList'),
+  more:document.getElementById('storeMore')
+};
+function loadShard(slug){
+  if(!SHARDS.has(slug))SHARDS.set(slug,fetch(`../assets/data/markets/${slug}.json`).then(r=>r.ok?r.json():null).catch(()=>null));
+  return SHARDS.get(slug);
+}
+function openStorePanel(d){
+  storeShard=null;storeLimit=STORE_PAGE;storeEls.q.value='';
+  storeEls.list.innerHTML='';storeEls.more.hidden=true;
+  if(!d.slug){storeEls.meta.textContent='暂无明细';return;}
+  storeEls.meta.textContent='加载中…';
+  loadShard(d.slug).then(s=>{
+    if(activeName!==d.name)return;
+    storeShard=s;renderStores();
+  });
+}
+function renderStores(){
+  if(!storeShard){storeEls.meta.textContent='明细加载失败';return;}
+  const q=(storeEls.q.value||'').trim().toLowerCase();
+  const rows=q?storeShard.rows.filter(r=>(r[0]+' '+(r[1]||'')+' '+(r[2]||'')).toLowerCase().includes(q)):storeShard.rows;
+  const shown=rows.slice(0,storeLimit);
+  storeEls.meta.textContent=`${fmt(rows.length)} / ${fmt(storeShard.count)} 站 · ${storeShard.updated}`;
+  storeEls.list.innerHTML=shown.map(r=>`<a class="store-row" href="https://${r[0]}" target="_blank" rel="noopener nofollow">
+    <span class="s-dom">${r[0]}${r[7]?'<i title="已确认在售">✓</i>':''}</span>
+    <span class="s-cat">${r[2]||r[1]||'—'}</span>
+    <span class="s-price">${r[3]!=null?`${r[3]} ${r[4]||''}`.trim():'—'}</span>
+    <span class="s-ms">${r[5]||0}</span>
+  </a>`).join('')||'<div class="empty">没有匹配站点。</div>';
+  storeEls.more.hidden=shown.length>=rows.length;
+  storeEls.more.textContent=`加载更多（还有 ${fmt(rows.length-shown.length)} 站）`;
+}
+storeEls.q.addEventListener('input',()=>{storeLimit=STORE_PAGE;renderStores();});
+storeEls.more.addEventListener('click',()=>{storeLimit+=50;renderStores();});
+/* ===== 图例与列表↔地图联动 ===== */
+function renderLegend(){
+  const view=document.body.dataset.view;
+  document.getElementById('mapLegend').innerHTML=
+    `<span>低</span><span class="ramp"></span><span>高</span><span>· ${metricLabel(activeMetric)}</span>`+
+    (view==='flat'?'<span>· ●大小=站点数</span>':'<span>· 凸起=站点数</span>');
+}
+function linkHover(name,on){
+  document.querySelectorAll('.country, .market-dot').forEach(el=>{
+    if(el.dataset.name===name)el.classList.toggle('hover-link',on);
+  });
 }
 function applyFilters(){
   const q=(els.q.value||'').trim().toLowerCase();
@@ -487,7 +578,11 @@ function renderList(){
     <div class="m-num">${pct(d.confirmed_pct)}</div>
     <div class="m-num">${Math.round(d.avg_marketing||0)}</div>
   </article>`).join('')||'<div class="empty">没有匹配市场。</div>';
-  els.list.querySelectorAll('.market-row').forEach(r=>r.addEventListener('click',()=>selectMarket(r.dataset.name)));
+  els.list.querySelectorAll('.market-row').forEach(r=>{
+    r.addEventListener('click',()=>selectMarket(r.dataset.name));
+    r.addEventListener('mouseenter',()=>linkHover(r.dataset.name,true));
+    r.addEventListener('mouseleave',()=>linkHover(r.dataset.name,false));
+  });
 }
 function renderCategorySignals(){
   const map=new Map();
@@ -528,6 +623,22 @@ async function loadTopo(){
     countries=[];
   }
 }
+const mapTip=document.createElement('div');
+mapTip.className='map-tip';
+document.body.appendChild(mapTip);
+function tipShow(e,d){
+  if(!d){tipHide();return;}
+  mapTip.innerHTML=`<b>${d.name}</b><br>${fmt(d.count)} 独立站 · 确认 ${pct(d.confirmed_pct)}<br>${metricLabel(activeMetric)}：${metricText(d,activeMetric)}`;
+  mapTip.style.display='block';
+  tipMove(e);
+}
+function tipMove(e){
+  const x=Math.min(e.clientX+14,window.innerWidth-mapTip.offsetWidth-10);
+  const y=Math.min(e.clientY+14,window.innerHeight-mapTip.offsetHeight-10);
+  mapTip.style.left=x+'px';mapTip.style.top=y+'px';
+}
+function tipHide(){mapTip.style.display='none';}
+let flatZoomT=null;
 function renderFlatMap(){
   if(!window.d3||!countries.length){
     renderFlatFallback();
@@ -537,30 +648,41 @@ function renderFlatMap(){
   const collection={type:'FeatureCollection',features:countries};
   const projection=d3.geoNaturalEarth1().rotate([-105,0]).fitSize([width,height],collection);
   const path=d3.geoPath(projection);
-  els.flat.innerHTML=`<svg class="flat-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="平面世界市场图"></svg>`;
-  const svg=d3.select(els.flat.querySelector('svg'));
-  svg.append('path').attr('class','graticule').attr('d',path(d3.geoGraticule10()));
-  svg.selectAll('path.country').data(countries).enter().append('path')
+  els.flat.innerHTML=`<svg class="flat-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="平面世界市场图"><g class="zoom-root"></g></svg>`;
+  const svgEl=els.flat.querySelector('svg');
+  const svg=d3.select(svgEl);
+  const root=svg.select('g.zoom-root');
+  root.append('path').attr('class','graticule').attr('d',path(d3.geoGraticule10()));
+  root.selectAll('path.country').data(countries).enter().append('path')
     .attr('class',f=>`country ${marketForFeature(f)?'':'empty'} ${marketNameForFeature(f)===activeName?'selected':''}`)
     .attr('data-name',f=>marketNameForFeature(f))
     .attr('d',path)
     .attr('fill',f=>colorFor(marketForFeature(f)))
-    .on('click',function(_e,f){const name=marketNameForFeature(f);if(name)selectMarket(name,false)});
+    .on('click',function(_e,f){const name=marketNameForFeature(f);if(name)selectMarket(name,false)})
+    .on('mousemove',function(e,f){const d=marketForFeature(f);d?tipShow(e,d):tipHide();})
+    .on('mouseleave',tipHide);
   const featured=visibleMarketEntries(28);
-  const dots=svg.selectAll('g.market-dot').data(featured).enter().append('g')
+  const dots=root.selectAll('g.market-dot').data(featured).enter().append('g')
     .attr('class',d=>`market-dot ${d.name===activeName?'selected':''}`)
     .attr('data-name',d=>d.name)
     .attr('transform',d=>`translate(${projection(COORDS[d.name])[0]},${projection(COORDS[d.name])[1]})`)
-    .on('click',(_e,d)=>selectMarket(d.name,false));
+    .on('click',(_e,d)=>selectMarket(d.name,false))
+    .on('mousemove',(e,d)=>tipShow(e,d))
+    .on('mouseleave',tipHide);
   dots.append('circle').attr('r',d=>3+Math.sqrt((d.count||0)/maxCount)*11);
   dots.filter((d,i)=>i<10||d.name==='China').append('text').attr('x',10).attr('y',4).text(d=>d.name);
   const china=projection(COORDS.China);
   if(china){
-    const anchor=svg.append('g').attr('class','china-anchor').attr('transform',`translate(${china[0]},${china[1]})`);
+    const anchor=root.append('g').attr('class','china-anchor').attr('transform',`translate(${china[0]},${china[1]})`);
     anchor.append('circle').attr('r',4);
-    anchor.append('text').attr('x',12).attr('y',4).text('平面地图');
+    anchor.append('text').attr('x',12).attr('y',4).text('中国');
   }
+  const zoom=d3.zoom().scaleExtent([1,9])
+    .on('zoom',e=>{flatZoomT=e.transform;root.attr('transform',e.transform);});
+  svg.call(zoom).on('dblclick.zoom',null);
+  if(flatZoomT&&flatZoomT.k>1)svg.call(zoom.transform,flatZoomT);
 }
+function resetFlatZoom(){flatZoomT=null;}
 function renderFlatFallback(){
   const width=1120,height=560,cx=width/2,cy=height/2+8;
   const project=coord=>{
@@ -612,6 +734,7 @@ function renderGlobe(){
 function refreshMaps(){
   document.getElementById('mapStat').textContent=`metric: ${metricLabel(activeMetric)}`;
   updateMapCopy();
+  renderLegend();
   refreshMapOnly();
   selectMarket(activeName,false);
 }
@@ -639,6 +762,8 @@ function resetDashboard(){
   document.body.dataset.view='globe';
   document.querySelectorAll('.seg button[data-view]').forEach(b=>b.classList.toggle('on',b.dataset.view==='globe'));
   document.getElementById('mapStat').textContent=`metric: ${metricLabel(activeMetric)}`;
+  resetFlatZoom();
+  renderLegend();
   renderCategorySignals();
   applyFilters();
   selectMarket(activeName,false);
@@ -648,6 +773,7 @@ document.querySelectorAll('.seg button[data-view]').forEach(btn=>btn.addEventLis
   document.body.dataset.view=btn.dataset.view;
   document.querySelectorAll('.seg button[data-view]').forEach(b=>b.classList.toggle('on',b===btn));
   updateMapCopy();
+  renderLegend();
 }));
 els.q.addEventListener('input',applyFilters);
 els.sort.addEventListener('change',applyFilters);
@@ -663,6 +789,7 @@ document.getElementById('copyMarket').addEventListener('click',async()=>{
   renderHero();
   renderInsights();
   renderCategorySignals();
+  renderLegend();
   await loadTopo();
   renderFlatMap();
   renderGlobe();
