@@ -13,14 +13,14 @@
 <meta property="og:description" content="基于独立站样本的全球市场分布、品类结构、品牌样本与进入线索。">
 <meta property="og:url" content="https://www.sequentry.com/markets/">
 <meta property="og:image" content="https://www.sequentry.com/og-image.png">
-<link rel="icon" href="/logo.png" type="image/png">
+<link rel="icon" href="../logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="../assets/site.css">
 <style>
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 */
-@import url("/tokens.css");
+@import url("../tokens.css");
 *{box-sizing:border-box}
 html,body{margin:0;overflow-x:clip;background:var(--color-warm);color:var(--color-ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.2' cy='1.2' r='1' fill='%230F172A' fill-opacity='0.045'/%3E%3C/svg%3E");opacity:.72}
@@ -28,18 +28,7 @@ a{color:inherit;text-decoration:none}
 button,input,select{font:inherit}
 .wrap{width:min(1520px,calc(100% - 32px));margin:0 auto}
 .shell{width:min(1740px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto}
-.site-head{position:sticky;top:0;z-index:36;background:#0A1322;border-bottom:1px solid rgba(255,255,255,.07)}
-.head-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0;width:min(1320px,calc(100% - clamp(44px,8vw,160px)))}
-.hbrand strong{display:block;font-family:var(--font-serif);font-size:23px;font-weight:600;color:#fff;line-height:1.1}
-.hbrand span{display:block;margin-top:3px;font-family:var(--font-serif);font-size:12.5px;font-weight:500;color:#8FB9F2;letter-spacing:.02em}
-.hbrand span small{font-family:var(--font-mono);font-size:9px;color:#5E6E85;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
-.hnav{display:flex;align-items:center;gap:22px;font-family:var(--font-mono);font-size:12px;color:#9DA9BC;letter-spacing:.04em;margin-left:auto}
-.hnav a:hover,.hnav a.active{color:#fff}
-.atlas-link{position:relative;display:inline-block}
-.atlas-link>a{color:#9DA9BC}
-.atlas-link>a:hover{color:#fff}
-.atlas-tip{position:absolute;top:calc(100% + 12px);right:0;white-space:nowrap;background:rgba(46,50,58,.97);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px;font-family:var(--font-mono);font-size:10px;color:#E8EAED;letter-spacing:.03em;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.35)}
-.atlas-tip:after{content:"";position:absolute;bottom:100%;right:16px;border:6px solid transparent;border-bottom-color:rgba(46,50,58,.97)}
+/* 深色页眉 .site-head 样式在 /assets/site.css（单一真源，与主页共用） */
 .hero{padding:18px 0 14px;border-bottom:1px solid var(--color-line)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(520px,.92fr);gap:18px;align-items:center}
 .eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-blue);margin-bottom:6px}
@@ -77,6 +66,14 @@ h1{font-family:var(--font-serif);font-size:clamp(24px,2.8vw,36px);line-height:1.
 #flatMap{display:none;padding:62px 18px 16px}
 body[data-view="flat"] #globe{display:none}
 body[data-view="flat"] #flatMap{display:block}
+/* 3D 视图：地球坐在与主页同款的深色舞台上（平面视图保持冷白） */
+body[data-view="globe"] .map-panel{background:radial-gradient(120% 95% at 34% 50%,#11203A 0%,#0A1424 56%,#070D18 100%);border-color:#101B2C}
+body[data-view="globe"] .map-head h2{color:#F4F7FB}
+body[data-view="globe"] .map-head p{color:#9DA9BC}
+body[data-view="globe"] .map-panel .empty{color:#9DA9BC}
+body[data-view="globe"] .map-stat{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#9DA9BC}
+body[data-view="globe"] .map-reset{background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);color:#C7D4E6}
+body[data-view="globe"] .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7;box-shadow:none}
 .flat-svg{width:100%;height:100%;background:var(--color-paper)}
 .graticule{fill:none;stroke:var(--color-line);stroke-width:.55}
 .country{stroke:var(--color-paper);stroke-width:.55;cursor:pointer;transition:opacity var(--dur-fast) var(--ease-out)}
@@ -148,9 +145,6 @@ body[data-view="flat"] #flatMap{display:block}
   .search{grid-column:1/-1}
   .map-panel{min-height:520px}
 }
-@media(max-width:760px){
-  .hnav{display:none}
-}
 @media (max-width:640px){
   .hero{padding-top:18px}
   .metric-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -175,14 +169,22 @@ body[data-view="flat"] #flatMap{display:block}
   *,*:before,*:after{animation-duration:50ms!important;transition-duration:50ms!important;scroll-behavior:auto!important}
 }
 </style>
+  <!-- sq-analytics --><script defer src="https://cloud.umami.is/script.js" data-website-id="848b3b16-5345-41f3-84cf-612de3e75197"></script><script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","xa9yl3ejba");</script><script defer src="../analytics-events.js"></script><!-- /sq-analytics -->
 </head>
 <body data-view="globe">
-<header class="site-head"><div class="shell head-inner">
+<header class="site-head" data-shared="header"><div class="shell head-inner">
   <a class="hbrand" href="/"><strong>序引 · 品牌出海</strong><span>海外原生品牌 · 反向工程<small>SEQUENTRY</small></span></a>
-  <nav class="hnav" aria-label="主导航"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a class="active" href="/markets/">市场地图</a><a href="/about/">关于</a>
+  <nav class="hnav" aria-label="主导航">
+    <a href="/briefs/">信号</a>
+    <a href="/cases/">案例</a>
+    <a href="/report/">报告库</a>
+    <a href="/markets/">市场地图</a>
+    <a href="/about/">关于</a>
     <span class="atlas-link"><a href="https://atlas.sequentry.com">序引海图</a><span class="atlas-tip">品牌出海工具海图 · 264 渠道 / 9 类 / 全球开店导航</span></span>
   </nav>
-</div></header>
+</div>
+<script>(function(){var p=location.pathname.replace(/index\.html$/,'');if(p.charAt(p.length-1)!=='/')p+='/';var best=null,n=-1;document.querySelectorAll('.site-head .hnav a').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&h!=='/'&&(p===h||p.indexOf(h)===0)&&h.length>n){best=a;n=h.length;}});if(best)best.classList.add('active');})();</script>
+</header>
 
 <main>
   <section class="hero">
@@ -287,11 +289,11 @@ body[data-view="flat"] #flatMap{display:block}
       <strong>序引 · 品牌出海</strong>
       <span class="sq-foot-sub">海外原生品牌反向工程</span>
       <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
-      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="/markets/">市场地图</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
+      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="/markets/">市场地图</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
     </div>
     <div class="sq-foot-contact">
       <div class="sq-foot-wechat">
-        <img src="/wechat-qr-placeholder.png" alt="序引效能公众号二维码" width="88" height="88">
+        <img src="../wechat-qr-placeholder.png" alt="序引效能公众号二维码" width="88" height="88">
         <div>
           <p class="sq-foot-wxname">公众号「序引效能」</p>
           <p>深度报告、行业判断、品牌案例拆解。<br>扫码关注，新研究第一时间送达。</p>
@@ -308,7 +310,8 @@ body[data-view="flat"] #flatMap{display:block}
 <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="/demo/globe_data.js"></script>
+<script src="../assets/globe-theme.js"></script>
+<script src="../demo/globe_data.js"></script>
 <script>
 const GD=window.GLOBE_DATA||{markets:{},max_market_count:1,total_scanned:0,clean_total:0,confirmed_total:0,mapped_markets:0};
 const token=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -382,13 +385,21 @@ function metricText(d,key){
   if(key==='median_price')return money(d.median_price,d.currency);
   return String(metricValue(d,key));
 }
+function metricMax(){
+  return activeMetric==='count'?maxCount:activeMetric==='median_price'?Math.max(...entries.map(x=>x.median_price||0)):100;
+}
+/* 平面地图（冷白底）配色 */
 function colorFor(d){
   if(!d)return token('--color-xuan');
   if(activeCategory&&!marketHasCategory(d,activeCategory))return 'rgba(240,242,245,.78)';
-  const v=metricValue(d,activeMetric);
-  const max=activeMetric==='count'?maxCount:activeMetric==='median_price'?Math.max(...entries.map(x=>x.median_price||0)):100;
-  const a=Math.max(.12,Math.min(.9,v/(max||1)));
+  const a=Math.max(.12,Math.min(.9,metricValue(d,activeMetric)/(metricMax()||1)));
   return `rgba(30,64,175,${a})`;
+}
+/* 3D 地球（深色舞台）配色：与主页共用 SQ_GLOBE 夜地球渐变 */
+function globeColorFor(d){
+  if(!d)return SQ_GLOBE.EMPTY;
+  if(activeCategory&&!marketHasCategory(d,activeCategory))return SQ_GLOBE.DIM;
+  return SQ_GLOBE.colorForRatio(metricValue(d,activeMetric)/(metricMax()||1));
 }
 function marketNameForFeature(f){
   const name=f?.properties?.name||'';
@@ -401,10 +412,7 @@ function marketForFeature(f){
   return name?ENTRY_BY_NAME.get(name):null;
 }
 function globeAltitudeFor(d){
-  if(!d)return .004;
-  const max=activeMetric==='count'?maxCount:activeMetric==='median_price'?Math.max(...entries.map(x=>x.median_price||0)):100;
-  const ratio=Math.max(0,Math.min(1,metricValue(d,activeMetric)/(max||1)));
-  return .006+Math.log((d.count||0)+1)/Math.log(maxCount+1)*.055+Math.sqrt(ratio)*.025;
+  return SQ_GLOBE.altForCount(d?d.count||0:0,maxCount);
 }
 function marketHasCategory(d,cat){
   return !cat||(d.top_categories||[]).some(c=>c[0]===cat);
@@ -586,22 +594,12 @@ function renderFlatFallback(){
 }
 function renderGlobe(){
   const el=document.getElementById('globe');
-  if(!window.Globe||!countries.length){el.innerHTML='<div class="empty" style="padding:92px 18px 18px">3D 地球依赖未加载，数据列表和市场详情仍可使用；切换到平面地图可查看降级版市场格网。</div>';return;}
-  world=Globe({rendererConfig:{antialias:true}})(el)
-    .backgroundColor('rgba(0,0,0,0)')
-    .showGlobe(true)
-    .showGraticules(true)
-    .globeImageUrl(null)
-    .atmosphereColor(token('--color-blue'))
-    .atmosphereAltitude(.12)
-    .pointOfView({lat:25,lng:-55,altitude:2.25});
-  const mat=world.globeMaterial();
-  if(mat&&mat.color)mat.color.set(token('--color-ink'));
-  if(mat&&mat.emissive)mat.emissive.set(token('--color-ink'));
+  if(!window.Globe||!window.SQ_GLOBE||!countries.length){el.innerHTML='<div class="empty" style="padding:92px 18px 18px">3D 地球依赖未加载，数据列表和市场详情仍可使用；切换到平面地图可查看降级版市场格网。</div>';return;}
+  world=SQ_GLOBE.init(Globe,el,{rendererConfig:{antialias:true},pov:{lat:25,lng:-55,altitude:2.25}});
   world.polygonsData(countries)
-    .polygonCapColor(f=>colorFor(marketForFeature(f)))
-    .polygonSideColor(()=> 'rgba(15,23,42,.14)')
-    .polygonStrokeColor(f=>marketNameForFeature(f)===activeName?token('--color-blue'):'rgba(255,255,255,.24)')
+    .polygonCapColor(f=>globeColorFor(marketForFeature(f)))
+    .polygonSideColor(()=>SQ_GLOBE.SIDE)
+    .polygonStrokeColor(f=>marketNameForFeature(f)===activeName?SQ_GLOBE.SELECTED:SQ_GLOBE.STROKE)
     .polygonAltitude(f=>marketNameForFeature(f)===activeName ? .09 : globeAltitudeFor(marketForFeature(f)))
     .polygonLabel(f=>{
       const d=marketForFeature(f);
@@ -610,9 +608,6 @@ function renderGlobe(){
     .onPolygonClick(f=>{const name=marketNameForFeature(f);if(name)selectMarket(name,true)});
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);
   fit();new ResizeObserver(fit).observe(el);
-  world.controls().autoRotate=true;
-  world.controls().autoRotateSpeed=.32;
-  world.controls().enableZoom=false;
 }
 function refreshMaps(){
   document.getElementById('mapStat').textContent=`metric: ${metricLabel(activeMetric)}`;
@@ -622,8 +617,8 @@ function refreshMaps(){
 }
 function refreshMapOnly(){
   if(world){
-    world.polygonCapColor(f=>colorFor(marketForFeature(f)));
-    world.polygonStrokeColor(f=>marketNameForFeature(f)===activeName?token('--color-blue'):'rgba(255,255,255,.24)');
+    world.polygonCapColor(f=>globeColorFor(marketForFeature(f)));
+    world.polygonStrokeColor(f=>marketNameForFeature(f)===activeName?SQ_GLOBE.SELECTED:SQ_GLOBE.STROKE);
     world.polygonAltitude(f=>marketNameForFeature(f)===activeName ? .09 : globeAltitudeFor(marketForFeature(f)));
   }
   renderFlatMap();

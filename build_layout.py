@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parent
 PARTIALS = ROOT / "_partials"
 CSS_LINK_RE = re.compile(r'<link[^>]*href="[^"]*assets/site\.css"[^>]*>')
 
-# 每页应用哪些共用块。footer=全站；header=仅冷白内容页。
+# 每页应用哪些共用块。footer=全站；header=True 冷白内容页眉，"dark"=深色地球页眉。
 PAGES = {
     "index.html":                  {"footer": True},                  # 首页：专属深色地球页眉，不动
     "about/index.html":            {"footer": True, "header": True},
@@ -34,6 +34,7 @@ PAGES = {
     "briefs/2026-05-27/index.html":{"footer": True, "header": True},
     "briefs/2026-06-01/index.html":{"footer": True, "header": True},
     "briefs/2026-06-03/index.html":{"footer": True, "header": True},
+    "markets/index.html":          {"footer": True, "header": "dark"},# 市场地图：深色地球页眉
     "nav/index.html":              {"footer": True},                  # 特殊侧栏页，暂只替换页脚
 }
 
@@ -84,7 +85,8 @@ def process(path: Path, spec: dict, parts: dict, check: bool):
     # 按页面深度算相对前缀：让 /assets、二维码等在 file:// 本地双击打开也能解析
     #（相对路径在部署到根域时同样正确，故两种打开方式都对）
     rel_prefix = "../" * path.relative_to(ROOT).as_posix().count("/")
-    header_html = parts["header"].replace("{{REL}}", rel_prefix)
+    header_key = "header_dark" if spec.get("header") == "dark" else "header"
+    header_html = parts[header_key].replace("{{REL}}", rel_prefix)
     footer_html = parts["footer"].replace("{{REL}}", rel_prefix)
     desired_link = f'<link rel="stylesheet" href="{rel_prefix}assets/site.css">'
 
@@ -144,6 +146,7 @@ def main():
     check = "--check" in sys.argv
     parts = {
         "header": load_partial("header.html"),
+        "header_dark": load_partial("header_dark.html"),
         "footer": load_partial("footer.html"),
     }
     print(f"== build_layout {'(check)' if check else ''} ==")

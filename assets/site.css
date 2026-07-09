@@ -1,6 +1,7 @@
 /* ===================================================================
    序引 · 品牌出海 — 全站共用样式（单一真源）
-   目前覆盖：页脚 .sq-foot。改这里 = 全站同步（各页 <link> 引用本文件）。
+   目前覆盖：冷白页眉 .sq-head / 深色页眉 .site-head / 页脚 .sq-foot。
+   改这里 = 全站同步（各页 <link> 引用本文件）。
    样式刻意用字面值、不依赖各页 :root 变量，确保深/浅主题页面都一致。
    =================================================================== */
 
@@ -22,6 +23,24 @@
   .sq-head-inner{flex-wrap:wrap;gap:10px;min-height:0;padding:14px 24px}
   .sq-brand strong{font-size:20px}
   .sq-nav{gap:14px;font-size:11px}
+}
+
+/* ---------- 深色页眉 .site-head（主页 / 市场地图等地球页共用）---------- */
+.site-head{position:sticky;top:0;z-index:36;background:#0A1322;border-bottom:1px solid rgba(255,255,255,.07)}
+.site-head a{color:inherit;text-decoration:none}
+.head-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0;width:min(1320px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto}
+.hbrand strong{display:block;font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:23px;font-weight:600;color:#fff;line-height:1.1}
+.hbrand span{display:block;margin-top:3px;font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:12.5px;font-weight:500;color:#8FB9F2;letter-spacing:.02em}
+.hbrand span small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:9px;color:#5E6E85;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
+.hnav{display:flex;align-items:center;gap:22px;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:12px;color:#9DA9BC;letter-spacing:.04em;margin-left:auto}
+.hnav a:hover,.hnav a.active{color:#fff}
+.atlas-link{position:relative;display:inline-block}
+.atlas-link>a{color:#9DA9BC}
+.atlas-link>a:hover{color:#fff}
+.atlas-tip{position:absolute;top:calc(100% + 12px);right:0;white-space:nowrap;background:rgba(46,50,58,.97);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:10px;color:#E8EAED;letter-spacing:.03em;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.35)}
+.atlas-tip:after{content:"";position:absolute;bottom:100%;right:16px;border:6px solid transparent;border-bottom-color:rgba(46,50,58,.97)}
+@media(max-width:760px){
+  .hnav{display:none}
 }
 
 /* ---------- 全站共用页脚 ---------- */

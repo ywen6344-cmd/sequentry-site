@@ -378,7 +378,7 @@ a{color:inherit;text-decoration:none}
       <strong>序引 · 品牌出海</strong>
       <span class="sq-foot-sub">海外原生品牌反向工程</span>
       <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
-      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="/markets/">市场地图</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
+      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="/markets/">市场地图</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
     </div>
     <div class="sq-foot-contact">
       <div class="sq-foot-wechat">
@@ -398,6 +398,7 @@ a{color:inherit;text-decoration:none}
 
 <script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="assets/globe-theme.js"></script>
 <script src="demo/globe_data.js"></script>
 <script>
 /* ===== 地球数据 ===== */
@@ -408,14 +409,13 @@ const COUNTS={},DRILL={};
 for(const k in GD.markets){const m=GD.markets[k];COUNTS[k]=m.count;const sym=CUR_SYM[m.currency]||'';
   DRILL[k]={conf:m.confirmed_pct+'%',ms:m.avg_marketing,ap:m.median_products,pr:(m.median_price!=null?sym+m.median_price:'—'),cats:(m.top_categories||[]).map(c=>[CAT_ZH[c[0]]||c[0],c[1]]),brands:m.top_brands||[]};}
 const MAXC=GD.max_market_count||1;
-function lerp(a,b,t){const A=a.match(/\w\w/g).map(h=>parseInt(h,16)),B=b.match(/\w\w/g).map(h=>parseInt(h,16));return 'rgb('+A.map((v,i)=>Math.round(v+(B[i]-v)*t)).join(',')+')';}
 function norm(n){return n==='Taiwan'?'China':n;}
-function colorFor(n){const c=COUNTS[norm(n)]||0;if(!c)return '#131C28';return lerp('1C2A3F','4F9DF7',Math.min(1,Math.sqrt(c/MAXC)));}
-function altFor(n){const c=COUNTS[norm(n)]||0;if(!c)return 0.004;return 0.006+Math.log(c+1)/Math.log(MAXC+1)*0.09;}
+function colorFor(n){return SQ_GLOBE.colorForCount(COUNTS[norm(n)]||0,MAXC);}
+function altFor(n){return SQ_GLOBE.altForCount(COUNTS[norm(n)]||0,MAXC);}
 const RINGS=[{lat:38,lng:-97},{lat:51,lng:10},{lat:-14,lng:-52}];
 const layers={poly:true,rings:false,rotate:true};let world,POLY=[];
 function paintRings(){world.ringsData(layers.rings?RINGS:[]).ringColor(()=>(t=>`rgba(255,90,80,${Math.sqrt(1-t)})`)).ringMaxRadius(5).ringPropagationSpeed(2.4).ringRepeatPeriod(900);}
-function paintPoly(){world.polygonsData(layers.poly?POLY:[]).polygonCapColor(d=>colorFor(d.properties.name)).polygonSideColor(()=>'rgba(40,70,120,.22)').polygonStrokeColor(()=>'rgba(120,160,210,.3)').polygonAltitude(d=>altFor(d.properties.name)).polygonLabel(d=>{const n=norm(d.properties.name),c=COUNTS[n];return `<div style="font-family:monospace;background:#0C1626;color:#E5ECF6;padding:8px 11px;border:1px solid rgba(255,255,255,.15);border-radius:6px;font-size:12px"><b>${n}</b><br>${c?c.toLocaleString()+' 独立站 · 点击下钻':'暂无数据'}</div>`;}).onPolygonClick(d=>openPopup(norm(d.properties.name)));}
+function paintPoly(){world.polygonsData(layers.poly?POLY:[]).polygonCapColor(d=>colorFor(d.properties.name)).polygonSideColor(()=>SQ_GLOBE.SIDE).polygonStrokeColor(()=>SQ_GLOBE.STROKE).polygonAltitude(d=>altFor(d.properties.name)).polygonLabel(d=>{const n=norm(d.properties.name),c=COUNTS[n];return `<div style="font-family:monospace;background:#0C1626;color:#E5ECF6;padding:8px 11px;border:1px solid rgba(255,255,255,.15);border-radius:6px;font-size:12px"><b>${n}</b><br>${c?c.toLocaleString()+' 独立站 · 点击下钻':'暂无数据'}</div>`;}).onPolygonClick(d=>openPopup(norm(d.properties.name)));}
 function catBars(cats){return cats.map(c=>`<div class="cbar"><span>${c[0]}</span><span class="ct2"><i style="width:${Math.min(100,c[1]*2.6)}%"></i></span><span class="cv">${c[1]}%</span></div>`).join('');}
 const mkName=document.getElementById('mkName'),mkCount=document.getElementById('mkCount'),mkMetrics=document.getElementById('mkMetrics'),mkChart=document.getElementById('mkChart'),mkBrands=document.getElementById('mkBrands'),mkBtn=document.getElementById('mkBtn');
 function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
@@ -426,17 +426,14 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   mkBtn.innerHTML=`打开市场页<br>「${name}」→`;mkBtn.href=`/markets/?market=${encodeURIComponent(name)}`;
   document.getElementById('mkpop').classList.add('open');}
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
-async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson){el.setAttribute('data-state','map-dependency-unavailable');return;}
-  world=Globe({rendererConfig:{preserveDrawingBuffer:false}})(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});
-  world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');
-  world.controls().autoRotate=true;world.controls().autoRotateSpeed=.5;world.controls().enableZoom=false;
+async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson||!window.SQ_GLOBE){el.setAttribute('data-state','map-dependency-unavailable');return;}
+  world=SQ_GLOBE.init(Globe,el);
   world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);
   const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());
   POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');
   paintPoly();paintRings();
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);
   world.controls().enableRotate=true;   // 放大后可鼠标拖动旋转
-  if(world.renderer){const rd=world.renderer();if(rd&&rd.setPixelRatio)rd.setPixelRatio(Math.min(1.6,window.devicePixelRatio||1));}
   window.openPopup=openPopup;window.__ready=true;}
 initGlobe();
 document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const k=b.dataset.layer;layers[k]=!layers[k];b.classList.toggle('on',layers[k]);if(!world)return;if(k==='poly')paintPoly();else if(k==='rings')paintRings();else world.controls().autoRotate=layers.rotate;});
