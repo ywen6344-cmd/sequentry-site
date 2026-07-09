@@ -274,7 +274,7 @@ a{color:inherit;text-decoration:none}
 <!-- 正式页眉 -->
 <header class="site-head"><div class="shell head-inner">
   <a class="hbrand" href="/"><strong>序引 · 品牌出海</strong><span>海外原生品牌 · 反向工程<small>SEQUENTRY</small></span></a>
-  <nav class="hnav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="/about/">关于</a>
+  <nav class="hnav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="/markets/">市场地图</a><a href="/about/">关于</a>
     <span class="atlas-link"><a href="https://atlas.sequentry.com">序引海图</a><span class="atlas-tip">品牌出海工具海图 · 264 渠道 / 9 类 / 全球开店导航</span></span>
   </nav>
 </div></header>
@@ -327,7 +327,7 @@ a{color:inherit;text-decoration:none}
         <div class="mk-col"><h4>基础指标</h4><div class="mk-metrics" id="mkMetrics"></div></div>
         <div class="mk-col"><h4>品类构成</h4><div class="cbars" id="mkChart"></div></div>
         <div class="mk-col mk-brands"><h4>Top 品牌</h4><div class="bchips" id="mkBrands"></div></div>
-        <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="https://atlas.sequentry.com">在数据库筛选 →</a></div>
+        <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="/markets/">打开市场页 →</a></div>
       </div>
     </div>
 
@@ -378,7 +378,7 @@ a{color:inherit;text-decoration:none}
       <strong>序引 · 品牌出海</strong>
       <span class="sq-foot-sub">海外原生品牌反向工程</span>
       <em>Sequentry · 独立研究 — Reverse-Engineering Native Brands.</em>
-      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/cases/">案例</a><a href="/report/">报告库</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
+      <nav class="sq-foot-nav"><a href="/briefs/">信号</a><a href="/briefs/2026-06-03/">案例</a><a href="/report/">报告库</a><a href="/markets/">市场地图</a><a href="https://atlas.sequentry.com">序引海图</a><a href="/about/">关于</a></nav>
     </div>
     <div class="sq-foot-contact">
       <div class="sq-foot-wechat">
@@ -423,7 +423,7 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   mkMetrics.innerHTML=dr?`<div class="m"><span>商品确认</span><b>${dr.conf}</b></div><div class="m"><span>营销分</span><b>${dr.ms||'—'}</b></div><div class="m"><span>均商品数</span><b>${dr.ap}</b></div><div class="m"><span>均价</span><b>${dr.pr}</b></div>`:'<div class="mk-empty">指标整理中</div>';
   mkChart.innerHTML=dr?catBars(dr.cats):'<div class="mk-empty">品类整理中</div>';
   mkBrands.innerHTML=dr?dr.brands.map(b=>`<span class="bchip">${b}<a href="https://atlas.sequentry.com/?brand=${encodeURIComponent(b)}">→拆解</a></span>`).join(''):`<div class="mk-empty">${c?'已收录 '+c.toLocaleString()+' 家，下钻整理中':'暂无收录'}</div>`;
-  mkBtn.innerHTML=`在数据库筛选<br>「${name}」→`;mkBtn.href=`https://atlas.sequentry.com/?market=${encodeURIComponent(name)}`;
+  mkBtn.innerHTML=`打开市场页<br>「${name}」→`;mkBtn.href=`/markets/?market=${encodeURIComponent(name)}`;
   document.getElementById('mkpop').classList.add('open');}
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
 async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson){el.setAttribute('data-state','map-dependency-unavailable');return;}
@@ -462,9 +462,11 @@ const SHOW={
     {img:'欧盟合规',g:'linear-gradient(150deg,#3A2A2A,#1E1E2C)',title:'ICS2 与小包新规影响',tag:'报告 · 合规信号',text:'欧盟入境安全数据与小包合规口径变化。',meta:'SIGNAL · 2026-06-01',url:'/briefs/2026-06-01/'}
   ]
 };
+const HOME_MODULE_LIMIT=4;
 let gTab='case';const igrid=document.getElementById('igrid'),infoFoot=document.getElementById('infoFoot');
 function renderFeed(){
-  igrid.innerHTML=SHOW[gTab].map((it,i)=>`<article class="icard${it.soon?' soon':''}" style="animation-delay:${i*60}ms"${it.soon?'':` onclick="location.href='${it.url}'"`}>
+  const items=SHOW[gTab].slice(0,HOME_MODULE_LIMIT);
+  igrid.innerHTML=items.map((it,i)=>`<article class="icard${it.soon?' soon':''}" style="animation-delay:${i*60}ms"${it.soon?'':` onclick="location.href='${it.url}'"`}>
     <div class="ic-img" style="background:${it.g}"><div><em>${it.img}</em><small>${gTab==='report'?'REPORT / SIGNAL':'CASE / BRAND SIGNAL'}</small></div></div>
     <div class="ic-body"><div class="ic-tag">${it.tag}</div><h3>${it.title}</h3><p>${it.text}</p>
     <div class="ic-meta">${it.meta} · ${it.soon?'<span class="soontag">研究中 · 即将上线</span>':`<a href="${it.url}" style="color:#9CC2F2">${gTab==='report'?'阅读 / 下载 →':'读完整 →'}</a>`}</div></div>

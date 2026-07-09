@@ -28,6 +28,7 @@ ROOT = Path(__file__).resolve().parent
 STATIC_TAIL = [
     ("/report/",    "2026-05-27", "monthly", "0.8"),
     ("/report/01/", "2026-05-27", "monthly", "0.8"),
+    ("/markets/",   "2026-07-09", "weekly",  "0.8"),
     ("/about/",     "2026-06-16", "monthly", "0.5"),
     ("/sources/",   "2026-06-16", "weekly",  "0.5"),
     ("/nav/",       "2026-06-16", "weekly",  "0.6"),

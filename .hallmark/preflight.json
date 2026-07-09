@@ -1,0 +1,9 @@
+{
+  "date": "2026-07-09",
+  "framework": "vanilla static HTML",
+  "font_stack": "Fraunces, Inter, JetBrains Mono, Noto Sans SC, Noto Serif SC via Google Fonts",
+  "palette": "Sequentry cold white, ink, cognitive blue, cinnabar/opinion red",
+  "motion": "motion-cut with lightweight transform/opacity transitions and globe interaction",
+  "spacing": "4px-derived custom properties in tokens.css",
+  "preserve": ["existing static pages", "inline homepage globe implementation", "Sequentry brand color hierarchy"]
+}
