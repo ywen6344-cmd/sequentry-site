@@ -139,6 +139,9 @@ a{color:inherit;text-decoration:none}
 .ctrl button.on{background:#3B6FB5;color:#fff;border-color:#3B6FB5}
 .legend{position:absolute;left:44px;bottom:30px;font-family:var(--mono);font-size:10px;color:#90A0B8;display:flex;align-items:center;gap:10px}
 .legend .bar{width:140px;height:7px;border-radius:4px;background:linear-gradient(90deg,#1C2A3F,#2F5C9B,#4F9DF7)}
+/* 放大态常驻入口：不依赖点击国家，右下角直达市场工作台 */
+.fs-workbench{position:absolute;right:34px;bottom:30px;pointer-events:auto;display:inline-flex;align-items:center;background:#3B6FB5;border:1px solid #3B6FB5;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.04em;padding:11px 17px;border-radius:8px;box-shadow:0 10px 28px rgba(0,0,0,.45);transition:background .2s,transform .2s}
+.fs-workbench:hover{background:#4F8AD0;border-color:#4F8AD0;transform:translateY(-2px)}
 
 /* 全屏停留段：上下空白点击导航热区（仅 fsActive 时由 JS 开 pointer-events）*/
 .fs-nav{display:none}
@@ -178,6 +181,15 @@ a{color:inherit;text-decoration:none}
 .mk-cta{justify-content:center;align-items:center}
 .mk-btn{display:inline-flex;align-items:center;text-align:center;border:1px solid #3B6FB5;background:#3B6FB5;color:#fff;border-radius:8px;padding:11px 15px;font-family:var(--mono);font-size:10.5px;line-height:1.45}
 .mk-empty{color:#7486A0;font-size:12px;line-height:1.5}
+.mk-id h3 img{width:20px;height:14px;object-fit:cover;border-radius:2px;margin-right:7px;vertical-align:-1px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.mk-score{font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:600;color:#0A1322;background:#5FA0EE;border-radius:4px;padding:2px 6px;margin-left:8px;vertical-align:2px}
+.mk-favs{display:flex;flex-wrap:wrap;gap:6px}
+.mk-favs a{display:block;width:30px;height:30px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,.28);transition:transform .16s,border-color .16s}
+.mk-favs a:hover{transform:translateY(-3px) scale(1.08);border-color:#5FA0EE}
+.mk-favs a img{width:100%;height:100%;object-fit:cover;display:block}
+.mk-favs a span{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:var(--mono);font-size:13px;font-weight:600;color:#0A1322;background:#DCE6F5}
+.mk-sub{display:block;margin-top:9px;font-family:var(--mono);font-size:9.5px;color:#8593A8;text-align:center;transition:color .2s}
+.mk-sub:hover{color:#9CC2F2}
 
 /* ===== 地球下方：序引海图横条（学术左标签列 / 右快照，竖线对齐方法带 32% 线）===== */
 .atlasbar{background:linear-gradient(to bottom,#0A1322 0,#0A1322 calc(100% - 72px),#0F172A 100%);position:relative;z-index:10}
@@ -316,6 +328,7 @@ a{color:inherit;text-decoration:none}
         <button class="on" data-layer="rotate" type="button">旋转</button>
       </div>
       <div class="legend">独立站密度<div class="bar"></div>多</div>
+      <a class="fs-workbench" href="/markets/">进入市场工作台 →</a>
     </div>
 
     <div class="mkpop" id="mkpop">
@@ -324,8 +337,8 @@ a{color:inherit;text-decoration:none}
         <div class="mk-col mk-id"><div class="ct">Market · 市场下钻</div><h3 id="mkName">—</h3><div class="big"><span id="mkCount">—</span><small>独立站</small></div></div>
         <div class="mk-col"><h4>基础指标</h4><div class="mk-metrics" id="mkMetrics"></div></div>
         <div class="mk-col"><h4>品类构成</h4><div class="cbars" id="mkChart"></div></div>
-        <div class="mk-col mk-brands"><h4>Top 品牌</h4><div class="bchips" id="mkBrands"></div></div>
-        <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="/markets/">打开市场页 →</a></div>
+        <div class="mk-col mk-brands"><h4>头部独立站 · 点击直达</h4><div class="bchips" id="mkBrands"></div></div>
+        <div class="mk-col mk-cta"><a class="mk-btn" id="mkBtn" href="/markets/">进入市场地图 →</a><a class="mk-sub" id="mkSub" href="https://atlas.sequentry.com" target="_blank" rel="noopener">在海图筛选 →</a></div>
       </div>
     </div>
 
@@ -399,6 +412,7 @@ a{color:inherit;text-decoration:none}
 <script src="assets/vendor/countries-110m.js"></script>
 <script src="assets/globe-theme.js"></script>
 <script src="assets/data/globe_data.js"></script>
+<script src="assets/data/stores_lite.js"></script>
 <script>
 /* ===== 地球数据 ===== */
 const CUR_SYM={USD:'$',EUR:'€',GBP:'£',INR:'₹',JPY:'¥',AUD:'A$',CAD:'C$',BRL:'R$',MXN:'MX$',PKR:'₨',AED:'AED ',CNY:'¥',SGD:'S$',ZAR:'R',SEK:'kr ',NOK:'kr ',DKK:'kr ',PLN:'zł',CHF:'CHF ',KRW:'₩',TWD:'NT$',THB:'฿',TRY:'₺',IDR:'Rp',MYR:'RM',NZD:'NZ$',COP:'$',CLP:'$'};
@@ -408,6 +422,9 @@ const COUNTS={},DRILL={};
 for(const k in GD.markets){const m=GD.markets[k];COUNTS[k]=m.count;const sym=CUR_SYM[m.currency]||'';
   DRILL[k]={conf:m.confirmed_pct+'%',ms:m.avg_marketing,ap:m.median_products,pr:(m.median_price!=null?sym+m.median_price:'—'),cats:(m.top_categories||[]).map(c=>[CAT_ZH[c[0]]||c[0],c[1]]),brands:m.top_brands||[]};}
 const MAXC=GD.max_market_count||1;
+const NAME_ZH={"United States of America":"美国","India":"印度","United Kingdom":"英国","Germany":"德国","Australia":"澳大利亚","Pakistan":"巴基斯坦","Brazil":"巴西","Canada":"加拿大","Colombia":"哥伦比亚","Japan":"日本","Italy":"意大利","France":"法国","Poland":"波兰","Netherlands":"荷兰","Mexico":"墨西哥","South Africa":"南非","Spain":"西班牙","Romania":"罗马尼亚","Greece":"希腊","Chile":"智利","Turkey":"土耳其","Russia":"俄罗斯","Israel":"以色列","Singapore":"新加坡","Denmark":"丹麦","Sweden":"瑞典","Vietnam":"越南","China":"中国","New Zealand":"新西兰","Indonesia":"印度尼西亚","Switzerland":"瑞士","Finland":"芬兰","Hungary":"匈牙利","United Arab Emirates":"阿联酋","Portugal":"葡萄牙","Ireland":"爱尔兰","Czechia":"捷克","Austria":"奥地利","Malaysia":"马来西亚","Belgium":"比利时","Philippines":"菲律宾","Thailand":"泰国","Norway":"挪威","South Korea":"韩国","Saudi Arabia":"沙特阿拉伯"};
+const ISO2={"United States of America":"us","India":"in","United Kingdom":"gb","Germany":"de","Australia":"au","Pakistan":"pk","Brazil":"br","Canada":"ca","Colombia":"co","Japan":"jp","Italy":"it","France":"fr","Poland":"pl","Netherlands":"nl","Mexico":"mx","South Africa":"za","Spain":"es","Romania":"ro","Greece":"gr","Chile":"cl","Turkey":"tr","Russia":"ru","Israel":"il","Singapore":"sg","Denmark":"dk","Sweden":"se","Vietnam":"vn","China":"cn","New Zealand":"nz","Indonesia":"id","Switzerland":"ch","Finland":"fi","Hungary":"hu","United Arab Emirates":"ae","Portugal":"pt","Ireland":"ie","Czechia":"cz","Austria":"at","Malaysia":"my","Belgium":"be","Philippines":"ph","Thailand":"th","Norway":"no","South Korea":"kr","Saudi Arabia":"sa"};
+const flagImg=n=>ISO2[n]?`<img src="assets/flags/${ISO2[n]}.png" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
 (function(){const lb=document.getElementById('liveBanner');if(lb&&GD.updated)lb.innerHTML=`<span class="livedot"></span> LIVE · ${GD.updated.slice(0,7).replace('-','.')} · <b>${(GD.total_scanned||0).toLocaleString()}</b> 独立站已扫描入库 · 覆盖 <b>${GD.mapped_markets||0}</b> 个市场 · 数据更新 ${GD.updated}`;})();
 function norm(n){return n==='Taiwan'?'China':n;}
 function colorFor(n){return SQ_GLOBE.colorForCount(COUNTS[norm(n)]||0,MAXC);}
@@ -417,13 +434,17 @@ const layers={poly:true,rings:false,rotate:true};let world,POLY=[];
 function paintRings(){world.ringsData(layers.rings?RINGS:[]).ringColor(()=>(t=>`rgba(255,90,80,${Math.sqrt(1-t)})`)).ringMaxRadius(5).ringPropagationSpeed(2.4).ringRepeatPeriod(900);}
 function paintPoly(){world.polygonsData(layers.poly?POLY:[]).polygonCapColor(d=>colorFor(d.properties.name)).polygonSideColor(()=>SQ_GLOBE.SIDE).polygonStrokeColor(()=>SQ_GLOBE.STROKE).polygonAltitude(d=>altFor(d.properties.name)).polygonLabel(d=>{const n=norm(d.properties.name),c=COUNTS[n];return `<div style="font-family:monospace;background:#0C1626;color:#E5ECF6;padding:8px 11px;border:1px solid rgba(255,255,255,.15);border-radius:6px;font-size:12px"><b>${n}</b><br>${c?c.toLocaleString()+' 独立站 · 点击下钻':'暂无数据'}</div>`;}).onPolygonClick(d=>openPopup(norm(d.properties.name)));}
 function catBars(cats){return cats.map(c=>`<div class="cbar"><span>${c[0]}</span><span class="ct2"><i style="width:${Math.min(100,c[1]*2.6)}%"></i></span><span class="cv">${c[1]}%</span></div>`).join('');}
-const mkName=document.getElementById('mkName'),mkCount=document.getElementById('mkCount'),mkMetrics=document.getElementById('mkMetrics'),mkChart=document.getElementById('mkChart'),mkBrands=document.getElementById('mkBrands'),mkBtn=document.getElementById('mkBtn');
-function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
-  mkName.textContent=name;mkCount.textContent=c?c.toLocaleString():'—';
-  mkMetrics.innerHTML=dr?`<div class="m"><span>商品确认</span><b>${dr.conf}</b></div><div class="m"><span>营销分</span><b>${dr.ms||'—'}</b></div><div class="m"><span>均商品数</span><b>${dr.ap}</b></div><div class="m"><span>均价</span><b>${dr.pr}</b></div>`:'<div class="mk-empty">指标整理中</div>';
+const mkName=document.getElementById('mkName'),mkCount=document.getElementById('mkCount'),mkMetrics=document.getElementById('mkMetrics'),mkChart=document.getElementById('mkChart'),mkBrands=document.getElementById('mkBrands'),mkBtn=document.getElementById('mkBtn'),mkSub=document.getElementById('mkSub');
+function openPopup(name){const c=COUNTS[name],dr=DRILL[name],m=GD.markets[name];
+  const score=m?Math.round((m.count/MAXC)*45+(m.confirmed_pct||0)*.25+(m.avg_marketing||0)*.3):null;
+  mkName.innerHTML=`${flagImg(name)}${NAME_ZH[name]||name}${score!=null?`<i class="mk-score" title="探索优先级 ${score} / 100 · 体量×确认率×营销成熟度加权">${score}</i>`:''}`;
+  mkCount.textContent=c?c.toLocaleString():'—';
+  mkMetrics.innerHTML=dr?`<div class="m"><span>确认率</span><b>${dr.conf}</b></div><div class="m"><span>价格中位数</span><b>${dr.pr}</b></div>`:'<div class="mk-empty">指标整理中</div>';
   mkChart.innerHTML=dr?catBars(dr.cats):'<div class="mk-empty">品类整理中</div>';
-  mkBrands.innerHTML=dr?dr.brands.map(b=>`<span class="bchip">${b}<a href="https://atlas.sequentry.com/?brand=${encodeURIComponent(b)}">→拆解</a></span>`).join(''):`<div class="mk-empty">${c?'已收录 '+c.toLocaleString()+' 家，下钻整理中':'暂无收录'}</div>`;
-  mkBtn.innerHTML=`打开市场页<br>「${name}」→`;mkBtn.href=`/markets/?market=${encodeURIComponent(name)}`;
+  const stores=((window.STORES_LITE||{})[name]||[]).slice(0,5);
+  mkBrands.innerHTML=stores.length?`<div class="mk-favs">${stores.map(s=>`<a href="https://${s[0]}" target="_blank" rel="noopener nofollow" title="${s[1]||s[0]} · 点击访问独立站"><img src="assets/data/favicons/${encodeURIComponent(s[0])}.png" alt="${(s[1]||s[0]).charAt(0).toUpperCase()}" loading="lazy" onerror="this.outerHTML='<span>'+this.alt+'</span>'"></a>`).join('')}</div>`:`<div class="mk-empty">${c?'已收录 '+c.toLocaleString()+' 家，下钻整理中':'暂无收录'}</div>`;
+  mkBtn.innerHTML=`进入市场地图<br>「${NAME_ZH[name]||name}」→`;mkBtn.href=`/markets/?market=${encodeURIComponent(name)}`;
+  if(mkSub)mkSub.href=`https://atlas.sequentry.com/?market=${encodeURIComponent(name)}`;
   document.getElementById('mkpop').classList.add('open');}
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
 async function initGlobe(){const el=document.getElementById('globe');

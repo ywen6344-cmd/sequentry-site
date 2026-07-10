@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="../assets/site.css">
 <style>
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 */
+/* ⚠ 双蓝纪律：冷白面（左右栏/hero）只用认知蓝 var(--color-blue)=#1E40AF；
+   深色地图舞台内只用亮蓝 #4F9DF7（SQ_GLOBE.SELECTED）。两侧不得互串。 */
 @import url("../tokens.css");
 *{box-sizing:border-box}
 html,body{margin:0;overflow-x:clip;background:var(--color-warm);color:var(--color-ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
@@ -69,11 +71,12 @@ h1{font-family:var(--font-serif);font-size:clamp(20px,2vw,26px);line-height:1.1;
 .map-panel{grid-area:map;min-height:0;position:relative;overflow:hidden;background:radial-gradient(120% 95% at 34% 50%,#11203A 0%,#0A1424 56%,#070D18 100%);border-color:#101B2C}
 .map-head{position:absolute;left:16px;right:16px;top:16px;z-index:4;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;pointer-events:none}
 .map-head h2{margin:0;font-family:var(--font-serif);font-size:20px;font-weight:600;color:#F4F7FB}
-.map-head p{margin:6px 0 0;color:#9DA9BC;font-size:12px;max-width:min(420px,34vw);line-height:1.55}
-.map-panel .empty{color:#9DA9BC}
+.map-head p{margin:6px 0 0;color:#B8C4D6;font-size:12px;max-width:min(420px,34vw);line-height:1.55}
+.map-panel .empty{color:#B8C4D6}
 .map-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto}
-.map-reset{font-family:var(--font-mono);font-size:11px;color:#C7D4E6;border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.72);padding:7px 10px;border-radius:var(--radius-sm);cursor:pointer}
-.map-reset:hover{border-color:#4F9DF7;color:#4F9DF7}
+/* 重置=低频操作，降级为文字链，不与指标/视图控件抢重量 */
+.map-reset{font-family:var(--font-mono);font-size:11px;color:#8FA0B8;border:0;background:transparent;padding:7px 4px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(143,160,184,.4)}
+.map-reset:hover{color:#4F9DF7;text-decoration-color:#4F9DF7}
 /* 自转开关：重置按钮正下方的无框图标钮 */
 .rotate-fab{position:absolute;top:54px;right:16px;z-index:4;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.72);border-radius:var(--radius-sm);color:#C7D4E6;font-family:var(--font-mono);font-size:12px;line-height:1;cursor:pointer}
 .rotate-fab:hover{border-color:#4F9DF7;color:#4F9DF7}
@@ -84,7 +87,7 @@ h1{font-family:var(--font-serif);font-size:clamp(20px,2vw,26px);line-height:1.1;
 #flatMap{display:none;padding:62px 18px 16px}
 body[data-view="flat"] #globe{display:none}
 body[data-view="flat"] #flatMap{display:block}
-.map-legend{position:absolute;left:16px;bottom:14px;z-index:4;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.03em;color:#9DA9BC;background:rgba(10,19,34,.72);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-sm);padding:6px 10px;pointer-events:none}
+.map-legend{position:absolute;left:16px;bottom:14px;z-index:4;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.03em;color:#B8C4D6;background:rgba(10,19,34,.72);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-sm);padding:6px 10px;pointer-events:none}
 .map-legend .ramp{width:104px;height:8px;border-radius:20px;background:linear-gradient(90deg,#1C2A3F,#4F9DF7)}
 .map-tip{position:fixed;z-index:60;pointer-events:none;display:none;background:#0C1626;color:#E5ECF6;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:7px 10px;font-family:var(--font-mono);font-size:11px;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.3)}
 .map-tip b{color:#fff}
@@ -642,10 +645,18 @@ function renderChips(){
   drawFlatChips();
 }
 let flatRoot=null,flatProj=null;
+/* 平面图欧洲密集区降密：缩放 <2 倍时只留区内前 3 大市场的簇（选中市场始终保留） */
+const EU_DENSE=new Set(['United Kingdom','Germany','France','Italy','Spain','Netherlands','Belgium','Switzerland','Austria','Denmark','Sweden','Norway','Poland','Czechia','Ireland','Portugal','Hungary','Greece','Romania','Finland']);
 function drawFlatChips(){
   if(!flatRoot)return;
   flatRoot.selectAll('.chips-fo').remove();
-  chipMarkets().forEach(d=>{
+  const k=(flatZoomT&&flatZoomT.k)||1;
+  let list=chipMarkets();
+  if(k<2){
+    const keep=new Set(list.filter(d=>EU_DENSE.has(d.name)).sort((a,b)=>b.count-a.count).slice(0,3).map(d=>d.name));
+    list=list.filter(d=>!EU_DENSE.has(d.name)||keep.has(d.name)||d.name===activeName);
+  }
+  list.forEach(d=>{
     const p=flatProj(COORDS[d.name]);
     const sel=d.name===activeName;
     const fo=flatRoot.append('foreignObject').attr('class','chips-fo')
@@ -827,7 +838,12 @@ function renderFlatMap(){
     anchor.append('text').attr('x',12).attr('y',4).text('中国');
   }
   const zoom=d3.zoom().scaleExtent([1,9])
-    .on('zoom',e=>{flatZoomT=e.transform;root.attr('transform',e.transform);});
+    .on('zoom',e=>{
+      const prev=(flatZoomT&&flatZoomT.k)||1;
+      flatZoomT=e.transform;
+      root.attr('transform',e.transform);
+      if((prev<2)!==(e.transform.k<2))drawFlatChips();
+    });
   svg.call(zoom).on('dblclick.zoom',null);
   if(flatZoomT&&flatZoomT.k>1)svg.call(zoom.transform,flatZoomT);
   flatRoot=root;flatProj=projection;
