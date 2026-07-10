@@ -27,9 +27,7 @@
 <link rel="icon" href="/logo.png" type="image/png">
 <link rel="apple-touch-icon" href="/logo.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"序引 · 品牌出海","alternateName":["Sequentry","序引效能"],"legalName":"杭州序引效能科技有限公司","url":"https://www.sequentry.com/","logo":"https://www.sequentry.com/logo.png","image":"https://www.sequentry.com/og-image.png","description":"序引（Sequentry）· 独立品牌出海研究。从海外土生土长品牌的反向拆解出发，找中国品牌出海的盲区与机会。","email":"yanhang@sequentry.com","foundingDate":"2026","address":{"@type":"PostalAddress","addressLocality":"杭州","addressRegion":"浙江","addressCountry":"CN"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="assets/fonts.css" rel="stylesheet">
 <style>
 :root{
   --bg:#FAFAFA;--surface:#FFFFFF;--ink:#0F172A;--muted:#737373;--light:#9CA3AF;
@@ -396,8 +394,9 @@ a{color:inherit;text-decoration:none}
   <div class="sq-foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
 </div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="assets/vendor/globe.gl.min.js"></script>
+<script src="assets/vendor/topojson-client.min.js"></script>
+<script src="assets/vendor/countries-110m.js"></script>
 <script src="assets/globe-theme.js"></script>
 <script src="assets/data/globe_data.js"></script>
 <script>
@@ -427,10 +426,13 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   mkBtn.innerHTML=`打开市场页<br>「${name}」→`;mkBtn.href=`/markets/?market=${encodeURIComponent(name)}`;
   document.getElementById('mkpop').classList.add('open');}
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
-async function initGlobe(){const el=document.getElementById('globe');if(!window.Globe||!window.topojson||!window.SQ_GLOBE){el.setAttribute('data-state','map-dependency-unavailable');return;}
+async function initGlobe(){const el=document.getElementById('globe');
+  /* 手机端不跑 WebGL：用静态地球图替代（点击国家下钻请走市场地图页） */
+  if(matchMedia('(max-width:760px)').matches){el.innerHTML='<img src="assets/globe-static.png" alt="全球市场分布地球" loading="lazy" style="width:100%;height:100%;object-fit:contain">';return;}
+  if(!window.Globe||!window.topojson||!window.SQ_GLOBE){el.setAttribute('data-state','map-dependency-unavailable');return;}
   world=SQ_GLOBE.init(Globe,el);
   world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);
-  const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());
+  const topo=window.WORLD_TOPO||await fetch('assets/vendor/countries-110m.json').then(r=>r.json());
   POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');
   paintPoly();paintRings();
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);

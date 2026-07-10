@@ -21,10 +21,8 @@
 <meta name="twitter:description" content="序引效能出品的跨境品牌导航——按真实任务整理高质量渠道，人工策展、可搜索、可展开。">
 <meta name="twitter:image" content="https://www.sequentry.com/og-image.png">
 <link rel="canonical" href="https://www.sequentry.com/nav/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/lenis@1/dist/lenis.css">
+<link href="../assets/fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/vendor/lenis.css">
 <style>
 :root{
   --bg:#FAFAF7;--surface:#FFFFFF;--ink:#0F172A;--deep:#1F2937;
@@ -463,9 +461,9 @@ footer.foot{border-top:1px solid rgba(255,255,255,.10);color:#9AA1AB}
   setInterval(rotateOne, 3500);   // 每 3.5 秒只切换一个模块，依次错开（每个模块约 14 秒一轮）
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
+<script src="../assets/vendor/lenis.min.js"></script>
 <script>
 gsap.registerPlugin(ScrollTrigger);
 var lenis=new Lenis({duration:1.0,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},smoothWheel:true});

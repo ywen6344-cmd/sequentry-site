@@ -14,15 +14,15 @@
 .sq-brand span{font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:11.5px;color:#6B7280}
 .sq-brand span small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:9px;color:#9CA3AF;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
 .sq-nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase}
-.sq-nav a{position:relative;padding:2px 0}
+.sq-nav a{position:relative;padding:12px 0}
 .sq-nav a:hover{color:#0F172A}
 .sq-nav a.active{color:#0F172A}
-.sq-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#8B1A1A}
+.sq-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:#8B1A1A}
 @media(max-width:680px){
   .sq-head{position:static}
   .sq-head-inner{flex-wrap:wrap;gap:10px;min-height:0;padding:14px 24px}
   .sq-brand strong{font-size:20px}
-  .sq-nav{gap:14px;font-size:11px}
+  .sq-nav{gap:16px;font-size:12px}
 }
 
 /* ---------- 深色页眉 .site-head（主页 / 市场地图等地球页共用）---------- */
@@ -40,7 +40,12 @@
 .atlas-tip{position:absolute;top:calc(100% + 12px);right:0;white-space:nowrap;background:rgba(46,50,58,.97);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:7px 12px;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:10px;color:#E8EAED;letter-spacing:.03em;z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.35)}
 .atlas-tip:after{content:"";position:absolute;bottom:100%;right:16px;border:6px solid transparent;border-bottom-color:rgba(46,50,58,.97)}
 @media(max-width:760px){
-  .hnav{display:none}
+  /* 手机端：导航不隐藏，改为品牌行下方的整行横滑链接条 */
+  .site-head .head-inner{flex-wrap:wrap;gap:4px;padding:12px 0 4px}
+  .hnav{margin-left:0;width:100%;overflow-x:auto;gap:20px;padding:2px 2px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .hnav::-webkit-scrollbar{display:none}
+  .hnav a{padding:10px 0;white-space:nowrap;flex:none}
+  .atlas-tip{display:none}
 }
 
 /* ---------- 数据速览条（深色页顶部 LIVE 横条，内容由页面 JS 从 GLOBE_DATA 填充）---------- */

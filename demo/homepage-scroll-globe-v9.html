@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>序引 · 品牌出海 — 功能门户 + 滚动放大地球 (v9 demo)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="../assets/fonts.css" rel="stylesheet">
 <style>
 :root{
   --bg:#FAFAFA;--surface:#FFFFFF;--ink:#0F172A;--muted:#737373;--light:#9CA3AF;
@@ -301,8 +299,8 @@ a{color:inherit;text-decoration:none}
   <div class="foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
 </div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="../assets/vendor/globe.gl.min.js"></script>
+<script src="../assets/vendor/topojson-client.min.js"></script>
 <script src="globe_data.js"></script>
 <script>
 /* ===== 地球数据 ===== */
@@ -336,7 +334,7 @@ async function initGlobe(){const el=document.getElementById('globe');if(!window.
   world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');
   world.controls().autoRotate=true;world.controls().autoRotateSpeed=.5;world.controls().enableZoom=false;
   world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);
-  const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());
+  const topo=await fetch('../assets/vendor/countries-110m.json').then(r=>r.json());
   POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');
   paintPoly();paintRings();
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);

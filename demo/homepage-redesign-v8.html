@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>序引 · 首页 v6 · 地球铺满 + 右上角竖排内容（mock）</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="../assets/fonts.css" rel="stylesheet">
 <style>
 :root{
   --bg:#FAFAFA;--surface:#FFFFFF;--ink:#0F172A;--muted:#737373;--light:#9CA3AF;
@@ -265,8 +263,8 @@ footer b{color:#fff}
   <div class="foot-copy">© 2026 序引效能（Sequentry）· DEMO 版面 · 不影响线上</div>
 </div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script src="../assets/vendor/globe.gl.min.js"></script>
+<script src="../assets/vendor/topojson-client.min.js"></script>
 <script src="globe_data.js"></script>
 <script>
 /* ===== 地球（接 brand-radar 真数据 globe_data.js）===== */
@@ -296,7 +294,7 @@ function openPopup(name){const c=COUNTS[name],dr=DRILL[name];
   document.getElementById('mkpop').classList.add('open');}
 const mkName=document.getElementById('mkName'),mkCount=document.getElementById('mkCount'),mkMetrics=document.getElementById('mkMetrics'),mkChart=document.getElementById('mkChart'),mkBrands=document.getElementById('mkBrands'),mkBtn=document.getElementById('mkBtn');
 document.getElementById('mkClose').onclick=()=>document.getElementById('mkpop').classList.remove('open');
-async function initGlobe(){const el=document.getElementById('globe');world=Globe()(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');world.controls().autoRotate=true;world.controls().autoRotateSpeed=.35;world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');window.__polys=POLY.length;paintPoly();paintRings();const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);window.openPopup=openPopup;window.__ready=true;}
+async function initGlobe(){const el=document.getElementById('globe');world=Globe()(el).backgroundColor('rgba(0,0,0,0)').showGlobe(true).showGraticules(true).atmosphereColor('#4076B8').atmosphereAltitude(.16).pointOfView({lat:25,lng:-55,altitude:2.3});world.globeImageUrl(null);const m=world.globeMaterial();if(m&&m.color)m.color.set('#0B1422');if(m&&m.emissive)m.emissive.set('#0B1422');world.controls().autoRotate=true;world.controls().autoRotateSpeed=.35;world.labelsData([{lat:90,lng:0,text:'N'},{lat:-90,lng:0,text:'S'}]).labelLat('lat').labelLng('lng').labelText('text').labelSize(2).labelColor(()=>'#9DB4D0').labelDotRadius(.5);const topo=await fetch('../assets/vendor/countries-110m.json').then(r=>r.json());POLY=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');window.__polys=POLY.length;paintPoly();paintRings();const fit=()=>world.width(el.clientWidth).height(el.clientHeight);fit();new ResizeObserver(fit).observe(el);window.openPopup=openPopup;window.__ready=true;}
 initGlobe();
 document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const k=b.dataset.layer;layers[k]=!layers[k];b.classList.toggle('on',layers[k]);if(k==='poly')paintPoly();else if(k==='rings')paintRings();else world.controls().autoRotate=layers.rotate;});
 

@@ -14,9 +14,7 @@
 <meta property="og:url" content="https://www.sequentry.com/markets/">
 <meta property="og:image" content="https://www.sequentry.com/og-image.png">
 <link rel="icon" href="../logo.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="../assets/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 */
@@ -365,9 +363,10 @@ body[data-view="flat"] #flatMap{display:block}
   <div class="sq-foot-copy">© 2026 序引效能（Sequentry）· 独立品牌出海研究</div>
 </div></footer>
 
-<script src="https://cdn.jsdelivr.net/npm/globe.gl"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="../assets/vendor/globe.gl.min.js"></script>
+<script src="../assets/vendor/topojson-client.min.js"></script>
+<script src="../assets/vendor/countries-110m.js"></script>
+<script src="../assets/vendor/d3.min.js"></script>
 <script src="../assets/globe-theme.js"></script>
 <script src="../assets/data/globe_data.js"></script>
 <script src="../assets/data/stores_lite.js"></script>
@@ -761,7 +760,7 @@ function renderCatNote(){
 async function loadTopo(){
   if(!window.topojson||!window.d3)return;
   try{
-    const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());
+    const topo=window.WORLD_TOPO||await fetch('../assets/vendor/countries-110m.json').then(r=>r.json());
     countries=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');
     countries.forEach(f=>{
       const n=marketNameForFeature(f);
@@ -927,6 +926,7 @@ function resetDashboard(){
 document.querySelectorAll('.seg button[data-view]').forEach(btn=>btn.addEventListener('click',()=>{
   document.body.dataset.view=btn.dataset.view;
   document.querySelectorAll('.seg button[data-view]').forEach(b=>b.classList.toggle('on',b===btn));
+  if(btn.dataset.view==='globe'&&!world&&countries.length){renderGlobe();renderChips();}
   updateMapCopy();
   renderLegend();
 }));
@@ -949,14 +949,20 @@ document.getElementById('copyMarket').addEventListener('click',async()=>{
   try{await navigator.clipboard.writeText(text);document.getElementById('copyMarket').textContent='已复制'}catch(e){document.getElementById('copyMarket').textContent='复制失败'}
   setTimeout(()=>document.getElementById('copyMarket').textContent='复制市场摘要',1400);
 });
+/* 手机端默认平面地图，3D 地球在切换视图时再懒初始化（省 WebGL 开销） */
+const MOBILE_LITE=matchMedia('(max-width:760px)').matches;
 (async function init(){
   renderHero();
   renderCategorySignals();
   renderRegionChips();
+  if(MOBILE_LITE){
+    document.body.dataset.view='flat';
+    document.querySelectorAll('.seg button[data-view]').forEach(b=>b.classList.toggle('on',b.dataset.view==='flat'));
+  }
   renderLegend();
   await loadTopo();
   renderFlatMap();
-  renderGlobe();
+  if(!MOBILE_LITE)renderGlobe();
   applyFilters();
   selectMarket(activeName,false);
 })();
