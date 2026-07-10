@@ -32,64 +32,60 @@ button,input,select{font:inherit}
 *::-webkit-scrollbar-thumb{background:rgba(107,114,128,.28);border-radius:20px}
 *::-webkit-scrollbar-thumb:hover{background:rgba(107,114,128,.45)}
 *::-webkit-scrollbar-track{background:transparent}
-.rg-list::-webkit-scrollbar-thumb,.region-nav::-webkit-scrollbar-thumb{background:rgba(120,160,210,.28)}
-.wrap{width:min(1520px,calc(100% - 32px));margin:0 auto}
+.wrap{width:min(1780px,calc(100% - 40px));margin:0 auto}
 .shell{width:min(1740px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto}
 /* 深色页眉 .site-head 样式在 /assets/site.css（单一真源，与主页共用） */
-.hero{padding:18px 0 14px;border-bottom:1px solid var(--color-line)}
-.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(520px,.92fr);gap:18px;align-items:center}
-.eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-blue);margin-bottom:6px}
-h1{font-family:var(--font-serif);font-size:clamp(24px,2.8vw,36px);line-height:1.08;margin:0 0 6px;font-weight:600;overflow-wrap:anywhere}
-.lead{font-size:14px;line-height:1.58;color:var(--color-deep);max-width:760px;margin:0}
-.source-note{margin-top:7px;color:var(--color-gray);font-size:12px;line-height:1.55;max-width:860px}
-.metric-strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--color-line);background:var(--color-paper)}
-.metric{padding:12px 14px;border-right:1px solid var(--color-line);min-width:0}
+/* 看板头：标题 + 指标同排一条，口径说明收进 ⓘ 悬停 */
+.hero{padding:10px 0;border-bottom:1px solid var(--color-line)}
+.hero-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--color-blue);margin-bottom:3px}
+h1{font-family:var(--font-serif);font-size:clamp(20px,2vw,26px);line-height:1.1;margin:0;font-weight:600;overflow-wrap:anywhere}
+.info-dot{position:relative;flex:none;width:22px;height:22px;border:1px solid var(--color-line);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--color-gray);font-family:var(--font-mono);font-size:12px;cursor:help}
+.info-dot .info-tip{display:none;position:absolute;top:27px;left:-13px;width:min(400px,74vw);background:var(--color-paper);border:1px solid var(--color-line);border-radius:var(--radius-md);padding:10px 12px;font-size:12px;line-height:1.62;color:var(--color-gray);z-index:44;box-shadow:0 12px 32px rgba(15,23,42,.14)}
+.info-dot:hover .info-tip,.info-dot:focus .info-tip{display:grid;gap:6px}
+.metric-strip{margin-left:auto;display:grid;grid-template-columns:repeat(4,minmax(0,auto));border:1px solid var(--color-line);background:var(--color-paper)}
+.metric{padding:7px 16px;border-right:1px solid var(--color-line);min-width:0}
 .metric:last-child{border-right:0}
-.metric b{display:block;font-family:var(--font-serif);font-size:24px;line-height:1.1;font-weight:600;color:var(--color-ink)}
-.metric span{display:block;margin-top:5px;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.08em;color:var(--color-gray);text-transform:uppercase}
-.workbench{padding:12px 0 40px}
-.tool-row{position:sticky;top:76px;z-index:20;display:grid;grid-template-columns:minmax(260px,1fr) auto auto auto;gap:10px;align-items:center;padding:10px 0;background:var(--color-warm);border-bottom:1px solid var(--color-line)}
-.search{height:42px;border:1px solid var(--color-line);background:var(--color-paper);border-radius:var(--radius-md);display:flex;align-items:center;gap:10px;padding:0 12px}
-.search span{font-family:var(--font-mono);font-size:13px;color:var(--color-light)}
-.search input{width:100%;border:0;outline:0;background:transparent;color:var(--color-ink)}
-.control,.seg{height:42px;border:1px solid var(--color-line);background:var(--color-paper);border-radius:var(--radius-md);color:var(--color-deep)}
-.control{padding:0 12px}
+.metric b{display:block;font-family:var(--font-serif);font-size:18px;line-height:1.1;font-weight:600;color:var(--color-ink)}
+.metric span{display:block;margin-top:3px;font-family:var(--font-mono);font-size:8.5px;letter-spacing:.07em;color:var(--color-gray);text-transform:uppercase}
+/* 单屏三栏工作台：排名(左) 地图(中) 详情(右)，品类信号在左栏下半段 */
+.workbench{padding:12px 0 26px}
+.workbench-grid{display:grid;grid-template-areas:"rank map detail" "cats map detail";grid-template-columns:260px minmax(0,1fr) 332px;grid-template-rows:minmax(0,1fr) auto;gap:12px;height:calc(100vh - 178px);min-height:640px}
+.search{flex:none;height:32px;border:1px solid var(--color-line);background:var(--color-xuan);border-radius:var(--radius-sm);display:flex;align-items:center;gap:7px;padding:0 9px;margin-bottom:7px}
+.search span{font-family:var(--font-mono);font-size:12px;color:var(--color-light)}
+.search input{width:100%;border:0;outline:0;background:transparent;color:var(--color-ink);font-size:12.5px}
+.region-chips{flex:none;display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px}
+.region-chips button{border:1px solid var(--color-line);background:var(--color-paper);color:var(--color-gray);border-radius:20px;font-family:var(--font-mono);font-size:10px;padding:3px 7px;cursor:pointer}
+.region-chips button:hover{border-color:var(--color-blue);color:var(--color-blue)}
+.region-chips button.on{background:var(--color-ink);color:var(--color-paper);border-color:var(--color-ink)}
+/* 地图卡右上角的深色控件（指标 / 视图切换） */
+.map-tools select,.seg{height:30px;border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.72);border-radius:var(--radius-sm);color:#C7D4E6;font-family:var(--font-mono);font-size:11px}
+.map-tools select{padding:0 7px}
+.map-tools select option{background:#0C1626;color:#E5ECF6}
 .seg{display:inline-flex;overflow:hidden}
-.seg button{border:0;background:transparent;padding:0 13px;color:var(--color-gray);cursor:pointer}
-.seg button+button{border-left:1px solid var(--color-line)}
-.seg button.on{background:var(--color-ink);color:var(--color-paper)}
-.panel-grid{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(320px,.58fr);gap:12px;margin-top:12px}
+.seg button{border:0;background:transparent;padding:0 10px;color:#7E8CA3;cursor:pointer;font-family:var(--font-mono);font-size:11px}
+.seg button+button{border-left:1px solid rgba(255,255,255,.14)}
+.seg button.on{background:#4F9DF7;color:#0A1322}
 .map-panel,.detail,.market-row,.category-panel,.ranking-panel{border:1px solid var(--color-line);background:var(--color-paper);border-radius:var(--radius-md)}
 /* 地图卡：3D/平面统一坐在与主页同款的深色舞台上 */
-.map-panel{min-height:520px;position:relative;overflow:hidden;background:radial-gradient(120% 95% at 34% 50%,#11203A 0%,#0A1424 56%,#070D18 100%);border-color:#101B2C}
+.map-panel{grid-area:map;min-height:0;position:relative;overflow:hidden;background:radial-gradient(120% 95% at 34% 50%,#11203A 0%,#0A1424 56%,#070D18 100%);border-color:#101B2C}
 .map-head{position:absolute;left:16px;right:16px;top:16px;z-index:4;display:flex;justify-content:space-between;gap:12px;align-items:flex-start;pointer-events:none}
-.map-head h2{margin:0;font-family:var(--font-serif);font-size:24px;font-weight:600;color:#F4F7FB}
-.map-head p{margin:7px 0 0;color:#9DA9BC;font-size:13px;max-width:520px;line-height:1.55}
+.map-head h2{margin:0;font-family:var(--font-serif);font-size:20px;font-weight:600;color:#F4F7FB}
+.map-head p{margin:6px 0 0;color:#9DA9BC;font-size:12px;max-width:min(420px,34vw);line-height:1.55}
 .map-panel .empty{color:#9DA9BC}
-.map-stat{font-family:var(--font-mono);font-size:11px;color:#9DA9BC;border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.72);padding:7px 9px;border-radius:var(--radius-sm)}
-.map-tools{display:flex;gap:8px;align-items:center;pointer-events:auto}
+.map-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto}
 .map-reset{font-family:var(--font-mono);font-size:11px;color:#C7D4E6;border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.72);padding:7px 10px;border-radius:var(--radius-sm);cursor:pointer}
 .map-reset:hover{border-color:#4F9DF7;color:#4F9DF7}
+/* 自转开关：重置按钮正下方的无框图标钮 */
+.rotate-fab{position:absolute;top:54px;right:16px;z-index:4;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.72);border-radius:var(--radius-sm);color:#C7D4E6;font-family:var(--font-mono);font-size:12px;line-height:1;cursor:pointer}
+.rotate-fab:hover{border-color:#4F9DF7;color:#4F9DF7}
+.rotate-fab .ic-pause{display:inline-flex;gap:3px}
+.rotate-fab .ic-pause:before,.rotate-fab .ic-pause:after{content:"";width:3px;height:11px;background:currentColor;border-radius:1px}
 #globe,#flatMap{position:absolute;inset:0}
 #globe canvas{display:block}
 #flatMap{display:none;padding:62px 18px 16px}
 body[data-view="flat"] #globe{display:none}
 body[data-view="flat"] #flatMap{display:block}
-/* 大洲分类导航（地图左侧悬浮，双主题） */
-.region-nav{position:absolute;left:16px;top:112px;bottom:52px;z-index:5;width:180px;overflow:auto;scrollbar-width:none;display:flex;flex-direction:column;gap:6px}
-.region-nav::-webkit-scrollbar{display:none}
-.rg{border:1px solid rgba(255,255,255,.14);background:rgba(10,19,34,.8);border-radius:var(--radius-sm);flex-shrink:0}
-.rg-head{display:flex;align-items:center;gap:6px;width:100%;border:0;background:transparent;padding:8px 10px;cursor:pointer;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:#C7D4E6;text-align:left}
-.rg-head em{margin-left:auto;font-style:normal;font-size:9.5px;color:#7E8CA3}
-.rg-head i{font-style:normal;color:#7E8CA3;width:10px;text-align:center}
-.rg-list{display:none;border-top:1px solid rgba(255,255,255,.12);max-height:198px;overflow:auto;scrollbar-width:thin;scrollbar-color:rgba(120,160,210,.28) transparent}
-.rg.open .rg-list{display:block}
-.rg-item{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;border:0;background:transparent;padding:6px 10px;font-size:12px;color:#C7D4E6;cursor:pointer;text-align:left}
-.rg-item em{font-style:normal;font-family:var(--font-mono);font-size:10px;color:#7E8CA3}
-.rg-item:hover{background:rgba(255,255,255,.08)}
-.rg-item.on{background:#4F9DF7;color:#0A1322}
-.rg-item.on em{color:rgba(10,19,34,.7)}
-@media (max-width:980px){.region-nav{display:none}}
 .map-legend{position:absolute;left:16px;bottom:14px;z-index:4;display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:10px;letter-spacing:.03em;color:#9DA9BC;background:rgba(10,19,34,.72);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius-sm);padding:6px 10px;pointer-events:none}
 .map-legend .ramp{width:104px;height:8px;border-radius:20px;background:linear-gradient(90deg,#1C2A3F,#4F9DF7)}
 .map-tip{position:fixed;z-index:60;pointer-events:none;display:none;background:#0C1626;color:#E5ECF6;border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:7px 10px;font-family:var(--font-mono);font-size:11px;line-height:1.6;box-shadow:0 6px 20px rgba(0,0,0,.3)}
@@ -98,6 +94,12 @@ body[data-view="flat"] #flatMap{display:block}
 .store-chips-wrap{pointer-events:none}
 .store-chips{display:flex;gap:6px;padding:6px 8px;background:rgba(10,19,34,.86);border:1px solid rgba(255,255,255,.2);border-radius:9px;pointer-events:auto;width:max-content;transform:translateY(-34px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
 .store-chips.flat{transform:none;margin:6px auto 0}
+/* 未选中市场的迷你簇：图标数按国家面积 1~6 个，更小更收敛 */
+.store-chips.mini{gap:3px;padding:3px 4px;border-radius:7px;background:rgba(10,19,34,.72);border-color:rgba(255,255,255,.14);transform:translateY(-12px);box-shadow:0 4px 14px rgba(0,0,0,.28)}
+.store-chips.mini a{width:17px;height:17px;border-radius:4px}
+.store-chips.mini a span{font-size:9px}
+.store-chips.mini.flat{transform:none;margin:0 auto}
+.store-chips.hover-link{border-color:#8FC2FF;box-shadow:0 0 12px rgba(79,157,247,.6)}
 .store-chips a{display:block;width:26px;height:26px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid rgba(255,255,255,.3);cursor:pointer;transition:transform .16s var(--ease-out),box-shadow .16s var(--ease-out)}
 .store-chips a:hover{transform:translateY(-3px) scale(1.18);box-shadow:0 4px 14px rgba(79,157,247,.55);border-color:#4F9DF7}
 .store-chips a img{width:100%;height:100%;object-fit:cover;display:block}
@@ -124,32 +126,33 @@ body[data-view="flat"] #flatMap{display:block}
 .market-dot.selected text{fill:#fff}
 .china-anchor circle{fill:#E8EDF5;stroke:#0A1322;stroke-width:2}
 .china-anchor text{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;fill:#E8EDF5;paint-order:stroke;stroke:#0A1322;stroke-width:4px}
-.detail{padding:18px;min-width:0}
-.detail-k{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;color:var(--color-blue);text-transform:uppercase}
-.detail h2{font-family:var(--font-serif);font-size:30px;line-height:1.16;margin:10px 0 6px;font-weight:600}
-.detail .sub{color:var(--color-gray);font-size:13px;line-height:1.65;margin:0 0 18px}
-.detail-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--color-line);margin-bottom:18px}
-.dstat{padding:13px;border-right:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
+.detail{grid-area:detail;padding:14px 16px;min-width:0;min-height:0;display:flex;flex-direction:column;overflow:auto;overscroll-behavior:contain}
+.detail-k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--color-blue);text-transform:uppercase}
+.detail h2{font-family:var(--font-serif);font-size:22px;line-height:1.16;margin:7px 0 4px;font-weight:600}
+.detail h3{font-size:13.5px;margin:12px 0 8px}
+.detail .sub{color:var(--color-gray);font-size:12px;line-height:1.6;margin:0 0 12px}
+.detail-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--color-line);margin-bottom:6px;flex:none}
+.dstat{padding:9px 11px;border-right:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
 .dstat:nth-child(2n){border-right:0}
 .dstat:nth-last-child(-n+2){border-bottom:0}
-.dstat b{display:block;font-family:var(--font-mono);font-size:20px;color:var(--color-ink)}
-.dstat span{display:block;margin-top:5px;font-size:12px;color:var(--color-gray)}
-.bars{display:grid;gap:10px;margin:14px 0 18px}
+.dstat b{display:block;font-family:var(--font-mono);font-size:16px;color:var(--color-ink)}
+.dstat span{display:block;margin-top:3px;font-size:11px;color:var(--color-gray)}
+.bars{display:grid;gap:8px;margin:8px 0 10px}
 .bar-row{display:grid;grid-template-columns:minmax(92px,1fr) 2fr 42px;gap:10px;align-items:center;font-size:12px;color:var(--color-gray)}
 .track{height:8px;background:var(--color-xuan);border:1px solid var(--color-line);border-radius:20px;overflow:hidden}
 .fill{display:block;height:100%;width:var(--bar-w);background:var(--color-blue)}
-.brand-cloud{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.brand-cloud{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .brand-cloud a{font-size:12px;color:var(--color-deep);border:1px solid var(--color-line);padding:5px 8px;border-radius:var(--radius-sm);background:var(--color-paper)}
 .brand-cloud a:hover{border-color:var(--color-blue);color:var(--color-blue);transform:translateY(-1px);box-shadow:var(--shadow-hover)}
-.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.store-panel{margin-top:22px;border-top:1px solid var(--color-line);padding-top:16px}
+.detail-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.store-panel{flex:1;display:flex;flex-direction:column;min-height:190px;margin-top:14px;border-top:1px solid var(--color-line);padding-top:12px}
 .store-headrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .store-headrow h3{margin:0}
 .store-meta{font-family:var(--font-mono);font-size:10.5px;color:var(--color-gray)}
-.store-filter{display:flex;margin:10px 0 8px}
+.store-filter{display:flex;margin:8px 0 6px;flex:none}
 .store-filter input{width:100%;height:34px;border:1px solid var(--color-line);background:var(--color-paper);border-radius:var(--radius-sm);padding:0 10px;outline:0;color:var(--color-ink);font-size:12.5px}
 .store-filter input:focus{border-color:var(--color-blue)}
-.store-list{display:grid;max-height:340px;overflow:auto;scrollbar-width:thin;border:1px solid var(--color-line);border-radius:0 0 var(--radius-sm) var(--radius-sm);border-top:0}
+.store-list{display:grid;align-content:start;flex:1;min-height:0;overflow:auto;scrollbar-width:thin;border:1px solid var(--color-line);border-radius:0 0 var(--radius-sm) var(--radius-sm);border-top:0}
 .store-row-head{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-gray);background:var(--color-xuan);border:1px solid var(--color-line);border-radius:var(--radius-sm) var(--radius-sm) 0 0}
 .store-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) 74px 40px;gap:8px;align-items:center;padding:7px 10px;font-size:12px;border-bottom:1px solid var(--color-line)}
 .store-row:last-child{border-bottom:0}
@@ -160,40 +163,53 @@ body[data-view="flat"] #flatMap{display:block}
 .store-row .s-price,.store-row .s-ms{font-family:var(--font-mono);font-size:11px;color:var(--color-gray);text-align:right}
 .store-more{margin-top:10px;width:100%;border:1px solid var(--color-line);background:var(--color-paper);color:var(--color-gray);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:11px;padding:8px;cursor:pointer}
 .store-more:hover{border-color:var(--color-blue);color:var(--color-blue)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 14px;border-radius:var(--radius-md);border:1px solid var(--color-ink);background:var(--color-ink);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 13px;border-radius:var(--radius-md);border:1px solid var(--color-ink);background:var(--color-ink);color:var(--color-paper);font-family:var(--font-mono);font-size:11.5px;cursor:pointer}
 .btn.secondary{background:var(--color-paper);color:var(--color-ink);border-color:var(--color-line)}
 .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-hover)}
-.category-panel h3{font-family:var(--font-serif);font-size:21px;margin:0 0 10px;font-weight:600}
-.cat-note{margin:-8px 0 16px;font-size:12px;color:var(--color-gray);line-height:1.65}
-.table-section{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:12px;margin-top:12px;align-items:start}
-.ranking-panel{padding:14px;min-height:0}
-.ranking-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:10px}
-.ranking-head .eyebrow{margin-bottom:0}
-.ranking-note{font-size:12px;color:var(--color-gray)}
-.list{display:grid;gap:8px;max-height:440px;overflow:auto;padding-right:4px}
-.market-row{display:grid;grid-template-columns:44px minmax(0,1fr) 92px 92px 84px;gap:12px;align-items:center;padding:12px;cursor:pointer}
+.category-panel h3{font-family:var(--font-serif);font-size:15px;margin:0;font-weight:600}
+.cat-note{margin:-2px 0 10px;font-size:11.5px;color:var(--color-gray);line-height:1.6}
+.ranking-panel{grid-area:rank;padding:10px;min-height:0;display:flex;flex-direction:column}
+.ranking-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;margin-bottom:7px;flex:none}
+.ranking-head .eyebrow{margin-bottom:2px}
+.ranking-head select{height:26px;border:1px solid var(--color-line);background:var(--color-paper);border-radius:var(--radius-sm);color:var(--color-gray);font-size:11px;padding:0 4px;max-width:118px}
+.ranking-note{font-size:11px;color:var(--color-gray)}
+.list{display:grid;gap:6px;flex:1;min-height:0;overflow:auto;align-content:start;padding-right:3px}
+.market-row{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:7px;align-items:center;padding:7px 8px;cursor:pointer}
 .market-row:hover,.market-row.active{border-color:var(--color-blue);box-shadow:var(--shadow-hover);transform:translateY(-1px)}
-.rank{font-family:var(--font-mono);font-size:12px;color:var(--color-light)}
-.m-name{font-weight:600;color:var(--color-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.m-meta{font-size:12px;color:var(--color-gray);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.m-num{font-family:var(--font-mono);font-size:13px;color:var(--color-deep);text-align:right}
-.category-panel{padding:16px}
-.cat-list{display:grid;gap:10px;margin-top:14px}
-.cat-row{display:grid;grid-template-columns:minmax(120px,1fr) 2fr 52px;gap:10px;align-items:center;font-size:12px;color:var(--color-gray);width:100%;border:1px solid transparent;background:transparent;text-align:left;padding:4px;border-radius:var(--radius-sm);cursor:pointer}
+.rank{font-family:var(--font-mono);font-size:11px;color:var(--color-light)}
+.m-name{font-weight:600;font-size:13px;color:var(--color-ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-flag{width:18px;height:13px;object-fit:cover;border-radius:2px;margin-right:6px;vertical-align:-2px;box-shadow:0 0 0 1px rgba(15,23,42,.14)}
+.d-flag{width:24px;height:17px;object-fit:cover;border-radius:2px;margin-right:8px;vertical-align:-1px;box-shadow:0 0 0 1px rgba(15,23,42,.14)}
+.m-meta{font-size:11px;color:var(--color-gray);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-score{font-family:var(--font-mono);font-size:11.5px;font-weight:600;border:1px solid var(--color-line);border-radius:var(--radius-sm);padding:3px 6px;color:var(--color-gray);background:var(--color-xuan)}
+.m-score.mid{color:var(--color-blue);border-color:var(--color-blue);background:var(--color-paper)}
+.m-score.hi{color:var(--color-paper);background:var(--color-blue);border-color:var(--color-blue)}
+.category-panel{grid-area:cats;padding:12px}
+.cat-scope{float:right;font-family:var(--font-mono);font-size:10px;color:var(--color-blue);font-weight:400}
+.cat-row .seldot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--color-blue);margin-right:5px;vertical-align:2px}
+.cat-list{display:grid;gap:7px;margin-top:10px}
+.cat-row{display:grid;grid-template-columns:minmax(84px,1fr) 2fr 46px;gap:8px;align-items:center;font-size:11px;color:var(--color-gray);width:100%;border:1px solid transparent;background:transparent;text-align:left;padding:3px 4px;border-radius:var(--radius-sm);cursor:pointer}
 .cat-row:hover,.cat-row.active{border-color:var(--color-blue);background:var(--color-paper)}
 .cat-row.active span:first-child{color:var(--color-blue);font-weight:600}
 .cat-clear{margin-top:12px;border:1px solid var(--color-line);background:var(--color-paper);color:var(--color-gray);border-radius:var(--radius-sm);font-family:var(--font-mono);font-size:11px;padding:7px 9px;cursor:pointer}
 .cat-clear:hover{border-color:var(--color-blue);color:var(--color-blue)}
 .empty{color:var(--color-gray);font-size:13px;line-height:1.7;padding:16px}
+@media (max-width:1240px){
+  .workbench-grid{grid-template-columns:236px minmax(0,1fr) 304px}
+  .map-head p{display:none}
+}
 @media (max-width:980px){
   .wrap{width:min(100% - 28px,760px)}
-  .hero-grid,.panel-grid,.table-section{grid-template-columns:1fr}
-  .tool-row{grid-template-columns:1fr 1fr;top:76px}
-  .search{grid-column:1/-1}
-  .map-panel{min-height:520px}
+  .hero-bar{align-items:flex-start}
+  .metric-strip{margin-left:0;width:100%;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .workbench-grid{grid-template-areas:"map" "rank" "detail" "cats";grid-template-columns:1fr;grid-template-rows:auto;height:auto;min-height:0}
+  .map-panel{height:min(68vh,560px);min-height:460px}
+  .map-head p{display:block}
+  .list{max-height:420px;flex:none}
+  .detail{display:block;overflow:visible}
+  .store-list{max-height:340px;flex:none}
 }
 @media (max-width:640px){
-  .hero{padding-top:18px}
   .metric-strip{grid-template-columns:repeat(2,minmax(0,1fr))}
   .metric{border-right:1px solid var(--color-line);border-bottom:1px solid var(--color-line)}
   .metric:nth-child(2n){border-right:0}
@@ -201,16 +217,11 @@ body[data-view="flat"] #flatMap{display:block}
   .detail-stats{grid-template-columns:1fr}
   .dstat{border-right:0}
   .dstat:nth-last-child(2){border-bottom:1px solid var(--color-line)}
-  .tool-row{position:relative;top:auto;grid-template-columns:1fr}
-  .control,.seg{width:100%}
-  .seg button{flex:1}
-  .map-panel{min-height:460px}
+  .map-panel{height:auto;min-height:460px}
   #flatMap{padding:96px 8px 8px}
   .map-head{flex-direction:column}
   .map-tools{align-self:flex-end}
   .list{max-height:360px}
-  .market-row{grid-template-columns:34px minmax(0,1fr) 74px}
-  .market-row .m-num:nth-last-child(-n+2){display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation-duration:50ms!important;transition-duration:50ms!important;scroll-behavior:auto!important}
@@ -236,13 +247,12 @@ body[data-view="flat"] #flatMap{display:block}
 
 <main>
   <section class="hero">
-    <div class="wrap hero-grid">
+    <div class="wrap hero-bar">
       <div>
         <div class="eyebrow">Market Atlas · Brand Radar</div>
         <h1>市场数据看板</h1>
-        <p class="lead">从独立站样本进入市场判断：站点密度、确认率、营销成熟度、价格中位数、品类结构和代表品牌样本集中在一个工作台里。</p>
-        <p class="source-note" id="sourceNote">数据口径加载中。</p>
       </div>
+      <span class="info-dot" tabindex="0" aria-label="数据口径说明">i<span class="info-tip"><span>从独立站样本进入市场判断：站点密度、确认率、营销成熟度、价格中位数、品类结构和代表品牌样本集中在一个工作台里。</span><span id="sourceNote">数据口径加载中。</span></span></span>
       <div class="metric-strip" aria-label="数据概览">
         <div class="metric"><b id="totalScanned">-</b><span>total scanned</span></div>
         <div class="metric"><b id="confirmedTotal">-</b><span>confirmed stores</span></div>
@@ -253,28 +263,22 @@ body[data-view="flat"] #flatMap{display:block}
   </section>
 
   <section class="workbench">
-    <div class="wrap">
-      <div class="tool-row" aria-label="市场筛选工具">
-        <label class="search"><span>⌕</span><input id="q" type="search" placeholder="搜索市场、货币、品类或品牌"></label>
-        <select class="control" id="metricSelect" aria-label="地图指标">
-          <option value="count">站点数量</option>
-          <option value="confirmed_pct">确认率</option>
-          <option value="avg_marketing">营销成熟度</option>
-          <option value="median_price">价格中位数</option>
-        </select>
-        <select class="control" id="sortSelect" aria-label="排序">
-          <option value="count">按站点数量</option>
-          <option value="score">按探索优先级</option>
-          <option value="avg_marketing">按营销成熟度</option>
-          <option value="confirmed_pct">按确认率</option>
-        </select>
-        <div class="seg" role="group" aria-label="地图视图">
-          <button class="on" type="button" data-view="globe">3D 地球</button>
-          <button type="button" data-view="flat">平面地图</button>
+    <div class="wrap workbench-grid">
+      <section class="ranking-panel" aria-label="市场排名">
+        <div class="ranking-head">
+          <div><div class="eyebrow">Market ranking</div><div class="ranking-note" id="rankingNote">显示全部市场</div></div>
+          <select id="sortSelect" aria-label="排序">
+            <option value="count">按站点数量</option>
+            <option value="score">按探索优先级</option>
+            <option value="avg_marketing">按营销成熟度</option>
+            <option value="confirmed_pct">按确认率</option>
+          </select>
         </div>
-      </div>
+        <label class="search"><span>⌕</span><input id="q" type="search" placeholder="搜索市场、货币、品类或品牌"></label>
+        <div class="region-chips" id="regionChips" role="group" aria-label="按大洲筛选市场"></div>
+        <div class="list" id="marketList"></div>
+      </section>
 
-      <div class="panel-grid">
         <section class="map-panel" aria-label="全球市场地图">
           <div class="map-head">
             <div>
@@ -282,13 +286,22 @@ body[data-view="flat"] #flatMap{display:block}
               <p id="mapDesc">以中国为视觉中心查看全球样本分布；点击市场节点或区域，进入详情与品牌样本。</p>
             </div>
             <div class="map-tools">
-              <div class="map-stat" id="mapStat">metric: count</div>
+              <select id="metricSelect" aria-label="地图指标">
+                <option value="count">站点数量</option>
+                <option value="confirmed_pct">确认率</option>
+                <option value="avg_marketing">营销成熟度</option>
+                <option value="median_price">价格中位数</option>
+              </select>
+              <div class="seg" role="group" aria-label="地图视图">
+                <button class="on" type="button" data-view="globe">3D 地球</button>
+                <button type="button" data-view="flat">平面地图</button>
+              </div>
               <button class="map-reset" id="resetMap" type="button">重置</button>
             </div>
           </div>
+          <button class="rotate-fab" id="rotateToggle" type="button" title="暂停地球自转"><i class="ic-pause"></i></button>
           <div id="globe"></div>
           <div id="flatMap"></div>
-          <nav class="region-nav" id="regionNav" aria-label="按大洲浏览市场"></nav>
           <div class="map-legend" id="mapLegend"></div>
         </section>
 
@@ -319,22 +332,11 @@ body[data-view="flat"] #flatMap{display:block}
             <button class="store-more" id="storeMore" type="button" hidden>加载更多</button>
           </div>
         </aside>
-      </div>
 
-      <div class="table-section">
-        <section class="ranking-panel">
-          <div class="ranking-head">
-            <div class="eyebrow">Market ranking</div>
-            <div class="ranking-note" id="rankingNote">显示全部市场</div>
-          </div>
-          <div class="list" id="marketList"></div>
-        </section>
-        <section class="category-panel">
-          <h3>全样本品类信号</h3>
-          <p class="sub">按各市场 Top 品类出现频次汇总，用来判断哪些品类具备跨市场重复性。</p>
+        <section class="category-panel" title="按各市场 Top 品类出现频次汇总，点击品类可筛选市场；跨市场重复出现的品类更具可复制性。">
+          <h3>品类信号 <span style="font-family:var(--font-mono);font-size:10px;color:var(--color-gray);font-weight:400">点击筛选</span><span class="cat-scope" id="catScope"></span></h3>
           <div class="cat-list" id="categoryList"></div>
         </section>
-      </div>
     </div>
   </section>
 </main>
@@ -368,6 +370,7 @@ body[data-view="flat"] #flatMap{display:block}
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="../assets/globe-theme.js"></script>
 <script src="../assets/data/globe_data.js"></script>
+<script src="../assets/data/stores_lite.js"></script>
 <script>
 const GD=window.GLOBE_DATA||{markets:{},max_market_count:1,total_scanned:0,clean_total:0,confirmed_total:0,mapped_markets:0};
 const token=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -397,6 +400,17 @@ const NAME_ZH={
   "Philippines":"菲律宾","Thailand":"泰国","Norway":"挪威","South Korea":"韩国","Saudi Arabia":"沙特阿拉伯"
 };
 const zh=n=>NAME_ZH[n]||n;
+const ISO2={
+  "United States of America":"us","India":"in","United Kingdom":"gb","Germany":"de","Australia":"au",
+  "Pakistan":"pk","Brazil":"br","Canada":"ca","Colombia":"co","Japan":"jp","Italy":"it","France":"fr",
+  "Poland":"pl","Netherlands":"nl","Mexico":"mx","South Africa":"za","Spain":"es","Romania":"ro",
+  "Greece":"gr","Chile":"cl","Turkey":"tr","Russia":"ru","Israel":"il","Singapore":"sg","Denmark":"dk",
+  "Sweden":"se","Vietnam":"vn","China":"cn","New Zealand":"nz","Indonesia":"id","Switzerland":"ch",
+  "Finland":"fi","Hungary":"hu","United Arab Emirates":"ae","Portugal":"pt","Ireland":"ie","Czechia":"cz",
+  "Austria":"at","Malaysia":"my","Belgium":"be","Philippines":"ph","Thailand":"th","Norway":"no",
+  "South Korea":"kr","Saudi Arabia":"sa"
+};
+const flagImg=(name,cls)=>ISO2[name]?`<img class="${cls||'m-flag'}" src="../assets/flags/${ISO2[name]}.png" alt="" loading="lazy" onerror="this.style.display='none'">`:'';
 const CAT_ZH={"Fashion & Accessories":"服饰配饰","Home & Living":"家居","Automotive":"汽车","Jewelry & Watches":"珠宝腕表","Beauty & Personal Care":"美妆个护","Sports & Outdoors":"运动户外","Pet Supplies":"宠物","Consumer Electronics":"3C电子","Books & Media":"图书媒体","Food & Beverage":"食品饮料","Health & Wellness":"健康保健","Toys & Games":"玩具","Digital Goods & Services":"数字商品","Office & Stationery":"办公文具","Art & Collectibles":"艺术收藏","Baby & Kids":"母婴童品","Garden & Outdoor":"园艺户外","Music & Instruments":"乐器","Hotel Collection":"酒店用品"};
 const zhCat=c=>CAT_ZH[c]||c;
 const NAME_ALIASES={
@@ -479,7 +493,7 @@ function marketHasCategory(d,cat){
   return !cat||(d.top_categories||[]).some(c=>c[0]===cat);
 }
 function visibleMarketEntries(limit=0){
-  const source=(activeCategory||els.q?.value)?filtered:entries;
+  const source=(activeCategory||activeRegion||els.q?.value)?filtered:entries;
   const list=source.filter(d=>COORDS[d.name]).sort((a,b)=>b.count-a.count);
   return limit?list.slice(0,limit):list;
 }
@@ -497,7 +511,7 @@ function selectMarket(name,moveGlobe=true){
   if(!name)return;
   activeName=name;
   const d=selected();
-  document.getElementById('detailName').textContent=zh(d.name);
+  document.getElementById('detailName').innerHTML=flagImg(d.name,'d-flag')+zh(d.name);
   const attr=d.cctld_pct==null?'':` · 强归因(ccTLD) ${d.cctld_pct}%${d.cctld_pct<50?'，其余按币种推断（含全球站）':''}`;
   document.getElementById('detailSub').textContent=`${d.name} · 货币：${d.currency||'未识别'} · 当前地图指标：${metricLabel(activeMetric)} ${metricText(d,activeMetric)}${attr}`;
   document.getElementById('dCount').textContent=fmt(d.count);
@@ -512,21 +526,23 @@ function selectMarket(name,moveGlobe=true){
   document.querySelectorAll('.market-row').forEach(r=>r.classList.toggle('active',r.dataset.name===d.name));
   document.querySelectorAll('.country').forEach(c=>c.classList.toggle('selected',c.dataset.name===d.name));
   document.querySelectorAll('.market-dot').forEach(c=>c.classList.toggle('selected',c.dataset.name===d.name));
-  document.querySelectorAll('.rg-item').forEach(b=>b.classList.toggle('on',b.dataset.name===d.name));
+  renderChips();
+  renderCategorySignals();
+  try{history.replaceState(null,'',`?market=${encodeURIComponent(d.name)}`);}catch(e){}
   if(world&&moveGlobe){
     const feature=countries.find(f=>marketNameForFeature(f)===d.name);
     if(COORDS[d.name]){
       const c=COORDS[d.name];
-      world.pointOfView({lat:c[1],lng:c[0],altitude:1.85},700);
+      world.pointOfView({lat:c[1],lng:c[0],altitude:2.1},700);
     }else if(feature){
       const c=d3.geoCentroid(feature);
-      if(Number.isFinite(c[0])&&Number.isFinite(c[1]))world.pointOfView({lat:c[1],lng:c[0],altitude:1.9},700);
+      if(Number.isFinite(c[0])&&Number.isFinite(c[1]))world.pointOfView({lat:c[1],lng:c[0],altitude:2.15},700);
     }
   }
 }
 function renderDetailCats(d){
   const max=Math.max(1,...(d.top_categories||[]).map(c=>c[1]));
-  document.getElementById('detailCats').innerHTML=(d.top_categories||[]).map(c=>`<div class="bar-row"><span>${zhCat(c[0])}</span><span class="track"><i class="fill" style="--bar-w:${Math.round(c[1]/max*100)}%"></i></span><b>${c[1]}%</b></div>`).join('')||'<div class="empty">暂无品类数据</div>';
+  document.getElementById('detailCats').innerHTML=(d.top_categories||[]).slice(0,4).map(c=>`<div class="bar-row"><span>${zhCat(c[0])}</span><span class="track"><i class="fill" style="--bar-w:${Math.round(c[1]/max*100)}%"></i></span><b>${c[1]}%</b></div>`).join('')||'<div class="empty">暂无品类数据</div>';
 }
 function renderBrands(d){
   document.getElementById('detailBrands').innerHTML=(d.top_brands||[]).map(b=>`<a href="https://atlas.sequentry.com/?brand=${encodeURIComponent(b)}">${b}</a>`).join('')||'<div class="empty">暂无品牌样本</div>';
@@ -548,14 +564,11 @@ function loadShard(slug){
 function openStorePanel(d){
   storeShard=null;storeLimit=STORE_PAGE;storeEls.q.value='';
   storeEls.list.innerHTML='';storeEls.more.hidden=true;
-  if(!d.slug){storeEls.meta.textContent='暂无明细';chipMarket='';chipStores=[];renderChips();return;}
+  if(!d.slug){storeEls.meta.textContent='暂无明细';return;}
   storeEls.meta.textContent='加载中…';
   loadShard(d.slug).then(s=>{
     if(activeName!==d.name)return;
     storeShard=s;renderStores();
-    chipMarket=d.name;
-    chipStores=((s&&s.rows)||[]).slice(0,6).map(r=>({domain:r[0],brand:r[1]||r[0]}));
-    renderChips();
   });
 }
 function renderStores(){
@@ -575,12 +588,17 @@ function renderStores(){
 }
 storeEls.q.addEventListener('input',()=>{storeLimit=STORE_PAGE;renderStores();});
 storeEls.more.addEventListener('click',()=>{storeLimit+=50;renderStores();});
-/* ===== 选中市场的独立站图标簇（favicon 上地图） ===== */
-let chipMarket='',chipStores=[];
+/* ===== 独立站图标簇：每个市场按国家地图面积放 1~6 个 favicon，随筛选/选中联动 ===== */
+const LITE=window.STORES_LITE||{};
+const GEO_AREA=new Map();
+function iconCapacity(name){
+  return Math.max(1,Math.min(6,Math.ceil(Math.sqrt(GEO_AREA.get(name)||.002)*22)));
+}
 function chipEl(s){
   const a=document.createElement('a');
   a.title=`${s.brand||s.domain} · 点击访问独立站`;
   const img=document.createElement('img');
+  img.loading='lazy';
   img.src=`../assets/data/favicons/${encodeURIComponent(s.domain)}.png`;
   img.alt=s.brand||s.domain;
   img.onerror=()=>{
@@ -596,22 +614,31 @@ function chipEl(s){
   });
   return a;
 }
-function buildChipRow(flat){
+function buildCluster(name,flat){
+  const sel=name===activeName;
+  const stores=(LITE[name]||[]).slice(0,sel?6:iconCapacity(name));
   const row=document.createElement('div');
-  row.className='store-chips'+(flat?' flat':'');
-  chipStores.forEach(s=>row.appendChild(chipEl(s)));
+  row.className='store-chips'+(sel?'':' mini')+(flat?' flat':'');
+  row.dataset.name=name;
+  row.title=`${zh(name)} · 头部独立站`;
+  stores.forEach(s=>row.appendChild(chipEl({domain:s[0],brand:s[1]})));
+  row.addEventListener('click',e=>{if(e.target===row)selectMarket(name,!flat);});
   if(flat)return row;
   const wrap=document.createElement('div');
   wrap.className='store-chips-wrap';
   wrap.appendChild(row);
   return wrap;
 }
+function chipMarkets(){
+  return visibleMarketEntries().filter(d=>COORDS[d.name]&&(LITE[d.name]||[]).length);
+}
 function renderChips(){
   if(world&&world.htmlElementsData){
-    const c=COORDS[chipMarket];
-    world.htmlElementsData(c&&chipStores.length?[{lat:c[1],lng:c[0]}]:[])
-      .htmlLat('lat').htmlLng('lng').htmlAltitude(.06)
-      .htmlElement(()=>buildChipRow(false));
+    const data=chipMarkets().map(d=>({lat:COORDS[d.name][1],lng:COORDS[d.name][0],name:d.name}));
+    world.htmlElementsData(data).htmlLat('lat').htmlLng('lng').htmlAltitude(.06)
+      .htmlElement(o=>buildCluster(o.name,false));
+    if(typeof world.htmlElementVisibilityModifier==='function')
+      world.htmlElementVisibilityModifier((el,vis)=>{el.style.opacity=vis?1:0;el.style.pointerEvents=vis?'auto':'none';});
   }
   drawFlatChips();
 }
@@ -619,14 +646,15 @@ let flatRoot=null,flatProj=null;
 function drawFlatChips(){
   if(!flatRoot)return;
   flatRoot.selectAll('.chips-fo').remove();
-  const c=COORDS[chipMarket];
-  if(!c||!chipStores.length)return;
-  const p=flatProj(c);
-  const fo=flatRoot.append('foreignObject').attr('class','chips-fo')
-    .attr('x',p[0]-110).attr('y',p[1]-62).attr('width',220).attr('height',58);
-  fo.node().appendChild(buildChipRow(true));
+  chipMarkets().forEach(d=>{
+    const p=flatProj(COORDS[d.name]);
+    const sel=d.name===activeName;
+    const fo=flatRoot.append('foreignObject').attr('class','chips-fo')
+      .attr('x',p[0]-110).attr('y',p[1]-(sel?60:13)).attr('width',220).attr('height',sel?58:30);
+    fo.node().appendChild(buildCluster(d.name,true));
+  });
 }
-/* ===== 大洲分类导航 ===== */
+/* ===== 大洲筛选 chips（左栏，替代原地图悬浮导航） ===== */
 const REGION_DEF=[
   ['亚洲',['China','India','Japan','South Korea','Singapore','Malaysia','Philippines','Vietnam','Thailand','Indonesia','Pakistan','Israel','Turkey','United Arab Emirates','Saudi Arabia']],
   ['欧洲',['United Kingdom','Germany','France','Italy','Spain','Netherlands','Sweden','Norway','Denmark','Finland','Poland','Switzerland','Austria','Belgium','Ireland','Portugal','Greece','Czechia','Romania','Hungary','Russia']],
@@ -635,30 +663,18 @@ const REGION_DEF=[
   ['大洋洲',['Australia','New Zealand']],
   ['非洲',['South Africa']]
 ];
-let openRegion='';
-function renderRegionNav(){
-  const nav=document.getElementById('regionNav');
-  nav.innerHTML=REGION_DEF.map(([rg,names])=>{
-    const ms=names.filter(n=>ENTRY_BY_NAME.has(n))
-      .sort((a,b)=>ENTRY_BY_NAME.get(b).count-ENTRY_BY_NAME.get(a).count);
-    if(!ms.length)return '';
-    const total=ms.reduce((s,n)=>s+(ENTRY_BY_NAME.get(n).count||0),0);
-    const open=openRegion===rg;
-    return `<div class="rg${open?' open':''}" data-rg="${rg}">
-      <button type="button" class="rg-head"><span>${rg}</span><em>${ms.length} 市场 · ${fmt(total)}</em><i>${open?'−':'+'}</i></button>
-      <div class="rg-list">${ms.map(n=>`<button type="button" class="rg-item${n===activeName?' on':''}" data-name="${n}">${zh(n)}<em>${fmt(ENTRY_BY_NAME.get(n).count)}</em></button>`).join('')}</div>
-    </div>`;
-  }).join('');
-  nav.querySelectorAll('.rg-head').forEach(b=>b.addEventListener('click',()=>{
-    const rg=b.parentElement.dataset.rg;
-    openRegion=openRegion===rg?'':rg;
-    renderRegionNav();
+const REGION_OF={};
+REGION_DEF.forEach(([rg,names])=>names.forEach(n=>{REGION_OF[n]=rg;}));
+let activeRegion='';
+function renderRegionChips(){
+  const box=document.getElementById('regionChips');
+  const regions=REGION_DEF.filter(([,names])=>names.some(n=>ENTRY_BY_NAME.has(n))).map(([rg])=>rg);
+  box.innerHTML=['',...regions].map(rg=>`<button type="button" class="${rg===activeRegion?'on':''}" data-rg="${rg}">${rg||'全部'}</button>`).join('');
+  box.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    activeRegion=b.dataset.rg;
+    renderRegionChips();
+    applyFilters();
   }));
-  nav.querySelectorAll('.rg-item').forEach(b=>{
-    b.addEventListener('click',()=>selectMarket(b.dataset.name,true));
-    b.addEventListener('mouseenter',()=>linkHover(b.dataset.name,true));
-    b.addEventListener('mouseleave',()=>linkHover(b.dataset.name,false));
-  });
 }
 /* ===== 图例与列表↔地图联动 ===== */
 function renderLegend(){
@@ -668,32 +684,33 @@ function renderLegend(){
     (view==='flat'?'<span>· ●大小=站点数</span>':'<span>· 凸起=站点数</span>');
 }
 function linkHover(name,on){
-  document.querySelectorAll('.country, .market-dot').forEach(el=>{
+  document.querySelectorAll('.country, .market-dot, .store-chips').forEach(el=>{
     if(el.dataset.name===name)el.classList.toggle('hover-link',on);
   });
 }
 function applyFilters(){
   const q=(els.q.value||'').trim().toLowerCase();
   const s=els.sort.value;
-  filtered=entries.filter(d=>(!q||d.search.includes(q))&&marketHasCategory(d,activeCategory));
+  filtered=entries.filter(d=>(!q||d.search.includes(q))&&marketHasCategory(d,activeCategory)&&(!activeRegion||REGION_OF[d.name]===activeRegion));
   filtered.sort((a,b)=>metricValue(b,s)-metricValue(a,s));
   renderList();
+  renderCategorySignals();
   updateRankingNote();
   refreshMapOnly();
   updateMapCopy();
   if(!filtered.some(d=>d.name===activeName)&&filtered[0])selectMarket(filtered[0].name,false);
 }
 function updateRankingNote(){
-  const cat=activeCategory?` · ${activeCategory}`:'';
-  document.getElementById('rankingNote').textContent=`${filtered.length} 个市场${cat}`;
+  const rg=activeRegion?` · ${activeRegion}`:'';
+  const cat=activeCategory?` · ${zhCat(activeCategory)}`:'';
+  document.getElementById('rankingNote').textContent=`${filtered.length} 个市场${rg}${cat}`;
 }
+function scoreTier(s){return s>=55?' hi':s>=35?' mid':''}
 function renderList(){
-  els.list.innerHTML=filtered.slice(0,24).map((d,i)=>`<article class="market-row${d.name===activeName?' active':''}" data-name="${d.name}">
+  els.list.innerHTML=filtered.map((d,i)=>`<article class="market-row${d.name===activeName?' active':''}" data-name="${d.name}">
     <div class="rank">${String(i+1).padStart(2,'0')}</div>
-    <div><div class="m-name">${zh(d.name)}</div><div class="m-meta">${(d.top_categories||[]).slice(0,2).map(c=>zhCat(c[0])).join(' · ')||d.currency}</div></div>
-    <div class="m-num">${fmt(d.count)}</div>
-    <div class="m-num">${pct(d.confirmed_pct)}</div>
-    <div class="m-num">${Math.round(d.avg_marketing||0)}</div>
+    <div><div class="m-name">${flagImg(d.name)}${zh(d.name)}</div><div class="m-meta">${fmt(d.count)} 站 · ${(d.top_categories||[]).slice(0,1).map(c=>zhCat(c[0])).join('')||d.currency||''}</div></div>
+    <div class="m-score${scoreTier(d.score)}" title="探索优先级 ${d.score} / 100 · 体量×确认率×营销成熟度加权">${d.score}</div>
   </article>`).join('')||'<div class="empty">没有匹配市场。</div>';
   els.list.querySelectorAll('.market-row').forEach(r=>{
     r.addEventListener('click',()=>selectMarket(r.dataset.name));
@@ -701,24 +718,28 @@ function renderList(){
     r.addEventListener('mouseleave',()=>linkHover(r.dataset.name,false));
   });
 }
+/* 品类信号与其余面板双向联动：计数跟随大洲/搜索范围，蓝点=当前选中市场的 Top 品类 */
 function renderCategorySignals(){
+  const q=(els.q?.value||'').trim().toLowerCase();
+  const base=entries.filter(d=>(!q||d.search.includes(q))&&(!activeRegion||REGION_OF[d.name]===activeRegion));
   const map=new Map();
-  entries.forEach(d=>(d.top_categories||[]).forEach(c=>map.set(c[0],(map.get(c[0])||0)+1)));
-  const cats=[...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,10);
+  base.forEach(d=>(d.top_categories||[]).forEach(c=>map.set(c[0],(map.get(c[0])||0)+1)));
+  let cats=[...map.entries()].sort((a,b)=>b[1]-a[1]).slice(0,8);
+  if(activeCategory&&!cats.some(c=>c[0]===activeCategory))cats.push([activeCategory,map.get(activeCategory)||0]);
   const max=Math.max(1,...cats.map(c=>c[1]));
-  document.getElementById('categoryList').innerHTML=cats.map(c=>`<button type="button" class="cat-row${activeCategory===c[0]?' active':''}" data-cat="${c[0]}"><span>${zhCat(c[0])}</span><span class="track"><i class="fill" style="--bar-w:${Math.round(c[1]/max*100)}%"></i></span><b>${c[1]} 市场</b></button>`).join('')+'<button type="button" class="cat-clear" id="clearCategory">查看全部市场</button>';
+  const selCats=new Set(((selected()||{}).top_categories||[]).map(c=>c[0]));
+  const scope=activeRegion||q?`${activeRegion||'搜索范围'} ${base.length} 市场内`:'';
+  document.getElementById('catScope').textContent=scope;
+  document.getElementById('categoryList').innerHTML=cats.map(c=>`<button type="button" class="cat-row${activeCategory===c[0]?' active':''}" data-cat="${c[0]}"><span>${selCats.has(c[0])?'<i class="seldot" title="当前选中市场的 Top 品类"></i>':''}${zhCat(c[0])}</span><span class="track"><i class="fill" style="--bar-w:${Math.round(c[1]/max*100)}%"></i></span><b>${c[1]} 市场</b></button>`).join('')+(activeCategory?'<button type="button" class="cat-clear" id="clearCategory">清除品类筛选</button>':'');
   document.querySelectorAll('.cat-row').forEach(btn=>btn.addEventListener('click',()=>{
     activeCategory=activeCategory===btn.dataset.cat?'':btn.dataset.cat;
-    renderCategorySignals();
     applyFilters();
-    updateMapCopy();
     renderCatNote();
   }));
-  document.getElementById('clearCategory').addEventListener('click',()=>{
+  const clear=document.getElementById('clearCategory');
+  if(clear)clear.addEventListener('click',()=>{
     activeCategory='';
-    renderCategorySignals();
     applyFilters();
-    updateMapCopy();
     renderCatNote();
   });
 }
@@ -742,6 +763,10 @@ async function loadTopo(){
   try{
     const topo=await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json').then(r=>r.json());
     countries=topojson.feature(topo,topo.objects.countries).features.filter(f=>f.properties.name!=='Antarctica');
+    countries.forEach(f=>{
+      const n=marketNameForFeature(f);
+      if(n)GEO_AREA.set(n,Math.max(GEO_AREA.get(n)||0,d3.geoArea(f)));
+    });
   }catch(e){
     countries=[];
   }
@@ -844,7 +869,7 @@ function renderFlatFallback(){
 function renderGlobe(){
   const el=document.getElementById('globe');
   if(!window.Globe||!window.SQ_GLOBE||!countries.length){el.innerHTML='<div class="empty" style="padding:92px 18px 18px">3D 地球依赖未加载，数据列表和市场详情仍可使用；切换到平面地图可查看降级版市场格网。</div>';return;}
-  world=SQ_GLOBE.init(Globe,el,{rendererConfig:{antialias:true},pov:{lat:25,lng:-55,altitude:2.25}});
+  world=SQ_GLOBE.init(Globe,el,{rendererConfig:{antialias:true},pov:{lat:25,lng:-55,altitude:2.55}});
   world.polygonsData(countries)
     .polygonCapColor(f=>globeColorFor(marketForFeature(f)))
     .polygonSideColor(()=>SQ_GLOBE.SIDE)
@@ -855,11 +880,11 @@ function renderGlobe(){
       return d?`<div style="font-family:monospace;background:#0C1626;color:#E5ECF6;padding:8px 11px;border:1px solid rgba(255,255,255,.15);border-radius:6px;font-size:12px"><b>${zh(d.name)}</b> ${d.name===zh(d.name)?'':d.name}<br>${fmt(d.count)} 独立站 · 点击查看详情</div>`:'';
     })
     .onPolygonClick(f=>{const name=marketNameForFeature(f);if(name)selectMarket(name,true)});
+  world.controls().autoRotate=autoRotateOn;
   const fit=()=>world.width(el.clientWidth).height(el.clientHeight);
   fit();new ResizeObserver(fit).observe(el);
 }
 function refreshMaps(){
-  document.getElementById('mapStat').textContent=`metric: ${metricLabel(activeMetric)}`;
   updateMapCopy();
   renderLegend();
   refreshMapOnly();
@@ -872,15 +897,17 @@ function refreshMapOnly(){
     world.polygonAltitude(f=>marketNameForFeature(f)===activeName ? .09 : globeAltitudeFor(marketForFeature(f)));
   }
   renderFlatMap();
+  renderChips();
 }
 function updateMapCopy(){
   const view=document.body.dataset.view;
   const prefix=activeCategory?`${zhCat(activeCategory)} · `:'';
   document.getElementById('mapTitle').textContent=view==='flat'?`${prefix}平面市场地图`:`${prefix}全球 3D 市场地球`;
-  document.getElementById('mapDesc').textContent=activeCategory?`已按「${zhCat(activeCategory)}」筛选 ${filtered.length} 个市场；点击节点或区域查看该市场的品类和品牌样本。`:(view==='flat'?'以中国为视觉中心查看全球样本分布；点击市场节点或区域，进入详情与品牌样本。':'旋转地球查看市场密度；点击国家或地区，进入详情与品牌样本。');
+  document.getElementById('mapDesc').textContent=activeCategory?`已按「${zhCat(activeCategory)}」筛选 ${filtered.length} 个市场；点击节点或区域查看该市场的品类和品牌样本。`:(view==='flat'?'以中国为视觉中心查看全球样本分布；国家上的图标是该市场头部独立站，点击直达站点。':'旋转地球查看市场密度；国家上的图标是该市场头部独立站，点击直达，点击国家看详情。');
 }
 function resetDashboard(){
   activeCategory='';
+  activeRegion='';
   activeMetric='count';
   activeName=entries[0]?.name||'';
   els.q.value='';
@@ -888,9 +915,10 @@ function resetDashboard(){
   els.sort.value='count';
   document.body.dataset.view='globe';
   document.querySelectorAll('.seg button[data-view]').forEach(b=>b.classList.toggle('on',b.dataset.view==='globe'));
-  document.getElementById('mapStat').textContent=`metric: ${metricLabel(activeMetric)}`;
+  setAutoRotate(true);
   resetFlatZoom();
   renderLegend();
+  renderRegionChips();
   renderCategorySignals();
   applyFilters();
   selectMarket(activeName,false);
@@ -902,6 +930,15 @@ document.querySelectorAll('.seg button[data-view]').forEach(btn=>btn.addEventLis
   updateMapCopy();
   renderLegend();
 }));
+let autoRotateOn=true;
+const rotateBtn=document.getElementById('rotateToggle');
+function setAutoRotate(on){
+  autoRotateOn=on;
+  if(world)world.controls().autoRotate=on;
+  rotateBtn.innerHTML=on?'<i class="ic-pause"></i>':'▶';
+  rotateBtn.title=on?'暂停地球自转':'恢复地球自转';
+}
+rotateBtn.addEventListener('click',()=>setAutoRotate(!autoRotateOn));
 els.q.addEventListener('input',applyFilters);
 els.sort.addEventListener('change',applyFilters);
 els.metric.addEventListener('change',()=>{activeMetric=els.metric.value;refreshMaps();});
@@ -915,7 +952,7 @@ document.getElementById('copyMarket').addEventListener('click',async()=>{
 (async function init(){
   renderHero();
   renderCategorySignals();
-  renderRegionNav();
+  renderRegionChips();
   renderLegend();
   await loadTopo();
   renderFlatMap();
