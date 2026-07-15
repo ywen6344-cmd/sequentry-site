@@ -25,7 +25,7 @@ CSS_LINK_RE = re.compile(r'<link[^>]*href="[^"]*assets/site\.css"[^>]*>')
 
 # 每页应用哪些共用块。footer=全站；header=True 冷白内容页眉，"dark"=深色地球页眉。
 PAGES = {
-    "index.html":                  {"footer": True},                  # 首页：专属深色地球页眉，不动
+    "index.html":                  {"footer": True, "header": "dark"},
     "about/index.html":            {"footer": True, "header": True},
     "sources/index.html":          {"footer": True, "header": True},
     "report/index.html":           {"footer": True, "header": True},
@@ -34,6 +34,9 @@ PAGES = {
     "briefs/2026-05-27/index.html":{"footer": True, "header": True},
     "briefs/2026-06-01/index.html":{"footer": True, "header": True},
     "briefs/2026-06-03/index.html":{"footer": True, "header": True},
+    "briefs/2026-07-08/index.html":{"footer": True, "header": True},
+    "cases/index.html":            {"footer": True, "header": True},
+    "cases/wyze/index.html":       {"footer": True, "header": True},
     "markets/index.html":          {"footer": True, "header": "dark"},# 市场地图：深色地球页眉
     "nav/index.html":              {"footer": True},                  # 特殊侧栏页，暂只替换页脚
 }

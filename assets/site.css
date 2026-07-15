@@ -9,31 +9,41 @@
 .sq-head{position:sticky;top:0;z-index:40;background:rgba(250,250,250,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-bottom:1px solid #E3E6EA;font-family:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif}
 .sq-head a{color:inherit;text-decoration:none}
 .sq-head-inner{width:min(1240px,calc(100% - 48px));margin:0 auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 24px}
-.sq-brand{display:grid;gap:2px;line-height:1.12}
-.sq-brand strong{font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:22px;font-weight:600;color:#0B0C0E;letter-spacing:-.01em}
-.sq-brand span{font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:11.5px;color:#6B7280}
-.sq-brand span small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:9px;color:#9CA3AF;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
+.sq-brand{display:flex;align-items:center;gap:12px;min-width:max-content;line-height:1}
+.sq-brand-mark{display:block;width:40px;height:auto;flex:none}
+.sq-brand-lockup{display:grid;gap:4px}
+.sq-brand-lockup strong{font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:19px;font-weight:600;color:#0B0C0E;letter-spacing:0;line-height:1.05}
+.sq-brand-lockup>span{font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:10.5px;font-weight:500;color:#596579;letter-spacing:0;line-height:1.1}
+.sq-brand-lockup small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:7.5px;font-weight:600;color:#8B95A3;letter-spacing:.14em;line-height:1;text-transform:uppercase;margin-left:6px}
 .sq-nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase}
 .sq-nav a{position:relative;padding:12px 0}
 .sq-nav a:hover{color:#0B0C0E}
 .sq-nav a.active{color:#0B0C0E}
-.sq-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:#8B1A1A}
+.sq-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:#2859FF}
 @media(max-width:680px){
   .sq-head{position:static}
-  .sq-head-inner{flex-wrap:wrap;gap:10px;min-height:0;padding:14px 24px}
-  .sq-brand strong{font-size:20px}
-  .sq-nav{gap:16px;font-size:12px}
+  .sq-head-inner{flex-wrap:wrap;gap:4px;min-height:0;padding:12px 24px 4px}
+  .sq-brand-mark{width:36px}
+  .sq-brand-lockup strong{font-size:16px}
+  .sq-brand-lockup>span{font-size:9.5px}
+  .sq-nav{width:100%;flex-wrap:nowrap;overflow-x:auto;gap:20px;padding:2px 0 4px;font-size:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .sq-nav::-webkit-scrollbar{display:none}
+  .sq-nav a{white-space:nowrap;flex:none;padding:10px 0}
 }
 
 /* ---------- 深色页眉 .site-head（主页 / 市场地图等地球页共用）---------- */
-.site-head{position:sticky;top:0;z-index:36;background:#0A1322;border-bottom:1px solid rgba(255,255,255,.07)}
+.site-head{position:sticky;top:0;z-index:36;background:#0A1322;border-bottom:1px solid rgba(143,185,242,.12)}
 .site-head a{color:inherit;text-decoration:none}
 .site-head .head-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 0;width:min(1320px,calc(100% - clamp(44px,8vw,160px)));margin:0 auto}
-.hbrand strong{display:block;font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:23px;font-weight:600;color:#fff;line-height:1.1}
-.hbrand span{display:block;margin-top:3px;font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:12.5px;font-weight:500;color:#8FB9F2;letter-spacing:.02em}
-.hbrand span small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:9px;color:#5E6E85;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
+.hbrand{display:flex;align-items:center;gap:12px;min-width:max-content;line-height:1}
+.hbrand-mark{display:block;width:40px;height:auto;flex:none;opacity:.9}
+.hbrand-lockup{display:grid;gap:4px}
+.hbrand-lockup strong{font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:19px;font-weight:600;color:#fff;letter-spacing:0;line-height:1.05}
+.hbrand-lockup>span{font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:10.5px;font-weight:500;color:#8FB9F2;letter-spacing:0;line-height:1.1}
+.hbrand-lockup small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:7.5px;font-weight:600;color:#6F819C;letter-spacing:.14em;line-height:1;text-transform:uppercase;margin-left:6px}
 .hnav{display:flex;align-items:center;gap:22px;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:12px;color:#9DA9BC;letter-spacing:.04em;margin-left:auto}
 .hnav a:hover,.hnav a.active{color:#fff}
+.hnav a.active{box-shadow:inset 0 -2px #2859FF}
 .atlas-link{position:relative;display:inline-block}
 .atlas-link>a{color:#9DA9BC}
 .atlas-link>a:hover{color:#fff}
@@ -42,6 +52,9 @@
 @media(max-width:760px){
   /* 手机端：导航不隐藏，改为品牌行下方的整行横滑链接条 */
   .site-head .head-inner{flex-wrap:wrap;gap:4px;padding:12px 0 4px}
+  .hbrand-mark{width:36px}
+  .hbrand-lockup strong{font-size:16px}
+  .hbrand-lockup>span{font-size:9.5px}
   .hnav{margin-left:0;width:100%;overflow-x:auto;gap:20px;padding:2px 2px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   .hnav::-webkit-scrollbar{display:none}
   .hnav a{padding:10px 0;white-space:nowrap;flex:none}
