@@ -10,13 +10,13 @@
 .sq-head a{color:inherit;text-decoration:none}
 .sq-head-inner{width:min(1240px,calc(100% - 48px));margin:0 auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 24px}
 .sq-brand{display:grid;gap:2px;line-height:1.12}
-.sq-brand strong{font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:22px;font-weight:600;color:#0F172A;letter-spacing:-.01em}
+.sq-brand strong{font-family:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;font-size:22px;font-weight:600;color:#0B0C0E;letter-spacing:-.01em}
 .sq-brand span{font-family:Fraunces,"Noto Serif SC","Songti SC",serif;font-size:11.5px;color:#6B7280}
 .sq-brand span small{font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:9px;color:#9CA3AF;letter-spacing:.16em;text-transform:uppercase;margin-left:7px}
 .sq-nav{display:flex;flex-wrap:wrap;gap:22px;align-items:center;font-family:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;font-size:12px;color:#6B7280;letter-spacing:.08em;text-transform:uppercase}
 .sq-nav a{position:relative;padding:12px 0}
-.sq-nav a:hover{color:#0F172A}
-.sq-nav a.active{color:#0F172A}
+.sq-nav a:hover{color:#0B0C0E}
+.sq-nav a.active{color:#0B0C0E}
 .sq-nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:4px;height:2px;background:#8B1A1A}
 @media(max-width:680px){
   .sq-head{position:static}
@@ -56,7 +56,7 @@
 
 /* ---------- 全站共用页脚 ---------- */
 .sq-foot{
-  padding:50px 0 26px;background:#0F172A;color:#A8A098;position:relative;z-index:10;
+  padding:50px 0 26px;background:#0B0C0E;color:#A8A098;position:relative;z-index:10;
   font-family:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;
 }

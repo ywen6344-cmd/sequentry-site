@@ -25,10 +25,10 @@
 <link rel="stylesheet" href="../assets/vendor/lenis.css">
 <style>
 :root{
-  --bg:#FAFAF7;--surface:#FFFFFF;--ink:#0F172A;--deep:#1F2937;
+  --bg:#FAFAF7;--surface:#FFFFFF;--ink:#0B0C0E;--deep:#1F2937;
   --text:#4D4D4D;--muted:#737373;--light:#9CA3AF;
-  --line-warm:#D8D2C7;--line:rgba(15,23,42,.08);--line-soft:rgba(15,23,42,.05);
-  --blue:#1E40AF;--zhu:#8B1A1A;--gold:#9C7A26;
+  --line-warm:#D8D2C7;--line:rgba(11,12,14,.08);--line-soft:rgba(11,12,14,.05);
+  --blue:#2859FF;--zhu:#8B1A1A;--gold:#9C7A26;
   --sidebar-w:210px;
   --sans:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
   --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;
@@ -122,7 +122,7 @@ button,input{font:inherit}
 .card{display:grid;grid-template-columns:20px 1fr;grid-template-rows:auto auto auto;gap:2px 9px;
   background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:11px 13px;
   transition:border-color .12s,box-shadow .12s}
-.card:hover{border-color:var(--line-warm);box-shadow:0 2px 10px rgba(15,23,42,.06)}
+.card:hover{border-color:var(--line-warm);box-shadow:0 2px 10px rgba(11,12,14,.06)}
 .ico{grid-column:1;grid-row:1/4;position:relative;width:18px;height:18px;border-radius:4px;overflow:hidden;
   display:inline-grid;place-items:center;color:#fff;font-family:var(--mono);font-size:10px;font-weight:600;flex:none;margin-top:1px}
 .ico img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
@@ -177,16 +177,16 @@ footer.foot .shell{width:min(1240px,calc(100% - 48px));margin:0 auto}
 <style id="tooldialect">
 /* ===== 工具方言：冷白 + 工具组件，砍 Meridian 暖装饰（覆盖在原样式之后）===== */
 :root{
-  --bg:#FAFAFA;--surface:#FFFFFF;--muted:#6B7280;
-  --line:rgba(15,23,42,.09);--line-soft:rgba(15,23,42,.05);--line-warm:#E4E7EB;--tint:#F4F6F8;
+  --bg:#F5F7FA;--surface:#FFFFFF;--muted:#6B7280;
+  --line:rgba(11,12,14,.09);--line-soft:rgba(11,12,14,.05);--line-warm:#E4E7EB;--tint:#F4F6F8;
 }
 html{background:var(--bg)}
 kbd{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--surface);
   border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:1px 5px;line-height:1.5}
 
 .top{background:rgba(250,250,250,.86);border-bottom:1px solid var(--line);transition:box-shadow .2s ease,border-color .2s ease}
-.top.scrolled{border-bottom-color:transparent;box-shadow:0 1px 0 rgba(15,23,42,.05),0 8px 22px rgba(15,23,42,.06)}
-.tools-badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(30,64,175,.30);border-radius:4px;padding:2px 7px;white-space:nowrap}
+.top.scrolled{border-bottom-color:transparent;box-shadow:0 1px 0 rgba(11,12,14,.05),0 8px 22px rgba(11,12,14,.06)}
+.tools-badge{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);border:1px solid rgba(40,89,255,.30);border-radius:4px;padding:2px 7px;white-space:nowrap}
 .top-nav .on{color:var(--blue)}
 .top-spacer{margin-left:auto}
 .top-hint{display:flex;align-items:center;gap:6px;color:var(--light);font-family:var(--mono);font-size:10.5px;white-space:nowrap}
@@ -194,8 +194,8 @@ kbd{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--s
 .sidebar{background:var(--tint);border-right:1px solid var(--line)}
 .sidebar-title{color:var(--light)}
 .sb-group{color:var(--muted)}
-.sb-link:hover{background:rgba(15,23,42,.03)}
-.sb-link.active{border-left-color:var(--blue);background:rgba(30,64,175,.05)}
+.sb-link:hover{background:rgba(11,12,14,.03)}
+.sb-link.active{border-left-color:var(--blue);background:rgba(40,89,255,.05)}
 
 .main{background-image:url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1.2' cy='1.2' r='1' fill='%230F172A' fill-opacity='0.045'/%3E%3C/svg%3E")}
 
@@ -205,7 +205,7 @@ kbd{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--s
 
 .controls{background:rgba(250,250,250,.92);border-bottom:1px solid var(--line-soft)}
 .search{grid-template-columns:18px 1fr auto;border-radius:7px;transition:border-color .14s,box-shadow .14s}
-.search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(30,64,175,.10)}
+.search:focus-within{border-color:var(--blue);box-shadow:0 0 0 3px rgba(40,89,255,.10)}
 .density{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden;font-family:var(--mono)}
 .density button{border:0;background:var(--surface);color:var(--muted);font-size:10.5px;padding:7px 12px;cursor:pointer;transition:all .12s}
 .density button+button{border-left:1px solid var(--line)}
@@ -219,7 +219,7 @@ kbd{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--s
 .stab.on{background:var(--ink);border-color:var(--ink)}
 
 .card{position:relative;transition:border-color .13s,box-shadow .13s,transform .13s}
-.card:hover{border-color:rgba(15,23,42,.20);box-shadow:0 2px 10px rgba(15,23,42,.06);transform:translateY(-1px)}
+.card:hover{border-color:rgba(11,12,14,.20);box-shadow:0 2px 10px rgba(11,12,14,.06);transform:translateY(-1px)}
 .card:after{content:"\2197";position:absolute;right:10px;top:9px;font-family:var(--mono);font-size:11px;color:var(--light);opacity:0;transition:opacity .13s}
 .card:hover:after{opacity:1;color:var(--blue)}
 .card-name{padding-right:14px}
@@ -234,7 +234,7 @@ footer.foot{border-top:1px solid rgba(255,255,255,.10);color:#9AA1AB}
 .foot-contact .ct-label{color:#AEB4BD}
 .foot-contact p{color:#9AA1AB}
 .foot-contact a.mail{color:#CDD2D8;border-bottom-color:#CDD2D8}
-.foot-brand strong{color:#FAFAFA}
+.foot-brand strong{color:#F5F7FA}
 .foot-brand span{color:#9AA1AB}
 .foot-brand em{color:#7C828C}
 .foot-copy{color:#6A707A}
@@ -326,7 +326,7 @@ footer.foot{border-top:1px solid rgba(255,255,255,.10);color:#9AA1AB}
   function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,function(m){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]; }); }
 
-  var PAL = ["#1F2937","#1E40AF","#8B1A1A","#9C7A26","#3F5161","#5D6A2C","#6B4A7A","#1F5C56"];
+  var PAL = ["#1F2937","#2859FF","#8B1A1A","#9C7A26","#3F5161","#5D6A2C","#6B4A7A","#1F5C56"];
   function iconColor(s){ var h=0; s=s||"?"; for(var i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))>>>0; return PAL[h%PAL.length]; }
   // favicon 多源兜底：DuckDuckGo → 站点自身 /favicon.ico → icon.horse → 首字母色块
   var ICON_SRC = [
