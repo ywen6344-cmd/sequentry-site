@@ -142,7 +142,9 @@
     <a href="/about/">关于</a>
   </nav>
 </div>
-<script>(function(){var p=location.pathname.replace(/index\.html$/,'');if(p.charAt(p.length-1)!=='/')p+='/';var best=nul    <article>
+<script>(function(){var p=location.pathname.replace(/index\.html$/,'');if(p.charAt(p.length-1)!=='/')p+='/';var best=null,n=-1;document.querySelectorAll('.sq-head .sq-nav a').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&h!=='/'&&(p===h||p.indexOf(h)===0)&&h.length>n){best=a;n=h.length;}});if(best)best.classList.add('active');})();</script>
+</header>
+  <article>
 
       <h1>卖"压力卫衣"做到 7 亿美元？Comfrt 的达人、折扣与焦虑生意</h1>
 
