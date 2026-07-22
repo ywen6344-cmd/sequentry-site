@@ -115,6 +115,7 @@ a{color:inherit;text-decoration:none}
 .icard.soon:hover .ic-img{filter:none}
 @keyframes fin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .ic-img{position:relative;height:142px;display:grid;place-items:center;text-align:center;overflow:hidden;transition:filter .2s}
+.ic-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .ic-img em{font-family:var(--serif);font-style:normal;font-size:24px;font-weight:600;color:rgba(255,255,255,.62)}
 .ic-img small{display:block;margin-top:7px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.32);text-transform:uppercase}
 .ic-body{padding:15px 18px 17px}
@@ -478,8 +479,8 @@ document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=function(){const 
 /* ===== 功能信息卡片（首屏主体）===== */
 const SHOW={
   case:[
-    {img:'Wyze',g:'linear-gradient(150deg,#2E4A3A,#162230)',title:'从 19.99 美元到 32 万台召回',tag:'案例 · 智能硬件',text:'Wyze 的低价增长、订阅飞轮与规模化风险——一份完整的品牌体检。',meta:'CASE · 9,300 字',url:'/cases/wyze/'},
-    {img:'Comfrt',g:'linear-gradient(150deg,#3A2E2E,#1C2335)',title:'卖"压力卫衣"做到 7 亿美元',tag:'案例 · 休闲服饰',text:'Comfrt 的达人网络、折扣引擎与焦虑生意——一台精心调校的增长机器。',meta:'CASE · 11,000 字',url:'/cases/comfrt/'},
+    {img:'Wyze',pic:'/assets/cases/wyze-card.png',g:'linear-gradient(150deg,#2E4A3A,#162230)',title:'从 19.99 美元到 32 万台召回',tag:'案例 · 智能硬件',text:'Wyze 的低价增长、订阅飞轮与规模化风险——一份完整的品牌体检。',meta:'CASE · 9,300 字',url:'/cases/wyze/'},
+    {img:'Comfrt',pic:'/assets/cases/comfrt-card.png',g:'linear-gradient(150deg,#3A2E2E,#1C2335)',title:'卖"压力卫衣"做到 7 亿美元',tag:'案例 · 休闲服饰',text:'Comfrt 的达人网络、折扣引擎与焦虑生意——一台精心调校的增长机器。',meta:'CASE · 11,000 字',url:'/cases/comfrt/'},
     {soon:1,img:'POP MART',g:'linear-gradient(150deg,#3A2D4A,#1C2335)',title:'泡泡玛特：两个月落成欧美双总部',tag:'案例 · 市场',text:'从潮玩出口到本地化组织，把"出海"做成"在地经营"。',meta:'CASE · 拆解中',url:'/briefs/2026-06-03/'},
     {soon:1,img:'Anker',g:'linear-gradient(150deg,#22354A,#15202F)',title:'Anker：把"充电"做成高端心智',tag:'案例 · 运营',text:'白牌到品牌溢价，产品线分层与叙事升级。',meta:'CASE · 拆解中',url:'/report/01/'},
     {soon:1,img:'Stanley',g:'linear-gradient(150deg,#3A3326,#1F2230)',title:'一个水杯的病毒式品牌化',tag:'案例 · 市场',text:'靠社媒情绪与限量色重定义品类。',meta:'CASE · 拆解中',url:'/briefs/'},
@@ -502,7 +503,7 @@ let gTab='case';const igrid=document.getElementById('igrid'),infoFoot=document.g
 function renderFeed(){
   const items=SHOW[gTab].slice(0,HOME_MODULE_LIMIT);
   igrid.innerHTML=items.map((it,i)=>`<article class="icard${it.soon?' soon':''}" style="animation-delay:${i*60}ms"${it.soon?'':` onclick="location.href='${it.url}'"`}>
-    <div class="ic-img" style="background:${it.g}"><div><em>${it.img}</em><small>${gTab==='report'?'REPORT / SIGNAL':'CASE / BRAND SIGNAL'}</small></div></div>
+    <div class="ic-img" style="${it.pic?'':'background:'+it.g}">${it.pic?`<img src="${it.pic}" alt="" loading="lazy">`:`<div><em>${it.img}</em><small>${gTab==='report'?'REPORT / SIGNAL':'CASE / BRAND SIGNAL'}</small></div>`}</div>
     <div class="ic-body"><div class="ic-tag">${it.tag}</div><h3>${it.title}</h3><p>${it.text}</p>
     <div class="ic-meta">${it.meta} · ${it.soon?'<span class="soontag">研究中 · 即将上线</span>':`<a href="${it.url}" style="color:#9CC2F2">${gTab==='report'?'阅读 / 下载 →':'读完整 →'}</a>`}</div></div>
   </article>`).join('');
