@@ -94,6 +94,15 @@
   .report-list .meta { background:var(--paper); padding:6px 40px 22px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--light); text-transform:uppercase; display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
   .report-card .arrow { font-family: var(--serif); font-size: 28px; color: var(--zhu); }
 
+  /* 外部报告区 —— 与自研报告视觉区分 */
+  .external-list { display: grid; gap: 1px; background: var(--line); border: 1px dashed var(--line); margin-top: 32px; }
+  .ext-card { background: var(--paper); padding: 32px 36px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; transition: background .15s; }
+  .ext-card:hover { background: #FFFDF7; }
+  .ext-tag { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--gray); text-transform: uppercase; margin-bottom: 12px; background: var(--warm); display: inline-block; padding: 4px 10px; }
+  .ext-card h3 { margin: 0 0 8px; font-family: var(--serif); font-weight: 600; font-size: 22px; color: var(--deep); }
+  .ext-card .desc { margin: 0; color: var(--gray); font-size: 13.5px; line-height: 1.7; max-width: 620px; }
+  .ext-arrow { font-size: 24px; color: var(--gray); }
+
   footer.foot { width:100%; padding: 64px 0 32px; border-top: 1px solid rgba(250,250,247,.14); background: var(--ink); color: #8A8278; font-size: 13px; }
   .foot-main { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(250,250,247,.12); }
   .foot-contact { text-align: right; }
@@ -110,6 +119,7 @@
     .foot-main { grid-template-columns: 1fr; gap: 28px; }
     .foot-contact { text-align: left; }
     .report-card { grid-template-columns: 1fr; gap: 16px; padding: 28px 24px; }
+    .ext-card { grid-template-columns: 1fr; gap: 12px; padding: 24px 24px; }
   }
   @media (max-width: 680px) {
     .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
@@ -160,6 +170,21 @@
           <div class="arrow">→</div>
         </a>
         <div class="meta"><span>53 页 · 阅读约 50 分钟</span><a href="/report/01/graph" style="color:var(--zhu);">可视化图谱 →</a></div>
+      </div>
+    </section>
+
+    <section class="shell section">
+      <h2>行业资源</h2>
+      <p style="color:var(--gray);font-size:14px;margin:-4px 0 0;max-width:620px;">来自第三方机构的公开研究报告，供下载参考。与序引自研报告区分。</p>
+      <div class="external-list">
+        <a class="ext-card" href="/report/semrush-ai-visibility-index-2026.pdf" download>
+          <div>
+            <div class="ext-tag">外部报告 · PDF 下载</div>
+            <h3>AI Visibility Index 2026</h3>
+            <p class="desc">Semrush × Adobe 联合发布。覆盖 126M 真实用户提示词，分析 ChatGPT、Google Gemini、AI Mode、AI Overviews 四大平台在 22 个行业的品牌可见度。82 页。</p>
+          </div>
+          <div class="ext-arrow">↓</div>
+        </a>
       </div>
     </section>
   </main>
