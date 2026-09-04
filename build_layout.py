@@ -38,6 +38,7 @@ PAGES = {
     "cases/index.html":            {"footer": True, "header": True},
     "cases/wyze/index.html":       {"footer": True, "header": True},
     "cases/comfrt/index.html":     {"footer": True, "header": True},
+    "cases/shein/index.html":      {"footer": True, "header": True},
     "markets/index.html":          {"footer": True, "header": "dark"},# 市场地图：深色地球页眉
     "nav/index.html":              {"footer": True},                  # 特殊侧栏页，暂只替换页脚
 }
