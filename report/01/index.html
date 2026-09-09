@@ -89,6 +89,17 @@
 
   article { max-width: 760px; margin: 0 auto; padding: 64px 0 80px; }
 
+  /* 报告页两栏：正文 + 右侧解读模块 */
+  .report-wrap.shell { display: grid; grid-template-columns: minmax(0, 760px) 320px; gap: 56px; justify-content: center; align-items: start; padding: 64px 0 80px; }
+  .report-wrap > article { max-width: none; margin: 0; padding: 0; }
+  .report-side { position: sticky; top: 92px; }
+  .side-mod { border: 1px solid var(--line-warm); background: var(--paper); padding: 28px 26px; }
+  .side-mod .side-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--zhu); margin-bottom: 10px; }
+  .side-mod h3 { margin: 0 0 10px; font-family: var(--serif); font-weight: 600; font-size: 20px; line-height: 1.4; }
+  .side-mod p { margin: 0 0 18px; font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .side-mod .btn { width: 100%; justify-content: center; }
+  .side-mod .side-meta { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: var(--light); }
+
   .art-badge { display: inline-block; padding: 4px 10px; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--zhu); border: 1px solid var(--line-warm); margin-bottom: 20px; }
   .art-title { margin: 0 0 12px; font-family: var(--serif); font-weight: 600; font-size: clamp(28px,4.5vw,44px); line-height: 1.22; }
   .art-sub { margin: 0 0 28px; color: var(--deep); font-size: 16px; line-height: 1.6; }
@@ -164,6 +175,11 @@
   .foot-brand em { font-family: var(--mono); font-style: normal; font-size: 11px; color: #8A8278; letter-spacing: .06em; }
   .foot-copy { margin-top: 24px; color: #6B6560; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
 
+  @media (max-width: 1024px) {
+    .report-wrap.shell { grid-template-columns: 1fr; }
+    .report-side { position: static; }
+  }
+
   @media (max-width: 680px) {
     .top { flex-direction: column; align-items: flex-start; padding: 16px 0; position: static; }
     article { padding: 40px 0 60px; }
@@ -198,7 +214,8 @@
 </header>
 
   <main>
-    <article class="shell art-body">
+    <div class="report-wrap shell">
+      <article class="art-body">
 
       <div class="art-badge">附完整报告下载 · 序引研究 #01</div>
       <h1 class="art-title">中国跨境电商的下一场战役，不在下一个爆款里</h1>
@@ -376,6 +393,17 @@
       </div>
 
     </article>
+
+    <aside class="report-side">
+      <div class="side-mod">
+        <div class="side-kicker">03 · 04 / AI 解读</div>
+        <h3>第三章与第四章解读</h3>
+        <p>AI 重构与成熟市场 AI 打法，本报告第三、四章的现场分享版演示文稿。</p>
+        <a class="btn primary" href="deck/" target="_blank" rel="noopener">打开演示文稿 ↗</a>
+        <div class="side-meta">亚马逊圆桌分享 · 2026-09-10</div>
+      </div>
+    </aside>
+    </div>
   </main>
 
   <footer class="sq-foot" data-shared="footer"><div class="sq-foot-inner">
