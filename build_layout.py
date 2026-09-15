@@ -8,7 +8,7 @@ build_layout.py — 序引站全站共用「头尾」注入器（单一真源）
   3. 确保每页 <head> 内引入 /assets/site.css。
 
 注意：
-  - 首页 index.html 用专属深色地球页眉，不纳入页眉替换（仅替换页脚）。
+  - 首页 index.html 为 2026 改版独立页面（自带页眉、页脚、样式与分析脚本），不参与注入。
   - nav/index.html 是特殊侧栏页，暂只替换页脚。
 
 特点：纯静态产物、幂等（可反复运行）、零第三方依赖。
@@ -25,7 +25,6 @@ CSS_LINK_RE = re.compile(r'<link[^>]*href="[^"]*assets/site\.css"[^>]*>')
 
 # 每页应用哪些共用块。footer=全站；header=True 冷白内容页眉，"dark"=深色地球页眉。
 PAGES = {
-    "index.html":                  {"footer": True, "header": "dark"},
     "about/index.html":            {"footer": True, "header": True},
     "sources/index.html":          {"footer": True, "header": True},
     "report/index.html":           {"footer": True, "header": True},
