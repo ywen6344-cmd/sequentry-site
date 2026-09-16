@@ -1,1 +1,8 @@
 _backups/
+redesign-2026/
+
+# AI 可见度采样的原始回答留档（体积大、含 API 返回原文）
+# 指标由 build_visibility_snapshot.py 聚合后进 assets/data/
+data/visibility/
+__pycache__/
+*.pyc

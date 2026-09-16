@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>序引效能新版官网</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="../assets/fonts.css">
+<script>(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap';document.head.appendChild(l);})();</script>
+<style>
+:root{
+  --ink:#0B0C0E;--deep:#1F2937;--gray:#6B7280;--light:#9CA3AF;--line:#E5E7EB;
+  --paper:#FFFFFF;--cloud:#F5F7FA;--soft:#E4E8ED;
+  --graphite:#596579;--steel:#8E98A7;--silver:#B5BEC9;
+  --action:#2859FF;--judgment:#C43B32;--success:#1F9D68;--warning:#E59A1A;
+  --sans:Inter,"Noto Sans SC","Source Han Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  --serif:Fraunces,"Noto Serif SC","Source Han Serif SC","Songti SC",Georgia,serif;
+  --mono:"JetBrains Mono","SF Mono",Consolas,Monaco,monospace;
+  --shell:min(1240px,calc(100% - 48px));
+}
+*{box-sizing:border-box}
+html{background:var(--cloud);color-scheme:light}
+body{margin:0;background:var(--cloud);color:var(--ink);font:15px/1.7 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin:0}
+svg{display:block}
+button,input,select{font-family:inherit}
+:focus-visible{outline:2px solid var(--action);outline-offset:2px}
+.shell{width:var(--shell);margin:0 auto}
+.page{animation:pgin .32s ease-out}
+@keyframes pgin{from{transform:translateY(6px)}to{transform:none}}
+
+/* 演示条 */
+.demo-bar{background:var(--ink);color:var(--silver);font:11px/1.4 var(--mono);letter-spacing:.03em}
+.demo-bar .shell{display:flex;align-items:center;gap:8px 18px;min-height:32px;flex-wrap:wrap;padding:6px 0}
+.demo-bar b{color:#fff;font-weight:500}
+.demo-pages{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
+.demo-pages a{color:var(--steel)}
+.demo-pages a:hover,.demo-pages a.on{color:#fff}
+
+/* 页眉 */
+.head{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);transition:box-shadow .2s}
+.head.scrolled{box-shadow:0 2px 10px rgba(11,12,14,.05)}
+.head-in{display:flex;align-items:center;gap:24px;min-height:68px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
+.brand svg{width:34px;height:auto}
+.brand strong{display:block;font:600 18px/1.05 var(--serif);color:var(--ink)}
+.brand small{display:block;margin-top:5px;font:500 9px/1 var(--mono);letter-spacing:.18em;color:var(--gray)}
+.nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+.nav-link{display:inline-flex;align-items:center;gap:5px;height:40px;padding:0 12px;border-radius:6px;font:500 14px/1 var(--sans);color:var(--deep);white-space:nowrap}
+.nav-link:hover{background:var(--cloud);color:var(--ink)}
+.nav-link.active{color:var(--ink);border-radius:0;box-shadow:inset 0 -2px 0 var(--action)}
+.car{font-size:9px;color:var(--light)}
+.dd{position:relative}
+.dd-menu{position:absolute;top:100%;left:0;min-width:252px;padding:6px;background:var(--paper);border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 24px rgba(11,12,14,.07);display:none}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{display:block}
+.dd-menu a{display:block;padding:9px 12px;border-radius:5px}
+.dd-menu a:hover{background:var(--cloud)}
+.dd-menu b{display:block;font-weight:500;font-size:14px;color:var(--ink);line-height:1.4}
+.dd-menu span{display:block;font-size:12px;color:var(--gray);line-height:1.5}
+
+/* 按钮与链接 */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;border-radius:6px;border:1px solid transparent;font:500 14.5px/1 var(--sans);cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s}
+.btn-primary{background:var(--ink);color:var(--cloud)}
+.btn-primary:hover{background:var(--deep)}
+.btn-secondary{background:var(--paper);color:var(--ink);border-color:var(--silver)}
+.btn-secondary:hover{border-color:var(--ink)}
+.btn-light{background:var(--cloud);color:var(--ink)}
+.btn-light:hover{background:var(--paper)}
+.btn-sm{height:36px;padding:0 14px;font-size:13.5px}
+.link{color:var(--action);font-weight:500}
+.link:hover{text-decoration:underline;text-underline-offset:3px}
+
+/* 分区通用 */
+.sec{padding:88px 0}
+.sec.paper{background:var(--paper)}
+.sec.soft{background:var(--soft)}
+.sec.tight{padding:64px 0}
+.eyebrow{font:500 12px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--graphite)}
+.h2{font:600 clamp(26px,2.6vw,34px)/1.28 var(--serif);color:var(--ink);text-wrap:balance;margin-top:10px}
+.sec-lead{margin-top:14px;font-size:16.5px;color:var(--deep);max-width:40em}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+.note{font:11.5px/1.5 var(--mono);color:var(--gray)}
+
+/* 首页首屏 */
+.hero{background:var(--cloud);border-bottom:1px solid var(--line);padding:60px 0 68px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center}
+.display{font:600 clamp(34px,4.1vw,52px)/1.17 var(--serif);letter-spacing:-.01em;text-wrap:balance;margin-top:16px}
+.lead{margin-top:20px;font-size:17px;line-height:1.75;color:var(--deep);max-width:30em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.proof{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font:12px/1.5 var(--mono);color:var(--gray)}
+.proof b{color:var(--ink);font-weight:500}
+
+/* AI 回答样本 */
+.spec{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.spec-bar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab{font:500 12px/1 var(--mono);padding:8px 11px;border:1px solid var(--line);border-radius:5px;background:var(--paper);color:var(--deep);cursor:pointer}
+.tab:hover{border-color:var(--silver)}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.spec-bar .note{margin-left:auto}
+.spec-body{padding:22px 24px 4px}
+.ask{display:inline-block;max-width:94%;background:var(--graphite);color:#fff;border-radius:24px 6px 6px 24px;padding:11px 18px 11px 22px;font-size:15px;line-height:1.5}
+.ask-meta{margin-top:8px;font:11.5px/1.4 var(--mono);color:var(--gray)}
+.answer{margin-top:18px;font-size:14.5px;color:var(--deep)}
+.answer>p{margin-bottom:8px}
+.picks{list-style:none;margin:0;padding:0}
+.picks li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:8px;padding:9px 0;border-top:1px solid var(--line)}
+.picks .rk{font:500 12px/1.9 var(--mono);color:var(--gray)}
+.picks b{font-weight:600;color:var(--ink)}
+.cite{font:500 10.5px/1 var(--mono);color:var(--action);vertical-align:super;margin-left:2px}
+.srcs{display:flex;flex-wrap:wrap;gap:6px;padding:12px 0 16px;border-top:1px solid var(--line)}
+.srcs span{font:11.5px/1 var(--mono);color:var(--deep);background:var(--cloud);border:1px solid var(--line);border-radius:4px;padding:6px 8px}
+.srcs i{font-style:normal;color:var(--action);margin-right:5px}
+.verdict{margin:0 12px 12px;background:var(--ink);color:#fff;border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 20px;align-items:center}
+.verdict .vl{font:500 11px/1.4 var(--mono);letter-spacing:.06em;color:var(--silver)}
+.verdict .vl b{display:block;font:600 15px/1.3 var(--sans);letter-spacing:0;color:#fff;margin-top:3px}
+.vcells{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:4px;overflow:hidden}
+.vcell{background:var(--ink);padding:8px 10px;font:11px/1.35 var(--mono);color:var(--silver)}
+.vcell b{display:flex;align-items:center;gap:6px;margin-top:4px;font:500 13px/1.2 var(--sans);color:#fff}
+.vcell b::before{content:"";width:7px;height:7px;border-radius:1px;background:var(--judgment);flex:none}
+.vcell.hit b::before{background:var(--success)}
+.vcell.on{background:var(--deep)}
+
+/* 变化对照 */
+.shift{border-bottom:1px solid var(--line)}
+.shift-row{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr) minmax(0,1.15fr);gap:24px;padding:20px 0;border-top:1px solid var(--line);align-items:baseline}
+.shift-row.th{padding:0 0 12px;border-top:0;font:500 11.5px/1 var(--mono);letter-spacing:.08em;color:var(--gray)}
+.shift-row .was{color:var(--gray)}
+.shift-row .arr{font-family:var(--mono);color:var(--light)}
+.shift-row .now{color:var(--ink);font-weight:500;font-size:16px}
+.shift-row .so{color:var(--deep)}
+
+/* 服务路径（轨道） */
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stop{position:relative;padding:40px 28px 0 0;display:flex;flex-direction:column}
+.stop::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--ink)}
+.stop:first-child::before{background:var(--graphite);border-radius:4px 0 0 4px}
+.stop:last-child::before{right:28px;border-radius:0 3px 3px 0}
+.stop::after{content:"";position:absolute;top:-5px;left:0;width:18px;height:18px;background:var(--paper);border:3px solid var(--ink);border-radius:5px}
+.stop:first-child::after{border-color:var(--graphite)}
+.stop .idx{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--graphite)}
+.stop h3{font:600 22px/1.3 var(--serif);margin-top:10px}
+.stop>p{margin-top:10px;font-size:14.5px;color:var(--deep);flex:1}
+.facts{margin:18px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);border-top:1px solid var(--line)}
+.facts dt,.facts dd{margin:0;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.facts dt{font-family:var(--mono);font-size:11.5px;color:var(--gray);padding-right:14px;line-height:1.9}
+.facts dd{color:var(--ink)}
+.stop .link{margin-top:16px;font-size:14px}
+
+/* 方法 + 样例表 */
+.method{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.steps{list-style:none;margin:28px 0 0;padding:0}
+.steps li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;padding:16px 0;border-top:1px solid rgba(11,12,14,.12)}
+.steps .n{font:500 12px/1.9 var(--mono);color:var(--graphite)}
+.steps b{font-weight:500;font-size:16px;color:var(--ink)}
+.steps p{grid-column:2;font-size:14px;color:var(--deep)}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:24px 26px}
+.sheet+.sheet{margin-top:16px}
+.sheet-head{display:flex;justify-content:space-between;gap:8px 16px;align-items:baseline;flex-wrap:wrap;margin-bottom:12px}
+.sheet-title{font:600 17px/1.35 var(--serif)}
+.chart-cap{margin-top:14px;padding-top:10px;border-top:1px solid var(--line);font:11px/1.5 var(--mono);color:var(--gray)}
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font:13.5px/1.6 var(--sans);color:var(--deep)}
+.tbl th{font:500 11px/1.3 var(--mono);letter-spacing:.05em;color:var(--gray);text-align:left;padding:10px 14px 10px 0;border-bottom:1px solid var(--ink);white-space:nowrap}
+.tbl td{padding:12px 14px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl .r{text-align:right}
+.tbl .num{font:13px/1.6 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.tbl td b{font-weight:500;color:var(--ink)}
+.barcell{display:flex;align-items:center;gap:10px;min-width:170px}
+.bar{height:10px;border-radius:0 4px 4px 0;background:var(--ink);flex:none}
+.bar.you{background:var(--action)}
+.flag{display:inline-block;font:500 10.5px/1 var(--mono);color:var(--judgment);border:1px solid currentColor;border-radius:3px;padding:3px 5px;margin-left:6px;vertical-align:1px}
+.hbars{display:grid;gap:9px}
+.hb{display:grid;grid-template-columns:104px minmax(0,1fr) 40px;gap:12px;align-items:center;font-size:13px;color:var(--deep)}
+.hb .val{font:12.5px/1 var(--mono);text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+
+/* 研究列表 */
+.rgrid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
+.rlist{border-top:1px solid var(--ink)}
+.ritem{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.ritem:hover .rt{color:var(--action)}
+.rtype{font:500 11.5px/1.6 var(--mono);color:var(--graphite)}
+.rt{font:600 16.5px/1.45 var(--serif);color:var(--ink);transition:color .15s}
+.rd{display:block;font:400 13.5px/1.6 var(--sans);color:var(--gray);margin-top:3px}
+.rm{font:11.5px/1.6 var(--mono);color:var(--gray);white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;border-top:1px solid var(--line)}
+.stat{padding:16px 16px 0 0}
+.stat b{display:block;font:500 26px/1.1 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--gray)}
+.soon{display:inline-block;font:500 10.5px/1 var(--mono);color:var(--graphite);border:1px solid var(--silver);border-radius:3px;padding:3px 5px;vertical-align:2px}
+
+/* 试点、FAQ、收尾 CTA */
+.pilot{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 32px;align-items:center;padding:28px 32px;border:1px dashed var(--silver);border-radius:10px;background:var(--paper)}
+.pilot h3{font:600 20px/1.35 var(--serif)}
+.pilot p{margin-top:6px;color:var(--deep);font-size:14.5px;max-width:44em}
+.faq-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:18px 0;font-weight:500;font-size:16px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 18px/1 var(--mono);color:var(--gray)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 20px;color:var(--deep);max-width:42em}
+.term{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px 48px;align-items:center;background:var(--ink);color:#fff;border-radius:12px;padding:44px 48px}
+.term h2{font:600 clamp(24px,2.4vw,32px)/1.3 var(--serif);color:#fff;text-wrap:balance}
+.term p{margin-top:12px;color:var(--silver);font-size:15px}
+.term-form{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:8px}
+.term-form input,.term-form select{height:44px;min-width:0;border-radius:6px;border:1px solid rgba(255,255,255,.18);background:var(--deep);color:#fff;padding:0 14px;font-size:14px}
+.term-form input::placeholder{color:var(--steel)}
+.term .note{color:var(--steel);margin-top:10px}
+
+/* 服务页 */
+.phero{background:var(--cloud);border-bottom:1px solid var(--line);padding:52px 0 60px}
+.crumb{font:12px/1 var(--mono);color:var(--gray)}
+.crumb a:hover{color:var(--ink)}
+.phero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px 56px;align-items:end;margin-top:22px}
+.phero h1{font:600 clamp(32px,3.6vw,46px)/1.2 var(--serif);text-wrap:balance}
+.kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+.kv div{padding:14px 14px 0 0}
+.kv span{display:block;font:11px/1.4 var(--mono);color:var(--gray);letter-spacing:.04em}
+.kv b{display:block;margin-top:6px;font:500 20px/1.2 var(--mono);color:var(--ink)}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.toc{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--ink)}
+.toc li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid var(--line)}
+.toc .n{font:500 12px/1.8 var(--mono);color:var(--graphite)}
+.toc b{font-weight:500;color:var(--ink)}
+.toc span{display:block;font-size:13.5px;color:var(--gray)}
+.pm-head{display:flex;justify-content:space-between;gap:12px;font:11px/1.4 var(--mono);color:var(--gray);padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.judg{margin-top:18px;padding:10px 0 10px 14px;border-left:2px solid var(--judgment);font-size:14.5px;color:var(--ink)}
+.judg b{color:var(--judgment);font-weight:500}
+.gloss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px;margin:0;border-top:1px solid var(--ink)}
+.gloss div{padding:18px 0 20px;border-bottom:1px solid var(--line)}
+.gloss dt{font-weight:500;font-size:15.5px;color:var(--ink)}
+.gloss code{display:block;margin-top:6px;font:12px/1.5 var(--mono);color:var(--graphite)}
+.gloss dd{margin:8px 0 0;font-size:13.5px;color:var(--deep)}
+.layers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.layer{background:var(--paper);padding:20px 18px 22px}
+.layer .ln{font:500 11px/1 var(--mono);color:var(--graphite);letter-spacing:.06em}
+.layer h3{font:600 20px/1.2 var(--serif);margin-top:10px}
+.layer p{margin-top:8px;font-size:13.5px;color:var(--deep)}
+.layer .ev{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font:11.5px/1.6 var(--mono);color:var(--gray)}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cols.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.col{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:22px 24px;display:flex;flex-direction:column}
+.col h3{font:600 19px/1.3 var(--serif);margin-top:6px}
+.col>p{margin-top:8px;font-size:14px;color:var(--deep)}
+.ticks{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:9px;align-content:start}
+.ticks li{position:relative;padding-left:18px;font-size:14px;color:var(--deep)}
+.ticks li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--graphite)}
+.price{margin-top:14px;font:500 20px/1.2 var(--mono);color:var(--ink)}
+.price small{font:12px/1 var(--sans);color:var(--gray);margin-left:6px}
+.col.key{border-color:var(--ink)}
+.col .btn{margin-top:22px;align-self:flex-start}
+.col .ticks{flex:1}
+.tl-wrap{overflow-x:auto}
+.tl{min-width:720px}
+.tl-scale,.tl-row{display:grid;grid-template-columns:180px repeat(var(--w),minmax(0,1fr));align-items:center}
+.tl-scale{font:11px/1 var(--mono);color:var(--gray);border-bottom:1px solid var(--ink);padding-bottom:8px}
+.tl-row{padding:9px 0;border-bottom:1px solid var(--line)}
+.tl-row>span{font-size:13.5px;color:var(--ink);padding-right:12px}
+.tl-bar{height:28px;border-radius:14px 4px 4px 14px;background:var(--ink);color:#fff;font:500 12px/28px var(--sans);padding:0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bar.g{background:var(--graphite)}
+.tl-bar.t{border-radius:4px}
+
+/* 快检工具 */
+.tool{display:grid;grid-template-columns:330px minmax(0,1fr);background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.tool-form{background:var(--cloud);border-right:1px solid var(--line);padding:24px}
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label,.field .lbl{font:500 11.5px/1 var(--mono);color:var(--gray);letter-spacing:.04em}
+.field input,.field select{height:40px;width:100%;min-width:0;border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:0 12px;font-size:14px;color:var(--ink)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--action);box-shadow:0 0 0 3px rgba(40,89,255,.12)}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.tool-form .btn{width:100%;margin-top:6px}
+.tool-form .note{margin-top:12px}
+.tool-out{padding:22px 28px 26px;min-width:0}
+.out-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.out-head h2{font:600 18px/1.3 var(--serif)}
+.status{display:inline-flex;align-items:center;gap:7px;font:500 12px/1 var(--mono);color:var(--deep)}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--success)}
+.status.busy::before{background:var(--warning)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.kpi{padding:16px 16px 16px 0}
+.kpi+.kpi{padding-left:16px;border-left:1px solid var(--line)}
+.kpi span{display:block;font:11px/1.4 var(--mono);color:var(--gray)}
+.kpi b{display:block;margin-top:6px;font:500 24px/1.1 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.kpi b.bad{color:var(--judgment)}
+.kpi em{display:block;font-style:normal;font-size:12px;color:var(--gray);margin-top:4px}
+.out-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;padding-top:20px}
+.out-h{font:600 15px/1.3 var(--serif);margin-bottom:10px;display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.legend{display:flex;gap:14px;font:11.5px/1 var(--mono);color:var(--deep)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.eb{display:grid;grid-template-columns:104px minmax(0,1fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.eb-name{font-size:13px;color:var(--deep)}
+.eb-bars{display:grid;gap:4px}
+.eb-line{display:flex;align-items:center;gap:8px;font:11.5px/1 var(--mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.eb-line .bar{height:9px}
+.srclist{list-style:none;margin:0;padding:0}
+.srclist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font:12.5px/1.4 var(--mono);color:var(--deep)}
+.findings{list-style:none;margin:22px 0 0;padding:18px 0 0;border-top:1px solid var(--line);display:grid;gap:10px}
+.findings li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;font-size:14px;color:var(--ink)}
+.findings li::before{content:"判断";font:500 10.5px/1 var(--mono);color:var(--judgment);border:1px solid currentColor;border-radius:3px;padding:4px 5px;height:max-content;margin-top:2px}
+
+/* 研究总览 */
+.hub{display:grid;grid-template-columns:200px minmax(0,1fr);gap:56px;align-items:start}
+.hub-nav{position:sticky;top:96px;display:grid;gap:2px}
+.hub-nav button{display:flex;justify-content:space-between;gap:10px;padding:9px 12px;border:0;border-radius:6px;background:none;font-size:14px;color:var(--deep);cursor:pointer;text-align:left}
+.hub-nav button:hover{background:var(--paper)}
+.hub-nav span{font:12px/1.6 var(--mono);color:var(--gray)}
+.hub-group{margin-bottom:52px;scroll-margin-top:96px}
+.hub-group h2{font:600 22px/1.3 var(--serif);margin-bottom:14px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.hub-group h2 span{font:400 12px/1 var(--mono);color:var(--gray)}
+
+/* 关于（阅读页） */
+.article{width:min(680px,calc(100% - 48px));margin:0 auto;padding:64px 0 88px}
+.article h1{font:600 36px/1.3 var(--serif)}
+.article h2{font:600 22px/1.4 var(--serif);margin:44px 0 14px}
+.article p,.article li{font-size:17px;line-height:1.85;color:var(--deep)}
+.article p+p{margin-top:16px}
+.article strong{color:var(--ink);font-weight:500}
+.article ul{padding-left:1.2em;margin:12px 0 0}
+.article li+li{margin-top:6px}
+.article hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+
+/* 页脚 */
+.foot{background:var(--ink);color:var(--silver);padding:56px 0 28px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr)) minmax(0,1.2fr);gap:32px}
+.foot .brand strong{color:#fff}
+.foot .brand small{color:var(--steel)}
+.foot-tag{margin-top:16px;font-size:13.5px;max-width:22em}
+.foot h4{font:500 11px/1 var(--mono);letter-spacing:.1em;color:var(--steel);margin-bottom:14px}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:13.5px}
+.foot a:hover{color:#fff}
+.foot-contact{display:grid;gap:4px;font-size:13px;align-content:start}
+.qr{width:84px;height:84px;border:1px dashed rgba(255,255,255,.3);border-radius:4px;display:grid;place-items:center;font:10px/1.4 var(--mono);color:var(--steel);text-align:center;margin-bottom:8px}
+.foot-copy{margin-top:40px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font:11px/1.5 var(--mono);color:var(--steel);letter-spacing:.03em}
+
+@media (max-width:1080px){
+  .nav-link{padding:0 9px;font-size:13.5px}
+  .foot-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .layers{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .hero-grid,.method,.rgrid,.faq-grid,.split,.phero-grid,.term,.hub,.out-grid,.tool{grid-template-columns:minmax(0,1fr)}
+  .route{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:44px}
+  .stop:nth-child(2)::before{right:28px;border-radius:0 3px 3px 0}
+  .stop:nth-child(3)::before{border-radius:4px 0 0 4px}
+  .layers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cols,.cols.two{grid-template-columns:minmax(0,1fr)}
+  .gloss{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tool-form{border-right:0;border-bottom:1px solid var(--line)}
+  .hub-nav{position:static;display:flex;overflow-x:auto}
+  .shift-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .shift-row .arr{display:none}
+  .shift-row .so{grid-column:1/-1}
+  .head-in{flex-wrap:wrap;gap:6px 16px;padding:10px 0}
+  .head-cta{margin-left:auto}
+  .nav{order:3;width:100%;margin-left:0;overflow-x:auto;scrollbar-width:none}
+  .dd-menu{display:none!important}
+}
+@media (max-width:600px){
+  .sec{padding:64px 0}
+  .route,.layers,.gloss,.stats,.term-form{grid-template-columns:minmax(0,1fr)}
+  .stop::before{right:0!important;border-radius:4px!important}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi:nth-child(3){padding-left:0;border-left:0}
+  .vcells{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .verdict{grid-template-columns:minmax(0,1fr)}
+  .ritem{grid-template-columns:minmax(0,1fr);gap:4px}
+  .pilot{grid-template-columns:minmax(0,1fr)}
+  .term{padding:32px 24px}
+  .kv{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .demo-pages{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar"><div class="shell">
+  <span><b>DEMO</b> · 新版结构演示稿 v1 · 2026-09-14 · 标注「示意」的数据均非真实采样</span>
+  <nav class="demo-pages" aria-label="演示页面">
+    <a href="#home">首页</a><a href="#geo">AI 可见度</a><a href="#build">品牌站建设</a><a href="#check">快检</a><a href="#research">研究</a><a href="#about">关于</a>
+  </nav>
+</div></div>
+
+<header class="head" id="head">
+  <div class="shell head-in">
+    <a class="brand" href="#home" aria-label="序引效能首页">
+      <svg viewBox="0 0 870 546" aria-hidden="true"><g fill="#0B0C0E"><rect width="870" height="128" rx="64"/><path d="M434 209H771A99 99 0 0 1 870 308V530A16 16 0 0 1 854 546H758A16 16 0 0 1 742 530V375A38 38 0 0 0 704 337H434A64 64 0 0 1 434 209Z"/><rect y="418" width="683" height="128" rx="64"/></g><path fill="#596579" d="M64 209H314A8 8 0 0 1 322 217V329A8 8 0 0 1 314 337H64A64 64 0 0 1 64 209Z"/></svg>
+      <span><strong>序引效能</strong><small>SEQUENTRY</small></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a class="nav-link" href="#geo" data-nav="geo">AI 可见度</a>
+      <a class="nav-link" href="#build" data-nav="build">品牌站建设</a>
+      <div class="dd">
+        <a class="nav-link" href="#research" data-nav="research">研究 <span class="car">▾</span></a>
+        <div class="dd-menu">
+          <a href="#research" data-jump="g-signal"><b>信号</b><span>出海与 AI 商业的每周信号</span></a>
+          <a href="#research" data-jump="g-cases"><b>案例</b><span>海外品牌深度拆解</span></a>
+          <a href="#research" data-jump="g-reports"><b>报告库</b><span>自有研究与外部报告解读</span></a>
+          <a href="#research" data-jump="g-data"><b>市场地图</b><span>56,851 个独立站 · 44 个市场</span></a>
+        </div>
+      </div>
+      <div class="dd">
+        <a class="nav-link" href="#check" data-nav="check">工具 <span class="car">▾</span></a>
+        <div class="dd-menu">
+          <a href="#check"><b>AI 可见度快检</b><span>免费 · 看你在 4 个 AI 引擎里的出现率</span></a>
+          <a href="https://atlas.sequentry.com"><b>序引海图 ↗</b><span>264 个出海渠道与工具导航</span></a>
+        </div>
+      </div>
+      <a class="nav-link" href="#about" data-nav="about">关于</a>
+    </nav>
+    <a class="btn btn-primary btn-sm head-cta" href="#check">免费快检</a>
+  </div>
+</header>
+
+<!-- ============ 首页 ============ -->
+<main class="page" data-page="home">
+<section class="hero"><div class="shell hero-grid">
+  <div>
+    <p class="eyebrow">出海品牌 · AI 搜索可见度 · GEO / AEO</p>
+    <h1 class="display">让海外 AI 在回答里推荐你的品牌</h1>
+    <p class="lead">海外买家越来越多地直接问 ChatGPT、Google AI 和 Perplexity 该买什么。我们先拆开 AI 为什么推荐你的竞品，再帮你补齐官网和海外信源，让你出现在答案里。</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#check">免费做一次 AI 可见度快检</a>
+      <a class="btn btn-secondary" href="#geo">看诊断报告包含什么</a>
+    </div>
+    <div class="proof"><span><b>56,851</b> 个海外独立站样本</span><span><b>44</b> 个市场</span><span><b>8</b> 年跨境实操</span></div>
+  </div>
+  <div class="spec" aria-label="AI 回答样本">
+    <div class="spec-bar" role="tablist" aria-label="AI 引擎">
+      <button class="tab" role="tab" aria-selected="true" data-eng="0">ChatGPT</button>
+      <button class="tab" role="tab" aria-selected="false" data-eng="1">Perplexity</button>
+      <button class="tab" role="tab" aria-selected="false" data-eng="2">Google AI 概览</button>
+      <button class="tab" role="tab" aria-selected="false" data-eng="3">Gemini</button>
+      <span class="note">示意 · 非真实采样</span>
+    </div>
+    <div class="spec-body">
+      <p class="ask">What's the best portable power station for camping in 2026?</p>
+      <p class="ask-meta">美国市场 · 英文提问 · 同一问题在每个引擎采样 3 次</p>
+      <div class="answer">
+        <p id="specIntro">For camping, these options come up most often in reviews and owner discussions:</p>
+        <ol class="picks" id="specPicks">
+          <li><span class="rk">1</span><span><b>Brand A</b> — 1,000Wh class, long runtime, the most reviewed option<span class="cite">[1][2]</span></span></li>
+          <li><span class="rk">2</span><span><b>Brand B</b> — fastest recharge, solid app control<span class="cite">[3]</span></span></li>
+          <li><span class="rk">3</span><span><b>Brand C</b> — lighter and cheaper, good for weekend trips<span class="cite">[2][4]</span></span></li>
+        </ol>
+      </div>
+      <div class="srcs" id="specSrcs"><span><i>1</i>reddit.com/r/camping</span><span><i>2</i>outdoorgearlab.com</span><span><i>3</i>youtube.com</span><span><i>4</i>nytimes.com/wirecutter</span></div>
+    </div>
+    <div class="verdict">
+      <div class="vl">你的品牌<b>Brand X</b></div>
+      <div class="vcells" id="specCells">
+        <div class="vcell on">ChatGPT<b>未提及</b></div>
+        <div class="vcell">Perplexity<b>未提及</b></div>
+        <div class="vcell hit">Google AI 概览<b>第 5 位</b></div>
+        <div class="vcell">Gemini<b>未提及</b></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">为什么是现在</p><h2 class="h2">买家的第一轮筛选，正在搬进 AI 的回答里</h2></div></div>
+  <div class="shift">
+    <div class="shift-row th"><span>过去</span><span></span><span>现在</span><span>这意味着</span></div>
+    <div class="shift-row"><span class="was">搜关键词，翻 10 个蓝色链接</span><span class="arr">→</span><span class="now">直接提问，读一段答案</span><span class="so">没被写进答案，就不在候选名单里</span></div>
+    <div class="shift-row"><span class="was">比较官网、广告和详情页</span><span class="arr">→</span><span class="now">AI 汇总测评、论坛和视频</span><span class="so">你没经营过的网站，正在替你介绍你</span></div>
+    <div class="shift-row"><span class="was">SEO 排名可以追，广告位可以买</span><span class="arr">→</span><span class="now">引用关系靠证据慢慢积累</span><span class="so">先知道 AI 信任谁，再决定力气花在哪</span></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">服务</p><h2 class="h2">从一次免费快检，到持续被 AI 推荐</h2><p class="sec-lead">四步可以单独购买，也可以按顺序走完。每一步的结果，都是下一步的输入。</p></div></div>
+  <div class="route">
+    <div class="stop"><span class="idx">01 · 入口</span><h3>AI 可见度快检</h3><p>20 个真实提问、4 个 AI 引擎，看你和 3 个竞品谁被推荐、AI 引用了谁。</p>
+      <dl class="facts"><dt>交付</dt><dd>1 页快照 + 15 分钟解读</dd><dt>周期</dt><dd>48 小时</dd><dt>价格</dt><dd>免费</dd></dl>
+      <a class="link" href="#check">开始快检 →</a></div>
+    <div class="stop"><span class="idx">02 · 诊断</span><h3>GEO 诊断报告</h3><p>100–200 个购买旅程提问、引用来源地图、竞品拆解和 90 天行动表。</p>
+      <dl class="facts"><dt>交付</dt><dd>报告 + 数据表 + 解读会</dd><dt>周期</dt><dd>2–3 周</dd><dt>价格</dt><dd>起价待定</dd></dl>
+      <a class="link" href="#geo">看报告目录 →</a></div>
+    <div class="stop"><span class="idx">03 · 地基</span><h3>GEO 友好的品牌站</h3><p>新建或改造独立站，让 AI 抓得到、读得懂、敢引用。</p>
+      <dl class="facts"><dt>交付</dt><dd>站点 + 结构化数据 + 内容框架</dd><dt>周期</dt><dd>4–10 周</dd><dt>价格</dt><dd>按项目报价</dd></dl>
+      <a class="link" href="#build">看建站方案 →</a></div>
+    <div class="stop"><span class="idx">04 · 持续</span><h3>月度可见度运营</h3><p>站内内容改写、海外信源建设，每周采样、每月复盘。</p>
+      <dl class="facts"><dt>交付</dt><dd>月报 + 月度复盘会</dd><dt>周期</dt><dd>3 个月起</dd><dt>价格</dt><dd>月费待定</dd></dl>
+      <a class="link" href="#geo">看运营内容 →</a></div>
+  </div>
+</div></section>
+
+<section class="sec soft"><div class="shell method">
+  <div>
+    <p class="eyebrow">方法</p>
+    <h2 class="h2">像拆一个品牌那样，拆开 AI 的推荐</h2>
+    <p class="sec-lead">还是我们一直在用的反向工程方法，只是换了对象：不只看你排第几，而是看 AI 凭什么推荐别人。</p>
+    <ol class="steps">
+      <li><span class="n">01</span><b>建提问集</b><p>从 Amazon 问答、Reddit 讨论和你的销售记录里，整理买家真正会问的问题。</p></li>
+      <li><span class="n">02</span><b>多次采样</b><p>AI 每次回答都不一样。每个问题在每个引擎上重复采样，只看稳定出现的结果。</p></li>
+      <li><span class="n">03</span><b>抽取与计分</b><p>记录谁被提及、排第几、被怎么描述、引用了哪些网址。</p></li>
+      <li><span class="n">04</span><b>画引用来源地图</b><p>找出 AI 在你的品类里最信任的网站，按影响力和能不能争取来排序。</p></li>
+      <li><span class="n">05</span><b>定行动</b><p>站内改什么、站外补哪里、谁负责、90 天后看哪个指标。</p></li>
+    </ol>
+  </div>
+  <div>
+    <div class="sheet">
+      <div class="sheet-head"><h3 class="sheet-title">声量份额 · 便携储能 · 美国</h3><span class="note">示意数据</span></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>品牌</th><th>提及率</th><th class="r">平均位次</th><th class="r">自有站被引用</th></tr></thead>
+        <tbody>
+          <tr><td><b>Brand A</b></td><td><div class="barcell"><span class="bar" style="width:122px" title="Brand A · 提及率 68%"></span><span class="num">68%</span></div></td><td class="r num">1.6</td><td class="r num">22%</td></tr>
+          <tr><td><b>Brand B</b></td><td><div class="barcell"><span class="bar" style="width:97px" title="Brand B · 提及率 54%"></span><span class="num">54%</span></div></td><td class="r num">2.3</td><td class="r num">15%</td></tr>
+          <tr><td><b>Brand C</b></td><td><div class="barcell"><span class="bar" style="width:74px" title="Brand C · 提及率 41%"></span><span class="num">41%</span></div></td><td class="r num">2.9</td><td class="r num">8%</td></tr>
+          <tr><td><b>Brand X（你）</b><span class="flag">缺席</span></td><td><div class="barcell"><span class="bar you" style="width:11px" title="Brand X · 提及率 6%"></span><span class="num">6%</span></div></td><td class="r num">5.0</td><td class="r num">0%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="chart-cap">提及率 = 提及该品牌的回答数 ÷ 全部回答数 · 120 个提问 × 4 个引擎 × 3 次采样 · 示意数据，非真实采样</p>
+    </div>
+    <div class="sheet">
+      <div class="sheet-head"><h3 class="sheet-title">AI 引用了哪些类型的网站</h3><span class="note">示意数据 · 占全部引用</span></div>
+      <div class="hbars">
+        <div class="hb"><span>社区论坛</span><span class="bar" style="width:100%" title="社区论坛 31%"></span><span class="val">31%</span></div>
+        <div class="hb"><span>测评媒体</span><span class="bar" style="width:77%" title="测评媒体 24%"></span><span class="val">24%</span></div>
+        <div class="hb"><span>视频平台</span><span class="bar" style="width:55%" title="视频平台 17%"></span><span class="val">17%</span></div>
+        <div class="hb"><span>电商页面</span><span class="bar" style="width:39%" title="电商页面 12%"></span><span class="val">12%</span></div>
+        <div class="hb"><span>品牌官网</span><span class="bar you" style="width:29%" title="品牌官网 9%"></span><span class="val">9%</span></div>
+        <div class="hb"><span>百科与问答</span><span class="bar" style="width:23%" title="百科与问答 7%"></span><span class="val">7%</span></div>
+      </div>
+      <p class="judg"><b>判断：</b>这个品类里 AI 最信任社区和测评，品牌官网只占 9%，只改官网不够。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell rgrid">
+  <div>
+    <p class="eyebrow">研究</p>
+    <h2 class="h2">研究是我们的底子</h2>
+    <p class="sec-lead">做 AI 可见度之前，我们一直在拆海外品牌：它们怎么起家、怎么经营用户、为什么能在当地成立。</p>
+    <div class="stats">
+      <div class="stat"><b>56,851</b><span>独立站已扫描</span></div>
+      <div class="stat"><b>44</b><span>个市场</span></div>
+      <div class="stat"><b>264</b><span>个出海渠道</span></div>
+    </div>
+    <p class="note" style="margin-top:12px">数据来源：序引独立站扫描库 · 更新于 2026-06-17</p>
+  </div>
+  <div>
+    <div class="rlist">
+      <a class="ritem" href="https://www.sequentry.com/report/semrush-ai-visibility-2026/"><span class="rtype">报告解读</span><span><span class="rt">AI 开始替用户选择品牌</span><span class="rd">Semrush × Adobe 报告解读：AI 正在成为品牌与消费者之间的新中介。</span></span><span class="rm">2026-08-05</span></a>
+      <a class="ritem" href="https://www.sequentry.com/cases/shein/"><span class="rtype">案例</span><span><span class="rt">SHEIN 上市：从婚纱搜索生意到港交所</span><span class="rd">小单快反供应链、平台化转型与多国上市路径。</span></span><span class="rm">7,000 字</span></a>
+      <a class="ritem" href="https://www.sequentry.com/cases/wyze/"><span class="rtype">案例</span><span><span class="rt">从 19.99 美元到 32 万台召回</span><span class="rd">Wyze 的低价增长、订阅飞轮与规模化风险。</span></span><span class="rm">9,300 字</span></a>
+      <a class="ritem" href="https://www.sequentry.com/cases/comfrt/"><span class="rtype">案例</span><span><span class="rt">卖“压力卫衣”做到 7 亿美元</span><span class="rd">Comfrt 的达人网络、折扣引擎与焦虑生意。</span></span><span class="rm">11,000 字</span></a>
+      <a class="ritem" href="https://www.sequentry.com/report/01/"><span class="rtype">自有报告</span><span><span class="rt">下一场战役，不在下一个爆款里</span><span class="rd">序引研究 #01：AI 重构、市场迁移与新老卖家的破局路径。</span></span><span class="rm">53 页 PDF</span></a>
+    </div>
+    <a class="link" href="#research" style="display:inline-block;margin-top:18px">查看全部研究 →</a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="shell">
+  <div class="pilot">
+    <div><p class="eyebrow">案例</p><h3>首批试点进行中</h3><p>我们正在为 3 个出海品牌做试点诊断。试点结束后会在这里公开前后对比数据，而不是放一面客户 logo 墙。</p></div>
+    <a class="btn btn-secondary" href="#check">申请成为试点品牌</a>
+  </div>
+  <div class="faq-grid" style="margin-top:88px">
+    <div><p class="eyebrow">常见问题</p><h2 class="h2">做之前，你可能想先问清楚</h2></div>
+    <div class="faq">
+      <details open><summary>GEO 和 SEO 是什么关系？</summary><p>SEO 解决“排进搜索结果”，GEO 解决“被 AI 写进答案”。两者共用很多基础：网站能被抓取、信息结构清楚、有可信来源背书。但 GEO 更关心 AI 信任哪些网站、怎么描述你。诊断时两者一起检查。</p></details>
+      <details><summary>能保证 AI 推荐我吗？</summary><p>不能，也没有人能。AI 的回答会随模型更新而变化。我们承诺的是可衡量的指标（提及率、位次、引用率）和明确的交付动作，并按月报告趋势。</p></details>
+      <details><summary>多久能看到变化？</summary><p>站内调整通常在 AI 重新抓取后几周内开始反映；站外信源建设更慢，一般按季度看趋势。所以月度运营 3 个月起。</p></details>
+      <details><summary>只做亚马逊、没有独立站，能做吗？</summary><p>可以先从 Amazon 商品页、测评和社区讨论入手。但长期看，一个 AI 读得懂的品牌站是最稳定的证据来源，这也是我们把建站并进来的原因。</p></details>
+      <details><summary>你们会批量发软文吗？</summary><p>不会。批量铺稿和虚假测评可能违反平台规则，也会伤害品牌。我们只做真实、可验证的内容，以及和真实媒体、社区、测评者的合作。</p></details>
+      <details><summary>国内的豆包、DeepSeek 也做吗？</summary><p>现阶段专注海外引擎：ChatGPT、Google AI 概览、Perplexity、Gemini 和 Amazon Rufus。国内引擎可以单独评估。</p></details>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec paper tight"><div class="shell">
+  <div class="term">
+    <div><h2>先花 2 分钟，看看海外 AI 现在怎么介绍你</h2><p>填官网和目标市场，48 小时内收到快检结果和一次 15 分钟解读。</p></div>
+    <div>
+      <form class="term-form" data-quick>
+        <input type="text" name="site" placeholder="你的官网，如 brandx.com" aria-label="官网">
+        <select name="market" aria-label="目标市场"><option>美国</option><option>英国</option><option>德国</option><option>日本</option><option>澳大利亚</option></select>
+        <button class="btn btn-light" type="submit">开始快检</button>
+      </form>
+      <p class="note">演示版：提交后跳到快检页的示例结果</p>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<!-- ============ AI 可见度（GEO / AEO） ============ -->
+<main class="page" data-page="geo" hidden>
+<section class="phero"><div class="shell">
+  <p class="crumb"><a href="#home">首页</a> / 服务 / AI 可见度</p>
+  <div class="phero-grid">
+    <div>
+      <p class="eyebrow">GEO · AEO</p>
+      <h1>AI 搜索可见度</h1>
+      <p class="lead">我们测量你的品牌在海外 AI 回答里出现多少、排第几、被怎么描述、AI 引用了谁；然后告诉你改哪里，并陪你改完。</p>
+      <div class="cta-row"><a class="btn btn-primary" href="#check">先做免费快检</a><a class="btn btn-secondary" href="mailto:yanhang@sequentry.com">预约诊断沟通</a></div>
+    </div>
+    <div class="kv">
+      <div><span>覆盖引擎</span><b>5 个</b></div>
+      <div><span>诊断提问</span><b>100–200</b></div>
+      <div><span>报告周期</span><b>2–3 周</b></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">覆盖范围</p><h2 class="h2">我们看这 5 个地方的回答</h2></div><p class="note">常见引用来源因品类而异</p></div>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>引擎</th><th>买家怎么用</th><th>常见引用来源</th><th>我们怎么采集</th></tr></thead>
+    <tbody>
+      <tr><td><b>ChatGPT</b></td><td>直接问“买哪个”“哪个更好”</td><td>测评媒体、论坛、品牌官网</td><td>官方接口 + 联网搜索，多次采样</td></tr>
+      <tr><td><b>Google AI 概览 / AI Mode</b></td><td>搜索结果页顶部的答案</td><td>和 Google 搜索结果高度相关</td><td>第三方搜索结果接口</td></tr>
+      <tr><td><b>Perplexity</b></td><td>带引用的研究型提问</td><td>论坛、测评、新闻</td><td>官方接口，直接返回引用</td></tr>
+      <tr><td><b>Gemini</b></td><td>安卓与 Google 生态里的助手</td><td>Google 搜索结果</td><td>官方接口 + 搜索增强</td></tr>
+      <tr><td><b>Amazon Rufus</b></td><td>Amazon 站内的购物助手</td><td>商品页、评论、问答</td><td>人工抽样记录</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="sec"><div class="shell split">
+  <div>
+    <p class="eyebrow">GEO 诊断报告</p>
+    <h2 class="h2">一份报告回答三个问题：你在哪、差在哪、先改哪</h2>
+    <ol class="toc">
+      <li><span class="n">01</span><span><b>摘要</b><span>一页看清你的 AI 可见度和最大缺口</span></span></li>
+      <li><span class="n">02</span><span><b>提问集</b><span>100–200 个按购买旅程分组的真实提问</span></span></li>
+      <li><span class="n">03</span><span><b>可见度评分</b><span>提及率、平均位次、声量份额、引用率</span></span></li>
+      <li><span class="n">04</span><span><b>竞品拆解</b><span>AI 为什么推荐它：五类证据逐项对比</span></span></li>
+      <li><span class="n">05</span><span><b>引用来源地图</b><span>AI 信任哪些网站，哪些值得争取</span></span></li>
+      <li><span class="n">06</span><span><b>官网体检</b><span>抓取、结构化数据、内容缺口、事实错误</span></span></li>
+      <li><span class="n">07</span><span><b>90 天行动表</b><span>站内 / 站外动作、负责人、复测指标</span></span></li>
+    </ol>
+  </div>
+  <div class="sheet">
+    <div class="pm-head"><span>GEO 诊断报告 · 第 3 章 · 可见度评分</span><span>示意页</span></div>
+    <h3 class="sheet-title">按购买旅程拆开看，你在“对比”阶段完全缺席</h3>
+    <div class="tbl-wrap" style="margin-top:14px"><table class="tbl">
+      <thead><tr><th>购买旅程</th><th class="r">提问数</th><th>你的提及率</th><th class="r">最强竞品</th></tr></thead>
+      <tbody>
+        <tr><td>认知 · “露营该带什么电源”</td><td class="r num">38</td><td><div class="barcell"><span class="bar you" style="width:36px" title="认知阶段 · 你的提及率 12%"></span><span class="num">12%</span></div></td><td class="r num">A · 61%</td></tr>
+        <tr><td>对比 · “A 和 B 哪个好”</td><td class="r num">44</td><td><div class="barcell"><span class="bar you" style="width:0" title="对比阶段 · 你的提及率 0%"></span><span class="num">0%</span></div></td><td class="r num">A · 74%</td></tr>
+        <tr><td>决策 · “哪款最值得买”</td><td class="r num">27</td><td><div class="barcell"><span class="bar you" style="width:21px" title="决策阶段 · 你的提及率 7%"></span><span class="num">7%</span></div></td><td class="r num">B · 58%</td></tr>
+        <tr><td>售后 · “保修和退货政策”</td><td class="r num">11</td><td><div class="barcell"><span class="bar you" style="width:45px" title="售后阶段 · 你的提及率 15%"></span><span class="num">15%</span></div></td><td class="r num">A · 40%</td></tr>
+      </tbody>
+    </table></div>
+    <p class="judg"><b>判断：</b>对比类提问占全部提问的 37%，而你没有任何可被引用的对比内容。优先补 3 个对比页。</p>
+    <p class="chart-cap">示意数据，非真实采样 · 120 个提问 × 4 个引擎 × 3 次采样 · 制图：序引研究</p>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">指标</p><h2 class="h2">我们用这 6 个指标报告结果</h2><p class="sec-lead">不看单次截图。每个指标都来自多次采样，按月看趋势。</p></div></div>
+  <dl class="gloss">
+    <div><dt>提及率<code>提及品牌的回答 ÷ 全部回答</code></dt><dd>AI 回答里出现你的比例，最基础的可见度。</dd></div>
+    <div><dt>平均位次<code>Σ 推荐列表中的位置 ÷ 被提及次数</code></dt><dd>被提到时排第几。第 1 位和第 5 位的差别很大。</dd></div>
+    <div><dt>声量份额<code>你的提及 ÷（你 + 竞品的提及）</code></dt><dd>在选定的竞品组里，你占多少话语权。</dd></div>
+    <div><dt>引用率<code>引用你自有域名的回答 ÷ 全部回答</code></dt><dd>AI 是否把你的官网当作信息来源。</dd></div>
+    <div><dt>来源构成<code>被引用域名按类型分组</code></dt><dd>社区、测评、视频、电商、官网、百科各占多少，决定力气花在哪。</dd></div>
+    <div><dt>描述准确度<code>含事实错误的回答 ÷ 描述你的回答</code></dt><dd>价格、参数、产地、保修写错的比例。错误信息比不出现更伤。</dd></div>
+  </dl>
+</div></section>
+
+<section class="sec soft"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">竞品拆解框架</p><h2 class="h2">AI 推荐一个品牌，背后是五类证据</h2><p class="sec-lead">这是序引拆解海外品牌用的五层框架。放到 AI 身上，每一层都对应一类 AI 读得到、会引用的证据。</p></div></div>
+  <div class="layers">
+    <div class="layer"><span class="ln">第 1 层</span><h3>供应链</h3><p>产地、认证、质量数据能不能被查到。</p><p class="ev">证据：认证页、检测报告、工厂信息</p></div>
+    <div class="layer"><span class="ln">第 2 层</span><h3>产品</h3><p>规格、适用场景、和谁比、差在哪，有没有写清楚。</p><p class="ev">证据：规格表、对比页、FAQ</p></div>
+    <div class="layer"><span class="ln">第 3 层</span><h3>关系</h3><p>真实用户和测评者在怎么讨论你。</p><p class="ev">证据：评论、Reddit 讨论、达人测评</p></div>
+    <div class="layer"><span class="ln">第 4 层</span><h3>叙事</h3><p>媒体、创始人和官网讲的是不是同一个故事。</p><p class="ev">证据：媒体报道、品牌页、百科条目</p></div>
+    <div class="layer"><span class="ln">第 5 层</span><h3>文化</h3><p>是否在当地买家的语言和语境里被提起。</p><p class="ev">证据：本地社区、本地媒体、本地化内容</p></div>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">月度可见度运营</p><h2 class="h2">诊断之后，每个月做这三件事</h2></div></div>
+  <div class="cols">
+    <div class="col"><p class="eyebrow">站内</p><h3>让官网值得被引用</h3><ul class="ticks"><li>答案优先的页面改写</li><li>对比页、FAQ、使用场景页</li><li>产品与品牌结构化数据维护</li><li>纠正 AI 描述里的事实错误</li></ul></div>
+    <div class="col"><p class="eyebrow">站外</p><h3>补上 AI 信任的信源</h3><ul class="ticks"><li>Reddit 等社区的真实参与策略</li><li>测评媒体与达人对接</li><li>YouTube 内容选题建议</li><li>百科、目录类网站的品牌信息完善</li></ul></div>
+    <div class="col"><p class="eyebrow">追踪</p><h3>每月看清变化</h3><ul class="ticks"><li>固定提问集每周采样</li><li>竞品变化提醒</li><li>月报：6 个指标的趋势</li><li>月度复盘会，调整下月动作</li></ul></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">诊断流程</p><h2 class="h2">签约后 3 周交付报告</h2></div><p class="note">刻度：半周</p></div>
+  <div class="tl-wrap"><div class="tl" style="--w:6">
+    <div class="tl-scale"><span></span><span style="grid-column:2 / 4">第 1 周</span><span style="grid-column:4 / 6">第 2 周</span><span style="grid-column:6 / 8">第 3 周</span></div>
+    <div class="tl-row"><span>确认竞品与提问集</span><div class="tl-bar g" style="grid-column:2 / 4">启动会 + 提问集</div></div>
+    <div class="tl-row"><span>采样与抽取</span><div class="tl-bar" style="grid-column:3 / 6">5 个引擎 × 多次采样</div></div>
+    <div class="tl-row"><span>竞品与来源分析</span><div class="tl-bar" style="grid-column:5 / 7">五层证据 + 来源地图</div></div>
+    <div class="tl-row"><span>报告与解读会</span><div class="tl-bar t" style="grid-column:6 / 8">交付 + 90 分钟解读</div></div>
+  </div></div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">合作方式</p><h2 class="h2">三种合作方式</h2></div><p class="note">价格为占位，定价后替换</p></div>
+  <div class="cols">
+    <div class="col key"><p class="eyebrow">一次性</p><h3>GEO 诊断报告</h3><p class="price">¥ 待定<small>/ 份</small></p><ul class="ticks"><li>100–200 个提问 × 5 个引擎</li><li>竞品拆解与引用来源地图</li><li>官网体检</li><li>90 天行动表 + 90 分钟解读</li></ul><a class="btn btn-primary" href="mailto:yanhang@sequentry.com">预约沟通</a></div>
+    <div class="col"><p class="eyebrow">月度 · 基础</p><h3>站内运营</h3><p class="price">¥ 待定<small>/ 月</small></p><ul class="ticks"><li>固定提问集每周追踪</li><li>每月 4 篇答案优先内容</li><li>结构化数据维护</li><li>月报 + 月度复盘会</li></ul><a class="btn btn-secondary" href="mailto:yanhang@sequentry.com">预约沟通</a></div>
+    <div class="col"><p class="eyebrow">月度 · 标准</p><h3>站内 + 站外运营</h3><p class="price">¥ 待定<small>/ 月</small></p><ul class="ticks"><li>包含基础版全部内容</li><li>社区与测评信源建设</li><li>媒体与达人对接</li><li>季度竞品复盘</li></ul><a class="btn btn-secondary" href="mailto:yanhang@sequentry.com">预约沟通</a></div>
+  </div>
+</div></section>
+</main>
+
+<!-- ============ 品牌站建设 ============ -->
+<main class="page" data-page="build" hidden>
+<section class="phero"><div class="shell">
+  <p class="crumb"><a href="#home">首页</a> / 服务 / 品牌站建设</p>
+  <div class="phero-grid">
+    <div>
+      <p class="eyebrow">GEO 友好的品牌站</p>
+      <h1>给海外买家看，也给 AI 读的品牌站</h1>
+      <p class="lead">新建或改造你的独立站，让 AI 抓得到、读得懂、敢引用。建站是 AI 可见度的地基，不是另一门生意。</p>
+      <div class="cta-row"><a class="btn btn-primary" href="mailto:yanhang@sequentry.com">预约建站沟通</a><a class="btn btn-secondary" href="#check">先测一下现在的站</a></div>
+    </div>
+    <div class="kv">
+      <div><span>改造现有站</span><b>4–6 周</b></div>
+      <div><span>新建品牌站</span><b>8–10 周</b></div>
+      <div><span>上线后复测</span><b>90 天</b></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">差在哪</p><h2 class="h2">同样是独立站，AI 读到的东西差很多</h2></div></div>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>检查项</th><th>常见独立站</th><th>GEO 友好的品牌站</th></tr></thead>
+    <tbody>
+      <tr><td><b>核心内容</b></td><td>靠脚本渲染，部分 AI 爬虫读不到</td><td>直接输出在网页源码里</td></tr>
+      <tr><td><b>产品信息</b></td><td>参数写在图片里</td><td>文字规格表 + 产品结构化数据</td></tr>
+      <tr><td><b>常见问题</b></td><td>散落在客服聊天记录里</td><td>答案优先的 FAQ 页</td></tr>
+      <tr><td><b>竞品对比</b></td><td>不敢写，或只写自己好</td><td>公允、有依据的对比页</td></tr>
+      <tr><td><b>品牌事实</b></td><td>官网、Amazon、社媒说法不一</td><td>全渠道统一的品牌信息</td></tr>
+      <tr><td><b>AI 爬虫</b></td><td>没有策略，或被误拦截</td><td>按引擎分别配置抓取规则</td></tr>
+      <tr><td><b>多语言</b></td><td>机器翻译，语境不对</td><td>本地化文案 + 语言版本标注</td></tr>
+      <tr><td><b>效果追踪</b></td><td>看不到 AI 带来的访问</td><td>单独统计来自 AI 的流量</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="sec"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">两种做法</p><h2 class="h2">改造还是新建，看你现在的站还能不能留</h2></div></div>
+  <div class="cols two">
+    <div class="col"><p class="eyebrow">改造 · 4–6 周</p><h3>在现有独立站上改</h3><p>适合已经有流量和订单、不打算换平台的品牌。</p><ul class="ticks"><li>抓取与速度体检，修复阻塞问题</li><li>产品、品牌、FAQ 结构化数据</li><li>补 3–5 个对比页和使用场景页</li><li>AI 流量统计与可见度基线</li></ul></div>
+    <div class="col"><p class="eyebrow">新建 · 8–10 周</p><h3>从信息架构开始做</h3><p>适合准备从平台卖家转品牌，或现有站承载不了内容的品牌。</p><ul class="ticks"><li>基于诊断结果的信息架构</li><li>品牌、产品、对比、FAQ 全套页面</li><li>多语言与本地化文案</li><li>上线即测可见度基线，90 天复测</li></ul></div>
+  </div>
+</div></section>
+
+<section class="sec paper"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">平台选择</p><h2 class="h2">按你的团队能不能自己维护来选</h2></div></div>
+  <div class="tbl-wrap"><table class="tbl">
+    <thead><tr><th>平台</th><th>适合谁</th><th>优点</th><th>要注意</th></tr></thead>
+    <tbody>
+      <tr><td><b>Shopify</b></td><td>DTC 电商品牌</td><td>支付、物流、应用生态成熟，运营团队上手快</td><td>主题和应用装太多会拖慢速度、打乱结构化数据</td></tr>
+      <tr><td><b>WordPress</b></td><td>内容多、询盘型 B2B</td><td>内容管理灵活，适合持续发布对比页和指南</td><td>需要有人维护插件和安全更新</td></tr>
+      <tr><td><b>静态站（如 Astro）</b></td><td>品牌展示、速度优先</td><td>最快、最干净，AI 抓取最省心</td><td>内容更新需要技术支持</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section class="sec"><div class="shell">
+  <div class="sec-head"><div><p class="eyebrow">新建流程</p><h2 class="h2">10 周从诊断到上线</h2></div><p class="note">刻度：周</p></div>
+  <div class="tl-wrap"><div class="tl" style="--w:10">
+    <div class="tl-scale"><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div>
+    <div class="tl-row"><span>诊断与信息架构</span><div class="tl-bar g" style="grid-column:2 / 4">诊断 + 架构</div></div>
+    <div class="tl-row"><span>内容与结构化数据</span><div class="tl-bar" style="grid-column:3 / 7">文案、对比页、FAQ、数据标注</div></div>
+    <div class="tl-row"><span>设计与开发</span><div class="tl-bar" style="grid-column:5 / 11">设计、开发、多语言版本</div></div>
+    <div class="tl-row"><span>上线与基线测量</span><div class="tl-bar t" style="grid-column:10 / 12">上线 + 基线</div></div>
+  </div></div>
+</div></section>
+
+<section class="sec paper tight"><div class="shell">
+  <div class="pilot">
+    <div><p class="eyebrow">第一个样板</p><h3>sequentry.com 就是我们的第一个样板</h3><p>我们会公开这个网站自己的 AI 可见度基线和 90 天后的变化。先在自己身上验证，再给客户做。</p></div>
+    <a class="btn btn-secondary" href="#check">用快检测一下你的站</a>
+  </div>
+</div></section>
+</main>
+
+<!-- ============ 免费快检（工具） ============ -->
+<main class="page" data-page="check" hidden>
+<section class="phero" style="padding-bottom:40px"><div class="shell">
+  <p class="crumb"><a href="#home">首页</a> / 工具 / AI 可见度快检</p>
+  <div class="phero-grid">
+    <div>
+      <h1>AI 可见度快检</h1>
+      <p class="lead">20 个买家真实会问的问题，在 4 个 AI 引擎里各问 3 次，看你和竞品谁被推荐、AI 引用了哪些网站。免费，48 小时内出结果。</p>
+    </div>
+    <div class="kv"><div><span>提问</span><b>20 个</b></div><div><span>引擎 × 采样</span><b>4 × 3</b></div><div><span>出结果</span><b>48 小时</b></div></div>
+  </div>
+</div></section>
+
+<section class="sec tight" style="padding-top:32px"><div class="shell">
+  <div class="tool">
+    <form class="tool-form" id="checkForm">
+      <div class="field"><label for="f-brand">品牌名</label><input id="f-brand" value="Brand X"></div>
+      <div class="field"><label for="f-site">官网</label><input id="f-site" value="brandx.com"></div>
+      <div class="field"><label for="f-cat">品类</label><input id="f-cat" value="便携储能"></div>
+      <div class="field"><label for="f-market">目标市场</label><select id="f-market"><option>美国</option><option>英国</option><option>德国</option><option>日本</option><option>澳大利亚</option></select></div>
+      <div class="field"><span class="lbl">竞品（最多 3 个）</span><div class="trio"><input id="f-c1" value="Brand A" aria-label="竞品 1"><input id="f-c2" value="Brand B" aria-label="竞品 2"><input id="f-c3" value="Brand C" aria-label="竞品 3"></div></div>
+      <div class="field"><label for="f-contact">微信号或工作邮箱</label><input id="f-contact" placeholder="用于发送结果"></div>
+      <button class="btn btn-primary" type="submit">生成示例结果</button>
+      <p class="note">演示版只生成示例数据。正式版提交后，由序引研究员在 48 小时内发送结果。</p>
+    </form>
+    <div class="tool-out">
+      <div class="out-head"><h2><span class="n-you">Brand X</span> · <span class="n-cat">便携储能</span> · <span class="n-mkt">美国</span></h2><span class="status" id="outStatus">示例结果 · 已载入</span></div>
+      <div class="kpis">
+        <div class="kpi"><span>你的提及率</span><b class="bad">6%</b><em>240 次回答中出现 14 次</em></div>
+        <div class="kpi"><span>覆盖引擎</span><b>1 / 4</b><em>只在 Google AI 概览出现</em></div>
+        <div class="kpi"><span>最强竞品</span><b>68%</b><em><span class="n-top">Brand A</span> 的提及率</em></div>
+        <div class="kpi"><span>官网被引用</span><b>0 次</b><em>AI 从未引用 <span class="n-site">brandx.com</span></em></div>
+      </div>
+      <div class="out-grid">
+        <div>
+          <div class="out-h"><span>各引擎提及率</span><span class="legend"><span><i style="background:#2859FF"></i><span class="n-you">Brand X</span></span><span><i style="background:#0B0C0E"></i><span class="n-top">Brand A</span></span></span></div>
+          <div class="eb"><span class="eb-name">ChatGPT</span><div class="eb-bars"><div class="eb-line"><span class="bar you" style="width:0%"></span><span>0%</span></div><div class="eb-line"><span class="bar" style="width:72%" title="竞品 ChatGPT 提及率 72%"></span><span>72%</span></div></div></div>
+          <div class="eb"><span class="eb-name">Perplexity</span><div class="eb-bars"><div class="eb-line"><span class="bar you" style="width:0%"></span><span>0%</span></div><div class="eb-line"><span class="bar" style="width:65%" title="竞品 Perplexity 提及率 65%"></span><span>65%</span></div></div></div>
+          <div class="eb"><span class="eb-name">Google AI 概览</span><div class="eb-bars"><div class="eb-line"><span class="bar you" style="width:23%" title="你的 Google AI 概览提及率 23%"></span><span>23%</span></div><div class="eb-line"><span class="bar" style="width:70%" title="竞品 Google AI 概览提及率 70%"></span><span>70%</span></div></div></div>
+          <div class="eb"><span class="eb-name">Gemini</span><div class="eb-bars"><div class="eb-line"><span class="bar you" style="width:0%"></span><span>0%</span></div><div class="eb-line"><span class="bar" style="width:65%" title="竞品 Gemini 提及率 65%"></span><span>65%</span></div></div></div>
+          <p class="chart-cap">刻度 0–100% · 每个引擎 60 次回答（20 个提问 × 3 次采样）· 示例数据，非真实采样</p>
+        </div>
+        <div>
+          <div class="out-h"><span>AI 最常引用的网站</span><span class="note">引用次数</span></div>
+          <ul class="srclist">
+            <li><span>reddit.com</span><span>41</span></li>
+            <li><span>youtube.com</span><span>33</span></li>
+            <li><span>outdoorgearlab.com</span><span>19</span></li>
+            <li><span>amazon.com</span><span>17</span></li>
+            <li><span><span class="n-top">Brand A</span> 官网</span><span>15</span></li>
+            <li><span><span class="n-site">brandx.com</span>（你）</span><span>0</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="out-h" style="margin-top:26px"><span>提问样本（20 个中的 5 个）</span><span class="note">— 未提及 · 数字为推荐位次</span></div>
+      <div class="tbl-wrap"><table class="tbl">
+        <thead><tr><th>提问</th><th class="r">ChatGPT</th><th class="r">Perplexity</th><th class="r">Google AI</th><th class="r">Gemini</th></tr></thead>
+        <tbody>
+          <tr><td>best portable power station for camping</td><td class="r num">—</td><td class="r num">—</td><td class="r num">5</td><td class="r num">—</td></tr>
+          <tr><td>portable power station vs gas generator for home backup</td><td class="r num">—</td><td class="r num">—</td><td class="r num">—</td><td class="r num">—</td></tr>
+          <tr><td>quietest power station for RV</td><td class="r num">—</td><td class="r num">—</td><td class="r num">4</td><td class="r num">—</td></tr>
+          <tr><td>most reliable solar generator 2026</td><td class="r num">—</td><td class="r num">—</td><td class="r num">—</td><td class="r num">—</td></tr>
+          <tr><td><span class="n-top">Brand A</span> alternatives</td><td class="r num">—</td><td class="r num">—</td><td class="r num">6</td><td class="r num">—</td></tr>
+        </tbody>
+      </table></div>
+      <ul class="findings">
+        <li>在“对比”和“替代品”类提问里，你几乎完全缺席。</li>
+        <li>AI 引用最多的是 Reddit 和 YouTube，你的官网一次都没有被引用。</li>
+        <li>唯一提到你的 Google AI 概览里，电池容量写错了。</li>
+      </ul>
+      <div class="cta-row" style="margin-top:22px"><a class="btn btn-primary" href="#geo">看完整诊断报告包含什么</a><a class="btn btn-secondary" href="mailto:yanhang@sequentry.com">预约 15 分钟解读</a></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<!-- ============ 研究 ============ -->
+<main class="page" data-page="research" hidden>
+<section class="phero" style="padding-bottom:44px"><div class="shell">
+  <p class="crumb"><a href="#home">首页</a> / 研究</p>
+  <div class="phero-grid">
+    <div><h1>研究</h1><p class="lead">拆开海外品牌，看懂它为什么能成。这是我们做 AI 可见度的底子，也会一直免费公开。</p></div>
+    <div class="kv"><div><span>深度案例</span><b>3 篇</b></div><div><span>自有报告</span><b>1 份</b></div><div><span>独立站样本</span><b>56,851</b></div></div>
+  </div>
+</div></section>
+<section class="sec tight"><div class="shell hub">
+  <nav class="hub-nav" aria-label="研究分类">
+    <button type="button" data-jump="g-geo">AI 可见度研究 <span>新</span></button>
+    <button type="button" data-jump="g-signal">信号 <span>4</span></button>
+    <button type="button" data-jump="g-cases">案例 <span>3</span></button>
+    <button type="button" data-jump="g-reports">报告库 <span>2</span></button>
+    <button type="button" data-jump="g-data">数据工具 <span>2</span></button>
+  </nav>
+  <div>
+    <div class="hub-group" id="g-geo"><h2>AI 可见度研究 <span>新栏目 · 每月 1 篇</span></h2>
+      <div class="rlist">
+        <div class="ritem"><span class="rtype">品类拆解</span><span><span class="rt">ChatGPT 在美国推荐哪些便携储能品牌？</span><span class="rd">120 个买家提问、4 个引擎，拆开 AI 引用的来源和推荐理由。</span></span><span class="rm"><span class="soon">筹备中</span></span></div>
+        <div class="ritem"><span class="rtype">方法</span><span><span class="rt">为什么 AI 很少推荐中国品牌：五层证据缺口</span><span class="rd">用反向工程框架，看 AI 回答里的中国出海品牌。</span></span><span class="rm"><span class="soon">筹备中</span></span></div>
+        <a class="ritem" href="https://www.sequentry.com/report/semrush-ai-visibility-2026/"><span class="rtype">报告解读</span><span><span class="rt">AI 开始替用户选择品牌</span><span class="rd">Semrush × Adobe 报告解读：AI 正在成为品牌与消费者之间的新中介。</span></span><span class="rm">2026-08-05</span></a>
+      </div>
+    </div>
+    <div class="hub-group" id="g-signal"><h2>信号 <span>出海与 AI 商业的每周信号</span></h2>
+      <div class="rlist">
+        <a class="ritem" href="https://www.sequentry.com/briefs/2026-07-08/"><span class="rtype">洞察</span><span><span class="rt">AI slop，品牌出海与人的价值</span><span class="rd">当 AI 让内容成本趋近于零，“人味”正在成为品牌护城河。</span></span><span class="rm">2026-07-08</span></a>
+        <a class="ritem" href="https://www.sequentry.com/briefs/2026-06-03/"><span class="rtype">市场</span><span><span class="rt">泡泡玛特：两个月落成欧美双总部</span><span class="rd">从潮玩出口到本地化组织，把“出海”做成“在地经营”。</span></span><span class="rm">2026-06-03</span></a>
+        <a class="ritem" href="https://www.sequentry.com/briefs/2026-06-01/"><span class="rtype">合规</span><span><span class="rt">ICS2 与小包新规影响</span><span class="rd">欧盟入境安全数据与小包合规口径变化。</span></span><span class="rm">2026-06-01</span></a>
+        <a class="ritem" href="https://www.sequentry.com/briefs/2026-05-27/"><span class="rtype">信号追踪</span><span><span class="rt">Agentic Commerce 年度态势</span><span class="rd">Google 与 Amazon 把 AI 入口推向交易链路。</span></span><span class="rm">2026-05-27</span></a>
+      </div>
+    </div>
+    <div class="hub-group" id="g-cases"><h2>案例 <span>海外品牌深度拆解</span></h2>
+      <div class="rlist">
+        <a class="ritem" href="https://www.sequentry.com/cases/shein/"><span class="rtype">快时尚</span><span><span class="rt">SHEIN 上市：从婚纱搜索生意到港交所</span><span class="rd">小单快反供应链、平台化转型与多国上市路径。</span></span><span class="rm">7,000 字</span></a>
+        <a class="ritem" href="https://www.sequentry.com/cases/wyze/"><span class="rtype">智能硬件</span><span><span class="rt">从 19.99 美元到 32 万台召回</span><span class="rd">Wyze 的低价增长、订阅飞轮与规模化风险。</span></span><span class="rm">9,300 字</span></a>
+        <a class="ritem" href="https://www.sequentry.com/cases/comfrt/"><span class="rtype">休闲服饰</span><span><span class="rt">卖“压力卫衣”做到 7 亿美元</span><span class="rd">Comfrt 的达人网络、折扣引擎与焦虑生意。</span></span><span class="rm">11,000 字</span></a>
+      </div>
+    </div>
+    <div class="hub-group" id="g-reports"><h2>报告库 <span>自有研究与外部报告解读</span></h2>
+      <div class="rlist">
+        <a class="ritem" href="https://www.sequentry.com/report/01/"><span class="rtype">自有报告</span><span><span class="rt">下一场战役，不在下一个爆款里</span><span class="rd">序引研究 #01：AI 重构、市场迁移与新老卖家的破局路径。</span></span><span class="rm">53 页 PDF</span></a>
+        <a class="ritem" href="https://www.sequentry.com/report/semrush-ai-visibility-2026/"><span class="rtype">报告解读</span><span><span class="rt">Semrush AI 可见度指数 2026</span><span class="rd">解读文章与原报告下载。</span></span><span class="rm">2026-08-05</span></a>
+      </div>
+    </div>
+    <div class="hub-group" id="g-data"><h2>数据工具 <span>免费使用</span></h2>
+      <div class="rlist">
+        <a class="ritem" href="https://www.sequentry.com/markets/"><span class="rtype">市场地图</span><span><span class="rt">全球独立站市场地图</span><span class="rd">56,851 个独立站、44 个市场，按市场下钻品类构成和头部独立站。</span></span><span class="rm">↗</span></a>
+        <a class="ritem" href="https://atlas.sequentry.com"><span class="rtype">序引海图</span><span><span class="rt">品牌出海的工具海图</span><span class="rd">264 个精选出海渠道、9 大类、66 个 AI 工具直达。</span></span><span class="rm">↗</span></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<!-- ============ 关于（阅读页） ============ -->
+<main class="page" data-page="about" hidden style="background:#FFFFFF">
+<article class="article">
+  <p class="crumb"><a href="#home">首页</a> / 关于</p>
+  <h1 style="margin-top:18px">关于序引效能</h1>
+  <h2>我们做什么</h2>
+  <p><strong>序引效能帮助出海品牌出现在海外 AI 的回答里。</strong>方法来自我们一直在做的事：反向拆解海外品牌，看懂它为什么能在当地成立。研究是底子，服务是出口。</p>
+  <p>具体来说，我们提供 AI 可见度诊断、GEO 友好的品牌站建设和月度可见度运营。研究内容会继续免费公开。</p>
+  <h2>谁在做</h2>
+  <p>序引效能由<strong>闫航</strong>于 2026 年创立。此前八年，在跨境电商赛道走过三个位置：大卖公司运营主管、省级服务商孵化讲师、Amazon 大客户经理。从卖家、服务商、平台三个视角看过同一件事之后，选择自己来做。</p>
+  <h2>为什么是现在</h2>
+  <p><strong>AI 正在替买家做第一轮筛选。</strong>海外买家越来越多地直接问 AI 该买什么，而 AI 的答案来自它信任的网站：测评、社区、媒体，以及写得足够清楚的品牌官网。</p>
+  <p><strong>中国品牌在这些地方普遍缺席。</strong>过去十年，出海卖家把力气花在选品、流量和物流上，很少经营海外的品牌证据。AI 把这个缺口放大了。</p>
+  <h2>我们的原则</h2>
+  <ul>
+    <li><strong>只做真实、可验证的内容。</strong>不铺软文，不做虚假测评。</li>
+    <li><strong>不承诺排名。</strong>承诺可衡量的指标和明确的交付动作。</li>
+    <li><strong>先在自己身上验证。</strong>sequentry.com 的 AI 可见度数据会公开。</li>
+  </ul>
+  <hr>
+  <h2>联系</h2>
+  <p>邮箱：<a class="link" href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a><br>公众号：序引效能<br>杭州序引效能科技有限公司</p>
+</article>
+</main>
+
+
+<footer class="foot"><div class="shell">
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="#home" aria-label="序引效能首页">
+        <svg viewBox="0 0 870 546" aria-hidden="true"><g fill="#FFFFFF"><rect width="870" height="128" rx="64"/><path d="M434 209H771A99 99 0 0 1 870 308V530A16 16 0 0 1 854 546H758A16 16 0 0 1 742 530V375A38 38 0 0 0 704 337H434A64 64 0 0 1 434 209Z"/><rect y="418" width="683" height="128" rx="64"/></g><path fill="#B5BEC9" d="M64 209H314A8 8 0 0 1 322 217V329A8 8 0 0 1 314 337H64A64 64 0 0 1 64 209Z"/></svg>
+        <span><strong>序引效能</strong><small>SEQUENTRY</small></span>
+      </a>
+      <p class="foot-tag">出海品牌的 AI 搜索可见度与品牌站。研究是底子，服务是出口。</p>
+    </div>
+    <div><h4>服务</h4><ul><li><a href="#geo">AI 可见度（GEO / AEO）</a></li><li><a href="#build">品牌站建设</a></li><li><a href="#check">免费快检</a></li></ul></div>
+    <div><h4>研究</h4><ul><li><a href="https://www.sequentry.com/briefs/">信号</a></li><li><a href="https://www.sequentry.com/cases/">案例</a></li><li><a href="https://www.sequentry.com/report/">报告库</a></li><li><a href="https://www.sequentry.com/markets/">市场地图</a></li></ul></div>
+    <div><h4>公司</h4><ul><li><a href="#about">关于</a></li><li><a href="https://atlas.sequentry.com">序引海图</a></li><li><a href="mailto:yanhang@sequentry.com">邮件联系</a></li></ul></div>
+    <div class="foot-contact">
+      <div class="qr">企业微信<br>二维码</div>
+      <p>扫码添加，预约 15 分钟解读</p>
+      <p><a href="mailto:yanhang@sequentry.com">yanhang@sequentry.com</a></p>
+      <p>杭州序引效能科技有限公司</p>
+    </div>
+  </div>
+  <div class="foot-copy"><span>© 2026 序引效能（Sequentry）</span><span>ICP 备案号（待补）· 公众号「序引效能」</span></div>
+</div></footer>
+
+<style>.eb-line{display:grid;grid-template-columns:minmax(0,1fr) 40px}</style>
+<script>
+(function(){
+  /* ---------- 首屏：AI 回答样本（示意数据） ---------- */
+  var ENG=[
+    {intro:"For camping, these options come up most often in reviews and owner discussions:",
+     picks:[["Brand A","1,000Wh class, long runtime, the most reviewed option","[1][2]"],["Brand B","fastest recharge, solid app control","[3]"],["Brand C","lighter and cheaper, good for weekend trips","[2][4]"]],
+     srcs:["reddit.com/r/camping","outdoorgearlab.com","youtube.com","nytimes.com/wirecutter"]},
+    {intro:"Based on recent reviews and owner reports, the top picks are:",
+     picks:[["Brand B","best balance of capacity and charging speed","[1][3]"],["Brand A","most reliable in long-term owner reports","[1][2]"],["Brand D","best value under $500","[4]"]],
+     srcs:["reddit.com/r/vandwellers","youtube.com","techradar.com","amazon.com"]},
+    {intro:"Popular portable power stations for camping include:",
+     picks:[["Brand A","widely available, strong ratings","[1]"],["Brand C","compact size","[2]"],["Brand B","expandable battery","[1][3]"],["Brand D","budget option","[2]"],["Brand X","solar-ready kit","[4]"]],
+     srcs:["amazon.com","youtube.com","brand-a.example","reddit.com"]},
+    {intro:"Here are some well-regarded options for camping trips:",
+     picks:[["Brand A","long runtime for multi-day trips","[1]"],["Brand B","quick solar charging","[2]"],["Brand C","lightweight","[1][3]"]],
+     srcs:["youtube.com","techradar.com","reddit.com/r/camping"]}
+  ];
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+  var tabs=document.querySelectorAll(".spec .tab"),intro=document.getElementById("specIntro"),picks=document.getElementById("specPicks"),srcs=document.getElementById("specSrcs"),cells=document.querySelectorAll("#specCells .vcell");
+  function showEng(i){
+    var e=ENG[i];
+    tabs.forEach(function(t,j){t.setAttribute("aria-selected",j===i?"true":"false");});
+    intro.textContent=e.intro;
+    picks.innerHTML=e.picks.map(function(p,k){
+      return '<li><span class="rk">'+(k+1)+'</span><span><b>'+esc(p[0])+'</b> — '+esc(p[1])+'<span class="cite">'+p[2]+'</span>'+(p[0]==="Brand X"?' <span class="flag" style="color:#596579">你</span>':'')+'</span></li>';
+    }).join("");
+    srcs.innerHTML=e.srcs.map(function(s,k){return '<span><i>'+(k+1)+'</i>'+esc(s)+'</span>';}).join("");
+    cells.forEach(function(c,j){c.classList.toggle("on",j===i);});
+  }
+  tabs.forEach(function(t){t.addEventListener("click",function(){showEng(+t.getAttribute("data-eng"));});});
+
+  /* ---------- 页面切换（hash 路由） ---------- */
+  var PAGES=["home","geo","build","check","research","about"],pendingJump=null;
+  function route(){
+    var h=(location.hash||"#home").slice(1);
+    if(PAGES.indexOf(h)<0)h="home";
+    document.querySelectorAll(".page").forEach(function(p){p.hidden=p.getAttribute("data-page")!==h;});
+    document.querySelectorAll("[data-nav]").forEach(function(a){a.classList.toggle("active",a.getAttribute("data-nav")===h);});
+    document.querySelectorAll(".demo-pages a").forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+h);});
+    if(document.activeElement&&document.activeElement.blur)document.activeElement.blur();
+    if(pendingJump){var el=document.getElementById(pendingJump);pendingJump=null;if(el){el.scrollIntoView();return;}}
+    window.scrollTo(0,0);
+  }
+  document.addEventListener("click",function(ev){
+    var j=ev.target.closest("[data-jump]");
+    if(!j)return;
+    if(j.tagName==="BUTTON"){var el=document.getElementById(j.getAttribute("data-jump"));if(el)el.scrollIntoView({behavior:"smooth"});return;}
+    pendingJump=j.getAttribute("data-jump");
+    if(location.hash==="#research"){ev.preventDefault();route();}
+  });
+  window.addEventListener("hashchange",route);
+  route();
+
+  /* ---------- 页眉滚动投影 ---------- */
+  var head=document.getElementById("head");
+  window.addEventListener("scroll",function(){head.classList.toggle("scrolled",window.scrollY>4);},{passive:true});
+
+  /* ---------- 快检（示例结果） ---------- */
+  var status=document.getElementById("outStatus");
+  function val(id,d){var x=document.getElementById(id).value.trim();return x||d;}
+  function fill(cls,v){document.querySelectorAll("."+cls).forEach(function(n){n.textContent=v;});}
+  function runCheck(){
+    status.textContent="采样中 · 240 次回答";status.classList.add("busy");
+    setTimeout(function(){
+      fill("n-you",val("f-brand","Brand X"));fill("n-site",val("f-site","brandx.com"));
+      fill("n-cat",val("f-cat","便携储能"));fill("n-mkt",document.getElementById("f-market").value);
+      fill("n-top",val("f-c1","Brand A"));
+      status.textContent="示例结果 · 已生成";status.classList.remove("busy");
+    },700);
+  }
+  document.getElementById("checkForm").addEventListener("submit",function(ev){ev.preventDefault();runCheck();});
+  document.querySelectorAll("[data-quick]").forEach(function(f){
+    f.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var s=f.elements.site.value.trim();
+      if(s)document.getElementById("f-site").value=s;
+      document.getElementById("f-market").value=f.elements.market.value;
+      location.hash="#check";
+      setTimeout(runCheck,60);
+    });
+  });
+})();
+</script>
+</body>
+</html>

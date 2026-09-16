@@ -1,0 +1,59 @@
+{
+  "slug": "outdoor-power-us",
+  "label": "户外储能 · 美国",
+  "_note": "问题集按 7 类购买意图铺开，每类均衡取样才代表得了真实需求。目标 120 条，下面是种子 42 条。新增问题只往末尾加，不要改已有措辞——改了措辞就断了趋势。",
+  "_intents": [
+    "entry 品类入门｜recommend 推荐选型｜compare 对比｜concern 顾虑异议",
+    "usecase 场景｜value 价格价值｜brand 品牌口碑"
+  ],
+  "questions": [
+    "What is a portable power station and how is it different from a generator?",
+    "How do portable power stations work?",
+    "What size portable power station do I need for camping?",
+    "What does LiFePO4 mean in a power station and why does it matter?",
+    "How many watt hours do I need for a weekend camping trip?",
+
+    "Best portable power station for camping in 2026",
+    "Best portable power station for a week of camping with a family",
+    "Best portable power station for RV boondocking",
+    "Best portable power station for home backup during a power outage",
+    "Best budget portable power station under 500 dollars",
+    "Best solar generator for off grid living",
+    "Most reliable portable power station brand",
+    "Best portable power station for van life",
+
+    "Jackery vs EcoFlow which is better",
+    "EcoFlow Delta 2 vs Bluetti AC180 comparison",
+    "Anker SOLIX vs Jackery for camping",
+    "Goal Zero vs Jackery reliability",
+    "Bluetti vs EcoFlow for home backup",
+    "Which portable power station brand has the best warranty",
+    "Which portable power station charges fastest",
+
+    "Are portable power stations safe to use inside a tent?",
+    "Do portable power stations work in cold weather?",
+    "How long do portable power station batteries last before they degrade?",
+    "Can I leave a portable power station plugged in all the time?",
+    "Are cheap portable power stations from Amazon any good?",
+    "Why do some portable power stations fail after a year?",
+    "Is it safe to charge a portable power station with a car?",
+    "What happens if a portable power station gets rained on?",
+
+    "Can a portable power station run a CPAP machine all night?",
+    "Can a portable power station run a portable fridge for 3 days?",
+    "What can a 1000Wh power station actually run?",
+    "Best power station for running a projector at an outdoor movie night",
+    "Can I use a portable power station to charge an e-bike?",
+    "Best portable power station for tailgating",
+
+    "Are portable power stations worth the money?",
+    "Why are portable power stations so expensive?",
+    "Is it cheaper to buy a generator or a portable power station?",
+    "When do portable power stations go on sale?",
+
+    "Is Jackery a good brand?",
+    "Is EcoFlow customer service any good?",
+    "Which portable power station brands are actually made in China?",
+    "What do Reddit users recommend for a first portable power station?"
+  ]
+}

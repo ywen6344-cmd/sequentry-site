@@ -1,0 +1,6 @@
+# Pagefind 站内搜索配置（序引站 sequentry-site）
+# 用法：在站点根目录跑 `pagefind`（自动读取本配置）
+# 索引范围 = 全部 live 内容页，排除 _backups/、demo/、_partials/、nav/、
+#   sequentry-signals/、report/01/deck/（幻灯片）、graph/验证文件等开发/备份文件。
+site: .
+glob: "{index.html,about/index.html,sources/index.html,markets/index.html,report/index.html,report/01/index.html,report/semrush-ai-visibility-2026/index.html,briefs/**/*.html,cases/**/*.html}"
